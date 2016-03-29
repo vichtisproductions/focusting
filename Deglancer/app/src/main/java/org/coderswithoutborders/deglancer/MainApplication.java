@@ -4,22 +4,22 @@ import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import org.coderswithoutborders.deglancer.di.Graph;
+import org.coderswithoutborders.deglancer.di.DIGraph;
 
 /**
  * Created by Renier on 2016/03/29.
  */
 public class MainApplication extends Application {
-    private Graph mGraph;
+    private DIGraph mGraph;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        mGraph = Graph.Initializer.init(this);
+        mGraph = DIGraph.Initializer.init(this);
     }
 
-    public Graph getGraph() {
+    public DIGraph getGraph() {
         return mGraph;
     }
 

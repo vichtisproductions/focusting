@@ -13,14 +13,14 @@ import dagger.Component;
  */
 @Component(modules = { ApplicationModule.class, ReceiverModule.class, BusModule.class })
 @Singleton
-public interface Graph {
+public interface DIGraph {
     void inject(TrackerService service);
     void inject(ActionReceiver receiver);
 
 
     final class Initializer {
-        public static Graph init(MainApplication application) {
-            return DaggerGraph
+        public static DIGraph init(MainApplication application) {
+            return DaggerDIGraph
                     .builder()
                     .applicationModule(new ApplicationModule(application))
                     .build();
