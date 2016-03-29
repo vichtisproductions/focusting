@@ -21,16 +21,12 @@ public class ActionReceiver extends android.content.BroadcastReceiver {
         theFilter.addAction(Intent.ACTION_SCREEN_OFF);
         theFilter.addAction(Intent.ACTION_POWER_CONNECTED);
         theFilter.addAction(Intent.ACTION_POWER_DISCONNECTED);
-
-        // Register as a subscriber
-        bus.register(this);
-
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         String strAction = intent.getAction();
-        bus.post(strAction);
+        bus.post(new ScreenEvent(strAction));
     }
 
     public Intent register(Context context) {
