@@ -1,10 +1,13 @@
 package org.coderswithoutborders.deglancer.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import org.coderswithoutborders.deglancer.Presenter.MainPresenter;
+import org.coderswithoutborders.deglancer.presenter.MainPresenter;
 import org.coderswithoutborders.deglancer.R;
+import org.coderswithoutborders.deglancer.services.TrackerService;
+
 import nucleus.factory.RequiresPresenter;
 import nucleus.view.NucleusActivity;
 
@@ -18,6 +21,10 @@ public class MainActivity extends NucleusActivity<MainPresenter> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //TODO - Remove later, just for testing
+        Intent i = new Intent(getApplicationContext(), TrackerService.class);
+        getApplicationContext().startService(i);
     }
 
     /**
