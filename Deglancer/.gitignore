@@ -6,3 +6,6 @@
 .DS_Store
 /build
 /captures
+
+# Android User-specific configurations
+.idea
