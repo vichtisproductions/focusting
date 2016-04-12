@@ -2,29 +2,48 @@ package org.coderswithoutborders.deglancer.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import org.coderswithoutborders.deglancer.presenter.MainPresenter;
+import org.coderswithoutborders.deglancer.MainApplication;
+import org.coderswithoutborders.deglancer.presenter.IMainActivityPresenter;
 import org.coderswithoutborders.deglancer.R;
 import org.coderswithoutborders.deglancer.services.TrackerService;
 
-import nucleus.factory.RequiresPresenter;
-import nucleus.view.NucleusActivity;
+import javax.inject.Inject;
 
 /**
  * Created by chris.teli on 3/20/2016.
  */
-@RequiresPresenter(MainPresenter.class)
-public class MainActivity extends NucleusActivity<MainPresenter> {
+public class MainActivity extends AppCompatActivity implements IMainActivityView {
+
+    @Inject
+    IMainActivityPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //TODO - Remove later, just for testing
+        MainApplication.from(this).getGraph().inject(this);
+
         Intent i = new Intent(getApplicationContext(), TrackerService.class);
         getApplicationContext().startService(i);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        mPresenter.setView(this);
+        mPresenter.init();
+    }
+
+    @Override
+    protected void onPause() {
+        mPresenter.clearView();
+
+        super.onPause();
     }
 
     /**

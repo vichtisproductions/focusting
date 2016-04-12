@@ -3,12 +3,14 @@ package org.coderswithoutborders.deglancer.services;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.util.Log;
+
+import com.firebase.client.Firebase;
 
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.bus.RxBus;
 import org.coderswithoutborders.deglancer.bus.events.ActionEvent;
-import org.coderswithoutborders.deglancer.model.ActionReceiver;
+import org.coderswithoutborders.deglancer.interactor.IScreenActionInteractor;
+import org.coderswithoutborders.deglancer.receivers.ScreenActionReceiver;
 
 import javax.inject.Inject;
 
@@ -19,10 +21,13 @@ public class TrackerService extends Service {
     private static final String TAG = "TrackerService";
 
     @Inject
-    ActionReceiver mActionReceiver;
+    ScreenActionReceiver mScreenActionReceiver;
 
     @Inject
     RxBus mBus;
+
+    @Inject
+    IScreenActionInteractor mScreenActionInteractor;
 
     private CompositeSubscription mSubscriptions;
 
@@ -30,6 +35,7 @@ public class TrackerService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+
 
         mSubscriptions = new CompositeSubscription();
 
@@ -54,7 +60,7 @@ public class TrackerService extends Service {
         if (mSubscriptions == null || mSubscriptions.isUnsubscribed())
             mSubscriptions = new CompositeSubscription();
 
-        mActionReceiver.register();
+        mScreenActionReceiver.register();
 
         mSubscriptions.add(mBus.toObserverable().subscribe((event) -> {
             if (event instanceof  ActionEvent)
@@ -63,21 +69,11 @@ public class TrackerService extends Service {
     }
 
     private void handleAction(ActionEvent action) {
-        if (action.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-            Log.i(TAG, "Screen Event - " + "LOCKED");
-        } else if (action.getAction().equals(Intent.ACTION_SCREEN_ON)) {
-            Log.i(TAG, "Screen Event - " + "SCREEN_ON");
-        } else if (action.getAction().equals(Intent.ACTION_USER_PRESENT)) {
-            Log.i(TAG, "Screen Event - " + "USER_PRESENT");
-        }  else if (action.getAction().equals(Intent.ACTION_POWER_CONNECTED)) {
-            Log.i(TAG, "Screen Event - " + "POWER_CONNECTED");
-        } else if (action.getAction().equals(Intent.ACTION_POWER_DISCONNECTED)) {
-            Log.i(TAG, "Screen Event - " + "POWER_DISCONNECTED");
-        }
+        mScreenActionInteractor.handleScreenAction(action);
     }
 
     private void unregister() {
-        mActionReceiver.unregister();
+        mScreenActionReceiver.unregister();
 
         if (!mSubscriptions.isUnsubscribed())
             mSubscriptions.unsubscribe();

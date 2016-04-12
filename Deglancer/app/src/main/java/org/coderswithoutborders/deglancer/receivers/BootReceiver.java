@@ -1,4 +1,4 @@
-package org.coderswithoutborders.deglancer.model;
+package org.coderswithoutborders.deglancer.receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

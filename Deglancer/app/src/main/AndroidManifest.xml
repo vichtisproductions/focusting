@@ -3,6 +3,7 @@
     package="org.coderswithoutborders.deglancer">
     
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MainApplication"
@@ -24,7 +25,7 @@
             android:enabled="true"
             android:exported="true"></service>
 
-        <receiver android:name=".model.BootReceiver" android:enabled="true" android:exported="true">
+        <receiver android:name=".receivers.BootReceiver" android:enabled="true" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />

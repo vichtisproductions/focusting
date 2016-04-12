@@ -1,4 +1,4 @@
-package org.coderswithoutborders.deglancer.model;
+package org.coderswithoutborders.deglancer.receivers;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,14 +13,14 @@ import javax.inject.Inject;
 /**
  * Created by chris.teli on 3/21/2016.
  */
-public class ActionReceiver extends android.content.BroadcastReceiver {
+public class ScreenActionReceiver extends android.content.BroadcastReceiver {
 
     private Context mContext;
 
     @Inject
     RxBus mBus;
 
-    public ActionReceiver(Context context) {
+    public ScreenActionReceiver(Context context) {
         mContext = context;
 
         MainApplication.from(context).getGraph().inject(this);
@@ -38,8 +38,8 @@ public class ActionReceiver extends android.content.BroadcastReceiver {
         theFilter.addAction(Intent.ACTION_SCREEN_ON);
         theFilter.addAction(Intent.ACTION_SCREEN_OFF);
         theFilter.addAction(Intent.ACTION_USER_PRESENT);
-        theFilter.addAction(Intent.ACTION_POWER_CONNECTED);
-        theFilter.addAction(Intent.ACTION_POWER_DISCONNECTED);
+        //theFilter.addAction(Intent.ACTION_POWER_CONNECTED);
+        //theFilter.addAction(Intent.ACTION_POWER_DISCONNECTED);
         mContext.registerReceiver(this, theFilter);
     }
 

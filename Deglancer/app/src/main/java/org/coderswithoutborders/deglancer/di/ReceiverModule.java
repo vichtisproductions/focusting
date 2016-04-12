@@ -2,7 +2,7 @@ package org.coderswithoutborders.deglancer.di;
 
 import android.content.Context;
 
-import org.coderswithoutborders.deglancer.model.ActionReceiver;
+import org.coderswithoutborders.deglancer.receivers.ScreenActionReceiver;
 
 import dagger.Module;
 import dagger.Provides;
@@ -14,8 +14,8 @@ import dagger.Provides;
 public class ReceiverModule {
 
     @Provides
-    ActionReceiver provideActionReceiver(Context context) {
-        return new ActionReceiver(context);
+    ScreenActionReceiver provideActionReceiver(Context context) {
+        return new ScreenActionReceiver(context);
     }
 
 }

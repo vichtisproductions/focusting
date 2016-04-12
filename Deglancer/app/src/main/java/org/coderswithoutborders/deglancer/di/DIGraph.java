@@ -1,8 +1,9 @@
 package org.coderswithoutborders.deglancer.di;
 
 import org.coderswithoutborders.deglancer.MainApplication;
-import org.coderswithoutborders.deglancer.model.ActionReceiver;
+import org.coderswithoutborders.deglancer.receivers.ScreenActionReceiver;
 import org.coderswithoutborders.deglancer.services.TrackerService;
+import org.coderswithoutborders.deglancer.view.MainActivity;
 
 import javax.inject.Singleton;
 
@@ -11,11 +12,12 @@ import dagger.Component;
 /**
  * Created by Renier on 2016/03/29.
  */
-@Component(modules = { ApplicationModule.class, ReceiverModule.class, BusModule.class })
+@Component(modules = { ApplicationModule.class, ReceiverModule.class, BusModule.class, DataModule.class, InteractorModule.class, PresenterModule.class})
 @Singleton
 public interface DIGraph {
     void inject(TrackerService service);
-    void inject(ActionReceiver receiver);
+    void inject(ScreenActionReceiver receiver);
+    void inject(MainActivity activity);
 
 
     final class Initializer {
