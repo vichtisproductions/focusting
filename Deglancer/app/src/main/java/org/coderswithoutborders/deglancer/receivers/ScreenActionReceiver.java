@@ -38,8 +38,8 @@ public class ScreenActionReceiver extends android.content.BroadcastReceiver {
         theFilter.addAction(Intent.ACTION_SCREEN_ON);
         theFilter.addAction(Intent.ACTION_SCREEN_OFF);
         theFilter.addAction(Intent.ACTION_USER_PRESENT);
-        //theFilter.addAction(Intent.ACTION_POWER_CONNECTED);
-        //theFilter.addAction(Intent.ACTION_POWER_DISCONNECTED);
+        theFilter.addAction(Intent.ACTION_POWER_CONNECTED);
+        theFilter.addAction(Intent.ACTION_POWER_DISCONNECTED);
         mContext.registerReceiver(this, theFilter);
     }
 

@@ -39,7 +39,8 @@ public class DataModule {
     RealmConfiguration provideRealmConfiguration(Context context) {
         return new RealmConfiguration.Builder(context)
                 .name("deglancer.realm")
-                .schemaVersion(1)
+                .schemaVersion(2)
+                .deleteRealmIfMigrationNeeded()
                 .migration(new RealmMigration() {
                     @Override
                     public void migrate(DynamicRealm realm, long oldVersion, long newVersion) {

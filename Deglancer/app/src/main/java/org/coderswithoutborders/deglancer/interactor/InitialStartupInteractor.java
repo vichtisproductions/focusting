@@ -8,6 +8,7 @@ import com.f2prateek.rx.preferences.RxSharedPreferences;
 import com.firebase.client.Firebase;
 
 import org.coderswithoutborders.deglancer.model.UserInfo;
+import org.joda.time.DateTime;
 
 import java.util.Date;
 
@@ -19,6 +20,7 @@ import rx.Observable;
 public class InitialStartupInteractor implements IInitialStartupInteractor {
     private static final String SP_NAME = "InitialStartupSP";
     private static final String SP_KEY_INITIAL_SETUP_DONE = "InitialSetupDone";
+    private static final String SP_KEY_INITIAL_START_TIME = "InitialStartTime";
 
     private Context mContext;
     private Firebase mFirebaseClient;
@@ -47,18 +49,18 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                     }
                 })
                 .flatMap(instanceId -> {
-                    long initialStartTime = new Date().getTime();
+                    long initialStartTime = new DateTime().getMillis();
                     String manufacturer = Build.MANUFACTURER;
                     String model = Build.MODEL;
                     String osVersion = Build.VERSION.RELEASE;
 
                     UserInfo ui = new UserInfo(instanceId, initialStartTime, manufacturer, model, osVersion);
 
-
                     Firebase ref = mFirebaseClient.child(instanceId);
                     ref.setValue(ui);
 
                     mRxPrefs.getBoolean(SP_KEY_INITIAL_SETUP_DONE).set(true);
+                    mRxPrefs.getLong(SP_KEY_INITIAL_START_TIME).set(initialStartTime);
 
                     return Observable.empty();
                 })
@@ -71,5 +73,10 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                     //TODO - handle error
                     String here = "";
                 });
+    }
+
+    @Override
+    public long getInitialStartTime() {
+        return mPrefs.getLong(SP_KEY_INITIAL_START_TIME, new DateTime().getMillis());
     }
 }

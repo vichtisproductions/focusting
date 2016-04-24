@@ -36,15 +36,15 @@ public class TrackerService extends Service {
     public void onCreate() {
         super.onCreate();
 
-
         mSubscriptions = new CompositeSubscription();
 
         MainApplication.from(getApplicationContext()).getGraph().inject(this);
+
+        register();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        register();
 
         return START_STICKY;
     }

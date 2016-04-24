@@ -32,8 +32,8 @@ public class InteractorModule {
 
     @Singleton
     @Provides
-    IStageInteractor provideStageInteractor(Context context) {
-        return new StageInteractor(context);
+    IStageInteractor provideStageInteractor(Context context, IInitialStartupInteractor initialStartupInteractor) {
+        return new StageInteractor(context, initialStartupInteractor);
     }
 
     @Singleton
