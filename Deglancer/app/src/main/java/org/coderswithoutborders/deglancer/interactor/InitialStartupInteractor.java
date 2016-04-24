@@ -68,6 +68,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
 
                 }, error -> {
                     //Already captured or some other error
+                    //TODO - handle error
                     String here = "";
                 });
     }
