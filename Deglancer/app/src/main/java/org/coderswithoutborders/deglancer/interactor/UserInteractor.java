@@ -3,6 +3,10 @@ package org.coderswithoutborders.deglancer.interactor;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.firebase.client.Firebase;
+
+import org.joda.time.DateTime;
+
 import java.util.UUID;
 
 import rx.Observable;
@@ -15,9 +19,11 @@ public class UserInteractor implements IUserInteractor {
     private static final String SP_KEY_INSTANCE_ID = "InstanceId";
 
     private Context mContext;
+    private Firebase mFirebaseClient;
 
-    public UserInteractor(Context context) {
+    public UserInteractor(Context context, Firebase firebaseClient) {
         mContext = context;
+        mFirebaseClient = firebaseClient;
     }
 
     @Override
@@ -41,5 +47,20 @@ public class UserInteractor implements IUserInteractor {
         }
 
         return instanceId;
+    }
+
+    @Override
+    public void logLastUserInteraction() {
+        Observable.create(subscriber -> {
+            Firebase ref = mFirebaseClient.child(getInstanceIdSynchronous()).child("LastUserInteraction");
+            ref.setValue(new DateTime().toString("yyyy/MM/dd kk:mm:ss"));
+
+            subscriber.onCompleted();
+        })
+                .subscribe(result -> {
+
+                }, error -> {
+
+                });
     }
 }

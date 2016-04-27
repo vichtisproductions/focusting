@@ -16,6 +16,7 @@ import javax.inject.Inject;
 public class ScreenActionReceiver extends android.content.BroadcastReceiver {
 
     private Context mContext;
+    private boolean mIsRegistered = false;
 
     @Inject
     RxBus mBus;
@@ -41,9 +42,16 @@ public class ScreenActionReceiver extends android.content.BroadcastReceiver {
         theFilter.addAction(Intent.ACTION_POWER_CONNECTED);
         theFilter.addAction(Intent.ACTION_POWER_DISCONNECTED);
         mContext.registerReceiver(this, theFilter);
+
+        mIsRegistered = true;
     }
 
     public void unregister() {
         mContext.unregisterReceiver(this);
+        mIsRegistered = false;
+    }
+
+    public boolean isRegistered() {
+        return mIsRegistered;
     }
 }

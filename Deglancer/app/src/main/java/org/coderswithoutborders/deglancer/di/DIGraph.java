@@ -12,7 +12,7 @@ import dagger.Component;
 /**
  * Created by Renier on 2016/03/29.
  */
-@Component(modules = { ApplicationModule.class, ReceiverModule.class, BusModule.class, DataModule.class, InteractorModule.class, PresenterModule.class})
+@Component(modules = { ApplicationModule.class, ReceiverModule.class, BusModule.class, DataModule.class, InteractorModule.class, PresenterModule.class, StageModule.class})
 @Singleton
 public interface DIGraph {
     void inject(TrackerService service);

@@ -8,4 +8,5 @@ import rx.Observable;
 public interface IUserInteractor {
     Observable<String> getInstanceId();
     String getInstanceIdSynchronous();
+    void logLastUserInteraction();
 }

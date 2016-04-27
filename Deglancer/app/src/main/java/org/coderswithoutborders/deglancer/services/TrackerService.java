@@ -39,12 +39,11 @@ public class TrackerService extends Service {
         mSubscriptions = new CompositeSubscription();
 
         MainApplication.from(getApplicationContext()).getGraph().inject(this);
-
-        register();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        register();
 
         return START_STICKY;
     }
@@ -57,10 +56,15 @@ public class TrackerService extends Service {
     }
 
     private void register() {
-        if (mSubscriptions == null || mSubscriptions.isUnsubscribed())
+        if (mSubscriptions == null || mSubscriptions.isUnsubscribed()) {
             mSubscriptions = new CompositeSubscription();
+        } else if (!mSubscriptions.isUnsubscribed()) {
+            mSubscriptions.unsubscribe();
+            mSubscriptions = new CompositeSubscription();
+        }
 
-        mScreenActionReceiver.register();
+        if (!mScreenActionReceiver.isRegistered())
+            mScreenActionReceiver.register();
 
         mSubscriptions.add(mBus.toObserverable().subscribe((event) -> {
             if (event instanceof  ActionEvent)

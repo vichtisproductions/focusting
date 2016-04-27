@@ -12,7 +12,6 @@ import org.coderswithoutborders.deglancer.model.ScreenAction;
 import org.coderswithoutborders.deglancer.model.Stage;
 import org.joda.time.DateTime;
 
-import java.util.Date;
 import java.util.UUID;
 
 import io.realm.Realm;
@@ -31,13 +30,15 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
     private IStageInteractor mStageInteractor;
     private Realm mRealm;
     private IUserInteractor mUserInteractor;
+    private IDatabaseInteractor mDatabaseInteractor;
 
-    public ScreenActionInteractor(Context context, Firebase firebaseClient, IStageInteractor stageInteractor, Realm realm, IUserInteractor userInteractor) {
+    public ScreenActionInteractor(Context context, Firebase firebaseClient, IStageInteractor stageInteractor, Realm realm, IUserInteractor userInteractor, IDatabaseInteractor databaseInteractor) {
         mContext = context;
         mFirebaseClient = firebaseClient;
         mStageInteractor = stageInteractor;
         mRealm = realm;
         mUserInteractor = userInteractor;
+        mDatabaseInteractor = databaseInteractor;
     }
 
     @Override
@@ -52,9 +53,9 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
 
                     //We only care about screen on / screen off when calculating SOT or SFT. The other events (charging, not charging, etc) are logged for possible future usage
                     if (action.getAction().equalsIgnoreCase(Intent.ACTION_SCREEN_ON)) {
-                        duration = getDurationFromLastEventOfTypeInStage(Intent.ACTION_SCREEN_OFF, dateTime);
+                        duration = getDurationFromLastEventOfType(Intent.ACTION_SCREEN_OFF, dateTime);
                     } else if (action.getAction().equalsIgnoreCase(Intent.ACTION_SCREEN_OFF)) {
-                        duration = getDurationFromLastEventOfTypeInStage(Intent.ACTION_SCREEN_ON, dateTime);
+                        duration = getDurationFromLastEventOfType(Intent.ACTION_SCREEN_ON, dateTime);
                     }
 
                     ScreenAction screenAction = new ScreenAction(
@@ -67,18 +68,16 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
                             duration
                             );
 
-                    mRealm.beginTransaction();
-                    mRealm.copyToRealm(screenAction);
-                    mRealm.commitTransaction();
+                    mDatabaseInteractor.commitScreenAction(screenAction);
 
                     Firebase ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("ScreenEvents");
                     ref.push().setValue(screenAction);
 
+                    if (mStageInteractor.getCurrentStageHandler() != null) {
+                        mStageInteractor.getCurrentStageHandler().handleScreenAction(screenAction);
+                    }
 
-
-                    //TODO - show toasts here (depending on stage)
-
-
+                    mUserInteractor.logLastUserInteraction();
                 }, error -> {
                     //TODO - Handle error
                     String here = "";
@@ -98,63 +97,36 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
         }
     }
 
-    private long getDurationFromLastEventOfTypeInStage(String action, long newEventDateTime) {
-        RealmResults<ScreenAction> results = mRealm
-                .where(ScreenAction.class)
-                .equalTo("mEventType", action)
-                .findAllSorted("mEventDateTime", Sort.DESCENDING);
+    private long getDurationFromLastEventOfType(String action, long newEventDateTime) {
+        ScreenAction screenAction = mDatabaseInteractor.getLastScreenActionOfType(action);
 
-        if (results.isValid() && results.size() > 0 && results.first() != null) {
-            return newEventDateTime - results.first().getEventDateTime();
+        if (screenAction != null) {
+            return newEventDateTime - screenAction.getEventDateTime();
         } else {
             return -1;
         }
     }
 
     private void updateAveragesIfStageHasChanged(Stage stage) {
-        RealmResults<ScreenAction> results = mRealm
-                .where(ScreenAction.class)
-                .findAllSorted("mEventDateTime", Sort.DESCENDING);
+        ScreenAction action = mDatabaseInteractor.getLastScreenAction();
 
-        if (results.isValid() && results.size() > 0 && results.first() != null) {
-            ScreenAction action = results.first();
-
+        if (action != null) {
             if (action.getStage() != stage.getStage() || action.getDay() != stage.getDay() || action.getHour() != stage.getHour()) {
                 //The stage has changed, update the averages
-                long unlockCount = mRealm.where(ScreenAction.class)
-                        .equalTo("mStage", action.getStage())
-                        .equalTo("mDay", action.getDay())
-                        .equalTo("mHour", action.getHour())
-                        .equalTo("mEventType", Intent.ACTION_SCREEN_ON)
-                        .count();
-
-                double sft = mRealm.where(ScreenAction.class)
-                        .equalTo("mStage", action.getStage())
-                        .equalTo("mDay", action.getDay())
-                        .equalTo("mHour", action.getHour())
-                        .equalTo("mEventType", Intent.ACTION_SCREEN_ON)
-                        .average("mDuration");
-
-                double sot = mRealm.where(ScreenAction.class)
-                        .equalTo("mStage", action.getStage())
-                        .equalTo("mDay", action.getDay())
-                        .equalTo("mHour", action.getHour())
-                        .equalTo("mEventType", Intent.ACTION_SCREEN_OFF)
-                        .average("mDuration");
+                long unlockCount = mDatabaseInteractor.getUnlockCountForStage(action.getStage(), action.getDay(), action.getHour());
+                double sft = mDatabaseInteractor.getAverageSFTForStage(action.getStage(), action.getDay(), action.getHour());
+                double sot = mDatabaseInteractor.getAverageSOTForStage(action.getStage(), action.getDay(), action.getHour());
 
                 Averages avg = new Averages(
                         UUID.randomUUID().toString(),
-                        stage.getStage(),
-                        stage.getDay(),
-                        stage.getHour(),
+                        action.getStage(),
+                        action.getDay(),
+                        action.getHour(),
                         unlockCount,
                         sft,
                         sot
                 );
-
-                mRealm.beginTransaction();
-                mRealm.copyToRealm(avg);
-                mRealm.commitTransaction();
+                mDatabaseInteractor.commitAverages(avg);
 
                 Firebase ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("Averages");
                 ref.push().setValue(avg);

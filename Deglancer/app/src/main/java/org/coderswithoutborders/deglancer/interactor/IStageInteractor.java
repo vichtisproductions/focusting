@@ -3,6 +3,7 @@ package org.coderswithoutborders.deglancer.interactor;
 import android.content.Context;
 
 import org.coderswithoutborders.deglancer.model.Stage;
+import org.coderswithoutborders.deglancer.stagehandlers.IStageHandler;
 
 import rx.Observable;
 
@@ -11,5 +12,7 @@ import rx.Observable;
  */
 public interface IStageInteractor {
     Observable<Stage> getCurrentStage();
+    Stage getCurrentStageSynchronous();
     void advanceCurrentStage();
+    IStageHandler getCurrentStageHandler();
 }

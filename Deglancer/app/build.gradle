@@ -52,6 +52,7 @@ dependencies {
     final FIREBASE_VERSION = '2.5.2+'
     final RX_PREFERENCES_VERSION = '1.0.1'
     final JODA_TIME_VERSION = '2.9.3'
+    final ACRA_VERSION = '4.6.2'
 
     compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
 
@@ -67,6 +68,7 @@ dependencies {
     provided "javax.annotation:jsr250-api:$ANNOTATION_VERSION"
 
     compile "joda-time:joda-time:$JODA_TIME_VERSION"
+    compile "ch.acra:acra:$ACRA_VERSION"
 
     testCompile "junit:junit:$JUNIT_VERSION"
 }

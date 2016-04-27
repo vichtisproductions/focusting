@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Deglancer</string>
+    <string name="toast_last_sleep_label">Last sleep</string>
+    <string name="toast_unlocks_today_label">Unlocks today</string>
+    <string name="toast_screen_on_today_label">Screen on today</string>
 </resources>
