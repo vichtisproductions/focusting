@@ -11,6 +11,7 @@ import org.coderswithoutborders.deglancer.stagehandlers.Stage4Handler;
 import org.coderswithoutborders.deglancer.stagehandlers.Stage5Handler;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
+import org.joda.time.Hours;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -58,13 +59,12 @@ public class StageInteractor implements IStageInteractor {
 
     @Override
     public Stage getCurrentStageSynchronous() {
-        Calendar c = Calendar.getInstance(Locale.getDefault());
-
         DateTime initialStartTime = new DateTime(mInitialStartupInteractor.getInitialStartTime());
         int days = Days.daysBetween(initialStartTime, new DateTime()).getDays();
 
         int stageNr;
         int day;
+        int hour = Hours.hoursBetween(initialStartTime, new DateTime()).getHours() - (days * 24) + 1;
 
         if (days < 7) {
             //Stage1
@@ -91,7 +91,7 @@ public class StageInteractor implements IStageInteractor {
         return new Stage(
                 stageNr,
                 day,
-                c.get(Calendar.HOUR_OF_DAY)
+                hour
         );
     }
 
