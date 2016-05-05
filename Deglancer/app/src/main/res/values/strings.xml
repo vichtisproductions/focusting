@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">Deglancer</string>
-    <string name="toast_last_sleep_label">Last sleep</string>
-    <string name="toast_unlocks_today_label">Unlocks today</string>
+    <string name="toast_last_sleep_label">     Last sleep\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0</string>
+    <string name="toast_unlocks_today_label">  Unlocks today\u00A0\u00A0\u00A0\u00A0\u00A0</string>
     <string name="toast_screen_on_today_label">Screen on today</string>
-
     <string name="tracker_service_foreground_content_title_text">Deglancer</string>
     <string name="tracker_service_foreground_ticker_text">Deglancer Service is running.</string>
     <string name="tracker_service_foreground_content_text">Deglancer Service is running.</string>
