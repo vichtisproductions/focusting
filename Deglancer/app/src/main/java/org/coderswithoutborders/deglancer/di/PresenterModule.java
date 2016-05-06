@@ -1,5 +1,6 @@
 package org.coderswithoutborders.deglancer.di;
 
+import org.coderswithoutborders.deglancer.bus.RxBus;
 import org.coderswithoutborders.deglancer.func_debug.stage1.DebugStage1Presenter;
 import org.coderswithoutborders.deglancer.func_debug.stage1.IDebugStage1Presenter;
 import org.coderswithoutborders.deglancer.func_debug.stage2.DebugStage2Presenter;
@@ -30,8 +31,8 @@ import dagger.Provides;
 public class PresenterModule {
     @Singleton
     @Provides
-    public IMainActivityPresenter providesMainActivityPresenter(IInitialStartupInteractor initialStartupInteractor, IStageInteractor stageInteractor) {
-        return new MainActivityPresenter(initialStartupInteractor, stageInteractor);
+    public IMainActivityPresenter providesMainActivityPresenter(IInitialStartupInteractor initialStartupInteractor, IStageInteractor stageInteractor, RxBus bus) {
+        return new MainActivityPresenter(initialStartupInteractor, stageInteractor, bus);
     }
 
     @Singleton

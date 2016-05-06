@@ -7,4 +7,7 @@ import org.coderswithoutborders.deglancer.model.Stage;
  */
 public interface IDebugStage1View {
     void setStage(Stage stage);
+    void setStageDay(int day);
+    void setStageHour(int hour);
+    void refreshStats();
 }

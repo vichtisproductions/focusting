@@ -13,6 +13,7 @@ import rx.Observable;
 public interface IStageInteractor {
     Observable<Stage> getCurrentStage();
     Stage getCurrentStageSynchronous();
-    void advanceCurrentStage();
+    void goToNextStage();
+    void goToPreviousStage();
     IStageHandler getCurrentStageHandler();
 }

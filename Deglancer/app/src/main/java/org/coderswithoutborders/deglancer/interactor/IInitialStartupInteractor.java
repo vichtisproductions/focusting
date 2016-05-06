@@ -6,4 +6,5 @@ package org.coderswithoutborders.deglancer.interactor;
 public interface IInitialStartupInteractor {
     void captureInitialDataIfNotCaptured();
     long getInitialStartTime();
+    void overrideInitialStartTime(long newStartTime);
 }

@@ -79,4 +79,9 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
     public long getInitialStartTime() {
         return mPrefs.getLong(SP_KEY_INITIAL_START_TIME, new DateTime().getMillis());
     }
+
+    @Override
+    public void overrideInitialStartTime(long newStartTime) {
+        mPrefs.edit().putLong(SP_KEY_INITIAL_START_TIME, newStartTime).commit();
+    }
 }

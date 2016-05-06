@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.firebase.client.Firebase;
 
+import org.coderswithoutborders.deglancer.bus.RxBus;
 import org.coderswithoutborders.deglancer.interactor.DatabaseInteractor;
 import org.coderswithoutborders.deglancer.interactor.IDatabaseInteractor;
 import org.coderswithoutborders.deglancer.interactor.IInitialStartupInteractor;
@@ -40,8 +41,8 @@ public class InteractorModule {
 
     @Singleton
     @Provides
-    IStageInteractor provideStageInteractor(Context context, IInitialStartupInteractor initialStartupInteractor, Stage1Handler stage1Handler, Stage2Handler stage2Handler, Stage3Handler stage3Handler, Stage4Handler stage4Handler, Stage5Handler stage5Handler) {
-        return new StageInteractor(context, initialStartupInteractor, stage1Handler, stage2Handler, stage3Handler, stage4Handler, stage5Handler);
+    IStageInteractor provideStageInteractor(Context context, RxBus bus, IInitialStartupInteractor initialStartupInteractor, Stage1Handler stage1Handler, Stage2Handler stage2Handler, Stage3Handler stage3Handler, Stage4Handler stage4Handler, Stage5Handler stage5Handler) {
+        return new StageInteractor(context, bus, initialStartupInteractor, stage1Handler, stage2Handler, stage3Handler, stage4Handler, stage5Handler);
     }
 
     @Singleton

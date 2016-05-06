@@ -8,4 +8,8 @@ public interface IDebugStage2Presenter {
     void clearView();
     void onAttached();
     void onDetached();
+    void onDayChange(int day);
+    void onHourChange(int hour);
+    void advanceStageClicked();
+    void moveStageBackClicked();
 }

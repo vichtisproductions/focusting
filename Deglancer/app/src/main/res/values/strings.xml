@@ -18,4 +18,14 @@
     <string name="stats_view_total_sft">Total SFT</string>
     <string name="stats_view_average_sot">Avg SOT</string>
     <string name="stats_view_average_sft">Avg SFT</string>
+
+
+    <string name="debug_stage_stage_header">Stage</string>
+    <string name="debug_stage_day_header">Day</string>
+    <string name="debug_stage_hour_header">Hour</string>
+
+    <string name="debug_stage_1_move_to_stage_2_button_text">MOVE TO STAGE 2</string>
+
+    <string name="debug_stage_2_move_to_stage_3_button_text">MOVE TO STAGE 3</string>
+    <string name="debug_stage_2_move_back_to_stage_1_button_text">BACK TO STAGE 1</string>
 </resources>

@@ -2,6 +2,8 @@ package org.coderswithoutborders.deglancer.interactor;
 
 import android.content.Context;
 
+import org.coderswithoutborders.deglancer.bus.RxBus;
+import org.coderswithoutborders.deglancer.bus.events.DebugStageEvent;
 import org.coderswithoutborders.deglancer.model.Stage;
 import org.coderswithoutborders.deglancer.stagehandlers.IStageHandler;
 import org.coderswithoutborders.deglancer.stagehandlers.Stage1Handler;
@@ -11,6 +13,7 @@ import org.coderswithoutborders.deglancer.stagehandlers.Stage4Handler;
 import org.coderswithoutborders.deglancer.stagehandlers.Stage5Handler;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
+import org.joda.time.Duration;
 import org.joda.time.Hours;
 
 import java.util.Calendar;
@@ -24,6 +27,7 @@ import rx.Observable;
  */
 public class StageInteractor implements IStageInteractor {
     private Context mContext;
+    private RxBus mBus;
     private IInitialStartupInteractor mInitialStartupInteractor;
     private Stage1Handler mStage1Handler;
     private Stage2Handler mStage2Handler;
@@ -33,6 +37,7 @@ public class StageInteractor implements IStageInteractor {
 
     public StageInteractor(
             Context context,
+            RxBus bus,
             IInitialStartupInteractor initialStartupInteractor,
             Stage1Handler stage1Handler,
             Stage2Handler stage2Handler,
@@ -40,6 +45,7 @@ public class StageInteractor implements IStageInteractor {
             Stage4Handler stage4Handler,
             Stage5Handler stage5Handler) {
         mContext = context;
+        mBus = bus;
         mInitialStartupInteractor = initialStartupInteractor;
         mStage1Handler = stage1Handler;
         mStage2Handler = stage2Handler;
@@ -51,7 +57,6 @@ public class StageInteractor implements IStageInteractor {
     @Override
     public Observable<Stage> getCurrentStage() {
         return Observable.defer(() -> Observable.create(subscriber -> {
-
             subscriber.onNext(getCurrentStageSynchronous());
             subscriber.onCompleted();
         }));
@@ -116,19 +121,51 @@ public class StageInteractor implements IStageInteractor {
     }
 
     @Override
-    public void advanceCurrentStage() {
+    public void goToNextStage() {
         Observable.create(subscriber -> {
+            Stage currentStage = getCurrentStageSynchronous();
 
+            if (currentStage.getStage() < 5) {
+                int days = currentStage.getStage() * 7;
+                DateTime newStartTime = new DateTime().minusDays(days);
 
+                mInitialStartupInteractor.overrideInitialStartTime(newStartTime.getMillis());
 
+            } else {
+                //We can't go any further
+            }
 
             subscriber.onNext(null);
             subscriber.onCompleted();
         })
                 .subscribe(result -> {
-
+                    mBus.post(new DebugStageEvent());
                 }, error -> {
+                    mBus.post(new DebugStageEvent());
+                });
+    }
 
+    @Override
+    public void goToPreviousStage() {
+        Observable.create(subscriber -> {
+            Stage currentStage = getCurrentStageSynchronous();
+
+            if (currentStage.getStage() > 1) {
+                int days = (currentStage.getStage() - 2) * 7;
+                DateTime newStartTime = new DateTime().minusDays(days);
+
+                mInitialStartupInteractor.overrideInitialStartTime(newStartTime.getMillis());
+            } else {
+                //We can't go back any further
+            }
+
+            subscriber.onNext(null);
+            subscriber.onCompleted();
+        })
+                .subscribe(result -> {
+                    mBus.post(new DebugStageEvent());
+                }, error -> {
+                    mBus.post(new DebugStageEvent());
                 });
     }
 }
