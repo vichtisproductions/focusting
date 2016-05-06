@@ -23,6 +23,9 @@ public class MainApplication extends Application {
         super.onCreate();
 
         mGraph = DIGraph.Initializer.init(this);
+
+        //This is used so that the app theme applies to views inflated from app context rather than activity/fragment context
+        getApplicationContext().setTheme(R.style.AppTheme);
     }
 
     @Override

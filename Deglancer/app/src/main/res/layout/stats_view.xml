@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:columnCount="4"
+    android:rowCount="6"
+    android:verticalSpacing="10dp"
+    android:horizontalSpacing="10dp"
+    android:stretchMode="columnWidth"
+    android:useDefaultMargins="true">
+
+    <TextView
+        android:id="@+id/tvDayHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:layout_row="0"
+        android:text="@string/stats_view_day_header"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvHourHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3"
+        android:layout_row="0"
+        android:text="@string/stats_view_hour_header"
+        android:textStyle="bold"/>
+
+
+
+    <TextView
+        android:id="@+id/tvTotalUnlocksHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="1"
+        android:layout_columnSpan="2"
+        android:text="@string/stats_view_total_unlocks"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/tvTotalUnlocksDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:layout_row="1"
+        android:text="123"/>
+    <TextView
+        android:id="@+id/tvTotalUnlocksHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3"
+        android:layout_row="1"
+        android:text="123"/>
+
+
+
+
+    <TextView
+        android:id="@+id/tvTotalSOTHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="2"
+        android:layout_columnSpan="2"
+        android:text="@string/stats_view_total_sot"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/tvTotalSOTDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:layout_row="2"
+        android:text="00:00"/>
+    <TextView
+        android:id="@+id/tvTotalSOTHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3"
+        android:layout_row="2"
+        android:text="00:00"/>
+
+
+
+
+    <TextView
+        android:id="@+id/tvTotalSFTHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="3"
+        android:layout_columnSpan="2"
+        android:text="@string/stats_view_total_sft"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/tvTotalSFTDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:layout_row="3"
+        android:text="00:00"/>
+    <TextView
+        android:id="@+id/tvTotalSFTHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3"
+        android:layout_row="3"
+        android:text="00:00"/>
+
+
+
+
+    <TextView
+        android:id="@+id/tvAvgSOTHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="4"
+        android:layout_columnSpan="2"
+        android:text="@string/stats_view_average_sot"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/tvAvgSOTDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:layout_row="4"
+        android:text="00:00"/>
+    <TextView
+        android:id="@+id/tvAvgSOTHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3"
+        android:layout_row="4"
+        android:text="00:00"/>
+
+
+
+
+    <TextView
+        android:id="@+id/tvAvgSFTHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="5"
+        android:layout_columnSpan="2"
+        android:text="@string/stats_view_average_sft"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/tvAvgSFTDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:layout_row="5"
+        android:text="00:00"/>
+    <TextView
+        android:id="@+id/tvAvgSFTHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3"
+        android:layout_row="5"
+        android:text="00:00"/>
+
+
+
+
+</GridLayout>

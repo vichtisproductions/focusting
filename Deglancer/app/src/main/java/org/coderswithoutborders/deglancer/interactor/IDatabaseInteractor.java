@@ -8,12 +8,24 @@ import org.coderswithoutborders.deglancer.model.ScreenAction;
  */
 public interface IDatabaseInteractor {
     long getUnlockCountForStage(int stage, int day, int hour);
+    long getUnlockCountForStageDay(int stage, int day);
+
+
+    long getTotalSFTForStage(int stage, int day, int hour);
+    long getTotalSFTForStageDay(int stage, int day);
     double getAverageSFTForStage(int stage, int day, int hour);
+    double getAverageSFTForStageDay(int stage, int day);
+
+
+    long getTotalSOTForStage(int stage, int day, int hour);
+    long getTotalSOTForStageDay(int stage, int day);
     double getAverageSOTForStage(int stage, int day, int hour);
+    double getAverageSOTForStageDay(int stage, int day);
+
+
+
     void commitAverages(Averages averages);
     ScreenAction getLastScreenAction();
     ScreenAction getLastScreenActionOfType(String action);
     void commitScreenAction(ScreenAction action);
-    long getUnlockCountForStageDay(int stage, int day);
-    long getTotalSOTForStageDay(int stage, int day);
 }

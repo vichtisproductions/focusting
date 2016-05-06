@@ -9,4 +9,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="stats_view_day_header">Day</string>
+    <string name="stats_view_hour_header">Hour</string>
+    <string name="stats_view_total_unlocks">Total Unlocks</string>
+    <string name="stats_view_total_sot">Total SOT</string>
+    <string name="stats_view_total_sft">Total SFT</string>
+    <string name="stats_view_average_sot">Avg SOT</string>
+    <string name="stats_view_average_sft">Avg SFT</string>
 </resources>

@@ -34,6 +34,39 @@ public class DatabaseInteractor implements IDatabaseInteractor {
     }
 
     @Override
+    public long getUnlockCountForStageDay(int stage, int day) {
+        return mRealm.where(ScreenAction.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .equalTo("mEventType", Intent.ACTION_SCREEN_ON)
+                .count();
+    }
+
+
+
+
+    @Override
+    public long getTotalSFTForStage(int stage, int day, int hour) {
+        return mRealm.where(ScreenAction.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .equalTo("mHour", hour)
+                .equalTo("mEventType", Intent.ACTION_SCREEN_ON)
+                .sum("mDuration")
+                .longValue();
+    }
+
+    @Override
+    public long getTotalSFTForStageDay(int stage, int day) {
+        return mRealm.where(ScreenAction.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .equalTo("mEventType", Intent.ACTION_SCREEN_ON)
+                .sum("mDuration")
+                .longValue();
+    }
+
+    @Override
     public double getAverageSFTForStage(int stage, int day, int hour) {
         return mRealm.where(ScreenAction.class)
                 .equalTo("mStage", stage)
@@ -41,6 +74,39 @@ public class DatabaseInteractor implements IDatabaseInteractor {
                 .equalTo("mHour", hour)
                 .equalTo("mEventType", Intent.ACTION_SCREEN_ON)
                 .average("mDuration");
+    }
+
+    @Override
+    public double getAverageSFTForStageDay(int stage, int day) {
+        return mRealm.where(ScreenAction.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .equalTo("mEventType", Intent.ACTION_SCREEN_ON)
+                .average("mDuration");
+    }
+
+
+
+
+    @Override
+    public long getTotalSOTForStage(int stage, int day, int hour) {
+        return mRealm.where(ScreenAction.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .equalTo("mHour", hour)
+                .equalTo("mEventType", Intent.ACTION_SCREEN_OFF)
+                .sum("mDuration")
+                .longValue();
+    }
+
+    @Override
+    public long getTotalSOTForStageDay(int stage, int day) {
+        return mRealm.where(ScreenAction.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .equalTo("mEventType", Intent.ACTION_SCREEN_OFF)
+                .sum("mDuration")
+                .longValue();
     }
 
     @Override
@@ -52,6 +118,21 @@ public class DatabaseInteractor implements IDatabaseInteractor {
                 .equalTo("mEventType", Intent.ACTION_SCREEN_OFF)
                 .average("mDuration");
     }
+
+    @Override
+    public double getAverageSOTForStageDay(int stage, int day) {
+        return mRealm.where(ScreenAction.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .equalTo("mEventType", Intent.ACTION_SCREEN_OFF)
+                .average("mDuration");
+    }
+
+
+
+
+
+
 
     @Override
     public void commitAverages(Averages averages) {
@@ -92,24 +173,5 @@ public class DatabaseInteractor implements IDatabaseInteractor {
         mRealm.beginTransaction();
         mRealm.copyToRealm(action);
         mRealm.commitTransaction();
-    }
-
-    @Override
-    public long getUnlockCountForStageDay(int stage, int day) {
-        return mRealm.where(ScreenAction.class)
-                .equalTo("mStage", stage)
-                .equalTo("mDay", day)
-                .equalTo("mEventType", Intent.ACTION_SCREEN_ON)
-                .count();
-    }
-
-    @Override
-    public long getTotalSOTForStageDay(int stage, int day) {
-        return mRealm.where(ScreenAction.class)
-                .equalTo("mStage", stage)
-                .equalTo("mDay", day)
-                .equalTo("mEventType", Intent.ACTION_SCREEN_OFF)
-                .sum("mDuration")
-                .longValue();
     }
 }
