@@ -6,7 +6,32 @@
     <org.coderswithoutborders.deglancer.view.StatsView
         android:id="@+id/statsView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnAdvance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/statsView"
+        android:layout_marginTop="16dp"
+        android:text="@string/debug_stage_2_move_to_stage_3_button_text"
+        android:layout_alignRight="@+id/statsView"
+        android:layout_alignEnd="@+id/statsView"
+        android:layout_alignLeft="@+id/statsView"
+        android:layout_alignStart="@+id/statsView" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/debug_stage_2_move_back_to_stage_1_button_text"
+        android:layout_below="@+id/btnAdvance"
+        android:layout_alignLeft="@+id/btnAdvance"
+        android:layout_alignStart="@+id/btnAdvance"
+        android:layout_alignRight="@+id/btnAdvance"
+        android:layout_alignEnd="@+id/btnAdvance" />
 
 
 </RelativeLayout>

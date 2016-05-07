@@ -1,16 +1,18 @@
 package org.coderswithoutborders.deglancer.func_debug.stage5;
 
+import org.coderswithoutborders.deglancer.func_debug.stage3.IDebugStage3Presenter;
+import org.coderswithoutborders.deglancer.func_debug.stage3.IDebugStage3View;
 import org.coderswithoutborders.deglancer.interactor.IStageInteractor;
-
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import org.coderswithoutborders.deglancer.model.Stage;
 
 /**
  * Created by Renier on 2016/05/06.
  */
-public class DebugStage5Presenter implements IDebugStage5Presenter {
-    private IDebugStage5View mView;
+public class DebugStage5Presenter implements IDebugStage3Presenter {
+    private IDebugStage3View mView;
     private IStageInteractor mStageInteractor;
+
+    private Stage mCurrentStage;
 
 
     public DebugStage5Presenter(IStageInteractor stageInteractor) {
@@ -18,7 +20,7 @@ public class DebugStage5Presenter implements IDebugStage5Presenter {
     }
 
     @Override
-    public void setView(IDebugStage5View view) {
+    public void setView(IDebugStage3View view) {
         mView = view;
     }
 
@@ -29,21 +31,29 @@ public class DebugStage5Presenter implements IDebugStage5Presenter {
 
     @Override
     public void onAttached() {
-        mStageInteractor
-                .getCurrentStage()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(stage -> {
-                   if (mView != null) {
-                       mView.setStage(stage);
-                   }
-                }, error -> {
-                    //TODO - handle error
-                });
     }
 
     @Override
     public void onDetached() {
 
+    }
+    @Override
+    public void advanceStageClicked() {
+        mStageInteractor.goToNextStage();
+
+        if (mView != null) {
+            mView.moveToStage4View();
+            mView.finishActivity();
+        }
+    }
+
+    @Override
+    public void previousStageClicked() {
+        mStageInteractor.goToPreviousStage();
+
+        if (mView != null) {
+            mView.moveToStage2View();
+            mView.finishActivity();
+        }
     }
 }
