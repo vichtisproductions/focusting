@@ -32,51 +32,19 @@ public class DebugStage1Presenter implements IDebugStage1Presenter {
 
     @Override
     public void onAttached() {
-        mStageInteractor
-                .getCurrentStage()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(stage -> {
-                   if (mView != null) {
-                       mCurrentStage = stage;
-                       mView.setStage(stage);
-                       mView.setStageDay(stage.getDay());
-                       mView.setStageHour(stage.getHour());
-                   }
-                }, error -> {
-                    //TODO - handle error
-                });
     }
 
     @Override
     public void onDetached() {
 
     }
-
-    @Override
-    public void onDayChange(int day) {
-        if (mCurrentStage != null)
-            mCurrentStage.setDay(day);
-
-        if (mView != null) {
-            mView.setStage(mCurrentStage);
-            mView.refreshStats();
-        }
-    }
-
-    @Override
-    public void onHourChange(int hour) {
-        if (mCurrentStage != null)
-            mCurrentStage.setHour(hour);
-
-        if (mView != null) {
-            mView.setStage(mCurrentStage);
-            mView.refreshStats();
-        }
-    }
-
     @Override
     public void advanceStageClicked() {
         mStageInteractor.goToNextStage();
+
+        if (mView != null) {
+            mView.moveToStage2View();
+            mView.finishActivity();
+        }
     }
 }

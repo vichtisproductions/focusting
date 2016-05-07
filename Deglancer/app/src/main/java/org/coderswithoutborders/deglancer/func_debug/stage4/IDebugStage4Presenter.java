@@ -8,4 +8,6 @@ public interface IDebugStage4Presenter {
     void clearView();
     void onAttached();
     void onDetached();
+    void advanceStageClicked();
+    void previousStageClicked();
 }

@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/averages_set_view_stage_label"
+        android:id="@+id/tvStageLabel"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/averages_set_view_unlocks_label"
+        android:id="@+id/textView"
+        android:layout_alignBottom="@+id/etUnlocks"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/etUnlocks"
+        android:gravity="center_vertical" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="10"
+        android:id="@+id/etUnlocks"
+        android:layout_below="@+id/tvStageLabel"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_alignRight="@+id/tvStageLabel"
+        android:layout_alignEnd="@+id/tvStageLabel"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00"
+        android:id="@+id/btnSOTPick"
+        android:layout_below="@+id/etUnlocks"
+        android:layout_alignLeft="@+id/etUnlocks"
+        android:layout_alignStart="@+id/etUnlocks"
+        android:layout_alignRight="@+id/etUnlocks"
+        android:layout_alignEnd="@+id/etUnlocks"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00"
+        android:id="@+id/btnSFTPick"
+        android:layout_below="@+id/btnSOTPick"
+        android:layout_alignLeft="@+id/btnSOTPick"
+        android:layout_alignStart="@+id/btnSOTPick"
+        android:layout_alignRight="@+id/btnSOTPick"
+        android:layout_alignEnd="@+id/btnSOTPick"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/averages_set_view_sot_label"
+        android:id="@+id/textView2"
+        android:layout_above="@+id/btnSFTPick"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/btnSOTPick"
+        android:gravity="center_vertical" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/averages_set_view_sft_label"
+        android:id="@+id/textView3"
+        android:layout_alignBottom="@+id/btnSFTPick"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/btnSFTPick"
+        android:gravity="center_vertical" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/averages_set_view_save_button_text"
+        android:id="@+id/btnSave"
+        android:layout_below="@+id/btnSFTPick"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/btnSFTPick"
+        android:layout_alignEnd="@+id/btnSFTPick"
+        android:layout_marginTop="8dp" />
+
+</RelativeLayout>

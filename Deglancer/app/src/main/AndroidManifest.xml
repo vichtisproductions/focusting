@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.coderswithoutborders.deglancer">
-    
+
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -20,17 +20,58 @@
             </intent-filter>
         </activity>
 
+
+        <activity android:name=".func_debug.stage1.DebugStage1Activity"
+            android:label="@string/activity_debug_stage_1_activity_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".func_debug.stage2.DebugStage2Activity"
+            android:label="@string/activity_debug_stage_2_activity_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".func_debug.stage3.DebugStage3Activity"
+            android:label="@string/activity_debug_stage_3_activity_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".func_debug.stage4.DebugStage4Activity"
+            android:label="@string/activity_debug_stage_4_activity_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".func_debug.stage5.DebugStage5Activity"
+            android:label="@string/activity_debug_stage_5_activity_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
         <service
             android:name=".services.TrackerService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
-        <receiver android:name=".receivers.BootReceiver" android:enabled="true" android:exported="true">
+        <receiver
+            android:name=".receivers.BootReceiver"
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
+
     </application>
 
 </manifest>

@@ -71,5 +71,6 @@ dependencies {
     compile "ch.acra:acra:$ACRA_VERSION"
 
     testCompile "junit:junit:$JUNIT_VERSION"
-    compile 'com.android.support:support-v4:23.3.0'
+    compile "com.android.support:support-v4:$SUPPORT_LIBRARY_VERSION"
+    compile 'com.android.support:design:23.3.0'
 }

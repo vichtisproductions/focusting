@@ -174,4 +174,40 @@ public class DatabaseInteractor implements IDatabaseInteractor {
         mRealm.copyToRealm(action);
         mRealm.commitTransaction();
     }
+
+    @Override
+    public void clearEntriesForStageDay(int stage, int day) {
+        mRealm.beginTransaction();
+
+        mRealm.where(ScreenAction.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .findAll().clear();
+
+        mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .findAll().clear();
+
+        mRealm.commitTransaction();
+    }
+
+    @Override
+    public void clearEntriesForStageHour(int stage, int day, int hour) {
+        mRealm.beginTransaction();
+
+        mRealm.where(ScreenAction.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .equalTo("mHour", hour)
+                .findAll().clear();
+
+        mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .equalTo("mHour", hour)
+                .findAll().clear();
+
+        mRealm.commitTransaction();
+    }
 }

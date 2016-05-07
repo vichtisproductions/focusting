@@ -9,8 +9,10 @@ import android.widget.Button;
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.R;
 import org.coderswithoutborders.deglancer.func_debug.stage2.DebugStage2Activity;
+import org.coderswithoutborders.deglancer.func_debug.stage3.DebugStage3Activity;
 import org.coderswithoutborders.deglancer.func_debug.stage3.IDebugStage3Presenter;
 import org.coderswithoutborders.deglancer.func_debug.stage3.IDebugStage3View;
+import org.coderswithoutborders.deglancer.func_debug.stage5.DebugStage5Activity;
 import org.coderswithoutborders.deglancer.view.AveragesSetView;
 import org.coderswithoutborders.deglancer.view.StatsView;
 
@@ -19,10 +21,10 @@ import javax.inject.Inject;
 /**
  * Created by Renier on 2016/05/06.
  */
-public class DebugStage4Activity extends AppCompatActivity implements IDebugStage3View {
+public class DebugStage4Activity extends AppCompatActivity implements IDebugStage4View {
 
     @Inject
-    IDebugStage3Presenter mPresenter;
+    IDebugStage4Presenter mPresenter;
 
     private Button btnAdvance;
     private Button btnBack;
@@ -33,7 +35,7 @@ public class DebugStage4Activity extends AppCompatActivity implements IDebugStag
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.debug_stage3);
+        setContentView(R.layout.debug_stage4);
 
         MainApplication.from(getApplicationContext()).getGraph().inject(this);
 
@@ -47,7 +49,7 @@ public class DebugStage4Activity extends AppCompatActivity implements IDebugStag
         btnBack.setOnClickListener(buttonClickListener);
 
         mAvgSetView = (AveragesSetView) findViewById(R.id.averagesSetView);
-        mAvgSetView.setStage(3);
+        mAvgSetView.setStage(4);
     }
 
     View.OnClickListener buttonClickListener = v -> {
@@ -90,14 +92,14 @@ public class DebugStage4Activity extends AppCompatActivity implements IDebugStag
     }
 
     @Override
-    public void moveToStage2View() {
-        Intent i = new Intent(this, DebugStage2Activity.class);
+    public void moveToStage3View() {
+        Intent i = new Intent(this, DebugStage3Activity.class);
         startActivity(i);
     }
 
     @Override
-    public void moveToStage4View() {
-        /*Intent i = new Intent(this, DebugStage4Activity.class);
-        startActivity(i);*/
+    public void moveToStage5View() {
+        Intent i = new Intent(this, DebugStage5Activity.class);
+        startActivity(i);
     }
 }

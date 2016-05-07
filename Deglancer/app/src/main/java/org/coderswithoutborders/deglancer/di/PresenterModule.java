@@ -14,6 +14,8 @@ import org.coderswithoutborders.deglancer.func_debug.stage5.IDebugStage5Presente
 import org.coderswithoutborders.deglancer.interactor.IDatabaseInteractor;
 import org.coderswithoutborders.deglancer.interactor.IInitialStartupInteractor;
 import org.coderswithoutborders.deglancer.interactor.IStageInteractor;
+import org.coderswithoutborders.deglancer.presenter.AveragesSetViewPresenter;
+import org.coderswithoutborders.deglancer.presenter.IAveragesSetViewPresenter;
 import org.coderswithoutborders.deglancer.presenter.IMainActivityPresenter;
 import org.coderswithoutborders.deglancer.presenter.IStatsViewPresenter;
 import org.coderswithoutborders.deglancer.presenter.MainActivityPresenter;
@@ -35,10 +37,10 @@ public class PresenterModule {
         return new MainActivityPresenter(initialStartupInteractor, stageInteractor, bus);
     }
 
-    @Singleton
+
     @Provides
-    public IStatsViewPresenter providesStatsViewPresenter(IDatabaseInteractor databaseInteractor) {
-        return new StatsViewPresenter(databaseInteractor);
+    public IStatsViewPresenter providesStatsViewPresenter(IDatabaseInteractor databaseInteractor, IStageInteractor stageInteractor) {
+        return new StatsViewPresenter(databaseInteractor, stageInteractor);
     }
 
     @Singleton
@@ -69,6 +71,12 @@ public class PresenterModule {
     @Provides
     public IDebugStage5Presenter providesDebugStage5Presenter(IStageInteractor stageInteractor) {
         return new DebugStage5Presenter(stageInteractor);
+    }
+
+
+    @Provides
+    public IAveragesSetViewPresenter providesAveragesSetViewPresenter(IDatabaseInteractor databaseInteractor) {
+        return new AveragesSetViewPresenter(databaseInteractor);
     }
 
 }

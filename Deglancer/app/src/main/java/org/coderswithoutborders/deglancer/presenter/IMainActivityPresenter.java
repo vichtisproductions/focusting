@@ -10,4 +10,5 @@ public interface IMainActivityPresenter {
     void setView(IMainActivityView view);
     void clearView();
     void init();
+    void debugClicked();
 }

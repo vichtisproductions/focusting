@@ -22,6 +22,8 @@ public interface IDatabaseInteractor {
     double getAverageSOTForStage(int stage, int day, int hour);
     double getAverageSOTForStageDay(int stage, int day);
 
+    void clearEntriesForStageDay(int stage, int day);
+    void clearEntriesForStageHour(int stage, int day, int hour);
 
 
     void commitAverages(Averages averages);

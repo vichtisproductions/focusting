@@ -6,8 +6,8 @@ import org.coderswithoutborders.deglancer.model.Stage;
 /**
  * Created by Renier on 2016/05/06.
  */
-public class DebugStage3Presenter implements IDebugStage2Presenter {
-    private IDebugStage2View mView;
+public class DebugStage3Presenter implements IDebugStage3Presenter {
+    private IDebugStage3View mView;
     private IStageInteractor mStageInteractor;
 
     private Stage mCurrentStage;
@@ -18,7 +18,7 @@ public class DebugStage3Presenter implements IDebugStage2Presenter {
     }
 
     @Override
-    public void setView(IDebugStage2View view) {
+    public void setView(IDebugStage3View view) {
         mView = view;
     }
 
@@ -38,10 +38,20 @@ public class DebugStage3Presenter implements IDebugStage2Presenter {
     @Override
     public void advanceStageClicked() {
         mStageInteractor.goToNextStage();
+
+        if (mView != null) {
+            mView.moveToStage4View();
+            mView.finishActivity();
+        }
     }
 
     @Override
     public void previousStageClicked() {
         mStageInteractor.goToPreviousStage();
+
+        if (mView != null) {
+            mView.moveToStage2View();
+            mView.finishActivity();
+        }
     }
 }

@@ -43,9 +43,7 @@ public class MainActivityPresenter implements IMainActivityPresenter {
         }
 
         mSubscriptions.add(mBus.toObserverable().subscribe((event) -> {
-            if (event instanceof DebugStageEvent) {
-                init();
-            }
+
         }));
     }
 
@@ -60,14 +58,15 @@ public class MainActivityPresenter implements IMainActivityPresenter {
     @Override
     public void init() {
         mInitialStartupInteractor.captureInitialDataIfNotCaptured();
+    }
 
+    @Override
+    public void debugClicked() {
         mStageInteractor.getCurrentStage()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(stage -> {
                     if (mView != null) {
-                        mView.removeAllViewsFromMain();
-
                         switch (stage.getStage()) {
                             case 1:
                                 mView.showStage1View(stage);

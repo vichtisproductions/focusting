@@ -18,6 +18,8 @@
     <string name="stats_view_total_sft">Total SFT</string>
     <string name="stats_view_average_sot">Avg SOT</string>
     <string name="stats_view_average_sft">Avg SFT</string>
+    <string name="stats_view_clear_day_values">Clear Day</string>
+    <string name="stats_view_clear_hour_values">Clear Hour</string>
 
 
     <string name="debug_stage_stage_header">Stage</string>
@@ -28,4 +30,30 @@
 
     <string name="debug_stage_2_move_to_stage_3_button_text">MOVE TO STAGE 3</string>
     <string name="debug_stage_2_move_back_to_stage_1_button_text">BACK TO STAGE 1</string>
+
+    <string name="debug_stage_3_move_to_stage_4_button_text">MOVE TO STAGE 4</string>
+    <string name="debug_stage_3_move_back_to_stage_2_button_text">BACK TO STAGE 2</string>
+
+    <string name="debug_stage_4_move_to_stage_5_button_text">MOVE TO STAGE 5</string>
+    <string name="debug_stage_4_move_back_to_stage_3_button_text">BACK TO STAGE 3</string>
+
+    <string name="debug_stage_5_move_back_to_stage_4_button_text">BACK TO STAGE 4</string>
+
+
+    <string name="averages_set_view_stage_label">Stage %2$d Averages Per Hour</string>
+    <string name="averages_set_view_unlocks_label">Unlocks</string>
+    <string name="averages_set_view_sot_label">Avg SOT</string>
+    <string name="averages_set_view_sft_label">Avg SFT</string>
+    <string name="averages_set_view_save_button_text">SAVE</string>
+    <string name="title_activity_time_picker">TimePickerActivity</string>
+
+    <string name="activity_time_picker_okay_button_text">Okay</string>
+    <string name="activity_time_picker_cancel_button_text">Cancel</string>
+
+
+    <string name="activity_debug_stage_1_activity_title">Stage 1 Debug</string>
+    <string name="activity_debug_stage_2_activity_title">Stage 2 Debug</string>
+    <string name="activity_debug_stage_3_activity_title">Stage 3 Debug</string>
+    <string name="activity_debug_stage_4_activity_title">Stage 4 Debug</string>
+    <string name="activity_debug_stage_5_activity_title">Stage 5 Debug</string>
 </resources>

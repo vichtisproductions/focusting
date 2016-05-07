@@ -13,7 +13,7 @@ import org.coderswithoutborders.deglancer.di.DIGraph;
  */
 
 @ReportsCrashes(
-        formUri = "hhttps://collector.tracepot.com/15c51f2e"
+        formUri = "https://collector.tracepot.com/15c51f2e"
 )
 public class MainApplication extends Application {
     private DIGraph mGraph;

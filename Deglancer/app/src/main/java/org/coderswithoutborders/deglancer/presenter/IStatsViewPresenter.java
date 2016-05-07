@@ -13,4 +13,10 @@ public interface IStatsViewPresenter {
     void onDetached();
     void refresh();
     void setStage(Stage stage);
+    void onStageChange(int newVal);
+    void onDayChange(int day);
+    void onHourChange(int hour);
+    void setStagePickerState(boolean enableStageChange, boolean enableDayChange, boolean enableHourChange);
+    void clearDayClicked();
+    void clearHourClicked();
 }
