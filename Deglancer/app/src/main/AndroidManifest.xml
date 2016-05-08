@@ -22,35 +22,40 @@
 
 
         <activity android:name=".func_debug.stage1.DebugStage1Activity"
-            android:label="@string/activity_debug_stage_1_activity_title">
+            android:label="@string/activity_debug_stage_1_activity_title"
+            android:windowSoftInputMode="stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
         <activity android:name=".func_debug.stage2.DebugStage2Activity"
-            android:label="@string/activity_debug_stage_2_activity_title">
+            android:label="@string/activity_debug_stage_2_activity_title"
+            android:windowSoftInputMode="stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
         <activity android:name=".func_debug.stage3.DebugStage3Activity"
-            android:label="@string/activity_debug_stage_3_activity_title">
+            android:label="@string/activity_debug_stage_3_activity_title"
+            android:windowSoftInputMode="stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
         <activity android:name=".func_debug.stage4.DebugStage4Activity"
-            android:label="@string/activity_debug_stage_4_activity_title">
+            android:label="@string/activity_debug_stage_4_activity_title"
+            android:windowSoftInputMode="stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
         <activity android:name=".func_debug.stage5.DebugStage5Activity"
-            android:label="@string/activity_debug_stage_5_activity_title">
+            android:label="@string/activity_debug_stage_5_activity_title"
+            android:windowSoftInputMode="stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

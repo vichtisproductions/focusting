@@ -1,4 +1,4 @@
-package org.coderswithoutborders.deglancer.view;
+package org.coderswithoutborders.deglancer.func_debug.view;
 
 import org.coderswithoutborders.deglancer.model.Stage;
 
@@ -12,13 +12,4 @@ public interface IStatsView {
             String totalSFTDay, String totalSFTHour,
             String avgSOTDay, String avgSOTHour,
             String avgSFTDay, String avgSFTHour);
-    void setStageVal(int stage);
-    void setStageDay(int day);
-    void setStageHour(int hour);
-    void enableStagePicker();
-    void disableStagePicker();
-    void enableDayPicker();
-    void disableDayPicker();
-    void enableHourPicker();
-    void disableHourPicker();
 }

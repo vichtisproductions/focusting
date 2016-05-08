@@ -32,6 +32,17 @@ public class DebugStage1Presenter implements IDebugStage1Presenter {
 
     @Override
     public void onAttached() {
+        mStageInteractor.getCurrentStage()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(result -> {
+                    if (mView != null) {
+                        mView.setStage(result);
+                        mView.setTitleStage(result.getStage() + "-" + result.getDay() + "-" + result.getHour());
+                    }
+                }, error -> {
+                   //TODO - Handle error
+                });
     }
 
     @Override

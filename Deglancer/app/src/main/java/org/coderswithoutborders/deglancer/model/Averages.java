@@ -15,12 +15,14 @@ public class Averages extends RealmObject{
     private long mUnlockCount;
     private double mSFT;
     private double mSOT;
+    private long mTotalSFT;
+    private long mTotalSOT;
 
     public Averages() {
 
     }
 
-    public Averages(String mId, int mStage, int mDay, int mHour, long mUnlockCount, double mSFT, double mSOT) {
+    public Averages(String mId, int mStage, int mDay, int mHour, long mUnlockCount, double mSFT, double mSOT, long mTotalSFT, long mTotalSOT) {
         this.mId = mId;
         this.mStage = mStage;
         this.mDay = mDay;
@@ -28,6 +30,8 @@ public class Averages extends RealmObject{
         this.mUnlockCount = mUnlockCount;
         this.mSFT = mSFT;
         this.mSOT = mSOT;
+        this.mTotalSFT = mTotalSFT;
+        this.mTotalSOT = mTotalSOT;
     }
 
     public String getId() {
@@ -84,5 +88,21 @@ public class Averages extends RealmObject{
 
     public void setSOT(double mSOT) {
         this.mSOT = mSOT;
+    }
+
+    public long getTotalSOT() {
+        return mTotalSOT;
+    }
+
+    public void setTotalSOT(long mTotalSOT) {
+        this.mTotalSOT = mTotalSOT;
+    }
+
+    public long getTotalSFT() {
+        return mTotalSFT;
+    }
+
+    public void setTotalSFT(long mTotalSFT) {
+        this.mTotalSFT = mTotalSFT;
     }
 }

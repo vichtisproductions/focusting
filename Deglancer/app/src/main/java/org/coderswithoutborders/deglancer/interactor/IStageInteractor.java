@@ -16,4 +16,5 @@ public interface IStageInteractor {
     void goToNextStage();
     void goToPreviousStage();
     IStageHandler getCurrentStageHandler();
+    void setStageAsCurrentStage(int stage, int day, int hour);
 }

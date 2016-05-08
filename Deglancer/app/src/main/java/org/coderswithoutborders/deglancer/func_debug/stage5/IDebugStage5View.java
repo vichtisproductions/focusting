@@ -8,4 +8,6 @@ import org.coderswithoutborders.deglancer.model.Stage;
 public interface IDebugStage5View {
     void finishActivity();
     void moveToStage4View();
+    void setStage(Stage stage);
+    void setTitleStage(String stage);
 }

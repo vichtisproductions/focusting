@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.func_debug.stage1.DebugStage1Activity;
@@ -106,4 +107,8 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         }
     }
 
+    @Override
+    public void setStageText(String stage) {
+        ((TextView)findViewById(R.id.tvStage)).setText(stage);
+    }
 }

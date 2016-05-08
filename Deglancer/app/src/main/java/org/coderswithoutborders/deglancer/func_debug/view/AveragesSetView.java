@@ -1,11 +1,10 @@
-package org.coderswithoutborders.deglancer.view;
+package org.coderswithoutborders.deglancer.func_debug.view;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -13,7 +12,8 @@ import android.widget.TextView;
 
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.R;
-import org.coderswithoutborders.deglancer.presenter.IAveragesSetViewPresenter;
+import org.coderswithoutborders.deglancer.func_debug.presenter.IAveragesSetViewPresenter;
+import org.coderswithoutborders.deglancer.model.Stage;
 import org.coderswithoutborders.deglancer.utils.TimePickerDialog;
 
 import javax.inject.Inject;
@@ -30,7 +30,11 @@ public class AveragesSetView extends FrameLayout implements IAveragesSetView {
     private EditText etUnlocks;
     private Button btnSOTPick;
     private Button btnSFTPick;
-    private Button btnSave;
+    private Button btnTotalSOTPick;
+    private Button btnTotalSFTPick;
+    private Button btnSetForCurrentStageDayHour;
+    private Button btnSetForCurrentStageDay;
+    private Button btnSetForCurrentStage;
 
     private Activity mActivity;
 
@@ -55,6 +59,13 @@ public class AveragesSetView extends FrameLayout implements IAveragesSetView {
         init();
     }
 
+    @Override
+    public void updateTitleTextWith(String text) {
+        tvStageLabel.setText(String.format(getContext().getString(R.string.averages_set_view_stage_label), text));
+    }
+    public void setStage(Stage stage) {
+        mPresenter.setStage(stage);
+    }
 
     public void setActivity(Activity activity) {
         mActivity = activity;
@@ -74,11 +85,19 @@ public class AveragesSetView extends FrameLayout implements IAveragesSetView {
             etUnlocks = (EditText) findViewById(R.id.etUnlocks);
             btnSOTPick = (Button) findViewById(R.id.btnSOTPick);
             btnSFTPick = (Button) findViewById(R.id.btnSFTPick);
-            btnSave = (Button) findViewById(R.id.btnSave);
+            btnTotalSOTPick = (Button) findViewById(R.id.btnTotalSOTPick);
+            btnTotalSFTPick = (Button) findViewById(R.id.btnTotalSFTPick);
+            btnSetForCurrentStageDayHour = (Button) findViewById(R.id.btnSetForCurrentStageDayHour);
+            btnSetForCurrentStageDay = (Button) findViewById(R.id.btnSetForCurrentStageDay);
+            btnSetForCurrentStage = (Button) findViewById(R.id.btnSetForCurrentStage);
 
             btnSOTPick.setOnClickListener(buttonClickListener);
             btnSFTPick.setOnClickListener(buttonClickListener);
-            btnSave.setOnClickListener(buttonClickListener);
+            btnTotalSOTPick.setOnClickListener(buttonClickListener);
+            btnTotalSFTPick.setOnClickListener(buttonClickListener);
+            btnSetForCurrentStageDayHour.setOnClickListener(buttonClickListener);
+            btnSetForCurrentStageDay.setOnClickListener(buttonClickListener);
+            btnSetForCurrentStage.setOnClickListener(buttonClickListener);
         }
     }
 
@@ -111,7 +130,36 @@ public class AveragesSetView extends FrameLayout implements IAveragesSetView {
                 }
             });
             dialog.show();
-        } else if (v.getId() == R.id.btnSave) {
+        }  else if (v.getId() == R.id.btnTotalSOTPick) {
+            TimePickerDialog dialog = new TimePickerDialog(mActivity);
+            dialog.setTimePickerEventListener(new TimePickerDialog.TimePickerEventListener() {
+                @Override
+                public void onCancel() {
+
+                }
+
+                @Override
+                public void onTimeSelected(long millis) {
+                    mPresenter.totalSOTPicked(millis);
+                }
+            });
+            dialog.show();
+        } else if (v.getId() == R.id.btnTotalSFTPick) {
+            TimePickerDialog dialog = new TimePickerDialog(mActivity);
+            dialog.setTimePickerEventListener(new TimePickerDialog.TimePickerEventListener() {
+                @Override
+                public void onCancel() {
+
+                }
+
+                @Override
+                public void onTimeSelected(long millis) {
+                    mPresenter.totalSFTPicked(millis);
+                }
+            });
+            dialog.show();
+        }
+        else if (v.getId() == R.id.btnSetForCurrentStageDay) {
             try {
                 mPresenter.avgUnlocksPicked(Integer.parseInt(String.valueOf(etUnlocks.getText())));
             } catch (NumberFormatException e) {
@@ -119,14 +167,27 @@ public class AveragesSetView extends FrameLayout implements IAveragesSetView {
                 mPresenter.avgUnlocksPicked(0);
             }
 
-            mPresenter.saveClicked();
+            mPresenter.setForStageDayClicked();
+        } else if (v.getId() == R.id.btnSetForCurrentStageDayHour) {
+            try {
+                mPresenter.avgUnlocksPicked(Integer.parseInt(String.valueOf(etUnlocks.getText())));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                mPresenter.avgUnlocksPicked(0);
+            }
+
+            mPresenter.setForStageDayHourClicked();
+        } else if (v.getId() == R.id.btnSetForCurrentStage) {
+            try {
+                mPresenter.avgUnlocksPicked(Integer.parseInt(String.valueOf(etUnlocks.getText())));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                mPresenter.avgUnlocksPicked(0);
+            }
+
+            mPresenter.setForStageClicked();
         }
     };
-
-
-    public void setStage(int stage) {
-        mPresenter.setStage(stage);
-    }
 
     @Override
     protected void onAttachedToWindow() {
@@ -156,5 +217,15 @@ public class AveragesSetView extends FrameLayout implements IAveragesSetView {
     @Override
     public void setAvgSFTText(String text) {
         btnSFTPick.setText(text);
+    }
+
+    @Override
+    public void setTotalSOTText(String text) {
+        btnTotalSOTPick.setText(text);
+    }
+
+    @Override
+    public void setTotalSFTText(String text) {
+        btnTotalSFTPick.setText(text);
     }
 }

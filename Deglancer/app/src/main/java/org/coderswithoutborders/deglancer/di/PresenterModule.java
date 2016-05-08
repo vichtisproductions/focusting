@@ -1,6 +1,8 @@
 package org.coderswithoutborders.deglancer.di;
 
 import org.coderswithoutborders.deglancer.bus.RxBus;
+import org.coderswithoutborders.deglancer.func_debug.presenter.IStageSelectViewPresenter;
+import org.coderswithoutborders.deglancer.func_debug.presenter.StageSelectViewPresenter;
 import org.coderswithoutborders.deglancer.func_debug.stage1.DebugStage1Presenter;
 import org.coderswithoutborders.deglancer.func_debug.stage1.IDebugStage1Presenter;
 import org.coderswithoutborders.deglancer.func_debug.stage2.DebugStage2Presenter;
@@ -14,12 +16,12 @@ import org.coderswithoutborders.deglancer.func_debug.stage5.IDebugStage5Presente
 import org.coderswithoutborders.deglancer.interactor.IDatabaseInteractor;
 import org.coderswithoutborders.deglancer.interactor.IInitialStartupInteractor;
 import org.coderswithoutborders.deglancer.interactor.IStageInteractor;
-import org.coderswithoutborders.deglancer.presenter.AveragesSetViewPresenter;
-import org.coderswithoutborders.deglancer.presenter.IAveragesSetViewPresenter;
+import org.coderswithoutborders.deglancer.func_debug.presenter.AveragesSetViewPresenter;
+import org.coderswithoutborders.deglancer.func_debug.presenter.IAveragesSetViewPresenter;
 import org.coderswithoutborders.deglancer.presenter.IMainActivityPresenter;
-import org.coderswithoutborders.deglancer.presenter.IStatsViewPresenter;
+import org.coderswithoutborders.deglancer.func_debug.presenter.IStatsViewPresenter;
 import org.coderswithoutborders.deglancer.presenter.MainActivityPresenter;
-import org.coderswithoutborders.deglancer.presenter.StatsViewPresenter;
+import org.coderswithoutborders.deglancer.func_debug.presenter.StatsViewPresenter;
 
 import javax.inject.Singleton;
 
@@ -39,8 +41,8 @@ public class PresenterModule {
 
 
     @Provides
-    public IStatsViewPresenter providesStatsViewPresenter(IDatabaseInteractor databaseInteractor, IStageInteractor stageInteractor) {
-        return new StatsViewPresenter(databaseInteractor, stageInteractor);
+    public IStatsViewPresenter providesStatsViewPresenter(IDatabaseInteractor databaseInteractor, IStageInteractor stageInteractor, RxBus bus) {
+        return new StatsViewPresenter(databaseInteractor, stageInteractor, bus);
     }
 
     @Singleton
@@ -75,8 +77,13 @@ public class PresenterModule {
 
 
     @Provides
-    public IAveragesSetViewPresenter providesAveragesSetViewPresenter(IDatabaseInteractor databaseInteractor) {
-        return new AveragesSetViewPresenter(databaseInteractor);
+    public IAveragesSetViewPresenter providesAveragesSetViewPresenter(IDatabaseInteractor databaseInteractor, RxBus bus) {
+        return new AveragesSetViewPresenter(databaseInteractor, bus);
+    }
+
+    @Provides
+    public IStageSelectViewPresenter providesStageSelectViewPresenter(RxBus bus) {
+        return new StageSelectViewPresenter(bus);
     }
 
 }

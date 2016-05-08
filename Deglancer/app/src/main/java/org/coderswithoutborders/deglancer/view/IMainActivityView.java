@@ -11,4 +11,5 @@ public interface IMainActivityView {
     void showStage3View(Stage stage);
     void showStage4View(Stage stage);
     void showStage5View(Stage stage);
+    void setStageText(String stage);
 }

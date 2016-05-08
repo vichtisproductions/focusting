@@ -43,7 +43,7 @@ android {
 dependencies {
 
     final JUNIT_VERSION = '4.12'
-    final SUPPORT_LIBRARY_VERSION = '23.2.1'
+    final SUPPORT_LIBRARY_VERSION = '23.3.0'
     final RX_ANDROID_VERSION = '1.1.0'
     final RX_JAVA_VERSION = '1.1.0'
     final DAGGER_VERSION = '2.0'
@@ -55,6 +55,9 @@ dependencies {
     final ACRA_VERSION = '4.6.2'
 
     compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:percent:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:support-v4:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
 
     compile "com.firebase:firebase-client-android:$FIREBASE_VERSION"
 
@@ -71,6 +74,4 @@ dependencies {
     compile "ch.acra:acra:$ACRA_VERSION"
 
     testCompile "junit:junit:$JUNIT_VERSION"
-    compile "com.android.support:support-v4:$SUPPORT_LIBRARY_VERSION"
-    compile 'com.android.support:design:23.3.0'
 }

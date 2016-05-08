@@ -6,11 +6,12 @@ import org.coderswithoutborders.deglancer.func_debug.stage2.DebugStage2Activity;
 import org.coderswithoutborders.deglancer.func_debug.stage3.DebugStage3Activity;
 import org.coderswithoutborders.deglancer.func_debug.stage4.DebugStage4Activity;
 import org.coderswithoutborders.deglancer.func_debug.stage5.DebugStage5Activity;
+import org.coderswithoutborders.deglancer.func_debug.view.StageSelectView;
 import org.coderswithoutborders.deglancer.receivers.ScreenActionReceiver;
 import org.coderswithoutborders.deglancer.services.TrackerService;
-import org.coderswithoutborders.deglancer.view.AveragesSetView;
+import org.coderswithoutborders.deglancer.func_debug.view.AveragesSetView;
 import org.coderswithoutborders.deglancer.view.MainActivity;
-import org.coderswithoutborders.deglancer.view.StatsView;
+import org.coderswithoutborders.deglancer.func_debug.view.StatsView;
 
 import javax.inject.Singleton;
 
@@ -32,6 +33,7 @@ public interface DIGraph {
     void inject(DebugStage4Activity view);
     void inject(DebugStage5Activity view);
     void inject(AveragesSetView view);
+    void inject(StageSelectView view);
 
     final class Initializer {
         public static DIGraph init(MainApplication application) {

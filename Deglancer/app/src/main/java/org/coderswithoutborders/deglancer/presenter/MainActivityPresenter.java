@@ -58,6 +58,18 @@ public class MainActivityPresenter implements IMainActivityPresenter {
     @Override
     public void init() {
         mInitialStartupInteractor.captureInitialDataIfNotCaptured();
+
+        mStageInteractor.getCurrentStage()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(stage -> {
+                    if (mView != null) {
+                        mView.setStageText(stage.getStage() + "-" + stage.getDay() + "-" + stage.getHour());
+                    }
+                }, error -> {
+                    //TODO - Handle error
+                    String here = "";
+                });
     }
 
     @Override

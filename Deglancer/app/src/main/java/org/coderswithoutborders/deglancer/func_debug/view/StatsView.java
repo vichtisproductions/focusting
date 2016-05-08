@@ -1,10 +1,9 @@
-package org.coderswithoutborders.deglancer.view;
+package org.coderswithoutborders.deglancer.func_debug.view;
 
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -12,7 +11,7 @@ import android.widget.TextView;
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.R;
 import org.coderswithoutborders.deglancer.model.Stage;
-import org.coderswithoutborders.deglancer.presenter.IStatsViewPresenter;
+import org.coderswithoutborders.deglancer.func_debug.presenter.IStatsViewPresenter;
 
 import javax.inject.Inject;
 
@@ -23,11 +22,6 @@ public class StatsView extends FrameLayout implements IStatsView {
 
     @Inject
     IStatsViewPresenter mPresenter;
-
-
-    private NumberPicker npStage;
-    private NumberPicker npDay;
-    private NumberPicker npHour;
 
     private TextView tvTotalUnlocksDay;
     private TextView tvTotalUnlocksHour;
@@ -68,23 +62,6 @@ public class StatsView extends FrameLayout implements IStatsView {
         if (!isInEditMode()) {
             MainApplication.from(getContext()).getGraph().inject(this);
 
-            npStage = (NumberPicker) findViewById(R.id.npStage);
-            npDay = (NumberPicker) findViewById(R.id.npDay);
-            npHour = (NumberPicker) findViewById(R.id.npHour);
-
-            npStage.setMinValue(1);
-            npStage.setMaxValue(5);
-
-            npDay.setMinValue(1);
-            npDay.setMaxValue(7);
-
-            npHour.setMinValue(1);
-            npHour.setMaxValue(23);
-
-            npStage.setOnValueChangedListener(valueChangeListener);
-            npDay.setOnValueChangedListener(valueChangeListener);
-            npHour.setOnValueChangedListener(valueChangeListener);
-
             tvTotalUnlocksDay = (TextView) findViewById(R.id.tvTotalUnlocksDay);
             tvTotalUnlocksHour = (TextView) findViewById(R.id.tvTotalUnlocksHour);
             tvTotalSOTDay = (TextView) findViewById(R.id.tvTotalSOTDay);
@@ -96,13 +73,10 @@ public class StatsView extends FrameLayout implements IStatsView {
             tvAvgSFTDay = (TextView) findViewById(R.id.tvAvgSFTDay);
             tvAvgSFTHour = (TextView) findViewById(R.id.tvAvgSFTHour);
 
+            findViewById(R.id.btnClearStage).setOnClickListener(buttonClickListener);
             findViewById(R.id.btnClearDay).setOnClickListener(buttonClickListener);
             findViewById(R.id.btnClearHour).setOnClickListener(buttonClickListener);
         }
-    }
-
-    public void setStagePickerState(boolean enableStageChange, boolean enableDayChange, boolean enableHourChange) {
-        mPresenter.setStagePickerState(enableStageChange, enableDayChange, enableHourChange);
     }
 
     public void refresh() {
@@ -115,68 +89,14 @@ public class StatsView extends FrameLayout implements IStatsView {
 
 
     OnClickListener buttonClickListener = v -> {
-        if (v.getId() == R.id.btnClearDay) {
+        if (v.getId() == R.id.btnClearStage) {
+            mPresenter.clearStageClicked();
+        } else if (v.getId() == R.id.btnClearDay) {
             mPresenter.clearDayClicked();
         } else if (v.getId() == R.id.btnClearHour) {
             mPresenter.clearHourClicked();
         }
     };
-
-    NumberPicker.OnValueChangeListener valueChangeListener = (picker, oldVal, newVal) -> {
-        if (picker.getId() == R.id.npStage) {
-            mPresenter.onStageChange(newVal);
-        } else if (picker.getId() == R.id.npDay) {
-            mPresenter.onDayChange(newVal);
-        } else if (picker.getId() == R.id.npHour) {
-            mPresenter.onHourChange(newVal);
-        }
-
-    };
-
-    @Override
-    public void setStageVal(int stage) {
-        npStage.setValue(stage);
-    }
-
-    @Override
-    public void setStageDay(int day) {
-        npDay.setValue(day);
-    }
-
-    @Override
-    public void setStageHour(int hour) {
-        npHour.setValue(hour);
-    }
-
-    @Override
-    public void enableStagePicker() {
-        npStage.setEnabled(true);
-    }
-
-    @Override
-    public void disableStagePicker() {
-        npStage.setEnabled(false);
-    }
-
-    @Override
-    public void enableDayPicker() {
-        npDay.setEnabled(true);
-    }
-
-    @Override
-    public void disableDayPicker() {
-        npDay.setEnabled(false);
-    }
-
-    @Override
-    public void enableHourPicker() {
-        npHour.setEnabled(true);
-    }
-
-    @Override
-    public void disableHourPicker() {
-        npHour.setEnabled(false);
-    }
 
     @Override
     public void setValues(String totalUnlocksDay, String totalUnlocksHour,

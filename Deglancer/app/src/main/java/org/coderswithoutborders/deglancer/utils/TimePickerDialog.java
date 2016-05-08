@@ -57,7 +57,7 @@ public class TimePickerDialog {
                 .Builder(mActivity)
                 .setCancelable(true)
                 .setView(dialoglayout)
-                .setPositiveButton(R.string.activity_time_picker_okay_button_text, (dialog, which) -> {
+                .setPositiveButton(R.string.time_picker_okay_button_text, (dialog, which) -> {
                     if (mListener != null) {
                         int hours = npHour.getValue();
                         int minutes = npMinute.getValue();
@@ -67,7 +67,7 @@ public class TimePickerDialog {
                         mListener.onTimeSelected(duration);
                     }
                 })
-                .setNegativeButton(R.string.activity_time_picker_cancel_button_text, (dialog, which) -> {
+                .setNegativeButton(R.string.time_picker_cancel_button_text, (dialog, which) -> {
                     if (mListener != null) {
                         mListener.onCancel();
                     }

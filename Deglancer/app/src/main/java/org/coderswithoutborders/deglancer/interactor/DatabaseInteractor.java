@@ -42,9 +42,6 @@ public class DatabaseInteractor implements IDatabaseInteractor {
                 .count();
     }
 
-
-
-
     @Override
     public long getTotalSFTForStage(int stage, int day, int hour) {
         return mRealm.where(ScreenAction.class)
@@ -52,49 +49,6 @@ public class DatabaseInteractor implements IDatabaseInteractor {
                 .equalTo("mDay", day)
                 .equalTo("mHour", hour)
                 .equalTo("mEventType", Intent.ACTION_SCREEN_ON)
-                .sum("mDuration")
-                .longValue();
-    }
-
-    @Override
-    public long getTotalSFTForStageDay(int stage, int day) {
-        return mRealm.where(ScreenAction.class)
-                .equalTo("mStage", stage)
-                .equalTo("mDay", day)
-                .equalTo("mEventType", Intent.ACTION_SCREEN_ON)
-                .sum("mDuration")
-                .longValue();
-    }
-
-    @Override
-    public double getAverageSFTForStage(int stage, int day, int hour) {
-        return mRealm.where(ScreenAction.class)
-                .equalTo("mStage", stage)
-                .equalTo("mDay", day)
-                .equalTo("mHour", hour)
-                .equalTo("mEventType", Intent.ACTION_SCREEN_ON)
-                .average("mDuration");
-    }
-
-    @Override
-    public double getAverageSFTForStageDay(int stage, int day) {
-        return mRealm.where(ScreenAction.class)
-                .equalTo("mStage", stage)
-                .equalTo("mDay", day)
-                .equalTo("mEventType", Intent.ACTION_SCREEN_ON)
-                .average("mDuration");
-    }
-
-
-
-
-    @Override
-    public long getTotalSOTForStage(int stage, int day, int hour) {
-        return mRealm.where(ScreenAction.class)
-                .equalTo("mStage", stage)
-                .equalTo("mDay", day)
-                .equalTo("mHour", hour)
-                .equalTo("mEventType", Intent.ACTION_SCREEN_OFF)
                 .sum("mDuration")
                 .longValue();
     }
@@ -120,12 +74,148 @@ public class DatabaseInteractor implements IDatabaseInteractor {
     }
 
     @Override
-    public double getAverageSOTForStageDay(int stage, int day) {
+    public double getAverageSFTForStage(int stage, int day, int hour) {
         return mRealm.where(ScreenAction.class)
                 .equalTo("mStage", stage)
                 .equalTo("mDay", day)
-                .equalTo("mEventType", Intent.ACTION_SCREEN_OFF)
+                .equalTo("mHour", hour)
+                .equalTo("mEventType", Intent.ACTION_SCREEN_ON)
                 .average("mDuration");
+    }
+
+    @Override
+    public long getTotalSOTForStage(int stage, int day, int hour) {
+        return mRealm.where(ScreenAction.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .equalTo("mHour", hour)
+                .equalTo("mEventType", Intent.ACTION_SCREEN_OFF)
+                .sum("mDuration")
+                .longValue();
+    }
+
+
+
+
+
+
+
+    @Override
+    public long getUnlockCountForStageFromAverages(int stage, int day, int hour) {
+        Averages avg = mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .equalTo("mHour", hour)
+                .findFirst();
+
+        if (avg != null) {
+            return avg.getUnlockCount();
+        } else {
+            return 0l;
+        }
+    }
+
+    @Override
+    public long getUnlockCountForStageDayFromAverages(int stage, int day) {
+        return mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .sum("mUnlockCount")
+                .longValue();
+    }
+
+    @Override
+    public long getTotalSFTForStageFromAverages(int stage, int day, int hour) {
+        Averages avg = mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .equalTo("mHour", hour)
+                .findFirst();
+
+        if (avg != null) {
+            return avg.getTotalSFT();
+        } else {
+            return 0l;
+        }
+    }
+
+    @Override
+    public long getTotalSFTForStageDayFromAverages(int stage, int day) {
+        return mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .sum("mTotalSFT")
+                .longValue();
+    }
+
+    @Override
+    public double getAverageSFTForStageFromAverages(int stage, int day, int hour) {
+        Averages avg = mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .equalTo("mHour", hour)
+                .findFirst();
+
+        if (avg != null) {
+            return avg.getSFT();
+        } else {
+            return 0l;
+        }
+    }
+
+    @Override
+    public double getAverageSFTForStageDayFromAverages(int stage, int day) {
+        return mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .average("mSFT");
+    }
+
+    @Override
+    public long getTotalSOTForStageFromAverages(int stage, int day, int hour) {
+        Averages avg = mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .equalTo("mHour", hour)
+                .findFirst();
+
+        if (avg != null) {
+            return avg.getTotalSOT();
+        } else {
+            return 0l;
+        }
+    }
+
+    @Override
+    public long getTotalSOTForStageDayFromAverages(int stage, int day) {
+        return mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .sum("mTotalSOT")
+                .longValue();
+    }
+
+    @Override
+    public double getAverageSOTForStageFromAverages(int stage, int day, int hour) {
+        Averages avg = mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .equalTo("mHour", hour)
+                .findFirst();
+
+        if (avg != null) {
+            return avg.getSOT();
+        } else {
+            return 0l;
+        }
+    }
+
+    @Override
+    public double getAverageSOTForStageDayFromAverages(int stage, int day) {
+        return mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .average("mSOT");
     }
 
 
@@ -176,15 +266,21 @@ public class DatabaseInteractor implements IDatabaseInteractor {
     }
 
     @Override
-    public void clearEntriesForStageDay(int stage, int day) {
+    public void clearEntriesForStage(int stage) {
         mRealm.beginTransaction();
 
         mRealm.where(ScreenAction.class)
                 .equalTo("mStage", stage)
-                .equalTo("mDay", day)
                 .findAll().clear();
 
-        mRealm.where(Averages.class)
+        mRealm.commitTransaction();
+    }
+
+    @Override
+    public void clearEntriesForStageDay(int stage, int day) {
+        mRealm.beginTransaction();
+
+        mRealm.where(ScreenAction.class)
                 .equalTo("mStage", stage)
                 .equalTo("mDay", day)
                 .findAll().clear();
@@ -201,6 +297,36 @@ public class DatabaseInteractor implements IDatabaseInteractor {
                 .equalTo("mDay", day)
                 .equalTo("mHour", hour)
                 .findAll().clear();
+
+        mRealm.commitTransaction();
+    }
+
+    @Override
+    public void clearAveragesForStage(int stage) {
+        mRealm.beginTransaction();
+
+        mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .findAll().clear();
+
+        mRealm.commitTransaction();
+    }
+
+    @Override
+    public void clearAveragesForStageDay(int stage, int day) {
+        mRealm.beginTransaction();
+
+        mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .findAll().clear();
+
+        mRealm.commitTransaction();
+    }
+
+    @Override
+    public void clearAveragesForStageHour(int stage, int day, int hour) {
+        mRealm.beginTransaction();
 
         mRealm.where(Averages.class)
                 .equalTo("mStage", stage)

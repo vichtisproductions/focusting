@@ -1,22 +1,20 @@
-package org.coderswithoutborders.deglancer.presenter;
+package org.coderswithoutborders.deglancer.func_debug.presenter;
 
+import org.coderswithoutborders.deglancer.func_debug.view.IStageSelectView;
 import org.coderswithoutborders.deglancer.model.Stage;
-import org.coderswithoutborders.deglancer.view.IStatsView;
 
 /**
- * Created by Renier on 2016/05/06.
+ * Created by Renier on 2016/05/08.
  */
-public interface IStatsViewPresenter {
-    void setView(IStatsView view);
+public interface IStageSelectViewPresenter {
+    void setView(IStageSelectView view);
     void clearView();
     void onAttached();
     void onDetached();
-    void refresh();
-    void setStage(Stage stage);
     void onStageChange(int newVal);
     void onDayChange(int day);
     void onHourChange(int hour);
     void setStagePickerState(boolean enableStageChange, boolean enableDayChange, boolean enableHourChange);
-    void clearDayClicked();
-    void clearHourClicked();
+    void setStage(Stage stage);
+    void setStageAsCurrentStage();
 }

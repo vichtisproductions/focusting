@@ -168,4 +168,9 @@ public class StageInteractor implements IStageInteractor {
                     mBus.post(new DebugStageEvent());
                 });
     }
+
+    @Override
+    public void setStageAsCurrentStage(int stage, int day, int hour) {
+
+    }
 }

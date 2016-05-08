@@ -116,6 +116,8 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
                 long unlockCount = mDatabaseInteractor.getUnlockCountForStage(action.getStage(), action.getDay(), action.getHour());
                 double sft = mDatabaseInteractor.getAverageSFTForStage(action.getStage(), action.getDay(), action.getHour());
                 double sot = mDatabaseInteractor.getAverageSOTForStage(action.getStage(), action.getDay(), action.getHour());
+                long totalSFT = mDatabaseInteractor.getTotalSFTForStage(action.getStage(), action.getDay(), action.getHour());
+                long totalSOT = mDatabaseInteractor.getTotalSOTForStage(action.getStage(), action.getDay(), action.getHour());
 
                 Averages avg = new Averages(
                         UUID.randomUUID().toString(),
@@ -124,7 +126,9 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
                         action.getHour(),
                         unlockCount,
                         sft,
-                        sot
+                        sot,
+                        totalSFT,
+                        totalSOT
                 );
                 mDatabaseInteractor.commitAverages(avg);
 

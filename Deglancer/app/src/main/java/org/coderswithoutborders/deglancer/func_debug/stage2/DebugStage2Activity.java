@@ -1,23 +1,18 @@
 package org.coderswithoutborders.deglancer.func_debug.stage2;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.R;
 import org.coderswithoutborders.deglancer.func_debug.stage1.DebugStage1Activity;
 import org.coderswithoutborders.deglancer.func_debug.stage3.DebugStage3Activity;
-import org.coderswithoutborders.deglancer.view.StatsView;
+import org.coderswithoutborders.deglancer.func_debug.view.StageSelectView;
+import org.coderswithoutborders.deglancer.func_debug.view.StatsView;
+import org.coderswithoutborders.deglancer.model.Stage;
 
 import javax.inject.Inject;
 
@@ -31,6 +26,7 @@ public class DebugStage2Activity extends AppCompatActivity implements IDebugStag
 
     private Button btnAdvance;
     private Button btnBack;
+    private StageSelectView mStageSelectView;
     private StatsView mStatsView;
 
     @Override
@@ -42,7 +38,9 @@ public class DebugStage2Activity extends AppCompatActivity implements IDebugStag
         MainApplication.from(getApplicationContext()).getGraph().inject(this);
 
         mStatsView = (StatsView) findViewById(R.id.statsView);
-        mStatsView.setStagePickerState(false, true, true);
+
+        mStageSelectView = (StageSelectView) findViewById(R.id.stageSelectView);
+        mStageSelectView.setStagePickerState(false, true, true);
 
         btnAdvance = (Button) findViewById(R.id.btnAdvance);
         btnAdvance.setOnClickListener(buttonClickListener);
@@ -59,6 +57,11 @@ public class DebugStage2Activity extends AppCompatActivity implements IDebugStag
             mPresenter.previousStageClicked();
         }
     };
+
+    @Override
+    public void setStage(Stage stage) {
+        mStageSelectView.setStage(stage);
+    }
 
     @Override
     protected void onResume() {
@@ -95,5 +98,10 @@ public class DebugStage2Activity extends AppCompatActivity implements IDebugStag
     public void moveToStage3View() {
         Intent i = new Intent(this, DebugStage3Activity.class);
         startActivity(i);
+    }
+
+    @Override
+    public void setTitleStage(String stage) {
+        setTitle(String.format(getApplicationContext().getString(R.string.activity_debug_stage_activity_title_from_code), stage));
     }
 }

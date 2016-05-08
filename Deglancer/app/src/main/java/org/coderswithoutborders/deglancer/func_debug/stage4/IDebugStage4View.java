@@ -9,4 +9,6 @@ public interface IDebugStage4View {
     void finishActivity();
     void moveToStage5View();
     void moveToStage3View();
+    void setStage(Stage stage);
+    void setTitleStage(String stage);
 }
