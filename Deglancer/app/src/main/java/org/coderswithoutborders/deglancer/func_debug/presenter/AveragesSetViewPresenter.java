@@ -74,13 +74,13 @@ public class AveragesSetViewPresenter implements IAveragesSetViewPresenter {
                // mCurrentStage.setStage(mStageVal);
 
                 if (mView != null) {
-                    mView.updateTitleTextWith(mCurrentStage.getStage() + "-" + mCurrentStage.getDay() + "-" + mCurrentStage.getHour());
+                    mView.updateTitleTextWith(mStageVal + "-" + mCurrentStage.getDay() + "-" + mCurrentStage.getHour());
                 }
             }
         }));
 
         if (mView != null && mCurrentStage != null) {
-            mView.updateTitleTextWith(mCurrentStage.getStage() + "-" + mCurrentStage.getDay() + "-" + mCurrentStage.getHour());
+            mView.updateTitleTextWith(mStageVal + "-" + mCurrentStage.getDay() + "-" + mCurrentStage.getHour());
         }
     }
 
