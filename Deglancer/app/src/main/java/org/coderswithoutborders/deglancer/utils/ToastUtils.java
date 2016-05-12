@@ -19,10 +19,10 @@ public class ToastUtils {
                                  long unlockCount,
                                  long totalSOTTime) {
         String lastSleepString = TimeUtils.getTimeStringFromMillis(actionDuration, true, false, true);
-        String unlockString = mContext.getString(R.string.toast_unlocks_today_label) + " " + unlockCount;
+        String unlockString = String.valueOf(unlockCount);
         String totalSOTTimeString = TimeUtils.getTimeStringFromMillis(totalSOTTime, true, false, true);
 
-        LayoutInflater inflater = LayoutInflater.from(mContext.getApplicationContext());
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.custom_toast, new LinearLayout(mContext), false)
                 .findViewById(R.id.toast_layout_root);
 
@@ -30,16 +30,16 @@ public class ToastUtils {
         textLastSleep.setText(lastSleepString);
 
         TextView textUnlockCount = (TextView) layout.findViewById(R.id.text_unlock_count);
-        textUnlockCount.setText(lastSleepString);
+        textUnlockCount.setText(unlockString);
 
         TextView textTotalSOTTime = (TextView) layout.findViewById(R.id.text_screen_on_time);
-        textTotalSOTTime.setText(lastSleepString);
+        textTotalSOTTime.setText(totalSOTTimeString);
 
         // Create custom toast and display it
-        /*Toast toast = new Toast(mContext);
-        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        Toast toast = new Toast(mContext);
+        toast.setGravity(Gravity.BOTTOM, 0, 0);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(layout);
-        toast.show();*/
+        toast.show();
     }
 }
