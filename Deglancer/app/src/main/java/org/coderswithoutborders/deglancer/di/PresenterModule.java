@@ -2,7 +2,9 @@ package org.coderswithoutborders.deglancer.di;
 
 import org.coderswithoutborders.deglancer.bus.RxBus;
 import org.coderswithoutborders.deglancer.func_debug.presenter.IStageSelectViewPresenter;
+import org.coderswithoutborders.deglancer.func_debug.presenter.ITargetSetViewPresenter;
 import org.coderswithoutborders.deglancer.func_debug.presenter.StageSelectViewPresenter;
+import org.coderswithoutborders.deglancer.func_debug.presenter.TargetSetViewPresenter;
 import org.coderswithoutborders.deglancer.func_debug.stage1.DebugStage1Presenter;
 import org.coderswithoutborders.deglancer.func_debug.stage1.IDebugStage1Presenter;
 import org.coderswithoutborders.deglancer.func_debug.stage2.DebugStage2Presenter;
@@ -18,6 +20,7 @@ import org.coderswithoutborders.deglancer.interactor.IInitialStartupInteractor;
 import org.coderswithoutborders.deglancer.interactor.IStageInteractor;
 import org.coderswithoutborders.deglancer.func_debug.presenter.AveragesSetViewPresenter;
 import org.coderswithoutborders.deglancer.func_debug.presenter.IAveragesSetViewPresenter;
+import org.coderswithoutborders.deglancer.interactor.ITargetInteractor;
 import org.coderswithoutborders.deglancer.presenter.IMainActivityPresenter;
 import org.coderswithoutborders.deglancer.func_debug.presenter.IStatsViewPresenter;
 import org.coderswithoutborders.deglancer.presenter.MainActivityPresenter;
@@ -84,6 +87,11 @@ public class PresenterModule {
     @Provides
     public IStageSelectViewPresenter providesStageSelectViewPresenter(RxBus bus) {
         return new StageSelectViewPresenter(bus);
+    }
+
+    @Provides
+    public ITargetSetViewPresenter providesTargetSetViewPresenter(ITargetInteractor targetInteractor, RxBus bus) {
+        return new TargetSetViewPresenter(targetInteractor, bus);
     }
 
 }

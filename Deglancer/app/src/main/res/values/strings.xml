@@ -67,4 +67,10 @@
 
     <string name="time_picker_okay_button_text">OKAY</string>
     <string name="time_picker_cancel_button_text">CANCEL</string>
+
+    <string name="target_set_view_header">Select your goal:</string>
+    <string name="target_set_view_5_percent">-5%</string>
+    <string name="target_set_view_10_percent">-10%</string>
+    <string name="target_set_view_15_percent">-15%</string>
+    <string name="target_set_view_set_button_text">SET FOR STAGE</string>
 </resources>

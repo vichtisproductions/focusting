@@ -13,6 +13,7 @@ import org.coderswithoutborders.deglancer.func_debug.stage5.DebugStage5Activity;
 import org.coderswithoutborders.deglancer.func_debug.view.AveragesSetView;
 import org.coderswithoutborders.deglancer.func_debug.view.StageSelectView;
 import org.coderswithoutborders.deglancer.func_debug.view.StatsView;
+import org.coderswithoutborders.deglancer.func_debug.view.TargetSetView;
 import org.coderswithoutborders.deglancer.model.Stage;
 
 import javax.inject.Inject;
@@ -30,6 +31,7 @@ public class DebugStage4Activity extends AppCompatActivity implements IDebugStag
     private StatsView mStatsView;
     private StageSelectView mStageSelectView;
     private AveragesSetView mAvgSetView;
+    private TargetSetView mTargetSetView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,9 @@ public class DebugStage4Activity extends AppCompatActivity implements IDebugStag
 
         mAvgSetView = (AveragesSetView) findViewById(R.id.averagesSetView);
         mAvgSetView.setStage(new Stage(3, 1, 1));
+
+        mTargetSetView = (TargetSetView) findViewById(R.id.targetSetView);
+        mTargetSetView.setStage(new Stage(4, 1, 1));
     }
 
     View.OnClickListener buttonClickListener = v -> {

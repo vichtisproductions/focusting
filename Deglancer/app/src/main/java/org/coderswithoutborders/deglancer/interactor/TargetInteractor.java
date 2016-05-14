@@ -1,0 +1,56 @@
+package org.coderswithoutborders.deglancer.interactor;
+
+import com.firebase.client.Firebase;
+
+import org.coderswithoutborders.deglancer.bus.RxBus;
+import org.coderswithoutborders.deglancer.model.Target;
+
+import java.util.UUID;
+
+import rx.Observable;
+
+/**
+ * Created by Renier on 2016/05/14.
+ */
+public class TargetInteractor implements ITargetInteractor {
+    private static final int DEFAULT_TARGET = 5;
+
+    private IDatabaseInteractor mDatabaseInteractor;
+    private RxBus mBus;
+    private Firebase mFirebaseClient;
+    private IUserInteractor mUserInteractor;
+
+    public TargetInteractor(IDatabaseInteractor mDatabaseInteractor, RxBus mBus, Firebase firebaseClient, IUserInteractor userInteractor) {
+        this.mDatabaseInteractor = mDatabaseInteractor;
+        this.mBus = mBus;
+        this.mFirebaseClient = firebaseClient;
+        this.mUserInteractor = userInteractor;
+    }
+
+
+    @Override
+    public Observable<Integer> getTargetForStage(int stage) {
+        return Observable.create(subscriber -> {
+            Target toReturn = mDatabaseInteractor.getTargetForStage(stage);
+
+            if (toReturn != null) {
+                subscriber.onNext(toReturn.getTarget());
+            } else {
+                subscriber.onNext(DEFAULT_TARGET);
+            }
+
+            subscriber.onCompleted();
+        });
+
+    }
+
+    @Override
+    public void setTargetForStage(int stage, int target) {
+        Target t = new Target(UUID.randomUUID().toString(), stage, target);
+
+        mDatabaseInteractor.commitTarget(t);
+
+        Firebase ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("Targets");
+        ref.push().setValue(t);
+    }
+}

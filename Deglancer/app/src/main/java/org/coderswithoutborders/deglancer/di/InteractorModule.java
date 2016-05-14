@@ -10,10 +10,12 @@ import org.coderswithoutborders.deglancer.interactor.IDatabaseInteractor;
 import org.coderswithoutborders.deglancer.interactor.IInitialStartupInteractor;
 import org.coderswithoutborders.deglancer.interactor.IScreenActionInteractor;
 import org.coderswithoutborders.deglancer.interactor.IStageInteractor;
+import org.coderswithoutborders.deglancer.interactor.ITargetInteractor;
 import org.coderswithoutborders.deglancer.interactor.IUserInteractor;
 import org.coderswithoutborders.deglancer.interactor.InitialStartupInteractor;
 import org.coderswithoutborders.deglancer.interactor.ScreenActionInteractor;
 import org.coderswithoutborders.deglancer.interactor.StageInteractor;
+import org.coderswithoutborders.deglancer.interactor.TargetInteractor;
 import org.coderswithoutborders.deglancer.interactor.UserInteractor;
 import org.coderswithoutborders.deglancer.stagehandlers.IStageHandler;
 import org.coderswithoutborders.deglancer.stagehandlers.Stage1Handler;
@@ -61,5 +63,11 @@ public class InteractorModule {
     @Provides
     IDatabaseInteractor providesDatabaseInteractor(Context context, Realm realm) {
         return new DatabaseInteractor(context, realm);
+    }
+
+    @Singleton
+    @Provides
+    ITargetInteractor providesTargetInteractor(IDatabaseInteractor databaseInteractor, RxBus bus, Firebase firebaseClient, IUserInteractor userInteractor) {
+        return new TargetInteractor(databaseInteractor, bus, firebaseClient, userInteractor);
     }
 }

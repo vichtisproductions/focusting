@@ -2,6 +2,7 @@ package org.coderswithoutborders.deglancer.interactor;
 
 import org.coderswithoutborders.deglancer.model.Averages;
 import org.coderswithoutborders.deglancer.model.ScreenAction;
+import org.coderswithoutborders.deglancer.model.Target;
 
 /**
  * Created by Renier on 2016/04/27.
@@ -50,4 +51,7 @@ public interface IDatabaseInteractor {
     ScreenAction getLastScreenAction();
     ScreenAction getLastScreenActionOfType(String action);
     void commitScreenAction(ScreenAction action);
+
+    void commitTarget(Target target);
+    Target getTargetForStage(int stage);
 }

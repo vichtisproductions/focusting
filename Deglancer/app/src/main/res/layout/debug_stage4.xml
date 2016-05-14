@@ -22,29 +22,40 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
-            android:layout_alignEnd="@+id/stageSelectView"
-            android:layout_alignLeft="@+id/stageSelectView"
-            android:layout_alignRight="@+id/stageSelectView"
-            android:layout_alignStart="@+id/stageSelectView"
-            android:layout_below="@+id/stageSelectView"
             android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"  />
+            android:layout_marginRight="8dp"
+            android:layout_below="@+id/statsView"  />
 
         <org.coderswithoutborders.deglancer.func_debug.view.StatsView
             android:id="@+id/statsView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/averagesSetView"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"  />
+            android:layout_marginRight="8dp"
+            android:layout_alignEnd="@+id/stageSelectView"
+            android:layout_alignLeft="@+id/stageSelectView"
+            android:layout_alignRight="@+id/stageSelectView"
+            android:layout_alignStart="@+id/stageSelectView"
+            android:layout_below="@+id/stageSelectView" />
+
+
+        <org.coderswithoutborders.deglancer.func_debug.view.TargetSetView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/targetSetView"
+            android:layout_below="@+id/averagesSetView"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"/>
+
 
         <Button
             android:id="@+id/btnAdvance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/statsView"
+            android:layout_below="@+id/targetSetView"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:text="@string/debug_stage_4_move_to_stage_5_button_text"
