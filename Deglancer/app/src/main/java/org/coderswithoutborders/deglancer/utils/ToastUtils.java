@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.coderswithoutborders.deglancer.R;
+import org.coderswithoutborders.deglancer.model.TriState;
 
 /**
  * Created by chris.teli on 5/4/2016.
@@ -41,5 +42,32 @@ public class ToastUtils {
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(layout);
         toast.show();
+    }
+
+    public static void showToast(Context mContext,
+                                 long actionDuration,
+                                 long unlockCount,
+                                 long totalSOTTime,
+                                 TriState unlockState,
+                                 TriState sotState,
+                                 TriState sftState,
+                                 double unlockDiffPercentage,
+                                 double sotDiffPercentage,
+                                 double sftDiffPercentage) {
+
+    }
+
+    public static void showToast(Context mContext,
+                                 long actionDuration,
+                                 long unlockCount,
+                                 long totalSOTTime,
+                                 TriState unlockState,
+                                 TriState sotState,
+                                 TriState sftState,
+                                 double unlockDiffPercentage,
+                                 double sotDiffPercentage,
+                                 double sftDiffPercentage,
+                                 int targetPercentage) {
+
     }
 }

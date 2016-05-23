@@ -54,4 +54,12 @@ public interface IDatabaseInteractor {
 
     void commitTarget(Target target);
     Target getTargetForStage(int stage);
+
+
+    long getSumOfUnlockCountForStageDayUpToHourFromAverages(int stage, int day, int hour);
+    long getSumOfSOTForStageDayUpToHourFromAverages(int stage, int day, int hour);
+    double getAverageSFTForStageDayUpToHourFromAverages(int stage, int day, int hour);
+    long getSumOfUnlockCountForStageDayUpToHourFromActions(int stage, int day, int hour);
+    long getSumOfSOTForStageDayUpToHourFromActions(int stage, int day, int hour);
+    double getAverageSFTForStageDayUpToHourFromActions(int stage, int day, int hour);
 }

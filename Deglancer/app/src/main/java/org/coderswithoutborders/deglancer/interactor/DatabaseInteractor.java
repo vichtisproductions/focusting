@@ -369,4 +369,64 @@ public class DatabaseInteractor implements IDatabaseInteractor {
             return null;
         }
     }
+
+    @Override
+    public long getSumOfUnlockCountForStageDayUpToHourFromAverages(int stage, int day, int hour) {
+        return mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .lessThanOrEqualTo("mHour", hour)
+                .sum("mUnlockCount")
+                .longValue();
+    }
+
+    @Override
+    public long getSumOfSOTForStageDayUpToHourFromAverages(int stage, int day, int hour) {
+        return mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .lessThanOrEqualTo("mHour", hour)
+                .sum("mTotalSOT")
+                .longValue();
+    }
+
+    @Override
+    public double getAverageSFTForStageDayUpToHourFromAverages(int stage, int day, int hour) {
+        return mRealm.where(Averages.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .lessThanOrEqualTo("mHour", hour)
+                .average("mSFT");
+    }
+
+    @Override
+    public long getSumOfUnlockCountForStageDayUpToHourFromActions(int stage, int day, int hour) {
+        return mRealm.where(ScreenAction.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .lessThanOrEqualTo("mHour", hour)
+                .equalTo("mEventType", Intent.ACTION_SCREEN_ON)
+                .count();
+    }
+
+    @Override
+    public long getSumOfSOTForStageDayUpToHourFromActions(int stage, int day, int hour) {
+        return mRealm.where(ScreenAction.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .lessThanOrEqualTo("mHour", hour)
+                .equalTo("mEventType", Intent.ACTION_SCREEN_OFF)
+                .sum("mDuration")
+                .longValue();
+    }
+
+    @Override
+    public double getAverageSFTForStageDayUpToHourFromActions(int stage, int day, int hour) {
+        return mRealm.where(ScreenAction.class)
+                .equalTo("mStage", stage)
+                .equalTo("mDay", day)
+                .lessThanOrEqualTo("mHour", hour)
+                .equalTo("mEventType", Intent.ACTION_SCREEN_ON)
+                .average("mDuration");
+    }
 }

@@ -31,17 +31,23 @@ public class TargetInteractor implements ITargetInteractor {
     @Override
     public Observable<Integer> getTargetForStage(int stage) {
         return Observable.create(subscriber -> {
-            Target toReturn = mDatabaseInteractor.getTargetForStage(stage);
 
-            if (toReturn != null) {
-                subscriber.onNext(toReturn.getTarget());
-            } else {
-                subscriber.onNext(DEFAULT_TARGET);
-            }
+            subscriber.onNext(getTargetForStageSynchronous(stage));
 
             subscriber.onCompleted();
         });
 
+    }
+
+    @Override
+    public int getTargetForStageSynchronous(int stage) {
+        Target toReturn = mDatabaseInteractor.getTargetForStage(stage);
+
+        if (toReturn != null) {
+            return toReturn.getTarget();
+        } else {
+            return DEFAULT_TARGET;
+        }
     }
 
     @Override
