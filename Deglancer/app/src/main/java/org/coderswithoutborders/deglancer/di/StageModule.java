@@ -3,6 +3,7 @@ package org.coderswithoutborders.deglancer.di;
 import android.content.Context;
 
 import org.coderswithoutborders.deglancer.interactor.IDatabaseInteractor;
+import org.coderswithoutborders.deglancer.interactor.ITargetInteractor;
 import org.coderswithoutborders.deglancer.stagehandlers.IStageHandler;
 import org.coderswithoutborders.deglancer.stagehandlers.Stage1Handler;
 import org.coderswithoutborders.deglancer.stagehandlers.Stage2Handler;
@@ -41,8 +42,8 @@ public class StageModule {
 
     @Singleton
     @Provides
-    public Stage4Handler provideStage4Handler(Context context, IDatabaseInteractor databaseInteractor) {
-        return new Stage4Handler(context, databaseInteractor);
+    public Stage4Handler provideStage4Handler(Context context, IDatabaseInteractor databaseInteractor, ITargetInteractor targetInteractor) {
+        return new Stage4Handler(context, databaseInteractor, targetInteractor);
     }
 
     @Singleton
