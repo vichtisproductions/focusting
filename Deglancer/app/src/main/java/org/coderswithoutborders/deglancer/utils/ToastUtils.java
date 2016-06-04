@@ -1,9 +1,11 @@
 package org.coderswithoutborders.deglancer.utils;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,6 +57,65 @@ public class ToastUtils {
                                  double sotDiffPercentage,
                                  double sftDiffPercentage) {
 
+        String lastSleepString = TimeUtils.getTimeStringFromMillis(actionDuration, true, false, true);
+        String unlockString = String.valueOf(unlockCount);
+        String totalSOTTimeString = TimeUtils.getTimeStringFromMillis(totalSOTTime, true, false, true);
+
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.custom_toast, new LinearLayout(mContext), false)
+                .findViewById(R.id.toast_layout_root);
+
+        TextView textLastSleep = (TextView) layout.findViewById(R.id.text_last_sleep_time);
+        textLastSleep.setText(lastSleepString);
+
+        TextView textUnlockCount = (TextView) layout.findViewById(R.id.text_unlock_count);
+        textUnlockCount.setText(unlockString);
+
+        TextView textTotalSOTTime = (TextView) layout.findViewById(R.id.text_screen_on_time);
+        textTotalSOTTime.setText(totalSOTTimeString);
+
+        ImageView unlockImage = (ImageView)layout.findViewById(R.id.unlock_image);
+        ImageView sotImage = (ImageView)layout.findViewById(R.id.screen_on_image);
+        ImageView sftImage = (ImageView)layout.findViewById(R.id.last_sleep_image);
+
+        if(unlockState.getState() == TriState.State.Better)
+        {
+            unlockImage.setImageResource(R.drawable.ic_image_better);
+        } else if (unlockState.getState() == TriState.State.Worse)
+        {
+            unlockImage.setImageResource(R.drawable.ic_image_worse);
+        } else {
+            unlockImage.setImageResource(R.drawable.ic_image_same);
+        }
+
+        if(sotState.getState() == TriState.State.Better)
+        {
+            sotImage.setImageResource(R.drawable.ic_image_better);
+        } else if (sotState.getState() == TriState.State.Worse)
+        {
+            sotImage.setImageResource(R.drawable.ic_image_worse);
+        } else {
+            sotImage.setImageResource(R.drawable.ic_image_same);
+        }
+
+        if(sftState.getState() == TriState.State.Better)
+        {
+            sftImage.setImageResource(R.drawable.ic_image_better);
+        } else if (sftState.getState() == TriState.State.Worse)
+        {
+            sftImage.setImageResource(R.drawable.ic_image_worse);
+        } else {
+            sftImage.setImageResource(R.drawable.ic_image_same);
+        }
+
+        // Create custom toast and display it
+        Toast toast = new Toast(mContext);
+        toast.setGravity(Gravity.BOTTOM, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+
+
     }
 
     public static void showToast(Context mContext,
@@ -68,6 +129,65 @@ public class ToastUtils {
                                  double sotDiffPercentage,
                                  double sftDiffPercentage,
                                  int targetPercentage) {
+        String lastSleepString = TimeUtils.getTimeStringFromMillis(actionDuration, true, false, true);
+        String unlockString = String.valueOf(unlockCount);
+        String totalSOTTimeString = TimeUtils.getTimeStringFromMillis(totalSOTTime, true, false, true);
+
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.custom_toast, new LinearLayout(mContext), false)
+                .findViewById(R.id.toast_layout_root);
+
+        TextView textLastSleep = (TextView) layout.findViewById(R.id.text_last_sleep_time);
+        textLastSleep.setText(lastSleepString);
+
+        TextView textUnlockCount = (TextView) layout.findViewById(R.id.text_unlock_count);
+        textUnlockCount.setText(unlockString);
+
+
+        TextView textTotalSOTTime = (TextView) layout.findViewById(R.id.text_screen_on_time);
+        textTotalSOTTime.setText(totalSOTTimeString);
+
+        ImageView unlockImage = (ImageView)layout.findViewById(R.id.unlock_image);
+        ImageView sotImage = (ImageView)layout.findViewById(R.id.screen_on_image);
+        ImageView sftImage = (ImageView)layout.findViewById(R.id.last_sleep_image);
+
+        if(unlockState.getState() == TriState.State.Better)
+        {
+            unlockImage.setImageResource(R.drawable.ic_image_better);
+        } else if (unlockState.getState() == TriState.State.Worse)
+        {
+            unlockImage.setImageResource(R.drawable.ic_image_worse);
+        } else {
+            unlockImage.setImageResource(R.drawable.ic_image_same);
+        }
+
+        if(sotState.getState() == TriState.State.Better)
+        {
+            sotImage.setImageResource(R.drawable.ic_image_better);
+        } else if (sotState.getState() == TriState.State.Worse)
+        {
+            sotImage.setImageResource(R.drawable.ic_image_worse);
+        } else {
+            sotImage.setImageResource(R.drawable.ic_image_same);
+        }
+
+        if(sftState.getState() == TriState.State.Better)
+        {
+            sftImage.setImageResource(R.drawable.ic_image_better);
+        } else if (sftState.getState() == TriState.State.Worse)
+        {
+            sftImage.setImageResource(R.drawable.ic_image_worse);
+        } else {
+            sftImage.setImageResource(R.drawable.ic_image_same);
+        }
+
+
+        // Create custom toast and display it
+        Toast toast = new Toast(mContext);
+        toast.setGravity(Gravity.BOTTOM, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
 
     }
 }
