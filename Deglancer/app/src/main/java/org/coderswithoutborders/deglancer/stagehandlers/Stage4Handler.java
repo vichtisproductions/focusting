@@ -36,7 +36,9 @@ public class Stage4Handler implements IStageHandler {
 
             //get average sft time up to current hour for this stage day
             double avgSFTTime = mDatabaseInteractor.getAverageSFTForStage(action.getStage(), action.getDay(), action.getHour());
-
+            // override avgSFTTimePreviousStage with last SFT
+            long sinceLastLock = action.getDuration();
+            avgSFTTime = (double) sinceLastLock;
 
 
             Stage stageToCompareTo = new Stage(action.getStage() - 1, action.getDay(), action.getHour());
