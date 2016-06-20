@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
  * Created by Renier on 2016/04/27.
  */
 public class TimeUtils {
-    public static String getTimeStringFromMillis(long millis, boolean includeLeadingZeros, boolean includeHoursIfZero, boolean includeMinutesIfZero) {
+    public static String getTimeStringFromMillis(long millis, boolean includeLeadingZeros, boolean includeHoursIfZero, boolean includeMinutesIfZero, boolean presentHoursMinutesOnly) {
         String stringFormat = includeLeadingZeros ? "%02d" : "%d";
 
         long hours = TimeUnit.MILLISECONDS.toHours(millis);
@@ -28,10 +28,12 @@ public class TimeUtils {
         }
 
         if (minutes > 0 || includeMinutesIfZero) {
-            sotBuilder.append(String.format(stringFormat, minutes)+ ":");
+            sotBuilder.append(String.format(stringFormat, minutes));
         }
 
-        sotBuilder.append(String.format(stringFormat, seconds));
+        if (!presentHoursMinutesOnly) {
+            sotBuilder.append(":"+String.format(stringFormat, seconds));
+        }
 
         return sotBuilder.toString();
     }

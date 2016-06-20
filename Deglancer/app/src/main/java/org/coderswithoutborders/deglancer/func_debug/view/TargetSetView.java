@@ -91,9 +91,7 @@ public class TargetSetView extends FrameLayout implements ITargetSetView {
     };
 
     @Override
-    public void set5Selected() {
-        rdb5.setChecked(true);
-    }
+    public void set5Selected() { rdb5.setChecked(true);  }
 
     @Override
     public void set10Selected() {

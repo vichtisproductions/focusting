@@ -21,9 +21,9 @@ public class ToastUtils {
                                  long actionDuration,
                                  long unlockCount,
                                  long totalSOTTime) {
-        String lastSleepString = TimeUtils.getTimeStringFromMillis(actionDuration, true, false, true);
+        String lastSleepString = TimeUtils.getTimeStringFromMillis(actionDuration, true, false, true, false);
         String unlockString = String.valueOf(unlockCount);
-        String totalSOTTimeString = TimeUtils.getTimeStringFromMillis(totalSOTTime, true, false, true);
+        String totalSOTTimeString = TimeUtils.getTimeStringFromMillis(totalSOTTime, true, true, true, true);
 
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.custom_toast, new LinearLayout(mContext), false)
@@ -57,9 +57,9 @@ public class ToastUtils {
                                  double sotDiffPercentage,
                                  double sftDiffPercentage) {
 
-        String lastSleepString = TimeUtils.getTimeStringFromMillis(actionDuration, true, false, true);
+        String lastSleepString = TimeUtils.getTimeStringFromMillis(actionDuration, true, false, true, false);
         String unlockString = String.valueOf(unlockCount);
-        String totalSOTTimeString = TimeUtils.getTimeStringFromMillis(totalSOTTime, true, false, true);
+        String totalSOTTimeString = TimeUtils.getTimeStringFromMillis(totalSOTTime, true, true, true, true);
 
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.custom_toast, new LinearLayout(mContext), false)
@@ -129,9 +129,9 @@ public class ToastUtils {
                                  double sotDiffPercentage,
                                  double sftDiffPercentage,
                                  int targetPercentage) {
-        String lastSleepString = TimeUtils.getTimeStringFromMillis(actionDuration, true, false, true);
+        String lastSleepString = TimeUtils.getTimeStringFromMillis(actionDuration, true, false, true, false);
         String unlockString = String.valueOf(unlockCount);
-        String totalSOTTimeString = TimeUtils.getTimeStringFromMillis(totalSOTTime, true, false, true);
+        String totalSOTTimeString = TimeUtils.getTimeStringFromMillis(totalSOTTime, true, true, true, true);
 
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.custom_toast, new LinearLayout(mContext), false)

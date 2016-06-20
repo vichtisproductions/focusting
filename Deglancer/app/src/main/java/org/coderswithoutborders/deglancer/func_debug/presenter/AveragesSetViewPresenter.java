@@ -165,7 +165,7 @@ public class AveragesSetViewPresenter implements IAveragesSetViewPresenter {
         mAvgSFT = millis;
 
         if (mView != null) {
-            mView.setAvgSFTText(TimeUtils.getTimeStringFromMillis(millis, true, false, true));
+            mView.setAvgSFTText(TimeUtils.getTimeStringFromMillis(millis, true, false, true, false));
         }
     }
 
@@ -174,7 +174,7 @@ public class AveragesSetViewPresenter implements IAveragesSetViewPresenter {
         mAvgSOT = millis;
 
         if (mView != null) {
-            mView.setAvgSOTText(TimeUtils.getTimeStringFromMillis(millis, true, false, true));
+            mView.setAvgSOTText(TimeUtils.getTimeStringFromMillis(millis, true, false, true, false));
         }
     }
 
@@ -183,7 +183,7 @@ public class AveragesSetViewPresenter implements IAveragesSetViewPresenter {
         mTotalSFT = millis;
 
         if (mView != null) {
-            mView.setTotalSFTText(TimeUtils.getTimeStringFromMillis(millis, true, false, true));
+            mView.setTotalSFTText(TimeUtils.getTimeStringFromMillis(millis, true, false, true, false));
         }
     }
 
@@ -192,7 +192,7 @@ public class AveragesSetViewPresenter implements IAveragesSetViewPresenter {
         mTotalSOT = millis;
 
         if (mView != null) {
-            mView.setTotalSOTText(TimeUtils.getTimeStringFromMillis(millis, true, false, true));
+            mView.setTotalSOTText(TimeUtils.getTimeStringFromMillis(millis, true, true, true, true));
         }
     }
 

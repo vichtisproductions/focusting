@@ -32,9 +32,9 @@ public class Stage2Handler implements IStageHandler {
             long unlockCount = mDatabaseInteractor.getUnlockCountForStageDay(action.getStage(), action.getDay());
             long totalSOTTime = mDatabaseInteractor.getTotalSOTForStageDay(action.getStage(), action.getDay());
 
-            String lastSleepString = mContext.getString(R.string.toast_last_sleep_label) + " " + TimeUtils.getTimeStringFromMillis(action.getDuration(), true, false, true);
+            String lastSleepString = mContext.getString(R.string.toast_last_sleep_label) + " " + TimeUtils.getTimeStringFromMillis(action.getDuration(), true, false, true, false);
             String unlockString = mContext.getString(R.string.toast_unlocks_today_label) + " " + unlockCount;
-            String totalSOTTimeString = mContext.getString(R.string.toast_screen_on_today_label) + " " + TimeUtils.getTimeStringFromMillis(totalSOTTime, true, false, true);
+            String totalSOTTimeString = mContext.getString(R.string.toast_screen_on_today_label) + " " + TimeUtils.getTimeStringFromMillis(totalSOTTime, true, false, true, true);
 
 
             StringBuilder sb = new StringBuilder();

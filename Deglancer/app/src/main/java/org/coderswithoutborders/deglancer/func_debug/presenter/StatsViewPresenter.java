@@ -105,16 +105,15 @@ public class StatsViewPresenter implements IStatsViewPresenter {
                         toReturn[0] = String.valueOf(mDatabaseInteractor.getUnlockCountForStageDayFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay()));
                         toReturn[1] = String.valueOf(mDatabaseInteractor.getUnlockCountForStageFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay(), mCurrentStage.getHour()));
 
-                        toReturn[2] = TimeUtils.getTimeStringFromMillis(mDatabaseInteractor.getTotalSOTForStageDayFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay()), true, false, true);
-                        toReturn[3] = TimeUtils.getTimeStringFromMillis(mDatabaseInteractor.getTotalSOTForStageFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay(), mCurrentStage.getHour()), true, false, true);
-                        toReturn[4] = TimeUtils.getTimeStringFromMillis(mDatabaseInteractor.getTotalSFTForStageDayFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay()), true, false, true);
-                        toReturn[5] = TimeUtils.getTimeStringFromMillis(mDatabaseInteractor.getTotalSFTForStageFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay(), mCurrentStage.getHour()), true, false, true);
+                        toReturn[2] = TimeUtils.getTimeStringFromMillis(mDatabaseInteractor.getTotalSOTForStageDayFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay()), true, true, true, true);
+                        toReturn[3] = TimeUtils.getTimeStringFromMillis(mDatabaseInteractor.getTotalSOTForStageFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay(), mCurrentStage.getHour()), true, true, true, true);
+                        toReturn[4] = TimeUtils.getTimeStringFromMillis(mDatabaseInteractor.getTotalSFTForStageDayFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay()), true, false, true, false);
+                        toReturn[5] = TimeUtils.getTimeStringFromMillis(mDatabaseInteractor.getTotalSFTForStageFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay(), mCurrentStage.getHour()), true, false, true, false);
 
-                        toReturn[6] = TimeUtils.getTimeStringFromMillis((long) mDatabaseInteractor.getAverageSOTForStageDayFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay()), true, false, true);
-                        toReturn[7] = TimeUtils.getTimeStringFromMillis((long) mDatabaseInteractor.getAverageSOTForStageFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay(), mCurrentStage.getHour()), true, false, true);
-                        toReturn[8] = TimeUtils.getTimeStringFromMillis((long) mDatabaseInteractor.getAverageSFTForStageDayFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay()), true, false, true);
-                        toReturn[9] = TimeUtils.getTimeStringFromMillis((long) mDatabaseInteractor.getAverageSFTForStageFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay(), mCurrentStage.getHour()), true, false, true);
-                    } catch (Exception e) {
+                        toReturn[6] = TimeUtils.getTimeStringFromMillis((long) mDatabaseInteractor.getAverageSOTForStageDayFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay()), true, false, true, false);
+                        toReturn[7] = TimeUtils.getTimeStringFromMillis((long) mDatabaseInteractor.getAverageSOTForStageFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay(), mCurrentStage.getHour()), true, false, true, false);
+                        toReturn[8] = TimeUtils.getTimeStringFromMillis((long) mDatabaseInteractor.getAverageSFTForStageDayFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay()), true, false, true, false);
+                        toReturn[9] = TimeUtils.getTimeStringFromMillis((long) mDatabaseInteractor.getAverageSFTForStageFromAverages(mCurrentStage.getStage(), mCurrentStage.getDay(), mCurrentStage.getHour()), true, false, true, false);                    } catch (Exception e) {
                         e.printStackTrace();
                     }
 
