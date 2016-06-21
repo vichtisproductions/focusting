@@ -63,13 +63,18 @@ public class Stage4Handler implements IStageHandler {
 
             int targetPercentage = mTargetInteractor.getTargetForStageSynchronous(action.getStage());
 
+            // calculate targets for this stage.
+            // Lapa 2016/6/216
+            long targetUnlockCount = (long) (unlockCountPreviousStage * (100 - targetPercentage) / 100);
+            long targetSOTTime = (long) (totalSOTTimePreviousStage  * (100 - targetPercentage) / 100);
+            long targetSFTTime = (long) (avgSFTTimePreviousStage * (100 + targetPercentage) / 100);
 
             TriState unlockState;
             TriState sotState;
             TriState sftState;
 
 
-
+/**
             if (unlockCount == unlockCountPreviousStage) {
                 unlockState = new TriState(TriState.State.Same);
             } else if (unlockCount > unlockCountPreviousStage) {
@@ -81,7 +86,19 @@ public class Stage4Handler implements IStageHandler {
                     unlockState = new TriState(TriState.State.Same);
                 }
             }
+*/
 
+            // Recalculate TriState for unlocks
+            // Lapa 2016/6/21
+            if (unlockCount == targetUnlockCount) {
+                unlockState = new TriState(TriState.State.Same);
+            } else if (unlockCount > targetUnlockCount) {
+                unlockState = new TriState(TriState.State.Worse);
+            } else {
+                unlockState = new TriState(TriState.State.Better);
+            }
+
+/**
             if (totalSOTTime == totalSOTTimePreviousStage) {
                 sotState = new TriState(TriState.State.Same);
             } else if (totalSOTTime > totalSOTTimePreviousStage) {
@@ -93,7 +110,19 @@ public class Stage4Handler implements IStageHandler {
                     sotState = new TriState(TriState.State.Same);
                 }
             }
+*/
 
+            // Recalculate TriState for SOT
+            // Lapa 2016/6/21
+            if (totalSOTTime == targetSOTTime) {
+                sotState = new TriState(TriState.State.Same);
+            } else if (totalSOTTime > targetSOTTime) {
+                sotState = new TriState(TriState.State.Worse);
+            } else {
+                sotState = new TriState(TriState.State.Better);
+            }
+
+/**
             if (avgSFTTime == avgSFTTimePreviousStage) {
                 sftState = new TriState(TriState.State.Same);
             } else if (avgSFTTime > avgSFTTimePreviousStage) {
@@ -105,6 +134,18 @@ public class Stage4Handler implements IStageHandler {
             } else {
                 sftState = new TriState(TriState.State.Worse);
             }
+*/
+
+            // Recalculate TriState for SFT
+            // Lapa 2016/6/21
+            if (sinceLastLock == targetSFTTime) {
+                sftState = new TriState(TriState.State.Same);
+            } else if (sinceLastLock > targetSFTTime) {
+                sftState = new TriState(TriState.State.Better);
+            } else {
+                sftState = new TriState(TriState.State.Worse);
+            }
+
 
             ToastUtils.showToast(mContext, action.getDuration(), unlockCount, totalSOTTime, unlockState, sotState, sftState, unlockDiffPercentage, sotDiffPercentage, sftDiffPercentage, targetPercentage);
         }
