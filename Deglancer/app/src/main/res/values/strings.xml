@@ -75,22 +75,22 @@
     <string name="target_set_view_set_button_text">SET FOR STAGE</string>
 
     <string name="researcherTitle">Researcher</string>
-    <string name="ResearcherText">Lauri Palokangas, lauri.palokangas@student.laurea.fi, +358504864918</string>
+    <string name="ResearcherText">Lauri Palokangas,\nlauri.palokangas@student.laurea.fi,\n+358504864918</string>
     <string name="ResearchOrganizationTitle">Research organization</string>
-    <string name="OrganizationText">Laurea-ammattikorkeakoulu. Research is not funded.</string>
+    <string name="OrganizationText">Laurea-ammattikorkeakoulu.\nResearch is not funded.</string>
     <string name="PurposeTitle">Purpose</string>
-    <string name="PurposeText">The objective of this research is to identify different behavioral insights and test their effect to decrease phone usage. The research helps better understand the role of nudges for the use of modern technology, and find out how users respond to voluntary measures to guide themselves to more responsive phone usage.</string>
+    <string name="PurposeText">The objective of this research is to identify different behavioral insights and test their effect to decrease phone usage.\nThe research helps better understand the role of nudges for the use of modern technology, and find out how users respond to voluntary measures to guide themselves to more responsive phone usage.</string>
     <string name="DataCollectionTitle">Data collection and research method</string>
-    <string name="DataBullet4">Making the selections in the application when requested</string>
-    <string name="DataBullet3">Daily phone usage</string>
-    <string name="DataBullet2">Respond to the self-assessment</string>
-    <string name="DataBullet1">Install research application</string>
+    <string name="DataBullet4">- Making the selections in the application when requested</string>
+    <string name="DataBullet3">- Daily phone usage</string>
+    <string name="DataBullet2">- Respond to the self-assessment</string>
+    <string name="DataBullet1">- Install research application</string>
     <string name="RightsTitle">Rights of the test subject</string>
-    <string name="RightsText">Research is voluntary. Test subject has right to stop participating the research at any time by uninstalling the application. Test subject has right to inquire more information regarding the research.</string>
+    <string name="RightsText">- Research is voluntary.\n- Test subject has right to stop participating the research at any time by uninstalling the application.\n- Test subject has right to inquire more information regarding the research.</string>
     <string name="ResearchDataTitle">Research data</string>
-    <string name="DataText">Research data is not personally identifiable. All information is anonymized. Research date is only used for scientific research purposes. Research data is not sold to anyone.</string>
+    <string name="DataText">- Research data is not personally identifiable.\n- All information is anonymized.\n- Research date is only used for scientific research purposes.\n- Research data is not sold to anyone.</string>
     <string name="DurationTitle">Duration</string>
-    <string name="DurationText">The research lasts 8 weeks. If the test subject does not uninstall the application, they have right to continue to use the application. The data collection will continue as long as the application has been installed.</string>
+    <string name="DurationText">- The research lasts 8 weeks.\n- If the test subject does not uninstall the application, they have right to continue to use the application.\n- The data collection will continue as long as the application has been installed.</string>
     <string name="ResearchInformationSheetTitle">Research information sheet</string>
 
 </resources>

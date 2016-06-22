@@ -61,6 +61,14 @@
             </intent-filter>
         </activity>
 
+        <activity android.name=".view.ResearchInformationSheet"
+            android:label="ResearchInformationSheet"
+            android:name=".view.ResearchInformationSheet" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
         <service
             android:name=".services.TrackerService"
             android:enabled="true"

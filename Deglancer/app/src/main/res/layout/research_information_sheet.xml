@@ -12,6 +12,12 @@
         android:id="@+id/ResearchInformationSheetHeading"
         android:layout_gravity="center_horizontal" />
 
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollview"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,7 +49,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/ResearcherText"
                 android:id="@+id/ResearcherText"
-                android:layout_margin="5dp" />
+                android:layout_margin="10dp" />
         </TableRow>
 
         <TableRow
@@ -262,4 +268,5 @@
         </TableRow>
     </TableLayout>
 
+</ScrollView>
 </LinearLayout>
