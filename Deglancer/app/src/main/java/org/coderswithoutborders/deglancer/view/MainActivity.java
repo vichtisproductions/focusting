@@ -6,6 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+// For RIS button
+import android.content.Context;
+import android.widget.Button;
+import android.view.View;
+import android.view.View.OnClickListener;
+
 
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.func_debug.stage1.DebugStage1Activity;
@@ -28,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
     @Inject
     IMainActivityPresenter mPresenter;
 
+    private Button button;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         getApplicationContext().startService(i);
 
         findViewById(R.id.btnDebug).setOnClickListener(v -> mPresenter.debugClicked());
+
+        addRISButton();
+
     }
 
     @Override
@@ -110,5 +122,25 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
     @Override
     public void setStageText(String stage) {
         ((TextView)findViewById(R.id.tvStage)).setText(stage);
+    }
+
+    public void addRISButton() {
+
+        final Context context = this;
+
+        button = (Button) findViewById(R.id.TextResInfoSheet);
+
+        button.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                Intent intent = new Intent(context, ResearchInformationSheet.class);
+                startActivity(intent);
+
+            }
+
+        });
+
     }
 }
