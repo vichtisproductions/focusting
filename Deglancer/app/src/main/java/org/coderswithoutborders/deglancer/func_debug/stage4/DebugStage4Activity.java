@@ -3,6 +3,7 @@ package org.coderswithoutborders.deglancer.func_debug.stage4;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.NotificationCompat;
 import android.view.View;
 import android.widget.Button;
 
@@ -15,6 +16,11 @@ import org.coderswithoutborders.deglancer.func_debug.view.StageSelectView;
 import org.coderswithoutborders.deglancer.func_debug.view.StatsView;
 import org.coderswithoutborders.deglancer.func_debug.view.TargetSetView;
 import org.coderswithoutborders.deglancer.model.Stage;
+
+// Notification
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 
 import javax.inject.Inject;
 
@@ -32,6 +38,10 @@ public class DebugStage4Activity extends AppCompatActivity implements IDebugStag
     private StageSelectView mStageSelectView;
     private AveragesSetView mAvgSetView;
     private TargetSetView mTargetSetView;
+
+    // Notification
+    private NotificationManager notifyMgr=null;
+    private static final int NOTIFY_ME_ID=31337;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +67,29 @@ public class DebugStage4Activity extends AppCompatActivity implements IDebugStag
 
         mTargetSetView = (TargetSetView) findViewById(R.id.targetSetView);
         mTargetSetView.setStage(new Stage(4, 1, 1));
+
+        // See if you can invoke a notification here -- Lapa 23.6.2016
+        notifyMgr=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+
+        Intent resultIntent = new Intent(this, DebugStage4Activity.class);
+
+        PendingIntent resultPendingIntent =
+                PendingIntent.getActivity(
+                        this,
+                        0,
+                        resultIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder notifyObj =
+                new NotificationCompat.Builder(this)
+                                .setSmallIcon(R.mipmap.ic_launcher)
+                                .setContentTitle("Select your goal")
+                                .setContentIntent(resultPendingIntent)
+                                .setAutoCancel(true)
+                                .setContentText("Select your goal for this week");
+
+        notifyMgr.notify(NOTIFY_ME_ID, notifyObj.build());
+
     }
 
     View.OnClickListener buttonClickListener = v -> {
