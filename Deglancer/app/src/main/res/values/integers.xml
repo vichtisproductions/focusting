@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="lengthStage1">7</integer>
-    <integer name="lengthStage2">7</integer>
-    <integer name="lengthStage3">7</integer>
-    <integer name="lengthStage4">7</integer>
-    <integer name="lengthStage5">28</integer>
+    <integer-array name="eachStageLength">
+        <item>7</item>
+        <item>7</item>
+        <item>7</item>
+        <item>7</item>
+        <item>28</item>
+    </integer-array>
 </resources>

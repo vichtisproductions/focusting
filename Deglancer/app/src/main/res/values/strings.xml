@@ -25,7 +25,6 @@
     <string name="stats_view_clear_day_values">Clear Day</string>
     <string name="stats_view_clear_hour_values">Clear Hour</string>
 
-
     <string name="debug_stage_stage_header">Stage</string>
     <string name="debug_stage_day_header">Day</string>
     <string name="debug_stage_hour_header">Hour</string>
@@ -64,16 +63,13 @@
 
 
     <string name="activity_debug_stage_activity_title_from_code">Stage %1$s Debug</string>
-
     <string name="time_picker_okay_button_text">OKAY</string>
     <string name="time_picker_cancel_button_text">CANCEL</string>
-
     <string name="target_set_view_header">Select your goal:</string>
     <string name="target_set_view_5_percent">-5%</string>
     <string name="target_set_view_10_percent">-10%</string>
     <string name="target_set_view_15_percent">-15%</string>
     <string name="target_set_view_set_button_text">SET FOR STAGE</string>
-
     <string name="researcherTitle">Researcher</string>
     <string name="ResearcherText">Lauri Palokangas,\nlauri.palokangas@student.laurea.fi,\n+358504864918</string>
     <string name="ResearchOrganizationTitle">Research organization</string>
@@ -94,11 +90,44 @@
     <string name="ResearchInformationSheetTitle"><u>Research information sheet</u></string>
     <string name="IntroText">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n</string>
     <string name="IntroTextPreTest">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n\nTake the research survey.</string>
-    <string name="IntroTextStage1">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n\nNow observing your usage in the background.</string>
-    <string name="IntroTextStage2">Deglancer helps you learn about your phone usage.\n\nThis week the app shows you the statistics of your phone usage every time you unlock your phone.</string>
-    <string name="IntroTextStage3">Deglancer helps you learn about your phone usage.\n\nThis week the app gives positive emoji for sleep time, unlocks, and screen on time if you have a decreased trend in your phone usage from the last week.</string>
-    <string name="IntroTextStage4">Deglancer helps you learn about your phone usage.\n\nThis week the app gives positive emoji if you meet the personal goal you have defined to decrease your phone usage.</string>
-    <string name="IntroTextStage5">Deglancer helps you learn about your phone usage.\n\nNow observing your usage in the background.</string>
     <string name="RemainingTimeText">days left to next stage</string>
+    <string name="btnTakeThePreTest">Take the pre-test</string>
+    <string name="tvPReTestNoticeText">Pre-test will invoke automatically in 1 minute, you can come back any time to complete your questionnaire.</string>
+    <string name="PreTestIntro">Instruction: Below is a list of smartphone-related behaviors or responses people sometimes have following their smartphone using experiences. Please read each item carefully, and select the option that best describes how much the description fits you <b>during the past 3 months</b>.  The number ranges from 1 to 4, the bigger the better fit. Please check only one number for each item and do not skip any items.</string>
+    <string name="PreTestSubmitAnswers">Save my answers</string>
+    <string name="PreTestThanks">Thank your for your responses.</string>
+    <string name="tvPreTestTitleText">Smartphone Addiction Inventory-short form (SPAI-SF)</string>
+    <string name="tvPreTestQuestionText">Pre-test question 1/10</string>
+    <string name="tvPreTestQuestionNumber">1</string>
+    <string name="tvPreTestQuestionNumberOf">of 10</string>
+    <string name="tvPreTestActualQuestionText">Although using smartphone has brought negative effects on my interpersonal relationships, the amount of time spent on Internet remains unreduced.</string>
+    <string name="radioPreTestOne">1: Very much unfit</string>
+    <string name="radioPreTestTwo">2: Somewhat unfit</string>
+    <string name="radioPreTestThree">3: Somewhat fit</string>
+    <string name="radioPreTestFour">4: Very much fit</string>
+    <string name="btnPreTestPrevious">Previous question</string>
+    <string name="btnPreTestNext">Next question</string>
+    <string name="btnSubmitResponseText">Submit responses</string>
+
+    <string-array name="IntroTexts">
+        <item name="1">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n\nNow collecting data in the background.</item>
+        <item name="2">Deglancer helps you learn about your phone usage.\n\nThis week the app shows you the statistics of your phone usage every time you unlock your phone.</item>
+        <item name="3">Deglancer helps you learn about your phone usage.\n\nThis week the app gives positive emoji for sleep time, unlocks, and screen on time if you have a decreased trend in your phone usage from the last week.</item>
+        <item name="4">Deglancer helps you learn about your phone usage.\n\nThis week the app gives positive emoji if you meet the personal goal you have defined to decrease your phone usage.</item>
+        <item name="5">Deglancer helps you learn about your phone usage.\n\nNow observing your usage in the background.</item>
+    </string-array>
+
+    <string-array name="PreTestQuestions">
+        <item name="1">Although using smartphone has brought negative effects on my interpersonal relationships, the amount of time spent on Internet remains unreduced.</item>
+        <item name="2">I use smartphone for a longer period of time and spend more money than I had intended.</item>
+        <item name="3">I try to spend less time on smartphone, but the efforts were in vain.</item>
+        <item name="4">I feel aches and soreness in the back or eye discomforts due to excessive smartphone use.</item>
+        <item name="5">I make it a habit to use smartphone and the sleep quality and total sleep time decreased.</item>
+        <item name="6">To use smartphone has exercised certain negative effects on my schoolwork or job performance.</item>
+        <item name="7">I feel restless and irritable when the smartphone is unavailable.</item>
+        <item name="8">I feel uneasy once I stop smartphone for a certain period of time.</item>
+        <item name="9">I find that I have been hooking on smartphone longer and longer.</item>
+        <item name="10">I have increased substantial amount of time using smartphone per week in recent 3 months.</item>
+    </string-array>
 
 </resources>

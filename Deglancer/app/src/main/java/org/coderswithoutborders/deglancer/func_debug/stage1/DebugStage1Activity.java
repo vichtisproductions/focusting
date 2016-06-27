@@ -1,10 +1,12 @@
 package org.coderswithoutborders.deglancer.func_debug.stage1;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
 
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.R;
@@ -12,6 +14,9 @@ import org.coderswithoutborders.deglancer.func_debug.stage2.DebugStage2Activity;
 import org.coderswithoutborders.deglancer.func_debug.view.StageSelectView;
 import org.coderswithoutborders.deglancer.func_debug.view.StatsView;
 import org.coderswithoutborders.deglancer.model.Stage;
+import org.coderswithoutborders.deglancer.view.TakeTheTest;
+
+import android.view.View.OnClickListener;
 
 import javax.inject.Inject;
 
@@ -24,6 +29,7 @@ public class DebugStage1Activity extends AppCompatActivity implements IDebugStag
     IDebugStage1Presenter mPresenter;
 
     private Button btnAdvance;
+    private Button button;
     private StageSelectView mStageSelectView;
     private StatsView mStatsView;
 
@@ -41,7 +47,11 @@ public class DebugStage1Activity extends AppCompatActivity implements IDebugStag
         btnAdvance = (Button) findViewById(R.id.btnAdvance);
         btnAdvance.setOnClickListener(buttonClickListener);
 
+        addTestButton();
+
         MainApplication.from(getApplicationContext()).getGraph().inject(this);
+
+
     }
 
     View.OnClickListener buttonClickListener = v -> {
@@ -92,4 +102,25 @@ public class DebugStage1Activity extends AppCompatActivity implements IDebugStag
     public void setTitleStage(String stage) {
         setTitle(String.format(getApplicationContext().getString(R.string.activity_debug_stage_activity_title_from_code), stage));
     }
+
+    public void addTestButton() {
+
+        final Context context = this;
+
+        button = (Button) findViewById(R.id.btnTakePreTest);
+
+        button.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                Intent intent = new Intent(context, TakeTheTest.class);
+                startActivity(intent);
+
+            }
+
+        });
+
+    }
+}
 }

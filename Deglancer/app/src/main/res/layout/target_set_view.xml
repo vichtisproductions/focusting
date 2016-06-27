@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal">
+    android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal">
 
     <RadioGroup
         android:id="@+id/group"
@@ -10,7 +11,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignLeft="@+id/textView10"
-        android:layout_below="@+id/textView10">
+        android:layout_below="@+id/textView10"
+        android:layout_alignRight="@+id/textView10"
+        android:layout_alignEnd="@+id/textView10">
 
         <RadioButton
             android:id="@+id/rdb5"

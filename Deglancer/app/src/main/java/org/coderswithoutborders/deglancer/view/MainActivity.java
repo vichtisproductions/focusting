@@ -1,6 +1,7 @@
 package org.coderswithoutborders.deglancer.view;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
@@ -126,48 +127,20 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
     public void setIntroText(int stage, int day) {
         String str;
-        // String stage;
-        // stage = Integer.toString(stage);
+
         String dayString;
         String remainingTimeText;
         int stageLength=0;
 
-        switch (stage) {
-            /*
-            case "":
-                str = getResources().getString(R.string.IntroTextPreTest);
-                ((TextView)findViewById(R.id.tvIntro)).setText(str);
-                break;
-             */
-            case 1:
-                str = getResources().getString(R.string.IntroTextStage1);
-                stageLength = getResources().getInteger(R.integer.lengthStage1);
-                ((TextView)findViewById(R.id.tvIntro)).setText(str);
-                break;
-            case 2:
-                str = getResources().getString(R.string.IntroTextStage2);
-                stageLength = getResources().getInteger(R.integer.lengthStage2);
-                ((TextView)findViewById(R.id.tvIntro)).setText(str);
-                break;
-            case 3:
-                str = getResources().getString(R.string.IntroTextStage3);
-                stageLength = getResources().getInteger(R.integer.lengthStage3);
-                ((TextView)findViewById(R.id.tvIntro)).setText(str);
-                break;
-            case 4:
-                str = getResources().getString(R.string.IntroTextStage4);
-                stageLength = getResources().getInteger(R.integer.lengthStage4);
-                ((TextView)findViewById(R.id.tvIntro)).setText(str);
-                break;
-            case 5:
-                str = getResources().getString(R.string.IntroTextStage5);
-                stageLength = getResources().getInteger(R.integer.lengthStage5);
-                ((TextView)findViewById(R.id.tvIntro)).setText(str);
-                break;
-        }
+        int[] lengthOfStage = getResources().getIntArray(R.array.eachStageLength);
+        stageLength = lengthOfStage[stage - 1];
+        String[] introTexts = getResources().getStringArray((R.array.IntroTexts));
+        str = introTexts[stage - 1];
+
+        ((TextView)findViewById(R.id.tvIntro)).setText(str);
         remainingTimeText = getResources().getString(R.string.RemainingTimeText);
         int remainingTime;
-        remainingTime = stageLength - day;
+        remainingTime = stageLength - day + 1;
         dayString = Integer.toString(remainingTime);
         ((TextView)findViewById(R.id.tvStageRemainingTime)).setText(dayString + " " + remainingTimeText);
 

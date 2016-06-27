@@ -16,6 +16,7 @@ import org.coderswithoutborders.deglancer.func_debug.view.StageSelectView;
 import org.coderswithoutborders.deglancer.func_debug.view.StatsView;
 import org.coderswithoutborders.deglancer.func_debug.view.TargetSetView;
 import org.coderswithoutborders.deglancer.model.Stage;
+import org.coderswithoutborders.deglancer.view.MainActivity;
 
 // Notification
 import android.app.Notification;
@@ -71,7 +72,7 @@ public class DebugStage4Activity extends AppCompatActivity implements IDebugStag
         // See if you can invoke a notification here -- Lapa 23.6.2016
         notifyMgr=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 
-        Intent resultIntent = new Intent(this, DebugStage4Activity.class);
+        Intent resultIntent = new Intent(this, MainActivity.class);
 
         PendingIntent resultPendingIntent =
                 PendingIntent.getActivity(

@@ -29,12 +29,27 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp" />
 
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Take the pre-test"
+            android:id="@+id/btnTakePreTest"
+            android:layout_below="@+id/statsView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp" />
+
         <Button
             android:id="@+id/btnAdvance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/statsView"
-            android:layout_marginTop="16dp"
+            android:layout_below="@+id/btnTakePreTest"
+            android:layout_marginTop="8dp"
             android:text="@string/debug_stage_1_move_to_stage_2_button_text"
             android:layout_marginBottom="8dp"
             android:layout_alignParentLeft="true"
