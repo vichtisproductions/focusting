@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.func_debug.stage1.DebugStage1Activity;
 import org.coderswithoutborders.deglancer.func_debug.stage2.DebugStage2Activity;
@@ -41,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         MainApplication.from(this).getGraph().inject(this);
 
@@ -122,6 +122,55 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
     @Override
     public void setStageText(String stage) {
         ((TextView)findViewById(R.id.tvStage)).setText(stage);
+    }
+
+    public void setIntroText(int stage, int day) {
+        String str;
+        // String stage;
+        // stage = Integer.toString(stage);
+        String dayString;
+        String remainingTimeText;
+        int stageLength=0;
+
+        switch (stage) {
+            /*
+            case "":
+                str = getResources().getString(R.string.IntroTextPreTest);
+                ((TextView)findViewById(R.id.tvIntro)).setText(str);
+                break;
+             */
+            case 1:
+                str = getResources().getString(R.string.IntroTextStage1);
+                stageLength = getResources().getInteger(R.integer.lengthStage1);
+                ((TextView)findViewById(R.id.tvIntro)).setText(str);
+                break;
+            case 2:
+                str = getResources().getString(R.string.IntroTextStage2);
+                stageLength = getResources().getInteger(R.integer.lengthStage2);
+                ((TextView)findViewById(R.id.tvIntro)).setText(str);
+                break;
+            case 3:
+                str = getResources().getString(R.string.IntroTextStage3);
+                stageLength = getResources().getInteger(R.integer.lengthStage3);
+                ((TextView)findViewById(R.id.tvIntro)).setText(str);
+                break;
+            case 4:
+                str = getResources().getString(R.string.IntroTextStage4);
+                stageLength = getResources().getInteger(R.integer.lengthStage4);
+                ((TextView)findViewById(R.id.tvIntro)).setText(str);
+                break;
+            case 5:
+                str = getResources().getString(R.string.IntroTextStage5);
+                stageLength = getResources().getInteger(R.integer.lengthStage5);
+                ((TextView)findViewById(R.id.tvIntro)).setText(str);
+                break;
+        }
+        remainingTimeText = getResources().getString(R.string.RemainingTimeText);
+        int remainingTime;
+        remainingTime = stageLength - day;
+        dayString = Integer.toString(remainingTime);
+        ((TextView)findViewById(R.id.tvStageRemainingTime)).setText(dayString + " " + remainingTimeText);
+
     }
 
     public void addRISButton() {

@@ -10,6 +10,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
+
 /**
  * Created by chris.teli on 3/21/2016.
  */
@@ -65,6 +66,7 @@ public class MainActivityPresenter implements IMainActivityPresenter {
                 .subscribe(stage -> {
                     if (mView != null) {
                         mView.setStageText(stage.getStage() + "-" + stage.getDay() + "-" + stage.getHour());
+                        mView.setIntroText(stage.getStage(), stage.getDay());
                     }
                 }, error -> {
                     //TODO - Handle error

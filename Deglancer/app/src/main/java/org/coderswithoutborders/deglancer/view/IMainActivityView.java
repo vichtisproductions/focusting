@@ -12,4 +12,5 @@ public interface IMainActivityView {
     void showStage4View(Stage stage);
     void showStage5View(Stage stage);
     void setStageText(String stage);
+    void setIntroText(int stage, int day);
 }

@@ -91,6 +91,14 @@
     <string name="DataText">- Research data is not personally identifiable.\n- All information is anonymized.\n- Research date is only used for scientific research purposes.\n- Research data is not sold to anyone.</string>
     <string name="DurationTitle">Duration</string>
     <string name="DurationText">- The research lasts 8 weeks.\n- If the test subject does not uninstall the application, they have right to continue to use the application.\n- The data collection will continue as long as the application has been installed.</string>
-    <string name="ResearchInformationSheetTitle">Research information sheet</string>
+    <string name="ResearchInformationSheetTitle"><u>Research information sheet</u></string>
+    <string name="IntroText">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n</string>
+    <string name="IntroTextPreTest">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n\nTake the research survey.</string>
+    <string name="IntroTextStage1">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n\nNow observing your usage in the background.</string>
+    <string name="IntroTextStage2">Deglancer helps you learn about your phone usage.\n\nThis week the app shows you the statistics of your phone usage every time you unlock your phone.</string>
+    <string name="IntroTextStage3">Deglancer helps you learn about your phone usage.\n\nThis week the app gives positive emoji for sleep time, unlocks, and screen on time if you have a decreased trend in your phone usage from the last week.</string>
+    <string name="IntroTextStage4">Deglancer helps you learn about your phone usage.\n\nThis week the app gives positive emoji if you meet the personal goal you have defined to decrease your phone usage.</string>
+    <string name="IntroTextStage5">Deglancer helps you learn about your phone usage.\n\nNow observing your usage in the background.</string>
+    <string name="RemainingTimeText">days left to next stage</string>
 
 </resources>
