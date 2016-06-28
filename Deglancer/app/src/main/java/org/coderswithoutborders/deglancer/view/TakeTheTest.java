@@ -2,10 +2,13 @@ package org.coderswithoutborders.deglancer.view;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import java.util.List;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.content.Intent;
 import android.view.View;
@@ -14,6 +17,8 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.app.ListActivity;
+import android.widget.Toast;
 
 import org.coderswithoutborders.deglancer.R;
 
@@ -22,13 +27,15 @@ import org.coderswithoutborders.deglancer.R;
  */
 public class TakeTheTest extends Activity {
 
+    private static final String TAG = "Deglancer.TakeTheTest";
     int questionId=0;
-    int numOfQuestions;
-    String[] questions;
-    String[] answers;
-    TextView tvPreTestActualQuestion;
-    RadioButton radioPreTestOne, radioPreTestTwo, radioPreTestThree, radioPreTestFour;
-    Button Next, Previous, Submit;
+    int numOfQuestions=10;
+    String[] questions = new String[10];
+    String[] answers = new String[10];
+    String questionsText;
+    TextView tvPreTestActualQuestion, tvPreTestQuestionTitle;
+    Button btn;
+    Button btnAnswer1, btnAnswer2, btnAnswer3, btnAnswer4;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,72 +43,61 @@ public class TakeTheTest extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pretest);
 
-        String [] questions;
-        String currentQ;
         questions = getResources().getStringArray(R.array.PreTestQuestions);
-        int numOfQuestions = questions.length;
+        questionsText = getResources().getStringArray(R.string.tvPreTestQuestionText);
+        numOfQuestions = questions.length;
 
         tvPreTestActualQuestion = (TextView)findViewById(R.id.tvPreTestActualQuestion);
-        radioPreTestOne = (RadioButton)findViewById(R.id.radioPreTestOne);
-        radioPreTestTwo = (RadioButton)findViewById(R.id.radioPreTestTwo);
-        radioPreTestThree = (RadioButton)findViewById(R.id.radioPreTestThree);
-        radioPreTestFour = (RadioButton)findViewById(R.id.radioPreTestFour);
-        Next = (Button)findViewById(R.id.btnNextQuestion);
-        Previous = (Button)findViewById(R.id.btnPrevQuestion);
-        Submit = (Button)findViewById(R.id.btnSubmitResponse);
-
-        setQuestionView();
-
-        Next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RadioGroup grp=(RadioGroup)findViewById(R.id.radiogroupAnswers);
-                RadioButton answer=(RadioButton)findViewById(grp.getCheckedRadioButtonId());
-                Log.d("Question " + Integer.toString(questionId), " - Answer " + String.valueOf(answer.getText()));
-                answers[questionId]= String.valueOf(answer.getText());
-                questionId++;
-                if(questionId<numOfQuestions){
-                    setQuestionView();
-                }else {
-                    Intent intent = new Intent(TakeTheTest.this, MainActivity.class);
-                    Bundle b = new Bundle();
-                    b.putInt("answers", answers); //Your score
-                    intent.putExtras(b); //Put your score to your next Intent
-                    startActivity(intent);
-                    finish();
-                }
-            }
-        });
-
-        /*
-        stageLength = lengthOfStage[stage - 1];
-        String[] introTexts = getResources().getStringArray((R.array.IntroTexts));
-        str = introTexts[stage - 1];
-
-        ((TextView)findViewById(R.id.tvIntro)).setText(str);
-        remainingTimeText = getResources().getString(R.string.RemainingTimeText);
-        int remainingTime;
-        remainingTime = stageLength - day + 1;
-        dayString = Integer.toString(remainingTime);
-        ((TextView)findViewById(R.id.tvStageRemainingTime)).setText(dayString + " " + remainingTimeText);
-         */
-
-    }
-
-    private void setQuestionView() {
-        if (questionId == 0) {
-            Previous.setEnabled(false);
-            Next.setEnabled(true);
-        } else
-        if (questionId < numOfQuestions) {
-            Previous.setEnabled(true);
-            Next.setEnabled(true);
-        } else
-        if (questionId == numOfQuestions) {
-            Next.setText(getResources().getString(R.string.btnSubmitResponseText));
-            Previous.setEnabled(true);
-            Next.setEnabled(true);
-        }
         tvPreTestActualQuestion.setText(questions[questionId]);
+
+        tvPreTestQuestionTitle = (TextView)findViewById(R.id.tvPreTestQuestion);
+        String questionTextFull = questionsText + " " + Integer.toString(questionId+1) + "/10");
+        tvPreTestQuestionTitle.setText(questionTextFull);
+
+        btnAnswer1 = (Button) findViewById(R.id.btnPreTestOne);
+        btnAnswer1.setOnClickListener(buttonClickListener);
+
+        btnAnswer2 = (Button) findViewById(R.id.btnPreTestTwo);
+        btnAnswer2.setOnClickListener(buttonClickListener);
+
+        btnAnswer3 = (Button) findViewById(R.id.btnPreTestThree);
+        btnAnswer3.setOnClickListener(buttonClickListener);
+
+        btnAnswer4 = (Button) findViewById(R.id.btnPreTestFour);
+        btnAnswer4.setOnClickListener(buttonClickListener);
+
     }
+
+    View.OnClickListener buttonClickListener = v -> {
+        if (v.getId() == R.id.btnPreTestOne) {
+            Log.d("Question " + Integer.toString(questionId), " - Answer : 1");
+            answers[questionId]= "1";
+        } else if (v.getId() == R.id.btnPreTestTwo) {
+            Log.d("Question " + Integer.toString(questionId), " - Answer : 2");
+            answers[questionId]= "2";
+        } else if (v.getId() == R.id.btnPreTestThree) {
+            answers[questionId]= "3";
+            Log.d("Question " + Integer.toString(questionId), " - Answer : 3");
+        } else if (v.getId() == R.id.btnPreTestFour) {
+            answers[questionId]= "4";
+            Log.d("Question " + Integer.toString(questionId), " - Answer : 4");
+        }
+        questionId++;
+        if(questionId<numOfQuestions){
+            tvPreTestActualQuestion.setText(questions[questionId]);
+            tvPreTestQuestionTitle.setText("Question " + Integer.toString(questionId+1) + "/10");
+        }else {
+            Toast toast = Toast.makeText(this, R.string.strPreTestThankYou, 3);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+            // Here be Firebase sender call
+            Intent intent = new Intent(TakeTheTest.this, MainActivity.class);
+            // Bundle b = new Bundle();
+            // b.putInt("answers", answers); //Your score
+            // intent.putExtras(b); //Put your score to your next Intent
+            startActivity(intent);
+            finish();
+        }
+    };
+
 }

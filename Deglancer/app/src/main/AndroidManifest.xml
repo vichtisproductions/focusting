@@ -69,6 +69,14 @@
             </intent-filter>
         </activity>
 
+        <activity android.name=".view.TakeTheTest"
+            android:label="TakeTheTest"
+            android:name=".view.TakeTheTest" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
         <service
             android:name=".services.TrackerService"
             android:enabled="true"

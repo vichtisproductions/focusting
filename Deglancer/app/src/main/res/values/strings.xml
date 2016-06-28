@@ -93,11 +93,11 @@
     <string name="RemainingTimeText">days left to next stage</string>
     <string name="btnTakeThePreTest">Take the pre-test</string>
     <string name="tvPReTestNoticeText">Pre-test will invoke automatically in 1 minute, you can come back any time to complete your questionnaire.</string>
-    <string name="PreTestIntro">Instruction: Below is a list of smartphone-related behaviors or responses people sometimes have following their smartphone using experiences. Please read each item carefully, and select the option that best describes how much the description fits you <b>during the past 3 months</b>.  The number ranges from 1 to 4, the bigger the better fit. Please check only one number for each item and do not skip any items.</string>
+    <string name="PreTestIntro">Below is a list of smartphone-related behaviors or responses people sometimes have following their smartphone using experiences. Please read each item carefully, and select the option that best describes how much the description fits you <b>during the past 3 months</b>.</string>
     <string name="PreTestSubmitAnswers">Save my answers</string>
     <string name="PreTestThanks">Thank your for your responses.</string>
-    <string name="tvPreTestTitleText">Smartphone Addiction Inventory-short form (SPAI-SF)</string>
-    <string name="tvPreTestQuestionText">Pre-test question 1/10</string>
+    <string name="tvPreTestTitleText">Smartphone Addiction Inventory</string>
+    <string name="tvPreTestQuestionText">Pre-test question</string>
     <string name="tvPreTestQuestionNumber">1</string>
     <string name="tvPreTestQuestionNumberOf">of 10</string>
     <string name="tvPreTestActualQuestionText">Although using smartphone has brought negative effects on my interpersonal relationships, the amount of time spent on Internet remains unreduced.</string>
@@ -108,6 +108,7 @@
     <string name="btnPreTestPrevious">Previous question</string>
     <string name="btnPreTestNext">Next question</string>
     <string name="btnSubmitResponseText">Submit responses</string>
+    <string name="strPreTestThankYou">Thank you for the responses</string>
 
     <string-array name="IntroTexts">
         <item name="1">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n\nNow collecting data in the background.</item>
