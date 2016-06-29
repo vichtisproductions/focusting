@@ -1,6 +1,7 @@
 package org.coderswithoutborders.deglancer.interactor;
 
 import org.coderswithoutborders.deglancer.model.Averages;
+import org.coderswithoutborders.deglancer.model.Results;
 import org.coderswithoutborders.deglancer.model.ScreenAction;
 import org.coderswithoutborders.deglancer.model.Target;
 
@@ -53,6 +54,7 @@ public interface IDatabaseInteractor {
     void commitScreenAction(ScreenAction action);
 
     void commitTarget(Target target);
+    void commitPreTestResults(Results results);
     Target getTargetForStage(int stage);
 
 

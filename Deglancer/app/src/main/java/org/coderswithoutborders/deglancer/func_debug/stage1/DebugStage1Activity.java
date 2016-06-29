@@ -14,7 +14,7 @@ import org.coderswithoutborders.deglancer.func_debug.stage2.DebugStage2Activity;
 import org.coderswithoutborders.deglancer.func_debug.view.StageSelectView;
 import org.coderswithoutborders.deglancer.func_debug.view.StatsView;
 import org.coderswithoutborders.deglancer.model.Stage;
-import org.coderswithoutborders.deglancer.view.TakeTheTest;
+import org.coderswithoutborders.deglancer.pretest.PreTestActivity;
 
 import android.view.View.OnClickListener;
 
@@ -114,7 +114,7 @@ public class DebugStage1Activity extends AppCompatActivity implements IDebugStag
             @Override
             public void onClick(View arg0) {
 
-                Intent intent = new Intent(context, TakeTheTest.class);
+                Intent intent = new Intent(context, PreTestActivity.class);
                 startActivity(intent);
 
             }

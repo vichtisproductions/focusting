@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import org.coderswithoutborders.deglancer.model.Averages;
+import org.coderswithoutborders.deglancer.model.Results;
 import org.coderswithoutborders.deglancer.model.ScreenAction;
 import org.coderswithoutborders.deglancer.model.Target;
 
@@ -347,6 +348,18 @@ public class DatabaseInteractor implements IDatabaseInteractor {
                 .findAll().clear();
 
         mRealm.copyToRealm(target);
+
+        mRealm.commitTransaction();
+    }
+
+    @Override
+    public void commitPreTestResults(Results results) {
+        mRealm.beginTransaction();
+
+        mRealm.where(Results.class)
+                .findAll().clear();
+
+        mRealm.copyToRealm(results);
 
         mRealm.commitTransaction();
     }
