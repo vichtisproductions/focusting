@@ -1,6 +1,5 @@
 package org.coderswithoutborders.deglancer.pretest;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,10 +11,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.R;
-import org.coderswithoutborders.deglancer.pretest.PreTestActivity;
-import org.coderswithoutborders.deglancer.interactor.IPreTestInteractor;
 import org.coderswithoutborders.deglancer.view.MainActivity;
+import org.coderswithoutborders.deglancer.pretest.IPreTestPresenter;
+import org.coderswithoutborders.deglancer.model.Results;
 
 import javax.inject.Inject;
 
@@ -26,7 +26,7 @@ import javax.inject.Inject;
 public class PreTestActivity extends AppCompatActivity implements IPreTestView {
 
     @Inject
-    IPreTestPresenter mPresenter;
+    IPreTestPresenter mPreTestPresenter;
 
     TextView tvPreTestActualQuestion, tvPreTestQuestionTitle;
     Button btnAnswer1, btnAnswer2, btnAnswer3, btnAnswer4;
@@ -47,9 +47,11 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.pretest);
+
+        // MainApplication.from(getApplicationContext()).getGraph().inject(this);
 
         questions = getResources().getStringArray(R.array.PreTestQuestions);
         questionsText = getResources().getString(R.string.tvPreTestQuestionText);
@@ -91,17 +93,20 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
             Log.d(TAG, "Question " + Integer.toString(questionId+1) + " - Answer : 4");
         }
         questionId++;
-        int ans = 0;
         if (questionId < numOfQuestions) {
             moveToQuestion(questionId);
         } else {
-            showToast();
+            int ans = 0;
             for (ans = 0; ans < answers.length; ans++) {
                 String message = "Question was " + Integer.toString(ans+1) + " - answer was: " + answers[ans];
                 Log.d(TAG, message);
             }
-            Log.d(TAG, "Uploading results now");
-            mPresenter.submitPreTestResults(answers[0], answers[1], answers[2], answers[3], answers[4], answers[5], answers[6], answers[7], answers[8], answers[9]);
+            Log.d(TAG, "Uploading results now - before mPreTestPresenter.submitPreTestResults");
+            if (mPreTestPresenter == null) {
+                Log.d(TAG, "Warning: mPreTestPresenter is null");
+            }
+            mPreTestPresenter.submitPreTestResults(answers[0], answers[1], answers[2], answers[3], answers[4], answers[5], answers[6], answers[7], answers[8], answers[9]);
+            showToast();
             finish();
         }
     };
@@ -134,9 +139,9 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
     protected void onAttachedToWindow() {
         // super.onAttachedToWindow();
 
-        if (mPresenter != null) {
-            // mPresenter.setView(this);
-            mPresenter.onAttached();
+        if (mPreTestPresenter != null) {
+            // mPreTestPresenter.setView(this);
+            mPreTestPresenter.onAttached();
         }
     }
 
@@ -144,9 +149,9 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
     protected void onDetachedFromWindow() {
         // super.onDetachedFromWindow();
 
-        if (mPresenter != null) {
-            mPresenter.onDetached();
-            // mPresenter.clearView();
+        if (mPreTestPresenter != null) {
+            mPreTestPresenter.onDetached();
+            // mPreTestPresenter.clearView();
         }
     }
     */

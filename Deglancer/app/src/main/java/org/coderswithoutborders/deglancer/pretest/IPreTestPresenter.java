@@ -1,6 +1,7 @@
 package org.coderswithoutborders.deglancer.pretest;
 
 import org.coderswithoutborders.deglancer.pretest.IPreTestView;
+import org.coderswithoutborders.deglancer.model.Results;
 
 /**
  * Created by Renier on 2016/05/06.
