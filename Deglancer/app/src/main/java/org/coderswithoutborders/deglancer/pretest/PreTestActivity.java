@@ -51,7 +51,7 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
 
         setContentView(R.layout.pretest);
 
-        // MainApplication.from(getApplicationContext()).getGraph().inject(this);
+        MainApplication.from(getApplicationContext()).getGraph().inject(this);
 
         questions = getResources().getStringArray(R.array.PreTestQuestions);
         questionsText = getResources().getString(R.string.tvPreTestQuestionText);
