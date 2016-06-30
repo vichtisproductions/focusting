@@ -2,11 +2,7 @@ package org.coderswithoutborders.deglancer.pretest;
 
 import org.coderswithoutborders.deglancer.bus.RxBus;
 import org.coderswithoutborders.deglancer.interactor.IPreTestInteractor;
-import org.coderswithoutborders.deglancer.interactor.IStageInteractor;
-import org.coderswithoutborders.deglancer.model.Results;
 
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 import android.util.Log;
@@ -45,14 +41,13 @@ public class PreTestPresenter implements IPreTestPresenter {
     }
 
     // @Override
-    public void submitPreTestResults(String answer1, String answer2, String answer3, String answer4, String answer5, String answer6, String answer7, String answer8, String answer9, String answer10) {
+    public void submitPreTestResults(int answerone, int answertwo, int answerthree, int answerfour, int answerfive, int answersix, int answerseven, int answereight, int answernine, int answerten) {
         Log.d(TAG, "Uploading results now - before uploadPreTestResults");
-        mPreTestInteractor.uploadPreTestResults(answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10);
+        mPreTestInteractor.uploadPreTestResults(answerone, answertwo, answerthree, answerfour, answerfive, answersix, answerseven, answereight, answernine, answerten);
 
         //        .subscribeOn(AndroidSchedulers.mainThread())
         //        .observeOn(AndroidSchedulers.mainThread())
         //        .subscribe();
-        // mPreTestInteractor.uploadPreTestResults(answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10);
 
         if (mView != null) {
             mView.moveToMainView();

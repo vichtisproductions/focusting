@@ -14,8 +14,6 @@ import android.widget.Toast;
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.R;
 import org.coderswithoutborders.deglancer.view.MainActivity;
-import org.coderswithoutborders.deglancer.pretest.IPreTestPresenter;
-import org.coderswithoutborders.deglancer.model.Results;
 
 import javax.inject.Inject;
 
@@ -42,7 +40,7 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
     int questionId = 0;
     int numOfQuestions = 10;
     String[] questions = new String[10];
-    String[] answers = new String[10];
+    int[] answers = new int[10];
     String questionsText;
 
     @Override
@@ -81,15 +79,15 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
     View.OnClickListener buttonClickListener = v -> {
         if (v.getId() == R.id.btnPreTestOne) {
             Log.d(TAG, "Question " + Integer.toString(questionId+1) + " - Answer : 1");
-            answers[questionId] = "1";
+            answers[questionId] = 1;
         } else if (v.getId() == R.id.btnPreTestTwo) {
             Log.d(TAG, "Question " + Integer.toString(questionId+1) + " - Answer : 2");
-            answers[questionId] = "2";
+            answers[questionId] = 2;
         } else if (v.getId() == R.id.btnPreTestThree) {
-            answers[questionId] = "3";
+            answers[questionId] = 3;
             Log.d(TAG, "Question " + Integer.toString(questionId+1) + " - Answer : 3");
         } else if (v.getId() == R.id.btnPreTestFour) {
-            answers[questionId] = "4";
+            answers[questionId] = 4;
             Log.d(TAG, "Question " + Integer.toString(questionId+1) + " - Answer : 4");
         }
         questionId++;
@@ -98,7 +96,7 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
         } else {
             int ans = 0;
             for (ans = 0; ans < answers.length; ans++) {
-                String message = "Question was " + Integer.toString(ans+1) + " - answer was: " + answers[ans];
+                String message = "Question was " + Integer.toString(ans+1) + " - answer was: " + Integer.toString(answers[ans]);
                 Log.d(TAG, message);
             }
             Log.d(TAG, "Uploading results now - before mPreTestPresenter.submitPreTestResults");
