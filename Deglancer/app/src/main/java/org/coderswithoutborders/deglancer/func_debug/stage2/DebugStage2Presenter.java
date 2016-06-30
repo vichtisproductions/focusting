@@ -15,7 +15,6 @@ public class DebugStage2Presenter implements IDebugStage2Presenter {
 
     private Stage mCurrentStage;
 
-
     public DebugStage2Presenter(IStageInteractor stageInteractor) {
         this.mStageInteractor = stageInteractor;
     }

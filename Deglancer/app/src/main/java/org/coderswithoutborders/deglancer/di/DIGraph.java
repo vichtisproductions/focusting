@@ -8,6 +8,7 @@ import org.coderswithoutborders.deglancer.func_debug.stage4.DebugStage4Activity;
 import org.coderswithoutborders.deglancer.func_debug.stage5.DebugStage5Activity;
 import org.coderswithoutborders.deglancer.func_debug.view.StageSelectView;
 import org.coderswithoutborders.deglancer.func_debug.view.TargetSetView;
+import org.coderswithoutborders.deglancer.pretest.PreTestActivity;
 import org.coderswithoutborders.deglancer.receivers.ScreenActionReceiver;
 import org.coderswithoutborders.deglancer.services.TrackerService;
 import org.coderswithoutborders.deglancer.func_debug.view.AveragesSetView;
@@ -36,6 +37,7 @@ public interface DIGraph {
     void inject(AveragesSetView view);
     void inject(StageSelectView view);
     void inject(TargetSetView view);
+    void inject(PreTestActivity view);
 
     final class Initializer {
         public static DIGraph init(MainApplication application) {

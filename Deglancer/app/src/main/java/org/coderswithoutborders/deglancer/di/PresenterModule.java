@@ -17,6 +17,7 @@ import org.coderswithoutborders.deglancer.func_debug.stage5.DebugStage5Presenter
 import org.coderswithoutborders.deglancer.func_debug.stage5.IDebugStage5Presenter;
 import org.coderswithoutborders.deglancer.interactor.IDatabaseInteractor;
 import org.coderswithoutborders.deglancer.interactor.IInitialStartupInteractor;
+import org.coderswithoutborders.deglancer.interactor.IPreTestInteractor;
 import org.coderswithoutborders.deglancer.interactor.IStageInteractor;
 import org.coderswithoutborders.deglancer.func_debug.presenter.AveragesSetViewPresenter;
 import org.coderswithoutborders.deglancer.func_debug.presenter.IAveragesSetViewPresenter;
@@ -25,6 +26,8 @@ import org.coderswithoutborders.deglancer.presenter.IMainActivityPresenter;
 import org.coderswithoutborders.deglancer.func_debug.presenter.IStatsViewPresenter;
 import org.coderswithoutborders.deglancer.presenter.MainActivityPresenter;
 import org.coderswithoutborders.deglancer.func_debug.presenter.StatsViewPresenter;
+import org.coderswithoutborders.deglancer.pretest.IPreTestPresenter;
+import org.coderswithoutborders.deglancer.pretest.PreTestPresenter;
 
 import javax.inject.Singleton;
 
@@ -92,6 +95,11 @@ public class PresenterModule {
     @Provides
     public ITargetSetViewPresenter providesTargetSetViewPresenter(ITargetInteractor targetInteractor, RxBus bus) {
         return new TargetSetViewPresenter(targetInteractor, bus);
+    }
+
+    @Provides
+    public IPreTestPresenter providesPreTestPresenter(IPreTestInteractor preTestInteractor, RxBus bus) {
+        return new PreTestPresenter(preTestInteractor, bus);
     }
 
 }

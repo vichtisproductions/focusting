@@ -10,6 +10,7 @@ import rx.schedulers.Schedulers;
  * Created by Renier on 2016/05/06.
  */
 public class DebugStage1Presenter implements IDebugStage1Presenter {
+
     private IDebugStage1View mView;
     private IStageInteractor mStageInteractor;
 

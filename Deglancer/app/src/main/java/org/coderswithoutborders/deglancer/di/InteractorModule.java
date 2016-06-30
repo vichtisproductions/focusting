@@ -8,11 +8,13 @@ import org.coderswithoutborders.deglancer.bus.RxBus;
 import org.coderswithoutborders.deglancer.interactor.DatabaseInteractor;
 import org.coderswithoutborders.deglancer.interactor.IDatabaseInteractor;
 import org.coderswithoutborders.deglancer.interactor.IInitialStartupInteractor;
+import org.coderswithoutborders.deglancer.interactor.IPreTestInteractor;
 import org.coderswithoutborders.deglancer.interactor.IScreenActionInteractor;
 import org.coderswithoutborders.deglancer.interactor.IStageInteractor;
 import org.coderswithoutborders.deglancer.interactor.ITargetInteractor;
 import org.coderswithoutborders.deglancer.interactor.IUserInteractor;
 import org.coderswithoutborders.deglancer.interactor.InitialStartupInteractor;
+import org.coderswithoutborders.deglancer.interactor.PreTestInteractor;
 import org.coderswithoutborders.deglancer.interactor.ScreenActionInteractor;
 import org.coderswithoutborders.deglancer.interactor.StageInteractor;
 import org.coderswithoutborders.deglancer.interactor.TargetInteractor;
@@ -45,6 +47,12 @@ public class InteractorModule {
     @Provides
     IStageInteractor provideStageInteractor(Context context, RxBus bus, IInitialStartupInteractor initialStartupInteractor, Stage1Handler stage1Handler, Stage2Handler stage2Handler, Stage3Handler stage3Handler, Stage4Handler stage4Handler, Stage5Handler stage5Handler) {
         return new StageInteractor(context, bus, initialStartupInteractor, stage1Handler, stage2Handler, stage3Handler, stage4Handler, stage5Handler);
+    }
+
+    @Singleton
+    @Provides
+    IPreTestInteractor providePreTestInteractor(Context context, IDatabaseInteractor mDatabaseInteractor, RxBus mBus, Firebase firebaseClient, IUserInteractor userInteractor) {
+        return new PreTestInteractor(context, mDatabaseInteractor, mBus, firebaseClient, userInteractor);
     }
 
     @Singleton
