@@ -37,6 +37,8 @@ public class PreTestInteractor implements IPreTestInteractor {
     public void uploadPreTestResults(int answerone, int answertwo, int answerthree, int answerfour, int answerfive, int answersix, int answerseven, int answereight, int answernine, int answerten) {
 
         PreTestResults r = new PreTestResults(UUID.randomUUID().toString(), answerone, answertwo, answerthree, answerfour, answerfive, answersix, answerseven, answereight, answernine, answerten);
+        int FirstAns = r.getAns1();
+        Log.d(TAG, "First answer:" + Integer.toString(FirstAns));
         mDatabaseInteractor.commitPreTestResults(r);
         Firebase ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("PreTestResults");
         ref.push().setValue(r);

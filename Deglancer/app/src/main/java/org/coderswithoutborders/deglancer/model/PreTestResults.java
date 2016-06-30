@@ -43,4 +43,54 @@ public class PreTestResults extends RealmObject {
         return mId;
     }
 
+    public int getAns1() {
+        return answerone;
+    }
+    public int getAns2() {
+        return answertwo;
+    }
+    public int getAns3() {
+        return answerthree;
+    }
+    public int getAns4() {
+        return answerfour;
+    }
+    public int getAns5() {
+        return answerfive;
+    }
+    public int getAns6() {
+        return answersix;
+    }
+    public int getAns7() {
+        return answerseven;
+    }
+    public int getAns8() {
+        return answereight;
+    }
+    public int getAns9() {
+        return answernine;
+    }
+    public int getAns10() {
+        return answerten;
+    }
+
+    public void setAns1(int ans) { this.answerone = ans; }
+    public void setAns2(int ans) {
+        this.answertwo = ans;
+    }
+    public void setAns3(int ans) {
+        this.answerthree = ans;
+    }
+    public void setAns4(int ans) {
+        this.answerfour = ans;
+    }
+    public void setAns5(int ans) { this.answerfive = ans; }
+    public void setAns6(int ans) {
+        this.answersix = ans;
+    }
+    public void setAns7(int ans) { this.answerseven = ans; }
+    public void setAns8(int ans) { this.answereight = ans; }
+    public void setAns9(int ans) { this.answernine = ans; }
+    public void setAns10(int ans) { this.answerten = ans; }
+
 }
