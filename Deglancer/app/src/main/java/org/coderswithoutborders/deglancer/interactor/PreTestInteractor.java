@@ -1,6 +1,7 @@
 package org.coderswithoutborders.deglancer.interactor;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.firebase.client.Firebase;
 
@@ -15,6 +16,7 @@ import rx.Observable;
  * Created by Lapa on 2016/06/29.
  */
 public class PreTestInteractor implements IPreTestInteractor {
+    private static final String TAG = "PreTestInteractor";
     private Context mContext;
     private RxBus mBus;
     private IDatabaseInteractor mDatabaseInteractor;
@@ -45,10 +47,25 @@ public class PreTestInteractor implements IPreTestInteractor {
             String preTestQ8,
             String preTestQ9,
             String preTestQ10) {
-        Results r = new Results(UUID.randomUUID().toString(), preTestQ1, preTestQ2, preTestQ3, preTestQ4, preTestQ5, preTestQ6, preTestQ7, preTestQ8, preTestQ9, preTestQ10);
+
+        String uploadUUID = UUID.randomUUID().toString();
+
+        Results r = new Results(
+                uploadUUID,
+                preTestQ1,
+                preTestQ2,
+                preTestQ3,
+                preTestQ4,
+                preTestQ5,
+                preTestQ6,
+                preTestQ7,
+                preTestQ8,
+                preTestQ9,
+                preTestQ10);
 
         mDatabaseInteractor.commitPreTestResults(r);
-
+        Log.d(TAG, "Here is the data to be uploaded.");
+        Log.d(TAG, uploadUUID + " " + preTestQ1 + " " + preTestQ2 + " " + preTestQ3 + " " + preTestQ4 + " " + preTestQ5 + " " + preTestQ6 + " " + preTestQ7 + " " + preTestQ8 + " " + preTestQ9 + " " + preTestQ10);
         Firebase ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("Results");
         ref.push().setValue(r);
     }

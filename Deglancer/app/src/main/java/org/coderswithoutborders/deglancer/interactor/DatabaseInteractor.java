@@ -355,12 +355,7 @@ public class DatabaseInteractor implements IDatabaseInteractor {
     @Override
     public void commitPreTestResults(Results results) {
         mRealm.beginTransaction();
-
-        mRealm.where(Results.class)
-                .findAll().clear();
-
         mRealm.copyToRealm(results);
-
         mRealm.commitTransaction();
     }
 

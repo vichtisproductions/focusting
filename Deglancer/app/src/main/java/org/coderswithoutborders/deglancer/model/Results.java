@@ -10,7 +10,16 @@ public class Results extends RealmObject {
 
     @PrimaryKey
     private String mId;
-    private String preTestQ1, preTestQ2, preTestQ3, preTestQ4, preTestQ5, preTestQ6, preTestQ7, preTestQ8, preTestQ9, preTestQ10;
+    private String preTestQ1;
+    private String preTestQ2;
+    private String preTestQ3;
+    private String preTestQ4;
+    private String preTestQ5;
+    private String preTestQ6;
+    private String preTestQ7;
+    private String preTestQ8;
+    private String preTestQ9;
+    private String preTestQ10;
 
     public Results() {
 
