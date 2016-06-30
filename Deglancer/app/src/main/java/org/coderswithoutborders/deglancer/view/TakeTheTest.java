@@ -44,14 +44,14 @@ public class TakeTheTest extends Activity {
         setContentView(R.layout.pretest);
 
         questions = getResources().getStringArray(R.array.PreTestQuestions);
-        questionsText = getResources().getStringArray(R.string.tvPreTestQuestionText);
+        questionsText = getResources().getString(R.string.tvPreTestQuestionText);
         numOfQuestions = questions.length;
 
         tvPreTestActualQuestion = (TextView)findViewById(R.id.tvPreTestActualQuestion);
         tvPreTestActualQuestion.setText(questions[questionId]);
 
         tvPreTestQuestionTitle = (TextView)findViewById(R.id.tvPreTestQuestion);
-        String questionTextFull = questionsText + " " + Integer.toString(questionId+1) + "/10");
+        String questionTextFull = questionsText + " " + Integer.toString(questionId+1) + "/10";
         tvPreTestQuestionTitle.setText(questionTextFull);
 
         btnAnswer1 = (Button) findViewById(R.id.btnPreTestOne);
