@@ -84,7 +84,7 @@ public class DebugStage4Activity extends AppCompatActivity implements IDebugStag
         NotificationCompat.Builder notifyObj =
                 new NotificationCompat.Builder(this)
                                 .setSmallIcon(R.mipmap.ic_launcher)
-                                .setContentTitle("Select your goal")
+                                .setContentTitle("Deglancer")
                                 .setContentIntent(resultPendingIntent)
                                 .setAutoCancel(true)
                                 .setContentText("Select your goal for this week");
