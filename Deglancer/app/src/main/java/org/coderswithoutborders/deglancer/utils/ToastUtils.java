@@ -40,7 +40,7 @@ public class ToastUtils {
 
         // Create custom toast and display it
         Toast toast = new Toast(mContext);
-        toast.setGravity(Gravity.BOTTOM, 0, 0);
+        toast.setGravity(Gravity.BOTTOM, 0, 30);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(layout);
         toast.show();
@@ -110,7 +110,7 @@ public class ToastUtils {
 
         // Create custom toast and display it
         Toast toast = new Toast(mContext);
-        toast.setGravity(Gravity.BOTTOM, 0, 0);
+        toast.setGravity(Gravity.BOTTOM, 0, 30);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(layout);
         toast.show();
@@ -184,7 +184,7 @@ public class ToastUtils {
 
         // Create custom toast and display it
         Toast toast = new Toast(mContext);
-        toast.setGravity(Gravity.BOTTOM, 0, 0);
+        toast.setGravity(Gravity.BOTTOM, 0, 30);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(layout);
         toast.show();
@@ -214,7 +214,7 @@ public class ToastUtils {
 
         // Create custom toast and display it
         Toast toast = new Toast(mContext);
-        toast.setGravity(Gravity.BOTTOM, 0, 0);
+        toast.setGravity(Gravity.BOTTOM, 0, 30);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(layout);
         toast.show();

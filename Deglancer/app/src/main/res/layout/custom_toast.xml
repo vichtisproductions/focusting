@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/rounded_corner"
     android:columnCount="4"
+    android:layout_margin="@dimen/toast_layout_margin"
     android:padding="@dimen/toast_layout_margin">
 
     <ImageView
@@ -20,14 +21,16 @@
         style="@style/ToastFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/toast_last_sleep_label" />
+        android:text="@string/toast_last_sleep_label"
+        android:textSize="@dimen/toastFontSize" />
 
     <TextView
         android:id="@+id/text_last_sleep_time"
         style="@style/ToastValues"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00:00" />
+        android:text="00:00"
+        android:textSize="@dimen/toastFontSize" />
 
     <Space />
 
@@ -44,14 +47,16 @@
         style="@style/ToastFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/toast_unlocks_today_label" />
+        android:text="@string/toast_unlocks_today_label"
+        android:textSize="@dimen/toastFontSize" />
 
     <TextView
         android:id="@+id/text_unlock_count"
         style="@style/ToastValues"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00" />
+        android:text="00"
+        android:textSize="@dimen/toastFontSize" />
 
     <Space />
 
@@ -68,13 +73,15 @@
         style="@style/ToastFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/toast_screen_on_today_label" />
+        android:text="@string/toast_screen_on_today_label"
+        android:textSize="@dimen/toastFontSize" />
 
     <TextView
         android:id="@+id/text_screen_on_time"
         style="@style/ToastValues"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00:00" />
+        android:text="00:00"
+        android:textSize="@dimen/toastFontSize" />
     <Space />
 </GridLayout>
