@@ -64,16 +64,30 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
     }
 
     private void setPreTestVisibility() {
+
+        int stage = mPresenter.whatStage();
+        int target = mPresenter.whatTarget();
+        String targetText = "";
+        String targetSelected ="";
+
         if (mPresenter.isPreTestRun()) {
             findViewById(R.id.btnPreTest).setVisibility(View.GONE);
         } else {
             findViewById(R.id.btnPreTest).setVisibility(View.VISIBLE);
         }
-        if ((mPresenter.whatStage()==4) && (mPresenter.whatTarget() == -1)) {
-            findViewById(R.id.targetSetView).setVisibility(View.VISIBLE);
 
+        if (stage != 4) {
+            findViewById(R.id.targetSetView).setVisibility(View.GONE);
+            findViewById(R.id.tvTargetSelected).setVisibility(View.GONE);
+        } else if ((stage==4) && (target == -1)) {
+            findViewById(R.id.targetSetView).setVisibility(View.VISIBLE);
+            findViewById(R.id.tvTargetSelected).setVisibility(View.GONE);
         } else {
             findViewById(R.id.targetSetView).setVisibility(View.GONE);
+            findViewById(R.id.tvTargetSelected).setVisibility(View.VISIBLE);
+            targetText = getResources().getString(R.string.tvTargetSelectedText);
+            targetSelected = targetText + Integer.toString(target) + "%";
+            ((TextView)findViewById(R.id.tvTargetSelected)).setText(targetSelected);
         }
     }
 

@@ -72,11 +72,22 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="16dp" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/tvTargetSelectedText"
+                android:layout_below="@+id/targetSetView"
+                android:id="@+id/tvTargetSelected"
+                android:layout_alignBottom="@+id/targetSetView"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone" />
+
             <Button
                 android:id="@+id/btnDebug"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/targetSetView"
+                android:layout_below="@+id/tvTargetSelected"
                 android:layout_centerHorizontal="true"
                 android:text="DEBUG" />
 

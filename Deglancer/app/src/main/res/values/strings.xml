@@ -109,6 +109,7 @@
     <string name="btnPreTestNext">Next question</string>
     <string name="btnSubmitResponseText">Submit responses</string>
     <string name="strPreTestThankYou">Thank you for the responses</string>
+    <string name="tvTargetSelectedText">Target set at -</string>
 
     <string-array name="IntroTexts">
         <item name="1">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n\nNow collecting data in the background.</item>
