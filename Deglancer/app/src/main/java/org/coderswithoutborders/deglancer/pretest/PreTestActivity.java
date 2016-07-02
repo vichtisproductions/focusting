@@ -78,20 +78,22 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
     }
 
     View.OnClickListener buttonClickListener = v -> {
-        if (v.getId() == R.id.btnPreTestOne) {
-            Log.d(TAG, "Question " + Integer.toString(questionId+1) + " - Answer : 1");
-            answers[questionId] = 1;
-        } else if (v.getId() == R.id.btnPreTestTwo) {
-            Log.d(TAG, "Question " + Integer.toString(questionId+1) + " - Answer : 2");
-            answers[questionId] = 2;
-        } else if (v.getId() == R.id.btnPreTestThree) {
-            answers[questionId] = 3;
-            Log.d(TAG, "Question " + Integer.toString(questionId+1) + " - Answer : 3");
-        } else if (v.getId() == R.id.btnPreTestFour) {
-            answers[questionId] = 4;
-            Log.d(TAG, "Question " + Integer.toString(questionId+1) + " - Answer : 4");
+        if (questionId<10) {
+            if (v.getId() == R.id.btnPreTestOne) {
+                Log.d(TAG, "Question " + Integer.toString(questionId + 1) + " - Answer : 1");
+                answers[questionId] = 1;
+            } else if (v.getId() == R.id.btnPreTestTwo) {
+                Log.d(TAG, "Question " + Integer.toString(questionId + 1) + " - Answer : 2");
+                answers[questionId] = 2;
+            } else if (v.getId() == R.id.btnPreTestThree) {
+                answers[questionId] = 3;
+                Log.d(TAG, "Question " + Integer.toString(questionId + 1) + " - Answer : 3");
+            } else if (v.getId() == R.id.btnPreTestFour) {
+                answers[questionId] = 4;
+                Log.d(TAG, "Question " + Integer.toString(questionId + 1) + " - Answer : 4");
+            }
+            questionId++;
         }
-        questionId++;
         if (questionId < numOfQuestions) {
             moveToQuestion(questionId);
         } else {
