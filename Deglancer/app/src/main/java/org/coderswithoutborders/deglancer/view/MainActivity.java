@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.MenuPresenter;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,6 +20,8 @@ import org.coderswithoutborders.deglancer.func_debug.stage2.DebugStage2Activity;
 import org.coderswithoutborders.deglancer.func_debug.stage3.DebugStage3Activity;
 import org.coderswithoutborders.deglancer.func_debug.stage4.DebugStage4Activity;
 import org.coderswithoutborders.deglancer.func_debug.stage5.DebugStage5Activity;
+import org.coderswithoutborders.deglancer.func_debug.view.ITargetSetView;
+import org.coderswithoutborders.deglancer.func_debug.view.TargetSetView;
 import org.coderswithoutborders.deglancer.model.Stage;
 import org.coderswithoutborders.deglancer.presenter.IMainActivityPresenter;
 import org.coderswithoutborders.deglancer.R;
@@ -35,8 +38,9 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
     @Inject
     IMainActivityPresenter mPresenter;
 
-    private Button button;
+    private TargetSetView mTargetSetView;
 
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +56,24 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         findViewById(R.id.TextResInfoSheet).setOnClickListener(v -> showRIS());
 
         findViewById(R.id.btnPreTest).setOnClickListener(v -> showPreTest());
+
+        mTargetSetView = (TargetSetView) findViewById(R.id.targetSetView);
+
+        setPreTestVisibility();
+
+    }
+
+    private void setPreTestVisibility() {
         if (mPresenter.isPreTestRun()) {
             findViewById(R.id.btnPreTest).setVisibility(View.GONE);
         } else {
             findViewById(R.id.btnPreTest).setVisibility(View.VISIBLE);
+        }
+        if ((mPresenter.whatStage()==4) && (mPresenter.whatTarget() == -1)) {
+            findViewById(R.id.targetSetView).setVisibility(View.VISIBLE);
+
+        } else {
+            findViewById(R.id.targetSetView).setVisibility(View.GONE);
         }
     }
 
@@ -65,11 +83,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
         mPresenter.setView(this);
         mPresenter.init();
-        if (mPresenter.isPreTestRun()) {
-            findViewById(R.id.btnPreTest).setVisibility(View.GONE);
-        } else {
-            findViewById(R.id.btnPreTest).setVisibility(View.VISIBLE);
-        }
+        setPreTestVisibility();
 
     }
 
@@ -78,11 +92,8 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         super.onRestart();
         finish();
         startActivity(getIntent());
-        if (mPresenter.isPreTestRun()) {
-            findViewById(R.id.btnPreTest).setVisibility(View.GONE);
-        } else {
-            findViewById(R.id.btnPreTest).setVisibility(View.VISIBLE);
-        }
+        setPreTestVisibility();
+
     }
 
     @Override

@@ -353,6 +353,16 @@ public class DatabaseInteractor implements IDatabaseInteractor {
     }
 
     @Override
+    public void clearTarget() {
+        mRealm.beginTransaction();
+
+        mRealm.where(Target.class)
+                .findAll().clear();
+
+        mRealm.commitTransaction();
+    }
+
+    @Override
     public void commitPreTestResults(PreTestResults preTestResults) {
         mRealm.beginTransaction();
         mRealm.where(PreTestResults.class)

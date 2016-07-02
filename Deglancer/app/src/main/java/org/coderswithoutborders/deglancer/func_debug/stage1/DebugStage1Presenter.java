@@ -67,7 +67,8 @@ public class DebugStage1Presenter implements IDebugStage1Presenter {
     }
 
     public void clearTestResults() {
-        Log.d(TAG, "Clearing Pre-test results");
+        Log.d(TAG, "Clear Pre-tests and targets");
         mDatabaseInteractor.clearPreTestResults();
+        mDatabaseInteractor.clearTarget();
     }
 }

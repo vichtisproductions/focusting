@@ -12,4 +12,6 @@ public interface IMainActivityPresenter {
     void init();
     void debugClicked();
     boolean isPreTestRun();
+    int whatStage();
+    int whatTarget();
 }

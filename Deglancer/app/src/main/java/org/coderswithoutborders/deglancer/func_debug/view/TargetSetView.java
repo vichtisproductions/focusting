@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +31,8 @@ public class TargetSetView extends FrameLayout implements ITargetSetView {
     private RadioButton rdb5;
     private RadioButton rdb10;
     private RadioButton rdb15;
+
+    private static final String TAG = "TargetSetView";
 
     public TargetSetView(Context context) {
         super(context);
@@ -86,6 +89,7 @@ public class TargetSetView extends FrameLayout implements ITargetSetView {
                 target = 15;
             }
 
+            Log.d(TAG, "Setting target for " + Integer.toString(target));
             mPresenter.setTargetTapped(target);
         }
     };

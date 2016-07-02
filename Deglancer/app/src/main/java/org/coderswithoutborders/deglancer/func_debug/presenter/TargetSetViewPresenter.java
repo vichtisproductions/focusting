@@ -91,6 +91,7 @@ public class TargetSetViewPresenter implements ITargetSetViewPresenter {
 
     @Override
     public void setTargetTapped(int target) {
-        mTargetInteractor.setTargetForStage(mCurrentStage.getStage(), target);
+        // mTargetInteractor.setTargetForStage(mCurrentStage.getStage(), target);
+        mTargetInteractor.setTargetForStage(4, target);
     }
 }

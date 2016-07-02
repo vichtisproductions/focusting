@@ -2,9 +2,13 @@ package org.coderswithoutborders.deglancer.presenter;
 
 import org.coderswithoutborders.deglancer.bus.RxBus;
 import org.coderswithoutborders.deglancer.bus.events.DebugStageEvent;
+import org.coderswithoutborders.deglancer.func_debug.view.ITargetSetView;
+import org.coderswithoutborders.deglancer.func_debug.view.TargetSetView;
 import org.coderswithoutborders.deglancer.interactor.IDatabaseInteractor;
 import org.coderswithoutborders.deglancer.interactor.IInitialStartupInteractor;
 import org.coderswithoutborders.deglancer.interactor.IStageInteractor;
+import org.coderswithoutborders.deglancer.model.Stage;
+import org.coderswithoutborders.deglancer.model.Target;
 import org.coderswithoutborders.deglancer.view.IMainActivityView;
 
 import rx.android.schedulers.AndroidSchedulers;
@@ -79,8 +83,43 @@ public class MainActivityPresenter implements IMainActivityPresenter {
 
     @Override
     public boolean isPreTestRun() {
-        if (mDatabaseInteractor.isPreTestRun()) { return true; }
-        else { return false; }
+        if (mDatabaseInteractor.isPreTestRun()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int whatStage() {
+
+        Stage stage = mStageInteractor.getCurrentStageSynchronous();
+
+        switch (stage.getStage()) {
+            case 1:
+                return 1;
+            case 2:
+                return 2;
+            case 3:
+                return 3;
+            case 4:
+                return 4;
+            case 5:
+                return 5;
+        }
+
+        return 0;
+
+    }
+
+    @Override
+    public int whatTarget() {
+        Target myTarget = mDatabaseInteractor.getTargetForStage(4);
+        if (myTarget == null) {
+            return -1;
+        } else {
+            return myTarget.getTarget();
+        }
     }
 
     @Override
