@@ -1,14 +1,22 @@
 package org.coderswithoutborders.deglancer.stagehandlers;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
+import org.coderswithoutborders.deglancer.R;
 import org.coderswithoutborders.deglancer.interactor.IDatabaseInteractor;
 import org.coderswithoutborders.deglancer.interactor.ITargetInteractor;
 import org.coderswithoutborders.deglancer.model.ScreenAction;
 import org.coderswithoutborders.deglancer.model.Stage;
 import org.coderswithoutborders.deglancer.model.TriState;
+import org.coderswithoutborders.deglancer.utils.TimeUtils;
 import org.coderswithoutborders.deglancer.utils.ToastUtils;
+import org.coderswithoutborders.deglancer.stagehandlers.Keystore;
+import org.coderswithoutborders.deglancer.view.MainActivity;
 
 /**
  * Created by Renier on 2016/04/27.
@@ -17,6 +25,14 @@ public class Stage4Handler implements IStageHandler {
     private Context mContext;
     private IDatabaseInteractor mDatabaseInteractor;
     private ITargetInteractor mTargetInteractor;
+
+    private Keystore store;//Holds our key pairs
+
+    // Notification
+    private NotificationManager notifyMgr = null;
+    private static final int NOTIFY_ME_ID = 31337;
+    private static final String TAG = "Deglancer.Stage4Handler";
+
 
     public Stage4Handler(Context context, IDatabaseInteractor databaseInteractor, ITargetInteractor targetInteractor) {
         mContext = context;
@@ -66,7 +82,7 @@ public class Stage4Handler implements IStageHandler {
             // calculate targets for this stage.
             // Lapa 2016/6/216
             long targetUnlockCount = (long) (unlockCountPreviousStage * (100 - targetPercentage) / 100);
-            long targetSOTTime = (long) (totalSOTTimePreviousStage  * (100 - targetPercentage) / 100);
+            long targetSOTTime = (long) (totalSOTTimePreviousStage * (100 - targetPercentage) / 100);
             long targetSFTTime = (long) (avgSFTTimePreviousStage * (100 + targetPercentage) / 100);
 
             TriState unlockState;
@@ -75,18 +91,18 @@ public class Stage4Handler implements IStageHandler {
 
 
 /**
-            if (unlockCount == unlockCountPreviousStage) {
-                unlockState = new TriState(TriState.State.Same);
-            } else if (unlockCount > unlockCountPreviousStage) {
-                unlockState = new TriState(TriState.State.Worse);
-            } else{
-                if (unlockDiffPercentage >= targetPercentage) {
-                    unlockState = new TriState(TriState.State.Better);
-                } else {
-                    unlockState = new TriState(TriState.State.Same);
-                }
-            }
-*/
+ if (unlockCount == unlockCountPreviousStage) {
+ unlockState = new TriState(TriState.State.Same);
+ } else if (unlockCount > unlockCountPreviousStage) {
+ unlockState = new TriState(TriState.State.Worse);
+ } else{
+ if (unlockDiffPercentage >= targetPercentage) {
+ unlockState = new TriState(TriState.State.Better);
+ } else {
+ unlockState = new TriState(TriState.State.Same);
+ }
+ }
+ */
 
             // Recalculate TriState for unlocks
             // Lapa 2016/6/21
@@ -99,18 +115,18 @@ public class Stage4Handler implements IStageHandler {
             }
 
 /**
-            if (totalSOTTime == totalSOTTimePreviousStage) {
-                sotState = new TriState(TriState.State.Same);
-            } else if (totalSOTTime > totalSOTTimePreviousStage) {
-                sotState = new TriState(TriState.State.Worse);
-            } else {
-                if (sotDiffPercentage >= targetPercentage) {
-                    sotState = new TriState(TriState.State.Better);
-                } else {
-                    sotState = new TriState(TriState.State.Same);
-                }
-            }
-*/
+ if (totalSOTTime == totalSOTTimePreviousStage) {
+ sotState = new TriState(TriState.State.Same);
+ } else if (totalSOTTime > totalSOTTimePreviousStage) {
+ sotState = new TriState(TriState.State.Worse);
+ } else {
+ if (sotDiffPercentage >= targetPercentage) {
+ sotState = new TriState(TriState.State.Better);
+ } else {
+ sotState = new TriState(TriState.State.Same);
+ }
+ }
+ */
 
             // Recalculate TriState for SOT
             // Lapa 2016/6/21
@@ -123,18 +139,18 @@ public class Stage4Handler implements IStageHandler {
             }
 
 /**
-            if (avgSFTTime == avgSFTTimePreviousStage) {
-                sftState = new TriState(TriState.State.Same);
-            } else if (avgSFTTime > avgSFTTimePreviousStage) {
-                if (sftDiffPercentage >= targetPercentage) {
-                    sftState = new TriState(TriState.State.Better);
-                } else {
-                    sftState = new TriState(TriState.State.Same);
-                }
-            } else {
-                sftState = new TriState(TriState.State.Worse);
-            }
-*/
+ if (avgSFTTime == avgSFTTimePreviousStage) {
+ sftState = new TriState(TriState.State.Same);
+ } else if (avgSFTTime > avgSFTTimePreviousStage) {
+ if (sftDiffPercentage >= targetPercentage) {
+ sftState = new TriState(TriState.State.Better);
+ } else {
+ sftState = new TriState(TriState.State.Same);
+ }
+ } else {
+ sftState = new TriState(TriState.State.Worse);
+ }
+ */
 
             // Recalculate TriState for SFT
             // Lapa 2016/6/21
@@ -148,6 +164,60 @@ public class Stage4Handler implements IStageHandler {
 
 
             ToastUtils.showToast(mContext, action.getDuration(), unlockCount, totalSOTTime, unlockState, sotState, sftState, unlockDiffPercentage, sotDiffPercentage, sftDiffPercentage, targetPercentage);
+
+            // Here  be notification if needed
+            goalSelectNotifier();
+
         }
     }
+
+    public void goalSelectNotifier() {
+
+        store = Keystore.getInstance(mContext);//Creates or Gets our key pairs.  You MUST have access to current context!
+
+        // Get target for stage, NULL means no target. That means let's notify
+        // 1. get int (number of notifications done) - if more than 5, do nothing
+        if (mDatabaseInteractor.getTargetForStage(4) == null) {
+            if ((store.getInt("numOfNotifications") < 5) && (TimeUtils.getHowManyHoursAgo(store.getLong("timeLastNotification")) > 4)) {
+                // Log.d(TAG, "Let's notify: " + Integer.toString(store.getInt("numOfNotifications")) + " - " + TimeUtils.getHowManyHoursAgo(store.getLong("timeLastNotification")));
+                // 2. if less than 5 times and less than 4 hours ago, invoke new one
+                notifyMgr = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+
+                Intent resultIntent = new Intent(mContext, MainActivity.class);
+
+                PendingIntent resultPendingIntent =
+                        PendingIntent.getActivity(
+                                mContext,
+                                0,
+                                resultIntent,
+                                PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+                NotificationCompat.Builder notifyObj =
+                        new NotificationCompat.Builder(mContext)
+                                .setSmallIcon(R.mipmap.ic_launcher)
+                                .setContentTitle("Deglancer")
+                                .setContentIntent(resultPendingIntent)
+                                .setAutoCancel(true)
+                                .setContentText("Select your goal for this week");
+
+                notifyMgr.notify(NOTIFY_ME_ID, notifyObj.build());
+
+                // Increase number of notifications by one + update last notification time
+                // Log.d(TAG, "Updating time: " + Integer.toString(store.getInt("numOfNotifications")) + " - " + Long.toString(System.currentTimeMillis()));
+                store.putInt("numOfNotifications", store.getInt("numOfNotifications") + 1);
+                store.putLong("timeLastNotification", System.currentTimeMillis());
+            }
+        }
+        /*
+        else {
+            Log.d(TAG, "No need to notify right now: " + Integer.toString(store.getInt("numOfNotifications")) + " - " + TimeUtils.getHowManyHoursAgo(store.getLong("timeLastNotification")));
+            if (store.getInt("numOfNotifications") == 5) {
+                Log.d(TAG, "Reset for fun.");
+                store.putInt("numOfNotifications", 1);
+            }
+        }
+        */
+    }
+
 }

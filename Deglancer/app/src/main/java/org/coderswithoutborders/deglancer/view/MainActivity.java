@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
     }
 
+    /*
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -109,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         setPreTestVisibility();
 
     }
+    */
 
     @Override
     protected void onPause() {

@@ -37,4 +37,9 @@ public class TimeUtils {
 
         return sotBuilder.toString();
     }
+
+    public static long getHowManyHoursAgo(long comparisonTime) {
+        return TimeUnit.MILLISECONDS.toHours(System.currentTimeMillis() - comparisonTime);
+
+    }
 }
