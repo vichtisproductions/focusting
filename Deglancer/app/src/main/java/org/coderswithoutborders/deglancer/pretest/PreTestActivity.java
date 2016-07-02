@@ -1,5 +1,6 @@
 package org.coderswithoutborders.deglancer.pretest;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -154,4 +155,26 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
     }
     */
 
+    public void addPreTestButton(Context context, Button button) {
+
+        button = (Button) findViewById(R.id.btnTakePreTest);
+
+        if (button != null) {
+            button.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View arg0) {
+
+                    Intent intent = new Intent(context, PreTestActivity.class);
+                    startActivity(intent);
+
+                }
+
+            });
+        }
+        else {
+            Log.d(TAG, "No button btnTakePreTest defined.");
+        }
+
+    }
 }

@@ -33,8 +33,9 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Take the pre-test"
+            android:text="Clear pre-test results"
             android:id="@+id/btnTakePreTest"
+            android:visibility="visible"
             android:layout_below="@+id/statsView"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"

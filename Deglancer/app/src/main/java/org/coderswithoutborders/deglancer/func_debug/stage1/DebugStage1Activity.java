@@ -29,7 +29,7 @@ public class DebugStage1Activity extends AppCompatActivity implements IDebugStag
     IDebugStage1Presenter mPresenter;
 
     private Button btnAdvance;
-    private Button button;
+    private Button button, button2;
     private StageSelectView mStageSelectView;
     private StatsView mStatsView;
 
@@ -46,21 +46,20 @@ public class DebugStage1Activity extends AppCompatActivity implements IDebugStag
 
         btnAdvance = (Button) findViewById(R.id.btnAdvance);
         btnAdvance.setOnClickListener(buttonClickListener);
-
-        addTestButton();
+        button = (Button) findViewById(R.id.btnTakePreTest);
+        button.setOnClickListener(buttonClickListener);
 
         MainApplication.from(getApplicationContext()).getGraph().inject(this);
-
 
     }
 
     View.OnClickListener buttonClickListener = v -> {
         if (v.getId() == R.id.btnAdvance) {
             mPresenter.advanceStageClicked();
+        } else if (v.getId() == R.id.btnTakePreTest) {
+            mPresenter.clearTestResults();
         }
     };
-
-
 
     @Override
     public void setStage(Stage stage) {
@@ -103,24 +102,5 @@ public class DebugStage1Activity extends AppCompatActivity implements IDebugStag
         setTitle(String.format(getApplicationContext().getString(R.string.activity_debug_stage_activity_title_from_code), stage));
     }
 
-    public void addTestButton() {
-
-        final Context context = this;
-
-        button = (Button) findViewById(R.id.btnTakePreTest);
-
-        button.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                Intent intent = new Intent(context, PreTestActivity.class);
-                startActivity(intent);
-
-            }
-
-        });
-
-    }
 }
 

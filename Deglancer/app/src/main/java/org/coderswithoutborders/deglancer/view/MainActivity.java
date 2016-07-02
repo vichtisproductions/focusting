@@ -22,6 +22,7 @@ import org.coderswithoutborders.deglancer.func_debug.stage5.DebugStage5Activity;
 import org.coderswithoutborders.deglancer.model.Stage;
 import org.coderswithoutborders.deglancer.presenter.IMainActivityPresenter;
 import org.coderswithoutborders.deglancer.R;
+import org.coderswithoutborders.deglancer.pretest.PreTestActivity;
 import org.coderswithoutborders.deglancer.services.TrackerService;
 
 import javax.inject.Inject;
@@ -42,16 +43,20 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         MainApplication.from(this).getGraph().inject(this);
 
         Intent i = new Intent(getApplicationContext(), TrackerService.class);
         getApplicationContext().startService(i);
 
         findViewById(R.id.btnDebug).setOnClickListener(v -> mPresenter.debugClicked());
+        findViewById(R.id.TextResInfoSheet).setOnClickListener(v -> showRIS());
 
-        addRISButton();
-
+        findViewById(R.id.btnPreTest).setOnClickListener(v -> showPreTest());
+        if (mPresenter.isPreTestRun()) {
+            findViewById(R.id.btnPreTest).setVisibility(View.GONE);
+        } else {
+            findViewById(R.id.btnPreTest).setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -60,6 +65,24 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
         mPresenter.setView(this);
         mPresenter.init();
+        if (mPresenter.isPreTestRun()) {
+            findViewById(R.id.btnPreTest).setVisibility(View.GONE);
+        } else {
+            findViewById(R.id.btnPreTest).setVisibility(View.VISIBLE);
+        }
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+        if (mPresenter.isPreTestRun()) {
+            findViewById(R.id.btnPreTest).setVisibility(View.GONE);
+        } else {
+            findViewById(R.id.btnPreTest).setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -146,23 +169,22 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
     }
 
-    public void addRISButton() {
-
-        final Context context = this;
-
-        button = (Button) findViewById(R.id.TextResInfoSheet);
-
-        button.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                Intent intent = new Intent(context, ResearchInformationSheet.class);
-                startActivity(intent);
-
-            }
-
-        });
-
+    public void showPreTest() {
+        try {
+            Intent i = new Intent(this, PreTestActivity.class);
+            startActivity(i);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    public void showRIS() {
+        try {
+            Intent i = new Intent(this, ResearchInformationSheet.class);
+            startActivity(i);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

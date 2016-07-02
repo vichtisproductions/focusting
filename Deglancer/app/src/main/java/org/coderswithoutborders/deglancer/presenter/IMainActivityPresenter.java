@@ -11,4 +11,5 @@ public interface IMainActivityPresenter {
     void clearView();
     void init();
     void debugClicked();
+    boolean isPreTestRun();
 }

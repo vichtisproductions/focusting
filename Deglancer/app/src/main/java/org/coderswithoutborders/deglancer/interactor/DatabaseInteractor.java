@@ -362,6 +362,28 @@ public class DatabaseInteractor implements IDatabaseInteractor {
     }
 
     @Override
+    public void clearPreTestResults() {
+        mRealm.beginTransaction();
+        mRealm.where(PreTestResults.class)
+                .findAll().clear();
+        mRealm.commitTransaction();
+    }
+
+    @Override
+    public boolean isPreTestRun() {
+        RealmResults<PreTestResults> results = mRealm
+                .where(PreTestResults.class)
+                .findAll();
+
+        if (results.isValid() && results.size() > 0 && results.first() != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    @Override
     public Target getTargetForStage(int stage) {
         try {
             RealmResults<Target> results = mRealm

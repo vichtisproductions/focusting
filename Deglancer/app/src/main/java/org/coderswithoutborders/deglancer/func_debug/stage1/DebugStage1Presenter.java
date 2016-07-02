@@ -1,5 +1,8 @@
 package org.coderswithoutborders.deglancer.func_debug.stage1;
 
+import android.util.Log;
+
+import org.coderswithoutborders.deglancer.interactor.IDatabaseInteractor;
 import org.coderswithoutborders.deglancer.interactor.IStageInteractor;
 import org.coderswithoutborders.deglancer.model.Stage;
 
@@ -13,12 +16,15 @@ public class DebugStage1Presenter implements IDebugStage1Presenter {
 
     private IDebugStage1View mView;
     private IStageInteractor mStageInteractor;
+    private IDatabaseInteractor mDatabaseInteractor;
 
     private Stage mCurrentStage;
 
+    private static final String TAG = "Deglancer.Debug1Presenter";
 
-    public DebugStage1Presenter(IStageInteractor stageInteractor) {
+    public DebugStage1Presenter(IStageInteractor stageInteractor, IDatabaseInteractor databaseInteractor) {
         this.mStageInteractor = stageInteractor;
+        this.mDatabaseInteractor = databaseInteractor;
     }
 
     @Override
@@ -58,5 +64,10 @@ public class DebugStage1Presenter implements IDebugStage1Presenter {
             mView.moveToStage2View();
             mView.finishActivity();
         }
+    }
+
+    public void clearTestResults() {
+        Log.d(TAG, "Clearing Pre-test results");
+        mDatabaseInteractor.clearPreTestResults();
     }
 }

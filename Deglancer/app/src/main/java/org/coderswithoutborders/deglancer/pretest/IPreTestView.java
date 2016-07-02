@@ -1,5 +1,8 @@
 package org.coderswithoutborders.deglancer.pretest;
 
+import android.content.Context;
+import android.widget.Button;
+
 /**
  * Created by Lapa on 2016/06/29.
  */

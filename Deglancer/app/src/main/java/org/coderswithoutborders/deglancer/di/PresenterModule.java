@@ -41,8 +41,8 @@ import dagger.Provides;
 public class PresenterModule {
     @Singleton
     @Provides
-    public IMainActivityPresenter providesMainActivityPresenter(IInitialStartupInteractor initialStartupInteractor, IStageInteractor stageInteractor, RxBus bus) {
-        return new MainActivityPresenter(initialStartupInteractor, stageInteractor, bus);
+    public IMainActivityPresenter providesMainActivityPresenter(IInitialStartupInteractor initialStartupInteractor, IStageInteractor stageInteractor, IDatabaseInteractor databaseInteractor, RxBus bus) {
+        return new MainActivityPresenter(initialStartupInteractor, stageInteractor, databaseInteractor, bus);
     }
 
 
@@ -53,8 +53,8 @@ public class PresenterModule {
 
     @Singleton
     @Provides
-    public IDebugStage1Presenter providesDebugStage1Presenter(IStageInteractor stageInteractor) {
-        return new DebugStage1Presenter(stageInteractor);
+    public IDebugStage1Presenter providesDebugStage1Presenter(IStageInteractor stageInteractor, IDatabaseInteractor databaseInteractor) {
+        return new DebugStage1Presenter(stageInteractor, databaseInteractor);
     }
 
     @Singleton

@@ -55,6 +55,8 @@ public interface IDatabaseInteractor {
 
     void commitTarget(Target target);
     void commitPreTestResults(PreTestResults preTestResults);
+    void clearPreTestResults();
+    boolean isPreTestRun();
     Target getTargetForStage(int stage);
 
 

@@ -2,6 +2,7 @@ package org.coderswithoutborders.deglancer.presenter;
 
 import org.coderswithoutborders.deglancer.bus.RxBus;
 import org.coderswithoutborders.deglancer.bus.events.DebugStageEvent;
+import org.coderswithoutborders.deglancer.interactor.IDatabaseInteractor;
 import org.coderswithoutborders.deglancer.interactor.IInitialStartupInteractor;
 import org.coderswithoutborders.deglancer.interactor.IStageInteractor;
 import org.coderswithoutborders.deglancer.view.IMainActivityView;
@@ -20,13 +21,15 @@ public class MainActivityPresenter implements IMainActivityPresenter {
 
     private IInitialStartupInteractor mInitialStartupInteractor;
     private IStageInteractor mStageInteractor;
+    private IDatabaseInteractor mDatabaseInteractor;
     private RxBus mBus;
 
     private IMainActivityView mView;
 
-    public MainActivityPresenter(IInitialStartupInteractor initialStartupInteractor, IStageInteractor stageInteractor, RxBus bus) {
+    public MainActivityPresenter(IInitialStartupInteractor initialStartupInteractor, IStageInteractor stageInteractor, IDatabaseInteractor databaseInteractor, RxBus bus) {
         mInitialStartupInteractor = initialStartupInteractor;
         mStageInteractor = stageInteractor;
+        mDatabaseInteractor = databaseInteractor;
         mBus = bus;
 
         mSubscriptions = new CompositeSubscription();
@@ -72,6 +75,12 @@ public class MainActivityPresenter implements IMainActivityPresenter {
                     //TODO - Handle error
                     String here = "";
                 });
+    }
+
+    @Override
+    public boolean isPreTestRun() {
+        if (mDatabaseInteractor.isPreTestRun()) { return true; }
+        else { return false; }
     }
 
     @Override

@@ -54,4 +54,6 @@ public class PreTestPresenter implements IPreTestPresenter {
             mView.finishActivity();
         }
     }
+
+
 }

@@ -9,4 +9,5 @@ public interface IDebugStage1Presenter {
     void onAttached();
     void onDetached();
     void advanceStageClicked();
+    void clearTestResults();
 }

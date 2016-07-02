@@ -34,9 +34,30 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Debug"
-        android:id="@+id/btnDebug"
+        android:text="@string/btnTakeThePreTest"
+        android:id="@+id/btnPreTest"
+        android:padding="16dp"
         android:layout_below="@+id/tvStageRemainingTime"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:padding="16dp"
+        android:id="@+id/tvPreTestNotice"
+        android:text="@string/tvPReTestNoticeText"
+        android:layout_below="@+id/btnPreTest"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DEBUG"
+        android:id="@+id/btnDebug"
+        android:layout_below="@+id/tvPreTestNotice"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -47,7 +68,8 @@
         android:gravity="center"
         android:layout_below="@+id/btnDebug"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:textSize="12sp" />
 
     <Button
         android:layout_width="match_parent"
