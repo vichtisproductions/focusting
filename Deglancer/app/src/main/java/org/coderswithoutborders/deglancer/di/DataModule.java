@@ -2,7 +2,8 @@ package org.coderswithoutborders.deglancer.di;
 
 import android.content.Context;
 
-import com.firebase.client.Firebase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import javax.inject.Singleton;
 
@@ -20,12 +21,14 @@ import io.realm.RealmMigration;
 public class DataModule {
     @Singleton
     @Provides
-    Firebase provideFirebaseClient(Context context) {
-        Firebase.setAndroidContext(context);
-        Firebase.getDefaultConfig().setPersistenceEnabled(true);
+    DatabaseReference provideFirebaseClient(Context context) {
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        // DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        String firebaseURL = "https://flickering-heat-4815.firebaseio.com/users/";
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseURL);
 
-        return new Firebase("https://flickering-heat-4815.firebaseio.com/users/"); }
-
+        return ref;
+    }
     @Singleton
     @Provides
     Realm provideRealm(RealmConfiguration config) {

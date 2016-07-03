@@ -9,4 +9,6 @@ public interface IUserInteractor {
     Observable<String> getInstanceId();
     String getInstanceIdSynchronous();
     void logLastUserInteraction();
+    // FirebaseAuth.AuthStateListener authFirebase();
+    String getFirebaseUid();
 }

@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 
 import com.f2prateek.rx.preferences.RxSharedPreferences;
-import com.firebase.client.Firebase;
+import com.google.firebase.database.DatabaseReference;
 
 import org.coderswithoutborders.deglancer.model.UserInfo;
 import org.joda.time.DateTime;
@@ -23,13 +23,13 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
     private static final String SP_KEY_INITIAL_START_TIME = "InitialStartTime";
 
     private Context mContext;
-    private Firebase mFirebaseClient;
+    private DatabaseReference mFirebaseClient;
     private IUserInteractor mUserInteractor;
 
     SharedPreferences mPrefs;
     private RxSharedPreferences mRxPrefs;
 
-    public InitialStartupInteractor(Context context, Firebase firebaseClient, IUserInteractor userInteractor) {
+    public InitialStartupInteractor(Context context, DatabaseReference firebaseClient, IUserInteractor userInteractor) {
         mContext = context;
         mFirebaseClient = firebaseClient;
         mUserInteractor = userInteractor;
@@ -56,7 +56,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
 
                     UserInfo ui = new UserInfo(instanceId, initialStartTime, manufacturer, model, osVersion);
 
-                    Firebase ref = mFirebaseClient.child(instanceId);
+                    DatabaseReference ref = mFirebaseClient.child(instanceId);
                     ref.setValue(ui);
 
                     mRxPrefs.getBoolean(SP_KEY_INITIAL_SETUP_DONE).set(true);

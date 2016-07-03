@@ -3,8 +3,10 @@ package org.coderswithoutborders.deglancer.view;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.menu.MenuPresenter;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,6 +16,12 @@ import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.func_debug.stage1.DebugStage1Activity;
 import org.coderswithoutborders.deglancer.func_debug.stage2.DebugStage2Activity;
@@ -22,6 +30,7 @@ import org.coderswithoutborders.deglancer.func_debug.stage4.DebugStage4Activity;
 import org.coderswithoutborders.deglancer.func_debug.stage5.DebugStage5Activity;
 import org.coderswithoutborders.deglancer.func_debug.view.ITargetSetView;
 import org.coderswithoutborders.deglancer.func_debug.view.TargetSetView;
+import org.coderswithoutborders.deglancer.interactor.UserInteractor;
 import org.coderswithoutborders.deglancer.model.Stage;
 import org.coderswithoutborders.deglancer.presenter.IMainActivityPresenter;
 import org.coderswithoutborders.deglancer.R;
@@ -38,13 +47,38 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
     @Inject
     IMainActivityPresenter mPresenter;
 
+    private static final String TAG = "Deglancer.Main";
+
     private TargetSetView mTargetSetView;
 
     private Button button;
 
+    // private FirebaseAuth mAuth;
+    // private FirebaseAuth.AuthStateListener mAuthListener;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /*
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
+            }
+        };
+        signInAnonymously();
+        */
+
         setContentView(R.layout.activity_main);
 
         MainApplication.from(this).getGraph().inject(this);
@@ -99,6 +133,23 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         mPresenter.init();
         setPreTestVisibility();
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // mAuth.addAuthStateListener(mAuthListener);
+        // signInAnonymously();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        /*
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+         */
     }
 
     /*
@@ -213,5 +264,24 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
             e.printStackTrace();
         }
     }
+
+    /*
+    private void signInAnonymously() {
+        mAuth.signInAnonymously()
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "signInAnonymously:onComplete:" + task.isSuccessful());
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "signInAnonymously", task.getException());
+                        }
+                    }
+                });
+    }
+
+    private void signOut() {
+        mAuth.signOut();
+    }
+    */
 
 }

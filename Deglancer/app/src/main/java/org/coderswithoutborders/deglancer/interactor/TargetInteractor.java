@@ -1,6 +1,6 @@
 package org.coderswithoutborders.deglancer.interactor;
 
-import com.firebase.client.Firebase;
+import com.google.firebase.database.DatabaseReference;
 
 import org.coderswithoutborders.deglancer.bus.RxBus;
 import org.coderswithoutborders.deglancer.model.Target;
@@ -17,10 +17,10 @@ public class TargetInteractor implements ITargetInteractor {
 
     private IDatabaseInteractor mDatabaseInteractor;
     private RxBus mBus;
-    private Firebase mFirebaseClient;
+    private DatabaseReference mFirebaseClient;
     private IUserInteractor mUserInteractor;
 
-    public TargetInteractor(IDatabaseInteractor mDatabaseInteractor, RxBus mBus, Firebase firebaseClient, IUserInteractor userInteractor) {
+    public TargetInteractor(IDatabaseInteractor mDatabaseInteractor, RxBus mBus, DatabaseReference firebaseClient, IUserInteractor userInteractor) {
         this.mDatabaseInteractor = mDatabaseInteractor;
         this.mBus = mBus;
         this.mFirebaseClient = firebaseClient;
@@ -56,7 +56,7 @@ public class TargetInteractor implements ITargetInteractor {
 
         mDatabaseInteractor.commitTarget(t);
 
-        Firebase ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("Targets");
+        DatabaseReference ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("Targets");
         ref.push().setValue(t);
     }
 }

@@ -2,7 +2,7 @@ package org.coderswithoutborders.deglancer.di;
 
 import android.content.Context;
 
-import com.firebase.client.Firebase;
+import com.google.firebase.database.DatabaseReference;
 
 import org.coderswithoutborders.deglancer.bus.RxBus;
 import org.coderswithoutborders.deglancer.interactor.DatabaseInteractor;
@@ -39,7 +39,7 @@ import io.realm.Realm;
 public class InteractorModule {
     @Singleton
     @Provides
-    IScreenActionInteractor provideScreenActionInteractor(Context context, Firebase firebaseClient, IStageInteractor stageInteractor, Realm realm, IUserInteractor userInteractor, IDatabaseInteractor databaseInteractor    ) {
+    IScreenActionInteractor provideScreenActionInteractor(Context context, DatabaseReference firebaseClient, IStageInteractor stageInteractor, Realm realm, IUserInteractor userInteractor, IDatabaseInteractor databaseInteractor    ) {
         return new ScreenActionInteractor(context, firebaseClient, stageInteractor, realm, userInteractor, databaseInteractor);
     }
 
@@ -51,19 +51,19 @@ public class InteractorModule {
 
     @Singleton
     @Provides
-    IPreTestInteractor providePreTestInteractor(Context context, IDatabaseInteractor mDatabaseInteractor, RxBus mBus, Firebase firebaseClient, IUserInteractor userInteractor) {
+    IPreTestInteractor providePreTestInteractor(Context context, IDatabaseInteractor mDatabaseInteractor, RxBus mBus, DatabaseReference firebaseClient, IUserInteractor userInteractor) {
         return new PreTestInteractor(context, mDatabaseInteractor, mBus, firebaseClient, userInteractor);
     }
 
     @Singleton
     @Provides
-    IInitialStartupInteractor providesInitialStartupInteractor(Context context, Firebase firebaseClient, IUserInteractor userInteractor) {
+    IInitialStartupInteractor providesInitialStartupInteractor(Context context, DatabaseReference firebaseClient, IUserInteractor userInteractor) {
         return new InitialStartupInteractor(context, firebaseClient, userInteractor);
     }
 
     @Singleton
     @Provides
-    IUserInteractor providesUserInteractor(Context context, Firebase firebaseClient) {
+    IUserInteractor providesUserInteractor(Context context, DatabaseReference firebaseClient) {
         return new UserInteractor(context, firebaseClient);
     }
 
@@ -75,7 +75,7 @@ public class InteractorModule {
 
     @Singleton
     @Provides
-    ITargetInteractor providesTargetInteractor(IDatabaseInteractor databaseInteractor, RxBus bus, Firebase firebaseClient, IUserInteractor userInteractor) {
+    ITargetInteractor providesTargetInteractor(IDatabaseInteractor databaseInteractor, RxBus bus, DatabaseReference firebaseClient, IUserInteractor userInteractor) {
         return new TargetInteractor(databaseInteractor, bus, firebaseClient, userInteractor);
     }
 }

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.firebase.client.Firebase;
+import com.google.firebase.database.DatabaseReference;
 
 import org.coderswithoutborders.deglancer.bus.events.ActionEvent;
 import org.coderswithoutborders.deglancer.model.Averages;
@@ -26,13 +26,13 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
     private static final String TAG = "ScreenActionInteractor";
 
     private Context mContext;
-    private Firebase mFirebaseClient;
+    private DatabaseReference mFirebaseClient;
     private IStageInteractor mStageInteractor;
     private Realm mRealm;
     private IUserInteractor mUserInteractor;
     private IDatabaseInteractor mDatabaseInteractor;
 
-    public ScreenActionInteractor(Context context, Firebase firebaseClient, IStageInteractor stageInteractor, Realm realm, IUserInteractor userInteractor, IDatabaseInteractor databaseInteractor) {
+    public ScreenActionInteractor(Context context, DatabaseReference firebaseClient, IStageInteractor stageInteractor, Realm realm, IUserInteractor userInteractor, IDatabaseInteractor databaseInteractor) {
         mContext = context;
         mFirebaseClient = firebaseClient;
         mStageInteractor = stageInteractor;
@@ -70,7 +70,7 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
 
                     mDatabaseInteractor.commitScreenAction(screenAction);
 
-                    Firebase ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("ScreenEvents");
+                    DatabaseReference ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("ScreenEvents");
                     ref.push().setValue(screenAction);
 
                     if (mStageInteractor.getCurrentStageHandler() != null) {
@@ -132,7 +132,7 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
                 );
                 mDatabaseInteractor.commitAverages(avg);
 
-                Firebase ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("Averages");
+                DatabaseReference ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("Averages");
                 ref.push().setValue(avg);
             }
         }

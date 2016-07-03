@@ -3,7 +3,7 @@ package org.coderswithoutborders.deglancer.interactor;
 import android.content.Context;
 import android.util.Log;
 
-import com.firebase.client.Firebase;
+import com.google.firebase.database.DatabaseReference;
 
 import org.coderswithoutborders.deglancer.bus.RxBus;
 import org.coderswithoutborders.deglancer.model.PreTestResults;
@@ -18,14 +18,14 @@ public class PreTestInteractor implements IPreTestInteractor {
     private Context mContext;
     private RxBus mBus;
     private IDatabaseInteractor mDatabaseInteractor;
-    private Firebase mFirebaseClient;
+    private DatabaseReference mFirebaseClient;
     private IUserInteractor mUserInteractor;
 
     public PreTestInteractor(
             Context context,
             IDatabaseInteractor mDatabaseInteractor,
             RxBus mBus,
-            Firebase firebaseClient,
+            DatabaseReference firebaseClient,
             IUserInteractor userInteractor) {
         this.mDatabaseInteractor = mDatabaseInteractor;
         this.mBus = mBus;
@@ -40,7 +40,7 @@ public class PreTestInteractor implements IPreTestInteractor {
         int FirstAns = r.getAns1();
         Log.d(TAG, "First answer:" + Integer.toString(FirstAns));
         mDatabaseInteractor.commitPreTestResults(r);
-        Firebase ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("PreTestResults");
+        DatabaseReference ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("PreTestResults");
         ref.push().setValue(r);
     }
 }
