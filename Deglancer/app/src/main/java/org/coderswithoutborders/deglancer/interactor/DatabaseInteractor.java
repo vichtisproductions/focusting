@@ -7,6 +7,7 @@ import org.coderswithoutborders.deglancer.model.Averages;
 import org.coderswithoutborders.deglancer.model.PreTestResults;
 import org.coderswithoutborders.deglancer.model.ScreenAction;
 import org.coderswithoutborders.deglancer.model.Target;
+import org.coderswithoutborders.deglancer.model.UserInfo;
 
 import io.realm.Realm;
 import io.realm.RealmResults;

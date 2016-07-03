@@ -3,16 +3,22 @@ package org.coderswithoutborders.deglancer.interactor;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.util.Log;
 
 import com.f2prateek.rx.preferences.RxSharedPreferences;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import org.coderswithoutborders.deglancer.di.DataModule;
 import org.coderswithoutborders.deglancer.model.UserInfo;
 import org.joda.time.DateTime;
 
 import java.util.Date;
 
 import rx.Observable;
+
+import static com.google.firebase.auth.FirebaseAuth.getInstance;
 
 /**
  * Created by Renier on 2016/04/12.
@@ -25,6 +31,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
     private Context mContext;
     private DatabaseReference mFirebaseClient;
     private IUserInteractor mUserInteractor;
+    private IDatabaseInteractor mDatabaseInteractor;
 
     SharedPreferences mPrefs;
     private RxSharedPreferences mRxPrefs;
@@ -56,8 +63,14 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
 
                     UserInfo ui = new UserInfo(instanceId, initialStartTime, manufacturer, model, osVersion);
 
+                    Log.d("InitialStartup","Here we go...");
                     DatabaseReference ref = mFirebaseClient.child(instanceId);
+                    // String firebaseURL = "https://flickering-heat-4815.firebaseio.com/users/";
+                    // DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseURL).child(instanceId);
+                    // Log.d("InitialStartup","child is " + firebaseURL + "/" + instanceId);
+                    Log.d("InitialStartup","Setting Userinfo now.");
                     ref.setValue(ui);
+                    Log.d("InitialStartup","Userinfo now set.");
 
                     mRxPrefs.getBoolean(SP_KEY_INITIAL_SETUP_DONE).set(true);
                     mRxPrefs.getLong(SP_KEY_INITIAL_START_TIME).set(initialStartTime);
