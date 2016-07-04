@@ -132,4 +132,7 @@
         <item name="10">I have increased substantial amount of time using smartphone per week in recent 3 months.</item>
     </string-array>
 
+    <string name="tvCreditsTitle">Credits and acknowledgements</string>
+    <string name="tvCreditsText">Icons made by http://www.flaticon.com/authors/madebyoliver from http://www.flaticon.com</string>
+
 </resources>
