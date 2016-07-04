@@ -12,7 +12,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.auth.FirebaseUser;
 
-
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -33,50 +32,72 @@ public class DataModule {
     @Provides
     DatabaseReference provideFirebaseClient(Context context) {
 
-        FirebaseAuth mAuth;
-        FirebaseAuth.AuthStateListener mAuthListener;
-        mAuth = getInstance();
-
         String fbAuthUsername="lauri.palokangas@gmail.com";
         String fbAuthPassword="9Kvn0m9PiWc&Zqrd%@GnAbMd";
+        String TAG="DatabaseReference";
 
-        /*
+        FirebaseAuth mAuth;
+        FirebaseAuth.AuthStateListener mAuthListener;
+        mAuth = FirebaseAuth.getInstance();
+
+        // [START auth_state_listener]
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    Log.d("Deglancer.auth", "onAuthStateChanged:signed_in:" + user.getUid());
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
-                    Log.d("Deglancer.auth", "onAuthStateChanged:signed_out");
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
+                // [START_EXCLUDE]
+                // updateUI(user);
+                // [END_EXCLUDE]
             }
         };
-        */
+        // [END auth_state_listener]
 
-        // mAuthListener = new FirebaseAuth.AuthStateListener();
-        // mAuth.addAuthStateListener(mAuthListener);
+        mAuth.addAuthStateListener(mAuthListener);
 
-        /*
-        mAuth.signInWithEmailAndPassword(fbAuthUsername, fbAuthPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d("Deglancer.auth", "signInWithEmail:onComplete:" + task.isSuccessful());
-                        if (!task.isSuccessful()) {
-                            Log.w("Deglancer.auth", "signInWithEmail", task.getException());
-                        }
-                    }
-                });
-        */
-
-        mAuth.signInWithEmailAndPassword(fbAuthUsername, fbAuthPassword);
+        // [START sign_in_with_email]
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         // DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-        String firebaseURL = "https://flickering-heat-4815.firebaseio.com/users/";
+        // String firebaseURL = "https://flickering-heat-4815.firebaseio.com/users/";
+        String firebaseURL = "https://deglancer-f6fa5.firebaseio.com/users/";
         DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseURL);
+
+        mAuth.signInWithEmailAndPassword(fbAuthUsername, fbAuthPassword)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+
+                        // If sign in fails, display a message to the user. If sign in succeeds
+                        // the auth state listener will be notified and logic to handle the
+                        // signed in user can be handled in the listener.
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "signInWithEmail", task.getException());
+                        }
+
+                        // [START_EXCLUDE]
+                        // hideProgressDialog();
+                        // [END_EXCLUDE]
+                    }
+                });
+        // [END sign_in_with_email]
+
+        /*
+        mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                firebaseAuth.signInWithEmailAndPassword(fbAuthUsername, fbAuthPassword);
+                // setCurrentUser(mAuth.getCurrentUser());
+            }
+        });
+        mAuth.signInWithEmailAndPassword(fbAuthUsername, fbAuthPassword);
+         */
 
         return ref;
     }

@@ -6,9 +6,7 @@ import android.os.Build;
 import android.util.Log;
 
 import com.f2prateek.rx.preferences.RxSharedPreferences;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import org.coderswithoutborders.deglancer.di.DataModule;
 import org.coderswithoutborders.deglancer.model.UserInfo;
@@ -65,6 +63,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
 
                     Log.d("InitialStartup","Here we go...");
                     DatabaseReference ref = mFirebaseClient.child(instanceId);
+
                     // String firebaseURL = "https://flickering-heat-4815.firebaseio.com/users/";
                     // DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseURL).child(instanceId);
                     // Log.d("InitialStartup","child is " + firebaseURL + "/" + instanceId);
