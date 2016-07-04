@@ -62,14 +62,30 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                     UserInfo ui = new UserInfo(instanceId, initialStartTime, manufacturer, model, osVersion);
 
                     Log.d("InitialStartup","Here we go...");
-                    DatabaseReference ref = mFirebaseClient.child(instanceId);
+                    // DatabaseReference ref = mFirebaseClient.child(instanceId);
+
+                    // Wait 10 seconds
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                DatabaseReference ref = mFirebaseClient.child(instanceId);
+                                Log.d("InitialStartup", "Sleeping for 10 seconds.");
+                                // Let's give some time for the authentication.
+                                Thread.sleep(10000);
+                                Log.d("InitialStartup","Setting Userinfo now.");
+                                ref.setValue(ui);
+                                Log.d("InitialStartup","Userinfo now set.");
+                            } catch (Exception e) {
+
+                            }
+                            Log.d("InitialStartup", "Annnd, he woke up.");
+                        }
+                    }).start();
 
                     // String firebaseURL = "https://flickering-heat-4815.firebaseio.com/users/";
                     // DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseURL).child(instanceId);
                     // Log.d("InitialStartup","child is " + firebaseURL + "/" + instanceId);
-                    Log.d("InitialStartup","Setting Userinfo now.");
-                    ref.setValue(ui);
-                    Log.d("InitialStartup","Userinfo now set.");
 
                     mRxPrefs.getBoolean(SP_KEY_INITIAL_SETUP_DONE).set(true);
                     mRxPrefs.getLong(SP_KEY_INITIAL_START_TIME).set(initialStartTime);

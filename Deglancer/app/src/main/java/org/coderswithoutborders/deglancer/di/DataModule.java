@@ -64,8 +64,6 @@ public class DataModule {
         // [START sign_in_with_email]
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        // DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-        // String firebaseURL = "https://flickering-heat-4815.firebaseio.com/users/";
         String firebaseURL = "https://deglancer-f6fa5.firebaseio.com/users/";
         DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseURL);
 
