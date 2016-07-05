@@ -2,7 +2,6 @@ package org.coderswithoutborders.deglancer.di;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -13,6 +12,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.auth.FirebaseUser;
 
 import org.coderswithoutborders.deglancer.BuildConfig;
+import org.coderswithoutborders.deglancer.R;
 
 import javax.inject.Singleton;
 
@@ -35,8 +35,9 @@ public class DataModule {
     @Provides
     DatabaseReference provideFirebaseClient(Context context) {
 
-        String fbAuthUsername="lauri.palokangas@gmail.com";
-        String fbAuthPassword="<PASSWORD_HERE>";
+        String fbAuthUsername="";
+        String fbAuthPassword="";
+        String serverName="";
         String TAG="DatabaseReference";
 
         FirebaseAuth mAuth;
@@ -67,10 +68,15 @@ public class DataModule {
         // [START sign_in_with_email]
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        String firebaseURL = "https://deglancer-f6fa5.firebaseio.com/users/";
+        fbAuthPassword = context.getResources().getString(R.string.ReleasePassword);
+        fbAuthUsername = context.getResources().getString(R.string.ReleaseUsername);
+        serverName = context.getResources().getString(R.string.ReleaseServer);
         if (BuildConfig.DEBUG) {
-            firebaseURL = "https://flickering-heat-4815.firebaseio.com/users/";
+            fbAuthPassword = context.getResources().getString(R.string.DebugPassword);
+            fbAuthUsername = context.getResources().getString(R.string.DebugUsername);
+            serverName = context.getResources().getString(R.string.DebugServer);
         }
+        String firebaseURL = serverName;
         DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseURL);
 
         mAuth.signInWithEmailAndPassword(fbAuthUsername, fbAuthPassword)
