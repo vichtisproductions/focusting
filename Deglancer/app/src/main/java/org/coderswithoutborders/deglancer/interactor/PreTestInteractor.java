@@ -10,6 +10,8 @@ import org.coderswithoutborders.deglancer.model.PreTestResults;
 
 import java.util.UUID;
 
+import timber.log.Timber;
+
 /**
  * Created by Lapa on 2016/06/29.
  */
@@ -38,7 +40,7 @@ public class PreTestInteractor implements IPreTestInteractor {
 
         PreTestResults r = new PreTestResults(UUID.randomUUID().toString(), answerone, answertwo, answerthree, answerfour, answerfive, answersix, answerseven, answereight, answernine, answerten);
         int FirstAns = r.getAns1();
-        Log.d(TAG, "First answer:" + Integer.toString(FirstAns));
+        Timber.d( "First answer:" + Integer.toString(FirstAns));
         mDatabaseInteractor.commitPreTestResults(r);
         DatabaseReference ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("PreTestResults");
         ref.push().setValue(r);

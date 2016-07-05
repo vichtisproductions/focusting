@@ -22,6 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.coderswithoutborders.deglancer.BuildConfig;
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.func_debug.stage1.DebugStage1Activity;
 import org.coderswithoutborders.deglancer.func_debug.stage2.DebugStage2Activity;
@@ -38,6 +39,8 @@ import org.coderswithoutborders.deglancer.pretest.PreTestActivity;
 import org.coderswithoutborders.deglancer.services.TrackerService;
 
 import javax.inject.Inject;
+
+import timber.log.Timber;
 
 /**
  * Created by chris.teli on 3/20/2016.
@@ -69,10 +72,10 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    Timber.d( "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                    Timber.d( "onAuthStateChanged:signed_out");
                 }
             }
         };
@@ -86,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         Intent i = new Intent(getApplicationContext(), TrackerService.class);
         getApplicationContext().startService(i);
 
-        findViewById(R.id.btnDebug).setOnClickListener(v -> mPresenter.debugClicked());
         findViewById(R.id.TextResInfoSheet).setOnClickListener(v -> showRIS());
 
         findViewById(R.id.btnPreTest).setOnClickListener(v -> showPreTest());
@@ -94,6 +96,14 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         mTargetSetView = (TargetSetView) findViewById(R.id.targetSetView);
 
         setPreTestVisibility();
+
+        findViewById(R.id.btnDebug).setVisibility(View.GONE);
+        findViewById(R.id.tvStage).setVisibility(View.GONE);
+
+        if (BuildConfig.DEBUG) {
+            findViewById(R.id.btnDebug).setVisibility(View.VISIBLE);
+            findViewById(R.id.tvStage).setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -271,7 +281,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "signInAnonymously:onComplete:" + task.isSuccessful());
+                        Timber.d( "signInAnonymously:onComplete:" + task.isSuccessful());
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInAnonymously", task.getException());
                         }

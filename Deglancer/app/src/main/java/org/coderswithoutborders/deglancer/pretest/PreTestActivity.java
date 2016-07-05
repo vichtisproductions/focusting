@@ -18,6 +18,8 @@ import org.coderswithoutborders.deglancer.view.MainActivity;
 
 import javax.inject.Inject;
 
+import timber.log.Timber;
+
 
 /**
  * Created by Lauripal on 27.6.2016.
@@ -80,17 +82,17 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
     View.OnClickListener buttonClickListener = v -> {
         if (questionId<10) {
             if (v.getId() == R.id.btnPreTestOne) {
-                Log.d(TAG, "Question " + Integer.toString(questionId + 1) + " - Answer : 1");
+                Timber.d( "Question " + Integer.toString(questionId + 1) + " - Answer : 1");
                 answers[questionId] = 1;
             } else if (v.getId() == R.id.btnPreTestTwo) {
-                Log.d(TAG, "Question " + Integer.toString(questionId + 1) + " - Answer : 2");
+                Timber.d( "Question " + Integer.toString(questionId + 1) + " - Answer : 2");
                 answers[questionId] = 2;
             } else if (v.getId() == R.id.btnPreTestThree) {
                 answers[questionId] = 3;
-                Log.d(TAG, "Question " + Integer.toString(questionId + 1) + " - Answer : 3");
+                Timber.d( "Question " + Integer.toString(questionId + 1) + " - Answer : 3");
             } else if (v.getId() == R.id.btnPreTestFour) {
                 answers[questionId] = 4;
-                Log.d(TAG, "Question " + Integer.toString(questionId + 1) + " - Answer : 4");
+                Timber.d( "Question " + Integer.toString(questionId + 1) + " - Answer : 4");
             }
             questionId++;
         }
@@ -100,11 +102,11 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
             int ans = 0;
             for (ans = 0; ans < answers.length; ans++) {
                 String message = "Question was " + Integer.toString(ans+1) + " - answer was: " + Integer.toString(answers[ans]);
-                Log.d(TAG, message);
+                Timber.d( message);
             }
-            Log.d(TAG, "Uploading results now - before mPreTestPresenter.submitPreTestResults");
+            Timber.d( "Uploading results now - before mPreTestPresenter.submitPreTestResults");
             if (mPreTestPresenter == null) {
-                Log.d(TAG, "Warning: mPreTestPresenter is null");
+                Timber.d( "Warning: mPreTestPresenter is null");
             }
             mPreTestPresenter.submitPreTestResults(answers[0], answers[1], answers[2], answers[3], answers[4], answers[5], answers[6], answers[7], answers[8], answers[9]);
             showToast();
@@ -175,7 +177,7 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
             });
         }
         else {
-            Log.d(TAG, "No button btnTakePreTest defined.");
+            Timber.d( "No button btnTakePreTest defined.");
         }
 
     }

@@ -20,6 +20,8 @@ import org.coderswithoutborders.deglancer.model.Stage;
 
 import javax.inject.Inject;
 
+import timber.log.Timber;
+
 /**
  * Created by Renier on 2016/05/14.
  */
@@ -89,7 +91,7 @@ public class TargetSetView extends FrameLayout implements ITargetSetView {
                 target = 15;
             }
 
-            Log.d(TAG, "Setting target for " + Integer.toString(target));
+            Timber.d( "Setting target for " + Integer.toString(target));
             mPresenter.setTargetTapped(target);
         }
     };

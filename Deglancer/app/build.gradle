@@ -24,6 +24,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -82,6 +83,8 @@ dependencies {
 
     compile "joda-time:joda-time:$JODA_TIME_VERSION"
     compile "ch.acra:acra:$ACRA_VERSION"
+
+    compile 'com.jakewharton.timber:timber:4.1.2'
 
     testCompile "junit:junit:$JUNIT_VERSION"
 }

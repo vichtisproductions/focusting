@@ -179,7 +179,7 @@ public class Stage4Handler implements IStageHandler {
         // 1. get int (number of notifications done) - if more than 5, do nothing
         if (mDatabaseInteractor.getTargetForStage(4) == null) {
             if ((store.getInt("numOfNotifications") < 5) && (TimeUtils.getHowManyHoursAgo(store.getLong("timeLastNotification")) > 4)) {
-                // Log.d(TAG, "Let's notify: " + Integer.toString(store.getInt("numOfNotifications")) + " - " + TimeUtils.getHowManyHoursAgo(store.getLong("timeLastNotification")));
+                // Timber.d( "Let's notify: " + Integer.toString(store.getInt("numOfNotifications")) + " - " + TimeUtils.getHowManyHoursAgo(store.getLong("timeLastNotification")));
                 // 2. if less than 5 times and less than 4 hours ago, invoke new one
                 notifyMgr = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -204,16 +204,16 @@ public class Stage4Handler implements IStageHandler {
                 notifyMgr.notify(NOTIFY_ME_ID, notifyObj.build());
 
                 // Increase number of notifications by one + update last notification time
-                // Log.d(TAG, "Updating time: " + Integer.toString(store.getInt("numOfNotifications")) + " - " + Long.toString(System.currentTimeMillis()));
+                // Timber.d( "Updating time: " + Integer.toString(store.getInt("numOfNotifications")) + " - " + Long.toString(System.currentTimeMillis()));
                 store.putInt("numOfNotifications", store.getInt("numOfNotifications") + 1);
                 store.putLong("timeLastNotification", System.currentTimeMillis());
             }
         }
         /*
         else {
-            Log.d(TAG, "No need to notify right now: " + Integer.toString(store.getInt("numOfNotifications")) + " - " + TimeUtils.getHowManyHoursAgo(store.getLong("timeLastNotification")));
+            Timber.d( "No need to notify right now: " + Integer.toString(store.getInt("numOfNotifications")) + " - " + TimeUtils.getHowManyHoursAgo(store.getLong("timeLastNotification")));
             if (store.getInt("numOfNotifications") == 5) {
-                Log.d(TAG, "Reset for fun.");
+                Timber.d( "Reset for fun.");
                 store.putInt("numOfNotifications", 1);
             }
         }

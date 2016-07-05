@@ -4,6 +4,7 @@ import org.coderswithoutborders.deglancer.bus.RxBus;
 import org.coderswithoutborders.deglancer.interactor.IPreTestInteractor;
 
 import rx.subscriptions.CompositeSubscription;
+import timber.log.Timber;
 
 import android.util.Log;
 
@@ -42,7 +43,7 @@ public class PreTestPresenter implements IPreTestPresenter {
 
     // @Override
     public void submitPreTestResults(int answerone, int answertwo, int answerthree, int answerfour, int answerfive, int answersix, int answerseven, int answereight, int answernine, int answerten) {
-        Log.d(TAG, "Uploading results now - before uploadPreTestResults");
+        Timber.d( "Uploading results now - before uploadPreTestResults");
         mPreTestInteractor.uploadPreTestResults(answerone, answertwo, answerthree, answerfour, answerfive, answersix, answerseven, answereight, answernine, answerten);
 
         //        .subscribeOn(AndroidSchedulers.mainThread())

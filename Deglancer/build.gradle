@@ -11,11 +11,17 @@ buildscript {
         classpath 'me.tatarka:gradle-retrolambda:3.2.4'
         classpath "io.realm:realm-gradle-plugin:0.88.2"
         classpath 'com.google.gms:google-services:3.0.0'
+        // Allow Lint to run on Java 8 sources
+        classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2'
+
 
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+
+    // Exclude the version that the android plugin depends on.
+    configurations.classpath.exclude group: 'com.android.tools.external.lombok'
 }
 
 allprojects {

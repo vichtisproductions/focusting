@@ -8,6 +8,7 @@ import org.coderswithoutborders.deglancer.model.Stage;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 /**
  * Created by Renier on 2016/05/06.
@@ -67,7 +68,7 @@ public class DebugStage1Presenter implements IDebugStage1Presenter {
     }
 
     public void clearTestResults() {
-        Log.d(TAG, "Clear Pre-tests and targets");
+        Timber.d( "Clear Pre-tests and targets");
         mDatabaseInteractor.clearPreTestResults();
         mDatabaseInteractor.clearTarget();
     }

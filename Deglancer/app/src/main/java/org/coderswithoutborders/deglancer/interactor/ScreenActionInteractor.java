@@ -17,6 +17,7 @@ import java.util.UUID;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.Sort;
+import timber.log.Timber;
 
 /**
  * Created by Renier on 2016/04/04.
@@ -85,15 +86,15 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
 
 
         if (action.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-            Log.i(TAG, "Screen Event - " + "LOCKED");
+            Timber.i( "Screen Event - " + "LOCKED");
         } else if (action.getAction().equals(Intent.ACTION_SCREEN_ON)) {
-            Log.i(TAG, "Screen Event - " + "SCREEN_ON");
+            Timber.i( "Screen Event - " + "SCREEN_ON");
         } else if (action.getAction().equals(Intent.ACTION_USER_PRESENT)) {
-            Log.i(TAG, "Screen Event - " + "USER_PRESENT");
+            Timber.i( "Screen Event - " + "USER_PRESENT");
         }  else if (action.getAction().equals(Intent.ACTION_POWER_CONNECTED)) {
-            Log.i(TAG, "Screen Event - " + "POWER_CONNECTED");
+            Timber.i( "Screen Event - " + "POWER_CONNECTED");
         } else if (action.getAction().equals(Intent.ACTION_POWER_DISCONNECTED)) {
-            Log.i(TAG, "Screen Event - " + "POWER_DISCONNECTED");
+            Timber.i( "Screen Event - " + "POWER_DISCONNECTED");
         }
     }
 

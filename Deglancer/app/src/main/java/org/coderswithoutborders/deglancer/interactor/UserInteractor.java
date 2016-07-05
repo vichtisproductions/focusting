@@ -14,6 +14,7 @@ import org.joda.time.DateTime;
 import java.util.UUID;
 
 import rx.Observable;
+import timber.log.Timber;
 
 /**
  * Created by Renier on 2016/04/12.
@@ -82,10 +83,10 @@ public class UserInteractor implements IUserInteractor {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    Timber.d( "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                    Timber.d( "onAuthStateChanged:signed_out");
                 }
             }
         };
@@ -105,7 +106,7 @@ public class UserInteractor implements IUserInteractor {
         if (user != null) {
             username = user.getUid();
         } else {
-            Log.d(TAG, "User not found");
+            Timber.d( "User not found");
         }
         return username;
     }

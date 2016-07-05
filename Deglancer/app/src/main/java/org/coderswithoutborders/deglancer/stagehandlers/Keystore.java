@@ -8,6 +8,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
 
+import timber.log.Timber;
+
 public class Keystore { //Did you remember to vote up my example?
     private static Keystore store;
     private SharedPreferences SP;
@@ -19,7 +21,7 @@ public class Keystore { //Did you remember to vote up my example?
 
     public static Keystore getInstance(Context context) {
         if (store == null) {
-            Log.v("Keystore","NEW STORE");
+            Timber.d("NEW STORE");
             store = new Keystore(context);
         }
         return store;

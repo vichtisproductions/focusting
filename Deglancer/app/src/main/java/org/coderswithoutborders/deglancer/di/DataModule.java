@@ -12,6 +12,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.coderswithoutborders.deglancer.BuildConfig;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -20,6 +22,7 @@ import io.realm.DynamicRealm;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmMigration;
+import timber.log.Timber;
 
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
 
@@ -33,7 +36,7 @@ public class DataModule {
     DatabaseReference provideFirebaseClient(Context context) {
 
         String fbAuthUsername="lauri.palokangas@gmail.com";
-        String fbAuthPassword="9Kvn0m9PiWc&Zqrd%@GnAbMd";
+        String fbAuthPassword="<PASSWORD_HERE>";
         String TAG="DatabaseReference";
 
         FirebaseAuth mAuth;
@@ -47,10 +50,10 @@ public class DataModule {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    Timber.d( "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                    Timber.d( "onAuthStateChanged:signed_out");
                 }
                 // [START_EXCLUDE]
                 // updateUI(user);
@@ -65,19 +68,23 @@ public class DataModule {
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         String firebaseURL = "https://deglancer-f6fa5.firebaseio.com/users/";
+        if (BuildConfig.DEBUG) {
+            firebaseURL = "https://flickering-heat-4815.firebaseio.com/users/";
+        }
         DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseURL);
 
         mAuth.signInWithEmailAndPassword(fbAuthUsername, fbAuthPassword)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+                        Timber.d( "signInWithEmail:onComplete:" + task.isSuccessful());
 
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
-                            Log.w(TAG, "signInWithEmail", task.getException());
+                            // Log.w(TAG, "signInWithEmail", task.getException());
+                            Timber.w(task.getException(), "signInWithEmail");
                         }
 
                         // [START_EXCLUDE]

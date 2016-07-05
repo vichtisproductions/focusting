@@ -8,6 +8,8 @@ import org.acra.annotation.*;
 
 import org.coderswithoutborders.deglancer.di.DIGraph;
 
+import timber.log.Timber;
+
 /**
  * Created by Renier on 2016/03/29.
  */
@@ -23,6 +25,10 @@ public class MainApplication extends Application {
         super.onCreate();
 
         mGraph = DIGraph.Initializer.init(this);
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
 
         //This is used so that the app theme applies to views inflated from app context rather than activity/fragment context
         getApplicationContext().setTheme(R.style.AppTheme);
