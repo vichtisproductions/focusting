@@ -3,3 +3,6 @@
 # Google services
 google-services.json
 service-account-key.json
+
+# Credentials
+/src/main/res/raw/credentials.json
