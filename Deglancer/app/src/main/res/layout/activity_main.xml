@@ -46,12 +46,22 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:padding="16dp"
+                android:text="@string/btnSnoozeText"
+                android:layout_below="@id/tvIntro"
+                android:id="@+id/btnSnooze" />
+
+            <Button
                 android:id="@+id/btnPreTest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvStageRemainingTime"
                 android:layout_centerHorizontal="true"
                 android:padding="16dp"
+                android:visibility="visible"
                 android:text="@string/btnTakeThePreTest" />
 
             <TextView

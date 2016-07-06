@@ -137,5 +137,6 @@
     <string name="notifHead">"Deglancer - "</string>
     <string name="notifStage">stage</string>
     <string name="notifDay">day</string>
+    <string name="btnSnoozeText">Snooze notifications for 2 hours</string>
 
 </resources>

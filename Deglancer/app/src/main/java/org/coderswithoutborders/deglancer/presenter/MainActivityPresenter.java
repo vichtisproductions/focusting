@@ -1,14 +1,21 @@
 package org.coderswithoutborders.deglancer.presenter;
 
+import android.content.Context;
+import android.view.Gravity;
+import android.widget.Toast;
+
+import org.coderswithoutborders.deglancer.R;
 import org.coderswithoutborders.deglancer.bus.RxBus;
 import org.coderswithoutborders.deglancer.bus.events.DebugStageEvent;
 import org.coderswithoutborders.deglancer.func_debug.view.ITargetSetView;
 import org.coderswithoutborders.deglancer.func_debug.view.TargetSetView;
+import org.coderswithoutborders.deglancer.interactor.DatabaseInteractor;
 import org.coderswithoutborders.deglancer.interactor.IDatabaseInteractor;
 import org.coderswithoutborders.deglancer.interactor.IInitialStartupInteractor;
 import org.coderswithoutborders.deglancer.interactor.IStageInteractor;
 import org.coderswithoutborders.deglancer.model.Stage;
 import org.coderswithoutborders.deglancer.model.Target;
+import org.coderswithoutborders.deglancer.utils.ToastUtils;
 import org.coderswithoutborders.deglancer.view.IMainActivityView;
 
 import rx.android.schedulers.AndroidSchedulers;
@@ -156,5 +163,14 @@ public class MainActivityPresenter implements IMainActivityPresenter {
                     String here = "";
                 });
     }
+
+    @Override
+    public void snoozeClicked(Context context) {
+        ToastUtils.setSnooze(context);
+        Toast toast = Toast.makeText(context, "Notifications snoozed for 2 hours", 3);
+        toast.setGravity(Gravity.BOTTOM, 0, 30);
+        toast.show();
+    }
+
 }
 

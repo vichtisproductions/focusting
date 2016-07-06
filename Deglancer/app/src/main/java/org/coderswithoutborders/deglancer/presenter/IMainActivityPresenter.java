@@ -1,5 +1,7 @@
 package org.coderswithoutborders.deglancer.presenter;
 
+import android.content.Context;
+
 import org.coderswithoutborders.deglancer.view.IMainActivityView;
 
 /**
@@ -11,6 +13,7 @@ public interface IMainActivityPresenter {
     void clearView();
     void init();
     void debugClicked();
+    void snoozeClicked(Context context);
     boolean isPreTestRun();
     int whatStage();
     int whatTarget();

@@ -134,6 +134,13 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
             targetSelected = targetText + Integer.toString(target) + "%";
             ((TextView)findViewById(R.id.tvTargetSelected)).setText(targetSelected);
         }
+
+        if (stage == 1 || stage == 5) {
+            findViewById(R.id.btnSnooze).setVisibility(View.GONE);
+        } else {
+            findViewById(R.id.btnSnooze).setVisibility(View.VISIBLE);
+            findViewById(R.id.btnSnooze).setOnClickListener(v -> mPresenter.snoozeClicked(this));
+        }
     }
 
     @Override
