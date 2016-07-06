@@ -97,12 +97,6 @@ public class DatabaseInteractor implements IDatabaseInteractor {
                 .longValue();
     }
 
-
-
-
-
-
-
     @Override
     public long getUnlockCountForStageFromAverages(int stage, int day, int hour) {
         Averages avg = mRealm.where(Averages.class)
@@ -220,12 +214,6 @@ public class DatabaseInteractor implements IDatabaseInteractor {
                 .equalTo("mDay", day)
                 .average("mSOT");
     }
-
-
-
-
-
-
 
     @Override
     public void commitAverages(Averages averages) {

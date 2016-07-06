@@ -89,7 +89,6 @@ public class DataModule {
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
-                            // Log.w(TAG, "signInWithEmail", task.getException());
                             Timber.w(task.getException(), "signInWithEmail");
                         }
 
@@ -99,17 +98,6 @@ public class DataModule {
                     }
                 });
         // [END sign_in_with_email]
-
-        /*
-        mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                firebaseAuth.signInWithEmailAndPassword(fbAuthUsername, fbAuthPassword);
-                // setCurrentUser(mAuth.getCurrentUser());
-            }
-        });
-        mAuth.signInWithEmailAndPassword(fbAuthUsername, fbAuthPassword);
-         */
-
         return ref;
     }
     @Singleton

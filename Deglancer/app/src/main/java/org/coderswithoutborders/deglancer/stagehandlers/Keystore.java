@@ -6,7 +6,7 @@ package org.coderswithoutborders.deglancer.stagehandlers;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.util.Log;
+
 
 import timber.log.Timber;
 
@@ -27,7 +27,7 @@ public class Keystore { //Did you remember to vote up my example?
         return store;
     }
 
-    public void put(String key, String value) {//Log.v("Keystore","PUT "+key+" "+value);
+    public void put(String key, String value) {
         Editor editor;
 
         editor = SP.edit();
@@ -36,16 +36,16 @@ public class Keystore { //Did you remember to vote up my example?
         editor.apply();//Keep going and save when you are not busy - Available only in APIs 9 and above.  This is the preferred way of saving.
     }
 
-    public String get(String key) {//Log.v("Keystore","GET from "+key);
+    public String get(String key) {
         return SP.getString(key, null);
 
     }
 
-    public int getInt(String key) {//Log.v("Keystore","GET INT from "+key);
+    public int getInt(String key) {
         return SP.getInt(key, 0);
     }
 
-    public void putInt(String key, int num) {//Log.v("Keystore","PUT INT "+key+" "+String.valueOf(num));
+    public void putInt(String key, int num) {
         Editor editor;
         editor = SP.edit();
 
@@ -53,11 +53,11 @@ public class Keystore { //Did you remember to vote up my example?
         editor.apply();
     }
 
-    public long getLong(String key) {//Log.v("Keystore","GET LONG from "+key);
+    public long getLong(String key) {
         return SP.getLong(key, 0);
     }
 
-    public void putLong(String key, long num) {//Log.v("Keystore","PUT LONG "+key+" "+String.valueOf(num));
+    public void putLong(String key, long num) {
         Editor editor;
         editor = SP.edit();
 

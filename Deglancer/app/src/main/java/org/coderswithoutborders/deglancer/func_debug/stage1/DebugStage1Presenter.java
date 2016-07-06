@@ -1,6 +1,6 @@
 package org.coderswithoutborders.deglancer.func_debug.stage1;
 
-import android.util.Log;
+
 
 import org.coderswithoutborders.deglancer.interactor.IDatabaseInteractor;
 import org.coderswithoutborders.deglancer.interactor.IStageInteractor;

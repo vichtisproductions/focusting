@@ -4,8 +4,8 @@
     <string name="toast_unlocks_today_label">  Unlocks today\u00A0\u00A0\u00A0\u00A0\u00A0</string>
     <string name="toast_screen_on_today_label">Screen on today</string>
     <string name="tracker_service_foreground_content_title_text">Deglancer</string>
-    <string name="tracker_service_foreground_ticker_text">Deglancer Service is running.</string>
-    <string name="tracker_service_foreground_content_text">Deglancer Service is running.</string>
+    <string name="tracker_service_foreground_ticker_text">Deglancer is running</string>
+    <string name="tracker_service_foreground_content_text">Deglancer is running</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -54,22 +54,20 @@
     <string name="averages_set_view_stage_button_text">STAGE</string>
     <string name="averages_set_view_set_for_label">Set For</string>
 
-
     <string name="activity_debug_stage_1_activity_title">Stage 1 Debug</string>
     <string name="activity_debug_stage_2_activity_title">Stage 2 Debug</string>
     <string name="activity_debug_stage_3_activity_title">Stage 3 Debug</string>
     <string name="activity_debug_stage_4_activity_title">Stage 4 Debug</string>
     <string name="activity_debug_stage_5_activity_title">Stage 5 Debug</string>
 
-
     <string name="activity_debug_stage_activity_title_from_code">Stage %1$s Debug</string>
     <string name="time_picker_okay_button_text">OKAY</string>
     <string name="time_picker_cancel_button_text">CANCEL</string>
-    <string name="target_set_view_header">Select your goal:</string>
+    <string name="target_set_view_header">How much would you like to reduce your phone usage?</string>
     <string name="target_set_view_5_percent">-5%</string>
     <string name="target_set_view_10_percent">-10%</string>
     <string name="target_set_view_15_percent">-15%</string>
-    <string name="target_set_view_set_button_text">SET FOR STAGE</string>
+    <string name="target_set_view_set_button_text">Confirm my goal</string>
     <string name="researcherTitle">Researcher</string>
     <string name="ResearcherText">Lauri Palokangas,\nlauri.palokangas@student.laurea.fi,\n+358504864918</string>
     <string name="ResearchOrganizationTitle">Research organization</string>
@@ -91,8 +89,8 @@
     <string name="IntroText">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n</string>
     <string name="IntroTextPreTest">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n\nTake the research survey.</string>
     <string name="RemainingTimeText">days left to next stage</string>
-    <string name="btnTakeThePreTest">Take the pre-test</string>
-    <string name="tvPReTestNoticeText">Pre-test will invoke automatically in 1 minute, you can come back any time to complete your questionnaire.</string>
+    <string name="btnTakeThePreTest">Take the pre-research survey</string>
+    <string name="tvPReTestNoticeText">Pre-research survey includes 10 simple questions about your smartphone-related behaviors.</string>
     <string name="PreTestIntro">Below is a list of smartphone-related behaviors or responses people sometimes have following their smartphone using experiences. Please read each item carefully, and select the option that best describes how much the description fits you <b>during the past 3 months</b>.</string>
     <string name="PreTestSubmitAnswers">Save my answers</string>
     <string name="PreTestThanks">Thank your for your responses.</string>
@@ -109,14 +107,14 @@
     <string name="btnPreTestNext">Next question</string>
     <string name="btnSubmitResponseText">Submit responses</string>
     <string name="strPreTestThankYou">Thank you for the responses</string>
-    <string name="tvTargetSelectedText">Target set at -</string>
+    <string name="tvTargetSelectedText">You have chosen to reduce your phone usage by -</string>
 
     <string-array name="IntroTexts">
-        <item name="1">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n\nNow collecting data in the background.</item>
-        <item name="2">Deglancer helps you learn about your phone usage.\n\nThis week the app shows you the statistics of your phone usage every time you unlock your phone.</item>
-        <item name="3">Deglancer helps you learn about your phone usage.\n\nThis week the app gives positive emoji for sleep time, unlocks, and screen on time if you have a decreased trend in your phone usage from the last week.</item>
-        <item name="4">Deglancer helps you learn about your phone usage.\n\nThis week the app gives positive emoji if you meet the personal goal you have defined to decrease your phone usage.</item>
-        <item name="5">Deglancer helps you learn about your phone usage.\n\nNow observing your usage in the background.</item>
+        <item name="1">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks you will get feedback and are encouraged to reduce your usage.\n\nNow collecting data in the background.</item>
+        <item name="2">Deglancer helps you learn about your phone usage.\n\nThis week you will see information about your phone usage every time you unlock your phone.\nThe information tells you how long your phone was locked since the last usage, how many times you have unlocked it today, and how long the screen has been on today.</item>
+        <item name="3">Deglancer helps you learn about your phone usage.\n\nThis week you will receive thumbs up at every unlock if you have managed to reduce the usage of your phone from the last week.\nYou can get thumbs up for keeping your phone locked longer, using it fewer times per day, or reducing the total usage time per day.</item>
+        <item name="4">Deglancer helps you learn about your phone usage.\n\nThis week you will get thumb-up -sign if you meet the personal goal you have set to reduce your phone usage.\nYou can get thumbs up for keeping your phone locked longer, using it fewer times per day, or reducing the total usage time per day.</item>
+        <item name="5">Deglancer helps you learn about your phone usage.\n\nNow observing your usage in the background to learn if the reduction in your phone usage is permanent.</item>
     </string-array>
 
     <string-array name="PreTestQuestions">
@@ -134,5 +132,10 @@
 
     <string name="tvCreditsTitle">Credits and acknowledgements</string>
     <string name="tvCreditsText">Icons made by http://www.flaticon.com/authors/madebyoliver from http://www.flaticon.com</string>
+    <string name="labelTakeTheTestViewTitle">Pre-research questionnaire</string>
+    <string name="labelRISTitle">Research Information Sheet</string>
+    <string name="notifHead">"Deglancer - "</string>
+    <string name="notifStage">stage</string>
+    <string name="notifDay">day</string>
 
 </resources>

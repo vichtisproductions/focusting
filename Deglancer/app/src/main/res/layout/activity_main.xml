@@ -8,12 +8,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+
     tools:context=".view.MainActivity">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -61,7 +63,8 @@
                 android:padding="16dp"
                 android:text="@string/tvPReTestNoticeText"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:visibility="gone" />
+                android:visibility="visible"
+                android:textAlignment="center" />
 
             <org.coderswithoutborders.deglancer.func_debug.view.TargetSetView
                 android:id="@+id/targetSetView"
@@ -81,7 +84,8 @@
                 android:id="@+id/tvTargetSelected"
                 android:layout_alignBottom="@+id/targetSetView"
                 android:layout_centerHorizontal="true"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:gravity="center" />
 
             <Button
                 android:id="@+id/btnDebug"
@@ -91,31 +95,28 @@
                 android:layout_centerHorizontal="true"
                 android:text="DEBUG" />
 
-            <TextView
-                android:id="@+id/tvStage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
                 android:layout_below="@+id/btnDebug"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="12sp" />
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal|bottom"
+                android:paddingTop="2dp" >
 
-            <Button
-                android:id="@+id/TextResInfoSheet"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_below="@+id/tvStage"
-                android:layout_centerHorizontal="true"
-                android:background="@null"
-                android:clickable="true"
-                android:text="@string/ResearchInformationSheetTitle"
-                android:textAllCaps="false"
-                android:textColor="#0000ff" />
+                <Button
+                    android:id="@+id/TextResInfoSheet"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:text="@string/ResearchInformationSheetTitle"
+                    android:textAllCaps="false"
+                    android:textColor="#0000ff" />
 
+            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.menu.MenuPresenter;
-import android.util.Log;
+
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -98,11 +98,10 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         setPreTestVisibility();
 
         findViewById(R.id.btnDebug).setVisibility(View.GONE);
-        findViewById(R.id.tvStage).setVisibility(View.GONE);
 
         if (BuildConfig.DEBUG) {
             findViewById(R.id.btnDebug).setVisibility(View.VISIBLE);
-            findViewById(R.id.tvStage).setVisibility(View.VISIBLE);
+            findViewById(R.id.btnDebug).setOnClickListener(v -> mPresenter.debugClicked());
         }
 
     }
@@ -116,8 +115,10 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
         if (mPresenter.isPreTestRun()) {
             findViewById(R.id.btnPreTest).setVisibility(View.GONE);
+            findViewById(R.id.tvPreTestNotice).setVisibility(View.GONE);
         } else {
             findViewById(R.id.btnPreTest).setVisibility(View.VISIBLE);
+            findViewById(R.id.tvPreTestNotice).setVisibility(View.VISIBLE);
         }
 
         if (stage != 4) {
@@ -233,7 +234,8 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
     @Override
     public void setStageText(String stage) {
-        ((TextView)findViewById(R.id.tvStage)).setText(stage);
+        Button debugButton = (Button)findViewById(R.id.btnDebug);
+        debugButton.setText("DEBUG - " + stage);
     }
 
     public void setIntroText(int stage, int day) {
@@ -274,24 +276,5 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
             e.printStackTrace();
         }
     }
-
-    /*
-    private void signInAnonymously() {
-        mAuth.signInAnonymously()
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Timber.d( "signInAnonymously:onComplete:" + task.isSuccessful());
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "signInAnonymously", task.getException());
-                        }
-                    }
-                });
-    }
-
-    private void signOut() {
-        mAuth.signOut();
-    }
-    */
 
 }

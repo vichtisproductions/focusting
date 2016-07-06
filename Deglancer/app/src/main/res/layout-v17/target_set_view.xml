@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerHorizontal="true"
         android:layout_alignLeft="@+id/textView10"
         android:layout_below="@+id/textView10"
         android:layout_alignRight="@+id/textView10"
@@ -22,21 +21,24 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:clickable="true"
-            android:text="@string/target_set_view_5_percent" />
+            android:text="@string/target_set_view_5_percent"
+            android:layout_gravity="center_horizontal" />
 
         <RadioButton
             android:id="@+id/rdb10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/target_set_view_10_percent" />
+            android:text="@string/target_set_view_10_percent"
+            android:layout_gravity="center_horizontal" />
 
         <RadioButton
             android:id="@+id/rdb15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/target_set_view_15_percent" />
+            android:text="@string/target_set_view_15_percent"
+            android:layout_gravity="center_horizontal" />
     </RadioGroup>
 
     <TextView
@@ -48,7 +50,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/target_set_view_header" />
+        android:text="@string/target_set_view_header"
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/btnApply"

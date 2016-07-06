@@ -5,14 +5,6 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/ResearchInformationSheetTitle"
-        android:id="@+id/ResearchInformationSheetHeading"
-        android:layout_gravity="center_horizontal" />
-
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scrollview"
         android:padding="10dp"

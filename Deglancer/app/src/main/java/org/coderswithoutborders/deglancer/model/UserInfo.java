@@ -10,6 +10,9 @@ public class UserInfo {
     private String mModel;
     private String mOSVersion;
 
+    public UserInfo() {
+    }
+
     public UserInfo(String mInstanceId, long mInitialStartTime, String mManufacturer, String mModel, String mOSVersion) {
         this.mInstanceId = mInstanceId;
         this.mInitialStartTime = mInitialStartTime;

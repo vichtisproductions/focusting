@@ -2,7 +2,7 @@ package org.coderswithoutborders.deglancer.interactor;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+
 
 import com.google.firebase.database.DatabaseReference;
 

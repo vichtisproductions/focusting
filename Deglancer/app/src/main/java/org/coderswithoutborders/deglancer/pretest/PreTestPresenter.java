@@ -6,7 +6,7 @@ import org.coderswithoutborders.deglancer.interactor.IPreTestInteractor;
 import rx.subscriptions.CompositeSubscription;
 import timber.log.Timber;
 
-import android.util.Log;
+
 
 /**
  * Created by Lauripal on 29.6.2016.
