@@ -94,7 +94,6 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
         // Here be the part that tries to upload the content
         // Assume that the content is always there in the mRxPrefs
         // First read UPLOAD_SUCCEEDED, ...
-        Timber.d("Beginning the Uploading routine now.");
 
         if (mPrefs.getBoolean(SP_KEY_INITIAL_UPLOAD_SUCCEEDED, false) == false) {
             // Otherwise upload it...
@@ -110,7 +109,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
             Timber.d("User info from SP: " + initialStartTimefromSP.toString() + ", " + manufacturerfromSP + ", " + modelfromSP + ", " + osVersionfromSP);
 
             Timber.d("Uploading UserInfo to FireBase");
-            DatabaseReference ref = mFirebaseClient.child(instanceId);
+            DatabaseReference ref = mFirebaseClient.child(instanceId).child("InitialInformation");
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -130,7 +129,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
 
                     final String userId = mUserInteractor.getInstanceIdSynchronous();
                     Timber.d("Instance ID is " + userId);
-                    FirebaseDatabase.getInstance().getReference().child("users").child(userId)
+                    FirebaseDatabase.getInstance().getReference().child("users").child(userId).child("InitialInformation")
                             .addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
