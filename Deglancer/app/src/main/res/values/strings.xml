@@ -7,9 +7,6 @@
     <string name="tracker_service_foreground_ticker_text">Deglancer is running</string>
     <string name="tracker_service_foreground_content_text">Deglancer is running</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="stage_select_view_header">Stage Select</string>
     <string name="stage_select_view_set_as_current_stage">Set As Current Stage/Day/Hour</string>
 

@@ -56,31 +56,9 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
     private Button button;
 
-    // private FirebaseAuth mAuth;
-    // private FirebaseAuth.AuthStateListener mAuthListener;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        /*
-        mAuth = FirebaseAuth.getInstance();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    Timber.d( "onAuthStateChanged:signed_in:" + user.getUid());
-                } else {
-                    // User is signed out
-                    Timber.d( "onAuthStateChanged:signed_out");
-                }
-            }
-        };
-        signInAnonymously();
-        */
 
         setContentView(R.layout.activity_main);
 
@@ -156,31 +134,12 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
     @Override
     public void onStart() {
         super.onStart();
-        // mAuth.addAuthStateListener(mAuthListener);
-        // signInAnonymously();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        /*
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
-        }
-         */
     }
-
-    /*
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        finish();
-        startActivity(getIntent());
-        setPreTestVisibility();
-
-    }
-    */
-
     @Override
     protected void onPause() {
         mPresenter.clearView();

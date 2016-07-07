@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 
-
 import com.f2prateek.rx.preferences.Preference;
 import com.f2prateek.rx.preferences.RxSharedPreferences;
 import com.google.firebase.database.DataSnapshot;
@@ -18,7 +17,6 @@ import org.coderswithoutborders.deglancer.model.UserInfo;
 import org.joda.time.DateTime;
 
 import timber.log.Timber;
-
 
 import java.util.Date;
 
