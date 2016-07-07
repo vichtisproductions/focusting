@@ -61,9 +61,9 @@
     <string name="time_picker_okay_button_text">OKAY</string>
     <string name="time_picker_cancel_button_text">CANCEL</string>
     <string name="target_set_view_header">How much would you like to reduce your phone usage?</string>
-    <string name="target_set_view_5_percent">-5%</string>
-    <string name="target_set_view_10_percent">-10%</string>
-    <string name="target_set_view_15_percent">-15%</string>
+    <string name="target_set_view_5_percent" translatable="false">-5%</string>
+    <string name="target_set_view_10_percent" translatable="false">-10%</string>
+    <string name="target_set_view_15_percent" translatable="false">-15%</string>
     <string name="target_set_view_set_button_text">Confirm my goal</string>
     <string name="researcherTitle">Researcher</string>
     <string name="ResearcherText">Lauri Palokangas,\nlauri.palokangas@student.laurea.fi,\n+358504864918</string>
@@ -79,7 +79,7 @@
     <string name="RightsTitle">Rights of the test subject</string>
     <string name="RightsText">- Research is voluntary.\n- Test subject has right to stop participating the research at any time by uninstalling the application.\n- Test subject has right to inquire more information regarding the research.</string>
     <string name="ResearchDataTitle">Research data</string>
-    <string name="DataText">- Research data is not personally identifiable.\n- All information is anonymized.\n- Research date is only used for scientific research purposes.\n- Research data is not sold to anyone.</string>
+    <string name="DataText">- Research data is not personally identifiable.\n- All information is anonymized.\n- Research data is only used for scientific research purposes.\n- Research data is not sold to anyone.</string>
     <string name="DurationTitle">Duration</string>
     <string name="DurationText">- The research lasts 8 weeks.\n- If the test subject does not uninstall the application, they have right to continue to use the application.\n- The data collection will continue as long as the application has been installed.</string>
     <string name="ResearchInformationSheetTitle"><u>Research information sheet</u></string>
@@ -93,7 +93,7 @@
     <string name="PreTestThanks">Thank your for your responses.</string>
     <string name="tvPreTestTitleText">Smartphone Addiction Inventory</string>
     <string name="tvPreTestQuestionText">Pre-test question</string>
-    <string name="tvPreTestQuestionNumber">1</string>
+    <string name="tvPreTestQuestionNumber" translatable="false">1</string>
     <string name="tvPreTestQuestionNumberOf">of 10</string>
     <string name="tvPreTestActualQuestionText">Although using smartphone has brought negative effects on my interpersonal relationships, the amount of time spent on Internet remains unreduced.</string>
     <string name="radioPreTestOne">1: Very much unfit</string>
@@ -104,7 +104,7 @@
     <string name="btnPreTestNext">Next question</string>
     <string name="btnSubmitResponseText">Submit responses</string>
     <string name="strPreTestThankYou">Thank you for the responses</string>
-    <string name="tvTargetSelectedText">You have chosen to reduce your phone usage by -</string>
+    <string name="tvTargetSelectedText">You have chosen to reduce your phone usage by </string>
 
     <string-array name="IntroTexts">
         <item name="1">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks you will get feedback and are encouraged to reduce your usage.\n\nNow collecting data in the background.</item>
@@ -131,7 +131,7 @@
     <string name="tvCreditsText">Icons made by http://www.flaticon.com/authors/madebyoliver from http://www.flaticon.com</string>
     <string name="labelTakeTheTestViewTitle">Pre-research questionnaire</string>
     <string name="labelRISTitle">Research Information Sheet</string>
-    <string name="notifHead">"Deglancer - "</string>
+    <string name="notifHead">Deglancer - </string>
     <string name="notifStage">stage</string>
     <string name="notifDay">day</string>
     <string name="btnSnoozeText">Snooze notifications for 2 hours</string>
