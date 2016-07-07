@@ -3,7 +3,6 @@
     <string name="toast_last_sleep_label">Näyttö kiinni\u00A0\u00A0\u00A0\u00A0</string>
     <string name="toast_unlocks_today_label">Avauksia tänään\u00A0\u00A0\u00A0</string>
     <string name="toast_screen_on_today_label">Näyttö auki tänään</string>
-    <string name="tracker_service_foreground_content_title_text">Deglancer</string>
     <string name="tracker_service_foreground_ticker_text">Deglancer on päällä</string>
     <string name="tracker_service_foreground_content_text">Deglancer on päällä</string>
 
@@ -63,7 +62,6 @@
     <string name="target_set_view_header">Paljonko haluat vähentää puhelimen käyttöäsi?</string>
     <string name="target_set_view_set_button_text">Aseta tavoite</string>
     <string name="researcherTitle">Tutkija</string>
-    <string name="ResearcherText">Lauri Palokangas,\nlauri.palokangas@student.laurea.fi,\n+358504864918</string>
     <string name="ResearchOrganizationTitle">Tutkimusorganisaatio</string>
     <string name="OrganizationText">Laurea-ammattikorkeakoulu.\nTutkimus ei saa rahoitusta.</string>
     <string name="PurposeTitle">Tarkoitus</string>
@@ -81,7 +79,7 @@
     <string name="ResearchInformationSheetTitle"><u>Tiedote tutkittaville</u></string>
     <string name="IntroText">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nSovellus antaa tulevina viikkoina palautetta, ja rohkaisee sinua harkitsemaan puhelimen käyttöä.\n</string>
     <string name="IntroTextPreTest">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nSovellus antaa tulevina viikkoina palautetta, ja rohkaisee sinua harkitsemaan puhelimen käyttöä.\n\nVastaa itsearviointiin nyt.</string>
-    <string name="RemainingTimeText">päivää jäljellä seuraavaan vaiheeseen</string>
+    <string name="RemainingTimeText">päivää seuraavaan vaiheeseen</string>
     <string name="btnTakeThePreTest">Vastaa itsearviointiin</string>
     <string name="tvPReTestNoticeText">Itsearvioinnissa on 10 helppoa kysymystä älypuhelimen käyttöön liittyvästä käyttäytymisestä.</string>
     <string name="PreTestIntro">Alla on luettelo älypuhelimeen liittyviä käyttäytymismalleja tai vasteita jotka joskus johtuvat puhelimen käytöstä. Lue jokainen väite, ja valitse alta vaihtohto joka parhaiten kuvaa sitä miten kuvaus sopii sinuun <b>viimeisen 3 kuukauden aikana</b>.</string>
@@ -102,7 +100,7 @@
     <string name="tvTargetSelectedText">Haluat vähentää puhelimesi käyttöä </string>
 
     <string-array name="IntroTexts">
-        <item name="1">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nSovellus antaa tulevina viikkoina palautetta, ja rohkaisee sinua harkitsemaan puhelimen käyttöä.\n\Tausta-aineistoa kerätään.</item>
+        <item name="1">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nSovellus antaa tulevina viikkoina palautetta, ja rohkaisee sinua harkitsemaan puhelimen käyttöä.\n\nTausta-aineistoa kerätään.</item>
         <item name="2">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTällä viikolla saat tiedotteen puhelimesi käytöstä joka kerta kun avaat puhelimen.\nOpit siitä kuinka kauan puhelin oli kiinni edellisen käytön jälkeen, kuinka monta kertaa olet avannut puhelimen tänään ,ja kuinka kauan olet käyttänyt puhelinta yhteensä tänään.</item>
         <item name="3">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTällä viikolla saat positiivisen palautteen jos olet onnistunut vähentämään puhelimesi käyttöä viime viikolta.\nSaat palautteen jos puhelimesi on viime viikkoon verrattuna pidempään kiinni kerralla, avaat sen harvemmin päivässä, ja vähennät puhelimen käytön kokonaisaikaa.</item>
         <item name="4">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTällä viikolla saat positiivisen palautteen jos olet saavuttanut asettamasi tavoitteen puhelimen käytön vähentämiselle.\nSaat palautteen jos puhelimesi on viime viikkoon verrattuna pidempään kiinni kerralla, avaat sen harvemmin päivässä, ja vähennät puhelimen käytön kokonaisaikaa.</item>
@@ -113,7 +111,7 @@
         <item name="1">Vaikka älypuhelimen käyttö on aiheuttanut negatiivisia vaikutuksia ihmistenvälisiin suhteisiin, aika jonka kulutan Internetissä ei ole vähentynyt.</item>
         <item name="2">Käytän älypuhelinta pidempään, ja käytän enemmän rahaa kuin olin aikonut.</item>
         <item name="3">Yritän käyttää vähemmän aikaa älypuhelimella, mutta vaivannäköni ovat turhia.</item>
-        <item name="4">Tunnen kipua selässäni tai epämiellyttävää oloa silmissäni liiallisesta älypuhelimen käytöstä.</item>
+        <item name="4">Tunnen kipua niskassa tai epämiellyttävää oloa silmissäni liiallisesta älypuhelimen käytöstä.</item>
         <item name="5">Minulla on tapana käyttää älypuhelinta, ja unen laatu ja kokonaismäärä on alentunut.</item>
         <item name="6">Älypuhelimen käytöstä on aiheutunut tiettyjä negatiivisia vaikutuksia opiskelu- ja työmenestykseeni.</item>
         <item name="7">Tunnen rauhattomuutta ja ärtyisyyttä jos älypuhelinta ei ole saatavilla.</item>
@@ -131,5 +129,8 @@
     <string name="notifDay">päivä</string>
     <string name="btnSnoozeText">Vaimenna ilmoitukset 2 tunniksi</string>
     <string name="PurposeText">Tämän tutkmuksen tarkoituksena on tunnistaa erilaisia päätöksenteon ilmiöitä ja testata niiden vaikutusta puhelimen käytön vähentämiseksi.\nTutkimus auttaa paremmin ymmärtämään tuuppausten käyttöä modernin teknologian yhteydessä, ja selvittää miten ihmiset vastaavat vapaaehtoisiin menetelmiin jotka ohjaavat heitä vastuullisempaan puhelimen käyttöön.</string>
+    <string name="tvGoalSetToastText">Tavoite asetettu: -</string>
+    <string name="tvSelectYourGoalNotificationText">Aseta tavoite tälle viikolle</string>
+
 
 </resources>

@@ -199,7 +199,7 @@ public class Stage4Handler implements IStageHandler {
                                 .setContentTitle("Deglancer")
                                 .setContentIntent(resultPendingIntent)
                                 .setAutoCancel(true)
-                                .setContentText("Select your goal for this week");
+                                .setContentText(mContext.getString(R.string.tvSelectYourGoalNotificationText));
 
                 notifyMgr.notify(NOTIFY_ME_ID, notifyObj.build());
 

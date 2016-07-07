@@ -37,13 +37,14 @@
 
             <TextView
                 android:id="@+id/tvStageRemainingTime"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvIntro"
                 android:layout_centerHorizontal="true"
                 android:padding="16dp"
                 android:text="@string/RemainingTimeText"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:gravity="center_horizontal" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -51,14 +52,14 @@
                 android:layout_centerHorizontal="true"
                 android:padding="16dp"
                 android:text="@string/btnSnoozeText"
-                android:layout_below="@id/tvIntro"
+                android:layout_below="@id/tvStageRemainingTime"
                 android:id="@+id/btnSnooze" />
 
             <Button
                 android:id="@+id/btnPreTest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvStageRemainingTime"
+                android:layout_below="@+id/btnSnooze"
                 android:layout_centerHorizontal="true"
                 android:padding="16dp"
                 android:visibility="visible"

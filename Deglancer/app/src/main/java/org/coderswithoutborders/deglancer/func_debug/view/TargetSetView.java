@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
 
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.R;
@@ -93,6 +95,9 @@ public class TargetSetView extends FrameLayout implements ITargetSetView {
 
             Timber.d( "Setting target for " + Integer.toString(target));
             mPresenter.setTargetTapped(target);
+            Toast toast = Toast.makeText(getContext(), getContext().getString(R.string.tvGoalSetToastText) + target + " %", 3);
+            toast.setGravity(Gravity.BOTTOM, 0, 30);
+            toast.show();
         }
     };
 

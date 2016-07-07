@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
             findViewById(R.id.targetSetView).setVisibility(View.GONE);
             findViewById(R.id.tvTargetSelected).setVisibility(View.VISIBLE);
             targetText = getResources().getString(R.string.tvTargetSelectedText);
-            targetSelected = targetText + Integer.toString(target) + "%";
+            targetSelected = targetText + " " + Integer.toString(target) + " %";
             ((TextView)findViewById(R.id.tvTargetSelected)).setText(targetSelected);
         }
 
