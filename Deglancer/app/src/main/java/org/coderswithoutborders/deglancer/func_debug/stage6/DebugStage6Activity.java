@@ -9,9 +9,13 @@ import android.widget.Button;
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.R;
 import org.coderswithoutborders.deglancer.func_debug.stage5.DebugStage5Activity;
+import org.coderswithoutborders.deglancer.func_debug.view.AveragesSetView;
 import org.coderswithoutborders.deglancer.func_debug.view.StageSelectView;
 import org.coderswithoutborders.deglancer.func_debug.view.StatsView;
+import org.coderswithoutborders.deglancer.func_debug.view.TargetSetView;
 import org.coderswithoutborders.deglancer.model.Stage;
+import org.coderswithoutborders.deglancer.view.MainActivity;
+
 
 import javax.inject.Inject;
 
@@ -26,6 +30,7 @@ public class DebugStage6Activity extends AppCompatActivity implements IDebugStag
     private Button btnBack;
     private StatsView mStatsView;
     private StageSelectView mStageSelectView;
+    private AveragesSetView mAvgSetView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,10 @@ public class DebugStage6Activity extends AppCompatActivity implements IDebugStag
 
         btnBack = (Button) findViewById(R.id.btnBack);
         btnBack.setOnClickListener(buttonClickListener);
+
+        mAvgSetView = (AveragesSetView) findViewById(R.id.averagesSetView);
+        mAvgSetView.setStage(new Stage(5, 1, 1));
+
     }
 
     View.OnClickListener buttonClickListener = v -> {

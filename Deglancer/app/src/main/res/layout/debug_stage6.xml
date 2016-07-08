@@ -13,10 +13,11 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp" />
+            android:layout_marginRight="8dp"  />
 
-        <org.coderswithoutborders.deglancer.func_debug.view.StatsView
-            android:id="@+id/statsView"
+
+        <org.coderswithoutborders.deglancer.func_debug.view.AveragesSetView
+            android:id="@+id/averagesSetView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -26,6 +27,16 @@
             android:layout_alignRight="@+id/stageSelectView"
             android:layout_alignStart="@+id/stageSelectView"
             android:layout_below="@+id/stageSelectView"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp" />
+
+        <org.coderswithoutborders.deglancer.func_debug.view.StatsView
+            android:id="@+id/statsView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/averagesSetView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp" />
 
