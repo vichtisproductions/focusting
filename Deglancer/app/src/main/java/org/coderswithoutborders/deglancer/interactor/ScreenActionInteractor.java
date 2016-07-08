@@ -2,8 +2,10 @@ package org.coderswithoutborders.deglancer.interactor;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DatabaseReference;
 
 import org.coderswithoutborders.deglancer.bus.events.ActionEvent;
@@ -32,6 +34,8 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
     private Realm mRealm;
     private IUserInteractor mUserInteractor;
     private IDatabaseInteractor mDatabaseInteractor;
+
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     public ScreenActionInteractor(Context context, DatabaseReference firebaseClient, IStageInteractor stageInteractor, Realm realm, IUserInteractor userInteractor, IDatabaseInteractor databaseInteractor) {
         mContext = context;
@@ -132,6 +136,22 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
                         totalSOT
                 );
                 mDatabaseInteractor.commitAverages(avg);
+
+                int currStage = stage.getStage();
+                int currDay = action.getDay();
+
+                mFirebaseAnalytics = FirebaseAnalytics.getInstance(mContext);
+
+                if (action.getStage() != stage.getStage()) {
+                    Bundle fbAnalyticsBundle = new Bundle();
+                    fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ACHIEVEMENT_ID, "Stage " + Integer.toString(currStage));
+                    mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.UNLOCK_ACHIEVEMENT, fbAnalyticsBundle);
+                }
+                if (action.getDay() != stage.getDay()) {
+                    Bundle fbAnalyticsBundle = new Bundle();
+                    fbAnalyticsBundle.putLong(FirebaseAnalytics.Param.LEVEL, (long) currDay);
+                    mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LEVEL_UP, fbAnalyticsBundle);
+                }
 
                 DatabaseReference ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("Averages");
                 ref.push().setValue(avg);

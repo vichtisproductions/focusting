@@ -3,6 +3,7 @@ package org.coderswithoutborders.deglancer.func_debug.view;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.os.Bundle;
 import android.util.AttributeSet;
 
 import android.view.Gravity;
@@ -14,6 +15,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.R;
@@ -35,6 +38,8 @@ public class TargetSetView extends FrameLayout implements ITargetSetView {
     private RadioButton rdb5;
     private RadioButton rdb10;
     private RadioButton rdb15;
+
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     private static final String TAG = "TargetSetView";
 
@@ -98,6 +103,14 @@ public class TargetSetView extends FrameLayout implements ITargetSetView {
             Toast toast = Toast.makeText(getContext(), getContext().getString(R.string.tvGoalSetToastText) + target + " %", 3);
             toast.setGravity(Gravity.BOTTOM, 0, 30);
             toast.show();
+
+            mFirebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+            Bundle fbAnalyticsBundle = new Bundle();
+            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_ID, "stage4");
+            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Stage 4 target");
+            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_CATEGORY, "target");
+            fbAnalyticsBundle.putLong(FirebaseAnalytics.Param.QUANTITY, (long) target);
+            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.ADD_TO_WISHLIST, fbAnalyticsBundle);
         }
     };
 

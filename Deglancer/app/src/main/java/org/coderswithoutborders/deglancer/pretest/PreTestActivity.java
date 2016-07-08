@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.R;
 import org.coderswithoutborders.deglancer.view.MainActivity;
@@ -31,6 +33,8 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
 
     TextView tvPreTestActualQuestion, tvPreTestQuestionTitle;
     Button btnAnswer1, btnAnswer2, btnAnswer3, btnAnswer4;
+
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     /*
     private IPreTestInteractor preTestInteractor;
@@ -77,6 +81,9 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
         btnAnswer4 = (Button) findViewById(R.id.btnPreTestFour);
         btnAnswer4.setOnClickListener(buttonClickListener);
 
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.TUTORIAL_BEGIN, null);
+
     }
 
     View.OnClickListener buttonClickListener = v -> {
@@ -110,6 +117,10 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
             }
             mPreTestPresenter.submitPreTestResults(answers[0], answers[1], answers[2], answers[3], answers[4], answers[5], answers[6], answers[7], answers[8], answers[9]);
             showToast();
+
+            mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.TUTORIAL_COMPLETE, null);
+
             finish();
         }
     };
@@ -135,6 +146,8 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
         Toast toast = Toast.makeText(this, R.string.strPreTestThankYou, 3);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
+
+
     }
 
     /*

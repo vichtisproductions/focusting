@@ -1,8 +1,11 @@
 package org.coderswithoutborders.deglancer.presenter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.Toast;
+
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.coderswithoutborders.deglancer.R;
 import org.coderswithoutborders.deglancer.bus.RxBus;
@@ -36,6 +39,9 @@ public class MainActivityPresenter implements IMainActivityPresenter {
     private RxBus mBus;
 
     private IMainActivityView mView;
+
+    private FirebaseAnalytics mFirebaseAnalytics;
+
 
     public MainActivityPresenter(IInitialStartupInteractor initialStartupInteractor, IStageInteractor stageInteractor, IDatabaseInteractor databaseInteractor, RxBus bus) {
         mInitialStartupInteractor = initialStartupInteractor;
@@ -175,6 +181,13 @@ public class MainActivityPresenter implements IMainActivityPresenter {
         Toast toast = Toast.makeText(context, "Notifications snoozed for 2 hours", 3);
         toast.setGravity(Gravity.BOTTOM, 0, 30);
         toast.show();
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
+        Bundle fbAnalyticsBundle = new Bundle();
+        fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_ID, "snooze_notification");
+        fbAnalyticsBundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Snooze notification");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, fbAnalyticsBundle);
+
     }
 
 }

@@ -9,6 +9,8 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.view.View;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import org.coderswithoutborders.deglancer.BuildConfig;
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.func_debug.stage1.DebugStage1Activity;
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
     private TargetSetView mTargetSetView;
     private Stage6ToastSetView mStage6ToastSetView;
 
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     private Button button;
 
     @Override
@@ -71,6 +75,9 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         findViewById(R.id.btnPreTest).setOnClickListener(v -> showPreTest());
 
         setStageDependentViewsVisibility();
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.APP_OPEN, null);
 
     }
 

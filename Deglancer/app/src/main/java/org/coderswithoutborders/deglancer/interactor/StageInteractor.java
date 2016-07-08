@@ -132,46 +132,10 @@ public class StageInteractor implements IStageInteractor {
             case 5:
                 return mStage5Handler;
             case 6:
-                // return mStage6Handler;
-
-                // We have come to the end of the research
-                // Go and find out what type of toast user has asked from here on
-                // Assume 1 = Just the information.
-
-                // BEGIN trying to figure out the right handler
-                /*
-                int handler=1;
-                mStage6ToastInteractor.getStage6Toast(stage.getStage())
-                        .subscribeOn(AndroidSchedulers.mainThread())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(target -> {
-                                switch (target) {
-                                    case 0:
-                                        // User has asked No toast
-                                        handler=1;
-                                        break;
-                                    case 1:
-                                        // User has asked Information only
-                                        handler=2;
-                                        break;
-                                    case 2:
-                                        // User has asked Information and Thumbs up
-                                        handler=3;
-                                }
-                        }, error -> {
-                            //TODO - handle error
-                        });
-                // END trying to figure out the right handler
-
-                */
                 int handler = mStage6ToastInteractor.getStage6ToastSynchronous(6);
-                if (handler ==1) {
-                    return mStage1Handler;
-                } else if (handler==2) {
-                    return mStage2Handler;
-                } else if (handler==3) {
-                    return mStage3Handler;
-                }
+                if (handler ==1) { return mStage1Handler; }
+                else if (handler==2) { return mStage2Handler; }
+                else if (handler==3) { return mStage3Handler; }
         }
 
         return null;

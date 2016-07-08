@@ -3,12 +3,15 @@ package org.coderswithoutborders.deglancer.view;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.R;
@@ -32,6 +35,8 @@ public class Stage6ToastSetView extends FrameLayout implements IStage6ToastSetVi
     private RadioButton rdbNoToast;
     private RadioButton rdbInformation;
     private RadioButton rdbThumbsUp;
+
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     public Stage6ToastSetView(Context context) {
         super(context);
@@ -101,6 +106,13 @@ public class Stage6ToastSetView extends FrameLayout implements IStage6ToastSetVi
             Toast toast = Toast.makeText(getContext(), getContext().getString(R.string.toastStage6SetToastNotificationText) + ToastText, 3);
             toast.setGravity(Gravity.BOTTOM, 0, 30);
             toast.show();
+
+            mFirebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+            Bundle fbAnalyticsBundle = new Bundle();
+            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_ID, "stage6_toast_" + Integer.toString(target));
+            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Stage 6 Toast: " + ToastText);
+            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, fbAnalyticsBundle);
+
         }
     };
 
