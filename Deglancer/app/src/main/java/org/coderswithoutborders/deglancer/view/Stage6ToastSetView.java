@@ -64,7 +64,7 @@ public class Stage6ToastSetView extends FrameLayout implements IStage6ToastSetVi
         if (!isInEditMode()) {
             MainApplication.from(getContext()).getGraph().inject(this);
 
-            findViewById(R.id.btnApply).setOnClickListener(buttonClickListener);
+            findViewById(R.id.btnApplyStage6Toast).setOnClickListener(buttonClickListener);
 
             rdbNoToast = (RadioButton) findViewById(R.id.rdbNoToast);
             rdbInformation = (RadioButton) findViewById(R.id.rdbInformation);

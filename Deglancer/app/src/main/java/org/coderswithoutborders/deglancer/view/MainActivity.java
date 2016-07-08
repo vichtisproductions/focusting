@@ -55,22 +55,21 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         Intent i = new Intent(getApplicationContext(), TrackerService.class);
         getApplicationContext().startService(i);
 
-        findViewById(R.id.TextResInfoSheet).setOnClickListener(v -> showRIS());
-
-        findViewById(R.id.btnPreTest).setOnClickListener(v -> showPreTest());
 
         mTargetSetView = (TargetSetView) findViewById(R.id.targetSetView);
         mStage6ToastSetView = (Stage6ToastSetView) findViewById(R.id.stage6ToastSetView);
-
-        setStageDependentViewsVisibility();
-
-        findViewById(R.id.btnDebug).setVisibility(View.GONE);
 
         // TODO - Debug button and RIS not visible in stage 6
         if (BuildConfig.DEBUG) {
             findViewById(R.id.btnDebug).setVisibility(View.VISIBLE);
             findViewById(R.id.btnDebug).setOnClickListener(v -> mPresenter.debugClicked());
+        } else {
+            findViewById(R.id.btnDebug).setVisibility(View.GONE);
         }
+
+        setStageDependentViewsVisibility();
+        findViewById(R.id.TextResInfoSheet).setOnClickListener(v -> showRIS());
+        findViewById(R.id.btnPreTest).setOnClickListener(v -> showPreTest());
 
     }
 
@@ -122,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
             findViewById(R.id.stage6ToastSetView).setVisibility(View.VISIBLE);
         } else {
             findViewById(R.id.stage6ToastSetView).setVisibility(View.GONE);
+
         }
 
     }

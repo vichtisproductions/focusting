@@ -15,7 +15,6 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:gravity="center_horizontal"
         android:text="@string/target_set_view_header" />
 
     <RadioGroup
