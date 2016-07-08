@@ -3,6 +3,7 @@ package org.coderswithoutborders.deglancer.interactor;
 import org.coderswithoutborders.deglancer.model.Averages;
 import org.coderswithoutborders.deglancer.model.PreTestResults;
 import org.coderswithoutborders.deglancer.model.ScreenAction;
+import org.coderswithoutborders.deglancer.model.Stage6Toast;
 import org.coderswithoutborders.deglancer.model.Target;
 
 /**
@@ -54,11 +55,13 @@ public interface IDatabaseInteractor {
     void commitScreenAction(ScreenAction action);
 
     void commitTarget(Target target);
+    void commitToast(Stage6Toast toast);
     void commitPreTestResults(PreTestResults preTestResults);
     void clearPreTestResults();
     void clearTarget();
     boolean isPreTestRun();
     Target getTargetForStage(int stage);
+    Stage6Toast getToastForStage(int stage);
 
 
     long getSumOfUnlockCountForStageDayUpToHourFromAverages(int stage, int day, int hour);

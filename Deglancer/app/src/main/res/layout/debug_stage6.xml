@@ -29,36 +29,20 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp" />
 
-
-        <Button
-            android:id="@+id/btnAdvance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/statsView"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/debug_stage_5_move_to_stage_6_button_text"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp" />
-
         <Button
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btnAdvance"
-            android:text="@string/debug_stage_5_move_back_to_stage_4_button_text"
+            android:layout_below="@+id/statsView"
+            android:text="@string/debug_stage_6_move_back_to_stage_5_button_text"
             android:layout_marginBottom="8dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp" />
-
 
     </RelativeLayout>
 </ScrollView>

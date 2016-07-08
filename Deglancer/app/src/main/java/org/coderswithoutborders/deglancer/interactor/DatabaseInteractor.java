@@ -6,6 +6,7 @@ import android.content.Intent;
 import org.coderswithoutborders.deglancer.model.Averages;
 import org.coderswithoutborders.deglancer.model.PreTestResults;
 import org.coderswithoutborders.deglancer.model.ScreenAction;
+import org.coderswithoutborders.deglancer.model.Stage6Toast;
 import org.coderswithoutborders.deglancer.model.Target;
 import org.coderswithoutborders.deglancer.model.UserInfo;
 
@@ -342,6 +343,19 @@ public class DatabaseInteractor implements IDatabaseInteractor {
     }
 
     @Override
+    public void commitToast(Stage6Toast toast) {
+        mRealm.beginTransaction();
+
+        mRealm.where(Stage6Toast.class)
+                .equalTo("mStage", toast.getStage())
+                .findAll().clear();
+
+        mRealm.copyToRealm(toast);
+
+        mRealm.commitTransaction();
+    }
+
+    @Override
     public void clearTarget() {
         mRealm.beginTransaction();
 
@@ -385,6 +399,25 @@ public class DatabaseInteractor implements IDatabaseInteractor {
         try {
             RealmResults<Target> results = mRealm
                     .where(Target.class)
+                    .equalTo("mStage", stage)
+                    .findAll();
+
+            if (results.isValid() && results.size() > 0 && results.first() != null) {
+                return results.first();
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public Stage6Toast getToastForStage(int stage) {
+        try {
+            RealmResults<Stage6Toast> results = mRealm
+                    .where(Stage6Toast.class)
                     .equalTo("mStage", stage)
                     .findAll();
 

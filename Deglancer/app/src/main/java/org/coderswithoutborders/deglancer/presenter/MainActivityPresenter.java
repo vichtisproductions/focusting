@@ -113,6 +113,8 @@ public class MainActivityPresenter implements IMainActivityPresenter {
                 return 4;
             case 5:
                 return 5;
+            case 6:
+                return 6;
         }
 
         return 0;
@@ -156,7 +158,10 @@ public class MainActivityPresenter implements IMainActivityPresenter {
                             case 5:
                                 mView.showStage5View(stage);
                                 break;
-                        }
+
+                            case 6:
+                                mView.showStage6View(stage);
+                                break;                        }
                     }
                 }, error -> {
                     //TODO - Handle error

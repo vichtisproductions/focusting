@@ -51,6 +51,15 @@ public class DebugStage5Presenter implements IDebugStage5Presenter {
     public void onDetached() {
 
     }
+    @Override
+    public void advanceStageClicked() {
+        mStageInteractor.goToNextStage();
+
+        if (mView != null) {
+            mView.moveToStage6View();
+            mView.finishActivity();
+        }
+    }
 
     @Override
     public void previousStageClicked() {

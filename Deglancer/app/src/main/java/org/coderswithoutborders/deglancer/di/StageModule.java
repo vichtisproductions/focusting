@@ -10,6 +10,7 @@ import org.coderswithoutborders.deglancer.stagehandlers.Stage2Handler;
 import org.coderswithoutborders.deglancer.stagehandlers.Stage3Handler;
 import org.coderswithoutborders.deglancer.stagehandlers.Stage4Handler;
 import org.coderswithoutborders.deglancer.stagehandlers.Stage5Handler;
+import org.coderswithoutborders.deglancer.stagehandlers.Stage6Handler;
 
 import javax.inject.Singleton;
 
@@ -50,5 +51,11 @@ public class StageModule {
     @Provides
     public Stage5Handler provideStage5Handler(Context context, IDatabaseInteractor databaseInteractor) {
         return new Stage5Handler(context, databaseInteractor);
+    }
+
+    @Singleton
+    @Provides
+    public Stage6Handler provideStage6Handler(Context context, IDatabaseInteractor databaseInteractor) {
+        return new Stage6Handler(context, databaseInteractor);
     }
 }

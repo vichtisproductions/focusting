@@ -86,12 +86,21 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="16dp" />
 
+            <org.coderswithoutborders.deglancer.view.Stage6ToastSetView
+                android:id="@+id/stage6ToastSetView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/targetSetView"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/tvTargetSelectedText"
-                android:layout_below="@+id/targetSetView"
+                android:layout_below="@+id/stage6ToastSetView"
                 android:id="@+id/tvTargetSelected"
                 android:layout_alignBottom="@+id/targetSetView"
                 android:layout_centerHorizontal="true"

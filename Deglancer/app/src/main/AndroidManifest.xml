@@ -61,6 +61,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".func_debug.stage6.DebugStage6Activity"
+            android:label="@string/activity_debug_stage_6_activity_title"
+            android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
         <activity android.name=".view.ResearchInformationSheet"
             android:label="@string/labelRISTitle"
             android:name=".view.ResearchInformationSheet" >

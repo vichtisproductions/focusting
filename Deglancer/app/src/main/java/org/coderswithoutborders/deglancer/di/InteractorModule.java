@@ -12,10 +12,12 @@ import org.coderswithoutborders.deglancer.interactor.IPreTestInteractor;
 import org.coderswithoutborders.deglancer.interactor.IScreenActionInteractor;
 import org.coderswithoutborders.deglancer.interactor.IStageInteractor;
 import org.coderswithoutborders.deglancer.interactor.ITargetInteractor;
+import org.coderswithoutborders.deglancer.interactor.IStage6ToastInteractor;
 import org.coderswithoutborders.deglancer.interactor.IUserInteractor;
 import org.coderswithoutborders.deglancer.interactor.InitialStartupInteractor;
 import org.coderswithoutborders.deglancer.interactor.PreTestInteractor;
 import org.coderswithoutborders.deglancer.interactor.ScreenActionInteractor;
+import org.coderswithoutborders.deglancer.interactor.Stage6ToastInteractor;
 import org.coderswithoutborders.deglancer.interactor.StageInteractor;
 import org.coderswithoutborders.deglancer.interactor.TargetInteractor;
 import org.coderswithoutborders.deglancer.interactor.UserInteractor;
@@ -25,6 +27,7 @@ import org.coderswithoutborders.deglancer.stagehandlers.Stage2Handler;
 import org.coderswithoutborders.deglancer.stagehandlers.Stage3Handler;
 import org.coderswithoutborders.deglancer.stagehandlers.Stage4Handler;
 import org.coderswithoutborders.deglancer.stagehandlers.Stage5Handler;
+import org.coderswithoutborders.deglancer.stagehandlers.Stage6Handler;
 
 import javax.inject.Singleton;
 
@@ -45,8 +48,8 @@ public class InteractorModule {
 
     @Singleton
     @Provides
-    IStageInteractor provideStageInteractor(Context context, RxBus bus, IInitialStartupInteractor initialStartupInteractor, Stage1Handler stage1Handler, Stage2Handler stage2Handler, Stage3Handler stage3Handler, Stage4Handler stage4Handler, Stage5Handler stage5Handler) {
-        return new StageInteractor(context, bus, initialStartupInteractor, stage1Handler, stage2Handler, stage3Handler, stage4Handler, stage5Handler);
+    IStageInteractor provideStageInteractor(Context context, RxBus bus, IInitialStartupInteractor initialStartupInteractor, Stage1Handler stage1Handler, Stage2Handler stage2Handler, Stage3Handler stage3Handler, Stage4Handler stage4Handler, Stage5Handler stage5Handler, Stage6Handler stage6Handler) {
+        return new StageInteractor(context, bus, initialStartupInteractor, stage1Handler, stage2Handler, stage3Handler, stage4Handler, stage5Handler, stage6Handler);
     }
 
     @Singleton
@@ -77,5 +80,11 @@ public class InteractorModule {
     @Provides
     ITargetInteractor providesTargetInteractor(IDatabaseInteractor databaseInteractor, RxBus bus, DatabaseReference firebaseClient, IUserInteractor userInteractor) {
         return new TargetInteractor(databaseInteractor, bus, firebaseClient, userInteractor);
+    }
+
+    @Singleton
+    @Provides
+    IStage6ToastInteractor providesStage6ToastInteractor(IDatabaseInteractor databaseInteractor, RxBus bus, DatabaseReference firebaseClient, IUserInteractor userInteractor) {
+        return new Stage6ToastInteractor(databaseInteractor, bus, firebaseClient, userInteractor);
     }
 }

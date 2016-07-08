@@ -38,6 +38,13 @@
 
     <string name="debug_stage_5_move_back_to_stage_4_button_text">Takaisin 4. vaiheeseen</string>
 
+    <!-- Stage 6 -->
+    <string name="activity_debug_stage_6_activity_title">Stage 6 Debug</string>
+    <string name="debug_stage_5_move_to_stage_6_button_text">Siirry 6. vaiheeseen</string>
+    <string name="debug_stage_6_move_back_to_stage_5_button_text">Takaisin 5. vaiheeseen</string>
+
+
+
 
     <string name="averages_set_view_stage_label">Keskim. vaiheessa %1$s</string>
     <string name="averages_set_view_unlocks_label">Aseta avauksia</string>
@@ -105,6 +112,7 @@
         <item name="3">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTällä viikolla saat positiivisen palautteen jos olet onnistunut vähentämään puhelimesi käyttöä viime viikolta.\nSaat palautteen jos puhelimesi on viime viikkoon verrattuna pidempään kiinni kerralla, avaat sen harvemmin päivässä, ja vähennät puhelimen käytön kokonaisaikaa.</item>
         <item name="4">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTällä viikolla saat positiivisen palautteen jos olet saavuttanut asettamasi tavoitteen puhelimen käytön vähentämiselle.\nSaat palautteen jos puhelimesi on viime viikkoon verrattuna pidempään kiinni kerralla, avaat sen harvemmin päivässä, ja vähennät puhelimen käytön kokonaisaikaa.</item>
         <item name="5">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTausta-aineistoa kerätään jotta saadaan selville onko puhelimesi käytön vähentäminen pysyvää.</item>
+        <item name="6">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTutkimus on päättynyt. Kiitos osallistumisestasi.</item>
     </string-array>
 
     <string-array name="PreTestQuestions">

@@ -48,6 +48,8 @@
         <item name="3">Deglancer helps you learn about your phone usage.\n\nThis week you will receive thumbs up at every unlock if you have managed to reduce the usage of your phone from the last week.\nYou can get thumbs up for keeping your phone locked longer, using it fewer times per day, or reducing the total usage time per day.</item>
         <item name="4">Deglancer helps you learn about your phone usage.\n\nThis week you will get thumb-up -sign if you meet the personal goal you have set to reduce your phone usage.\nYou can get thumbs up for keeping your phone locked longer, using it fewer times per day, or reducing the total usage time per day.</item>
         <item name="5">Deglancer helps you learn about your phone usage.\n\nNow observing your usage in the background to learn if the reduction in your phone usage is permanent.</item>
+        <!-- Below a new one to translate -->
+        <item name="6">Deglancer helps you learn about your phone usage.\n\nThe research has completed. Thank you for participating.</item>
     </string-array>
 
     <!-- Main screen - Stage 2-4 - Button in Main screen to snooze unlock toast - nr3 thru nr7 -->
@@ -168,6 +170,7 @@
 
     <string name="debug_stage_5_move_back_to_stage_4_button_text">BACK TO STAGE 4</string>
 
+
     <string name="averages_set_view_stage_label">Averages for Stage %1$s</string>
     <string name="averages_set_view_unlocks_label">Unlocks</string>
     <string name="averages_set_view_sot_label">Avg SOT</string>
@@ -185,9 +188,22 @@
     <string name="activity_debug_stage_4_activity_title">Stage 4 Debug</string>
     <string name="activity_debug_stage_5_activity_title">Stage 5 Debug</string>
 
+    <!-- Stage 6 -->
+    <string name="activity_debug_stage_6_activity_title">Stage 6 Debug</string>
+    <string name="debug_stage_5_move_to_stage_6_button_text">MOVE TO STAGE 6</string>
+    <string name="debug_stage_6_move_back_to_stage_5_button_text">BACK TO STAGE 5</string>
+
+
     <string name="activity_debug_stage_activity_title_from_code">Stage %1$s Debug</string>
 
     <string name="time_picker_okay_button_text">OKAY</string>
     <string name="time_picker_cancel_button_text">CANCEL</string>
+
+    <string name="rdbStage6NoInformationText">No information at unlock</string>
+    <string name="rdbStage6InformationText">Information only</string>
+    <string name="rdbStage6InformationandThumbsUpText">Information and Thumbs up</string>
+    <string name="tvStage6ToastQuestionText">How would you like to be notified at unlock?</string>
+    <string name="btnStage6ToastSetPreferenceText">Set preferred notification</string>
+    <string name="toastStage6SetToastNotificationText">"Notifications set to "</string>
 
 </resources>

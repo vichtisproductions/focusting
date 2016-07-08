@@ -3,6 +3,7 @@ package org.coderswithoutborders.deglancer.di;
 import org.coderswithoutborders.deglancer.bus.RxBus;
 import org.coderswithoutborders.deglancer.func_debug.presenter.IStageSelectViewPresenter;
 import org.coderswithoutborders.deglancer.func_debug.presenter.ITargetSetViewPresenter;
+import org.coderswithoutborders.deglancer.presenter.IStage6ToastSetViewPresenter;
 import org.coderswithoutborders.deglancer.func_debug.presenter.StageSelectViewPresenter;
 import org.coderswithoutborders.deglancer.func_debug.presenter.TargetSetViewPresenter;
 import org.coderswithoutborders.deglancer.func_debug.stage1.DebugStage1Presenter;
@@ -15,6 +16,8 @@ import org.coderswithoutborders.deglancer.func_debug.stage4.DebugStage4Presenter
 import org.coderswithoutborders.deglancer.func_debug.stage4.IDebugStage4Presenter;
 import org.coderswithoutborders.deglancer.func_debug.stage5.DebugStage5Presenter;
 import org.coderswithoutborders.deglancer.func_debug.stage5.IDebugStage5Presenter;
+import org.coderswithoutborders.deglancer.func_debug.stage6.DebugStage6Presenter;
+import org.coderswithoutborders.deglancer.func_debug.stage6.IDebugStage6Presenter;
 import org.coderswithoutborders.deglancer.interactor.IDatabaseInteractor;
 import org.coderswithoutborders.deglancer.interactor.IInitialStartupInteractor;
 import org.coderswithoutborders.deglancer.interactor.IPreTestInteractor;
@@ -22,10 +25,13 @@ import org.coderswithoutborders.deglancer.interactor.IStageInteractor;
 import org.coderswithoutborders.deglancer.func_debug.presenter.AveragesSetViewPresenter;
 import org.coderswithoutborders.deglancer.func_debug.presenter.IAveragesSetViewPresenter;
 import org.coderswithoutborders.deglancer.interactor.ITargetInteractor;
+import org.coderswithoutborders.deglancer.interactor.IStage6ToastInteractor;
 import org.coderswithoutborders.deglancer.presenter.IMainActivityPresenter;
 import org.coderswithoutborders.deglancer.func_debug.presenter.IStatsViewPresenter;
+import org.coderswithoutborders.deglancer.presenter.IStage6ToastSetViewPresenter;
 import org.coderswithoutborders.deglancer.presenter.MainActivityPresenter;
 import org.coderswithoutborders.deglancer.func_debug.presenter.StatsViewPresenter;
+import org.coderswithoutborders.deglancer.presenter.Stage6ToastSetViewPresenter;
 import org.coderswithoutborders.deglancer.pretest.IPreTestPresenter;
 import org.coderswithoutborders.deglancer.pretest.PreTestPresenter;
 
@@ -82,6 +88,13 @@ public class PresenterModule {
     }
 
 
+    @Singleton
+    @Provides
+    public IDebugStage6Presenter providesDebugStage6Presenter(IStageInteractor stageInteractor) {
+        return new DebugStage6Presenter(stageInteractor);
+    }
+
+
     @Provides
     public IAveragesSetViewPresenter providesAveragesSetViewPresenter(IDatabaseInteractor databaseInteractor, RxBus bus) {
         return new AveragesSetViewPresenter(databaseInteractor, bus);
@@ -95,6 +108,11 @@ public class PresenterModule {
     @Provides
     public ITargetSetViewPresenter providesTargetSetViewPresenter(ITargetInteractor targetInteractor, RxBus bus) {
         return new TargetSetViewPresenter(targetInteractor, bus);
+    }
+
+    @Provides
+    public IStage6ToastSetViewPresenter providesStage6ToastSetViewPresenter(IStage6ToastInteractor stage6ToastInteractor, RxBus bus, IStageInteractor stageInteractor) {
+        return new Stage6ToastSetViewPresenter(stage6ToastInteractor, bus, stageInteractor);
     }
 
     @Provides

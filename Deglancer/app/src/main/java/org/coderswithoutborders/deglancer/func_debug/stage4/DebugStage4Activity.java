@@ -25,6 +25,8 @@ import android.app.PendingIntent;
 
 import javax.inject.Inject;
 
+import timber.log.Timber;
+
 /**
  * Created by Renier on 2016/05/06.
  */
