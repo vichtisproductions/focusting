@@ -67,9 +67,10 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
             findViewById(R.id.btnDebug).setVisibility(View.GONE);
         }
 
-        setStageDependentViewsVisibility();
         findViewById(R.id.TextResInfoSheet).setOnClickListener(v -> showRIS());
         findViewById(R.id.btnPreTest).setOnClickListener(v -> showPreTest());
+
+        setStageDependentViewsVisibility();
 
     }
 
