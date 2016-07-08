@@ -12,6 +12,8 @@ import org.coderswithoutborders.deglancer.stagehandlers.Stage3Handler;
 import org.coderswithoutborders.deglancer.stagehandlers.Stage4Handler;
 import org.coderswithoutborders.deglancer.stagehandlers.Stage5Handler;
 import org.coderswithoutborders.deglancer.stagehandlers.Stage6Handler;
+import org.coderswithoutborders.deglancer.interactor.IStage6ToastInteractor;
+import org.coderswithoutborders.deglancer.interactor.Stage6ToastInteractor;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.Duration;
@@ -38,6 +40,7 @@ public class StageInteractor implements IStageInteractor {
     private Stage4Handler mStage4Handler;
     private Stage5Handler mStage5Handler;
     private Stage6Handler mStage6Handler;
+    private IStage6ToastInteractor mStage6ToastInteractor;
 
     public StageInteractor(
             Context context,
@@ -48,7 +51,8 @@ public class StageInteractor implements IStageInteractor {
             Stage3Handler stage3Handler,
             Stage4Handler stage4Handler,
             Stage5Handler stage5Handler,
-            Stage6Handler stage6Handler) {
+            Stage6Handler stage6Handler,
+            IStage6ToastInteractor stage6ToastInteractor) {
         mContext = context;
         mBus = bus;
         mInitialStartupInteractor = initialStartupInteractor;
@@ -58,6 +62,7 @@ public class StageInteractor implements IStageInteractor {
         mStage4Handler = stage4Handler;
         mStage5Handler = stage5Handler;
         mStage6Handler = stage6Handler;
+        mStage6ToastInteractor = stage6ToastInteractor;
     }
 
     @Override
@@ -127,7 +132,7 @@ public class StageInteractor implements IStageInteractor {
             case 5:
                 return mStage5Handler;
             case 6:
-                return mStage6Handler;
+                // return mStage6Handler;
 
                 // We have come to the end of the research
                 // Go and find out what type of toast user has asked from here on
@@ -158,6 +163,7 @@ public class StageInteractor implements IStageInteractor {
                         });
                 // END trying to figure out the right handler
 
+                */
                 int handler = mStage6ToastInteractor.getStage6ToastSynchronous(6);
                 if (handler ==1) {
                     return mStage1Handler;
@@ -166,7 +172,6 @@ public class StageInteractor implements IStageInteractor {
                 } else if (handler==3) {
                     return mStage3Handler;
                 }
-                */
         }
 
         return null;
@@ -179,18 +184,19 @@ public class StageInteractor implements IStageInteractor {
             Timber.d("Stage now set at " + Integer.toString(currentStage.getStage()));
             if (currentStage.getStage() < 5) {
                 int days = currentStage.getStage() * 7;
+                Timber.d("Going forward " + Integer.toString(days) + " days");
                 DateTime newStartTime = new DateTime().minusDays(days);
 
                 mInitialStartupInteractor.overrideInitialStartTime(newStartTime.getMillis());
             } else if (currentStage.getStage() == 5) {
-                    // TODO - Verify that this logic works
-                    int days = 28 + (currentStage.getStage() * 7);
+                    int days = 56;
+                    Timber.d("Going forward " + Integer.toString(days) + " days");
                     DateTime newStartTime = new DateTime().minusDays(days);
 
                     mInitialStartupInteractor.overrideInitialStartTime(newStartTime.getMillis());
                 } else {
-                //We can't go any further
-            }
+                    //We can't go any further
+                }
 
             subscriber.onNext(null);
             subscriber.onCompleted();
@@ -206,14 +212,26 @@ public class StageInteractor implements IStageInteractor {
     public void goToPreviousStage() {
         Observable.create(subscriber -> {
             Stage currentStage = getCurrentStageSynchronous();
+            Timber.d("Current stage at " + Integer.toString(currentStage.getStage()));
+            int days = 0;
             // TODO - Check this too
             if (currentStage.getStage() == 6) {
-                int days = ((currentStage.getStage() - 2) * 7) + 28;
+                days = 28;
+                Timber.d("Going back " + Integer.toString(days) + " days");
                 DateTime newStartTime = new DateTime().minusDays(days);
 
                 mInitialStartupInteractor.overrideInitialStartTime(newStartTime.getMillis());
+
+            } else if (currentStage.getStage() == 5) {
+                days = 21;
+                Timber.d("Going back " + Integer.toString(days) + " days");
+                DateTime newStartTime = new DateTime().minusDays(days);
+
+                mInitialStartupInteractor.overrideInitialStartTime(newStartTime.getMillis());
+
             } else if (currentStage.getStage() > 1) {
-                int days = (currentStage.getStage() - 2) * 7;
+                days = (currentStage.getStage() - 2) * 7;
+                Timber.d("Going back " + Integer.toString(days) + " days");
                 DateTime newStartTime = new DateTime().minusDays(days);
 
                 mInitialStartupInteractor.overrideInitialStartTime(newStartTime.getMillis());

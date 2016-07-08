@@ -44,6 +44,7 @@ public interface DIGraph {
     void inject(TargetSetView view);
     void inject(Stage6ToastSetView view);
     void inject(PreTestActivity view);
+    void inject(Stage6ToastInteractor interactor);
 
     final class Initializer {
         public static DIGraph init(MainApplication application) {

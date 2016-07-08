@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
         findViewById(R.id.btnDebug).setVisibility(View.GONE);
 
+        // TODO - Debug button and RIS not visible in stage 6
         if (BuildConfig.DEBUG) {
             findViewById(R.id.btnDebug).setVisibility(View.VISIBLE);
             findViewById(R.id.btnDebug).setOnClickListener(v -> mPresenter.debugClicked());
@@ -110,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
         // Setting snooze button
         if (stage == 1 || stage == 5) {
-            // TODO - If you plan to implement voluntary toast handler in stage 6, then remove stage 6 from above.
             findViewById(R.id.btnSnooze).setVisibility(View.GONE);
         } else {
             findViewById(R.id.btnSnooze).setVisibility(View.VISIBLE);

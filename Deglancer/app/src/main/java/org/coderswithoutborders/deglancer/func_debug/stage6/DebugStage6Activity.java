@@ -31,7 +31,6 @@ public class DebugStage6Activity extends AppCompatActivity implements IDebugStag
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // TODO - Create debug_stage6 layout
         setContentView(R.layout.debug_stage6);
 
         MainApplication.from(getApplicationContext()).getGraph().inject(this);

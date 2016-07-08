@@ -48,8 +48,8 @@ public class InteractorModule {
 
     @Singleton
     @Provides
-    IStageInteractor provideStageInteractor(Context context, RxBus bus, IInitialStartupInteractor initialStartupInteractor, Stage1Handler stage1Handler, Stage2Handler stage2Handler, Stage3Handler stage3Handler, Stage4Handler stage4Handler, Stage5Handler stage5Handler, Stage6Handler stage6Handler) {
-        return new StageInteractor(context, bus, initialStartupInteractor, stage1Handler, stage2Handler, stage3Handler, stage4Handler, stage5Handler, stage6Handler);
+    IStageInteractor provideStageInteractor(Context context, RxBus bus, IInitialStartupInteractor initialStartupInteractor, Stage1Handler stage1Handler, Stage2Handler stage2Handler, Stage3Handler stage3Handler, Stage4Handler stage4Handler, Stage5Handler stage5Handler, Stage6Handler stage6Handler, IStage6ToastInteractor stage6ToastInteractor) {
+        return new StageInteractor(context, bus, initialStartupInteractor, stage1Handler, stage2Handler, stage3Handler, stage4Handler, stage5Handler, stage6Handler, stage6ToastInteractor);
     }
 
     @Singleton

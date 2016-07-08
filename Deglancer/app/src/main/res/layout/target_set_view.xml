@@ -5,12 +5,26 @@
     android:layout_gravity="center_horizontal"
     android:gravity="center_horizontal">
 
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_horizontal"
+        android:text="@string/target_set_view_header" />
+
     <RadioGroup
         android:id="@+id/group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
         android:layout_alignLeft="@+id/textView10"
         android:layout_below="@+id/textView10"
         android:layout_alignRight="@+id/textView10"
@@ -38,17 +52,6 @@
             android:layout_marginTop="8dp"
             android:text="@string/target_set_view_15_percent" />
     </RadioGroup>
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/target_set_view_header" />
 
     <Button
         android:id="@+id/btnApply"

@@ -22,8 +22,6 @@ import timber.log.Timber;
  * Created by Renier on 2016/05/06.
  */
 
-// TODO - Add option to move forward from Stage 5
-
 public class DebugStage5Activity extends AppCompatActivity implements IDebugStage5View {
 
     @Inject

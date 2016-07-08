@@ -8,7 +8,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-
     tools:context=".view.MainActivity">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -52,7 +51,7 @@
                 android:layout_centerHorizontal="true"
                 android:padding="16dp"
                 android:text="@string/btnSnoozeText"
-                android:layout_below="@id/tvStageRemainingTime"
+                android:layout_below="@+id/tvStageRemainingTime"
                 android:id="@+id/btnSnooze" />
 
             <Button
@@ -67,15 +66,15 @@
 
             <TextView
                 android:id="@+id/tvPreTestNotice"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/btnPreTest"
                 android:layout_centerHorizontal="true"
                 android:padding="16dp"
                 android:text="@string/tvPReTestNoticeText"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:visibility="visible"
-                android:textAlignment="center" />
+                android:gravity="center_horizontal"
+                android:visibility="visible" />
 
             <org.coderswithoutborders.deglancer.func_debug.view.TargetSetView
                 android:id="@+id/targetSetView"
@@ -86,32 +85,31 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="16dp" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/tvTargetSelectedText"
+                android:layout_below="@+id/targetSetView"
+                android:id="@+id/tvTargetSelected"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone"
+                android:gravity="center" />
+
             <org.coderswithoutborders.deglancer.view.Stage6ToastSetView
                 android:id="@+id/stage6ToastSetView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/targetSetView"
+                android:layout_below="@+id/tvTargetSelected"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="16dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/tvTargetSelectedText"
-                android:layout_below="@+id/stage6ToastSetView"
-                android:id="@+id/tvTargetSelected"
-                android:layout_alignBottom="@+id/targetSetView"
-                android:layout_centerHorizontal="true"
-                android:visibility="gone"
-                android:gravity="center" />
 
             <Button
                 android:id="@+id/btnDebug"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvTargetSelected"
+                android:layout_below="@+id/stage6ToastSetView"
                 android:layout_centerHorizontal="true"
                 android:text="DEBUG" />
 
@@ -137,6 +135,9 @@
                     android:textColor="#0000ff" />
 
             </LinearLayout>
+
         </RelativeLayout>
+
     </ScrollView>
+
 </RelativeLayout>
