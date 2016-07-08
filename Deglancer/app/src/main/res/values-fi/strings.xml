@@ -140,5 +140,13 @@
     <string name="tvGoalSetToastText">Tavoite asetettu: -</string>
     <string name="tvSelectYourGoalNotificationText">Aseta tavoite tälle viikolle</string>
 
+    <!-- Stage 6 -->
+    <string name="rdbStage6NoInformationText">Ei ilmoitusta</string>
+    <string name="rdbStage6InformationText">Vain tiedot</string>
+    <string name="rdbStage6InformationandThumbsUpText">Tiedot ja peukku</string>
+    <string name="tvStage6ToastQuestionText">Minkä ilmoituksen haluat näytön avauksessa?</string>
+    <string name="btnStage6ToastSetPreferenceText">Aseta ilmoitus</string>
+    <string name="toastStage6SetToastNotificationText">"Ilmoitus asetettu: "</string>
+
 
 </resources>
