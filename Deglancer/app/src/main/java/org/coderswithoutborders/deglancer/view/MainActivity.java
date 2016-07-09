@@ -2,11 +2,14 @@ package org.coderswithoutborders.deglancer.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 // For RIS button
 import android.widget.Button;
@@ -70,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         Intent i = new Intent(getApplicationContext(), TrackerService.class);
         getApplicationContext().startService(i);
 
-
         mTargetSetView = (TargetSetView) findViewById(R.id.targetSetView);
         mStage6ToastSetView = (Stage6ToastSetView) findViewById(R.id.stage6ToastSetView);
 
@@ -78,11 +80,47 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
         findViewById(R.id.btnPreTest).setOnClickListener(v -> showPreTest());
 
+        /*
+
+        ImageButton sharingButton = new ImageButton(this);
+        sharingButton.setLayoutParams(new ViewGroup.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT));
+        sharingButton.setImageResource(R.drawable.ic_share);
+
+        sharingButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                shareIt();
+            }
+        });
+
+        */
+
+        FloatingActionButton fabShare = (FloatingActionButton) findViewById(R.id.fabShare);
+        fabShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Click action
+                // Intent intent = new Intent(MainActivity.this, NewMessageActivity.class);
+                // startActivity(intent);
+                shareIt();
+            }
+        });
+
         setStageDependentViewsVisibility();
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.APP_OPEN, null);
 
+    }
+
+    private void shareIt() {
+        //sharing implementation here
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        // TODO - Localization support here
+        String shareBody = "I think you should reduce your phone usage. This app could help: http://bit.ly/29yLRX1.";
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Get off your phone now! Deglancer can help.");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Tell your friend"));
     }
 
     @Override
@@ -124,10 +162,10 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         String targetSelected = "";
 
         // Set Pre-research questionnaire
-        if (mPresenter.isPreTestRun()) {
+        if ( (stage == 4) || (mPresenter.isPreTestRun())) {
             findViewById(R.id.btnPreTest).setVisibility(View.GONE);
             findViewById(R.id.tvPreTestNotice).setVisibility(View.GONE);
-        } else {
+        }else {
             findViewById(R.id.btnPreTest).setVisibility(View.VISIBLE);
             findViewById(R.id.tvPreTestNotice).setVisibility(View.VISIBLE);
         }
@@ -290,7 +328,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
             ((TextView) findViewById(R.id.tvStageRemainingTime)).setText(dayString + " " + remainingTimeText);
         } else {
             // Otherwise we are done, make it blank.
-            ((TextView) findViewById(R.id.tvStageRemainingTime)).setText("");
+            findViewById(R.id.tvStageRemainingTime).setVisibility(View.GONE);
         }
 
     }

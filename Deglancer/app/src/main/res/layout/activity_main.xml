@@ -122,10 +122,28 @@
                         android:text="@string/tvTargetSelectedText"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:visibility="gone" />
-
                 </RelativeLayout>
 
             </ScrollView>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="10dp">
+
+            <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:src="@android:drawable/ic_menu_share"
+            android:layout_marginStart="@dimen/fab_margin" />
+
+</LinearLayout>
 
         </RelativeLayout>
 
