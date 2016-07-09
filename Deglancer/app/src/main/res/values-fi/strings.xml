@@ -147,6 +147,8 @@
     <string name="tvStage6ToastQuestionText">Minkä ilmoituksen haluat näytön avauksessa?</string>
     <string name="btnStage6ToastSetPreferenceText">Aseta ilmoitus</string>
     <string name="toastStage6SetToastNotificationText">"Ilmoitus asetettu: "</string>
-
+    <string name="textShareBody">Mielestäni voisit vähän vähentää puhelimen käyttöä. Tämä sovellus saattaisi auttaa: http://bit.ly/29yLRX1.</string>
+    <string name="textShareSubject">Pistä se puhelin pois! Deglancer auttaa.</string>
+    <string name="textShareIntent">Kerro kaverille</string>
 
 </resources>

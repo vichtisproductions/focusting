@@ -117,10 +117,10 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
         // TODO - Localization support here
-        String shareBody = "I think you should reduce your phone usage. This app could help: http://bit.ly/29yLRX1.";
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Get off your phone now! Deglancer can help.");
+        String shareBody = getString(R.string.textShareBody);
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getString(R.string.textShareSubject));
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-        startActivity(Intent.createChooser(sharingIntent, "Tell your friend"));
+        startActivity(Intent.createChooser(sharingIntent, getString(R.string.textShareIntent)));
     }
 
     @Override

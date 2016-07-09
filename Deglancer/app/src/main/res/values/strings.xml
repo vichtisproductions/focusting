@@ -32,10 +32,10 @@
     <string name="notifDay">day</string>
 
     <!-- Main screen - Stage 1 - text before a user has run pre-research questionnaire - nr2 -->
-    <string name="IntroTextPreTest">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n\nTake the research survey.</string>
+    <string name="IntroTextPreTest">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n\nFill in the research survey.</string>
 
     <!-- Main screen - Button and text to take the pre-research questionnaire - nr2 -->
-    <string name="btnTakeThePreTest">Take the pre-research survey</string>
+    <string name="btnTakeThePreTest">Fill in the pre-research survey</string>
     <string name="tvPReTestNoticeText">Pre-research survey includes 10 simple questions about your smartphone-related behaviors.</string>
 
     <!-- Main screen text after the user has run pre-research questionnaire - nr1 -->
@@ -208,5 +208,8 @@
     <string name="tvStage6ToastQuestionText">How would you like to be notified at unlock?</string>
     <string name="btnStage6ToastSetPreferenceText">Set preferred notification</string>
     <string name="toastStage6SetToastNotificationText">"Notifications set to "</string>
+    <string name="textShareBody">I think you should reduce your phone usage. This app could help: http://bit.ly/29yLRX1.</string>
+    <string name="textShareSubject">Get off your phone now! Deglancer can help.</string>
+    <string name="textShareIntent">Tell your friend</string>
 
 </resources>
