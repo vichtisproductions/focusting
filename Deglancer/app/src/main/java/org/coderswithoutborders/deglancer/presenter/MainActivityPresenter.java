@@ -85,7 +85,7 @@ public class MainActivityPresenter implements IMainActivityPresenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(stage -> {
                     if (mView != null) {
-                        mView.setStageText(stage.getStage() + "-" + stage.getDay() + "-" + stage.getHour());
+                        // mView.setStageText(stage.getStage() + "-" + stage.getDay() + "-" + stage.getHour());
                         mView.setIntroText(stage.getStage(), stage.getDay());
                     }
                 }, error -> {

@@ -141,16 +141,62 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
                 int currDay = action.getDay();
 
                 mFirebaseAnalytics = FirebaseAnalytics.getInstance(mContext);
+                Bundle fbAnalyticsBundle = new Bundle();
 
                 if (action.getStage() != stage.getStage()) {
-                    Bundle fbAnalyticsBundle = new Bundle();
-                    fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ACHIEVEMENT_ID, "stage_" + Integer.toString(currStage));
-                    mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.UNLOCK_ACHIEVEMENT, fbAnalyticsBundle);
+                    // TODO - Use different Event for different stages
+                    switch (action.getStage()) {
+                        case 1:
+                            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.GENERATE_LEAD, null);
+                            fbAnalyticsBundle.clear();
+                            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.LEVEL, Integer.toString(action.getStage()));
+                            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LEVEL_UP, fbAnalyticsBundle);
+                        case 2:
+                            fbAnalyticsBundle.clear();
+                            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_ID, "stage_" + Integer.toString(action.getStage()));
+                            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Stage 2");
+                            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_CATEGORY, "Stage 2");
+                            fbAnalyticsBundle.putLong(FirebaseAnalytics.Param.QUANTITY, 1L);
+                            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.ADD_TO_CART, fbAnalyticsBundle);
+                            fbAnalyticsBundle.clear();
+                            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.LEVEL, Integer.toString(action.getStage()));
+                            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LEVEL_UP, fbAnalyticsBundle);
+                        case 3:
+                            // TODO: - Stage 3: PRESENT_OFFER
+                            fbAnalyticsBundle.clear();
+                            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_ID, "stage_" + Integer.toString(action.getStage()));
+                            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Stage 3");
+                            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_CATEGORY, "Stage 3");
+                            fbAnalyticsBundle.putLong(FirebaseAnalytics.Param.QUANTITY, 1L);
+                            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.PRESENT_OFFER, fbAnalyticsBundle);
+                            fbAnalyticsBundle.clear();
+                            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.LEVEL, Integer.toString(action.getStage()));
+                            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LEVEL_UP, fbAnalyticsBundle);
+                       case 4:
+                           mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.BEGIN_CHECKOUT, null);
+                           fbAnalyticsBundle.clear();
+                           fbAnalyticsBundle.putString(FirebaseAnalytics.Param.LEVEL, Integer.toString(action.getStage()));
+                           mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LEVEL_UP, fbAnalyticsBundle);
+                        case 5:
+                            fbAnalyticsBundle.clear();
+                            fbAnalyticsBundle.putLong(FirebaseAnalytics.Param.SCORE, 5L);
+                            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.POST_SCORE, fbAnalyticsBundle);
+                            fbAnalyticsBundle.clear();
+                            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.LEVEL, Integer.toString(action.getStage()));
+                            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LEVEL_UP, fbAnalyticsBundle);
+                        case 6:
+                            fbAnalyticsBundle.clear();
+                            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ACHIEVEMENT_ID, "stage_" + Integer.toString(currStage));
+                            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.UNLOCK_ACHIEVEMENT, fbAnalyticsBundle);
+                            fbAnalyticsBundle.clear();
+                            fbAnalyticsBundle.putString(FirebaseAnalytics.Param.LEVEL, Integer.toString(action.getStage()));
+                            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LEVEL_UP, fbAnalyticsBundle);
+                    }
                 }
                 if (action.getDay() != stage.getDay()) {
-                    Bundle fbAnalyticsBundle = new Bundle();
-                    fbAnalyticsBundle.putLong(FirebaseAnalytics.Param.LEVEL, (long) currDay);
-                    mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LEVEL_UP, fbAnalyticsBundle);
+                    fbAnalyticsBundle.clear();
+                    fbAnalyticsBundle.putString(FirebaseAnalytics.Param.GROUP_ID, "Day " + Integer.toString(currDay));
+                    mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.JOIN_GROUP, fbAnalyticsBundle);
                 }
 
                 DatabaseReference ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("Averages");

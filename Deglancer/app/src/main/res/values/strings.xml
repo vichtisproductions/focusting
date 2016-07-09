@@ -15,6 +15,9 @@
     <string name="labelTakeTheTestViewTitle">Pre-research questionnaire</string>
     <string name="labelRISTitle">Research Information Sheet</string>
 
+    <!-- New menu -->
+    <string name="action_settings">Settings</string>
+
     <!-- Toast - at screen unlock - nr16, nr17, nr18 -->
     <string name="toast_last_sleep_label">     Last sleep\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0</string>
     <string name="toast_unlocks_today_label">  Unlocks today\u00A0\u00A0\u00A0\u00A0\u00A0</string>

@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 // For RIS button
 import android.widget.Button;
@@ -48,11 +51,19 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
     private Button button;
 
+    private Toolbar mToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        setSupportActionBar(mToolbar);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         MainApplication.from(this).getGraph().inject(this);
 
@@ -64,14 +75,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         mStage6ToastSetView = (Stage6ToastSetView) findViewById(R.id.stage6ToastSetView);
 
         // TODO - Debug button and RIS not visible in stage 6
-        if (BuildConfig.DEBUG) {
-            findViewById(R.id.btnDebug).setVisibility(View.VISIBLE);
-            findViewById(R.id.btnDebug).setOnClickListener(v -> mPresenter.debugClicked());
-        } else {
-            findViewById(R.id.btnDebug).setVisibility(View.GONE);
-        }
 
-        findViewById(R.id.TextResInfoSheet).setOnClickListener(v -> showRIS());
         findViewById(R.id.btnPreTest).setOnClickListener(v -> showPreTest());
 
         setStageDependentViewsVisibility();
@@ -79,6 +83,37 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.APP_OPEN, null);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+
+        // Don't show Debug in release
+        if (BuildConfig.DEBUG) {
+            getMenuInflater().inflate(R.menu.menu_main_debug, menu);
+        } else {
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+        }
+
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        Timber.d("Clicked on " + Integer.toString(item.getItemId()));
+        switch (item.getItemId()) {
+            case R.id.action_debug:
+                mPresenter.debugClicked();
+                return true;
+            case R.id.action_RIS:
+                showRIS();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void setStageDependentViewsVisibility() {
@@ -222,11 +257,13 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         }
     }
 
+/*
     @Override
     public void setStageText(String stage) {
         Button debugButton = (Button) findViewById(R.id.btnDebug);
         debugButton.setText("DEBUG - " + stage);
     }
+     */
 
     public void setIntroText(int stage, int day) {
         String str;
