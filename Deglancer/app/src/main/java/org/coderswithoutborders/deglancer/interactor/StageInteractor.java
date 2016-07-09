@@ -133,9 +133,9 @@ public class StageInteractor implements IStageInteractor {
                 return mStage5Handler;
             case 6:
                 int handler = mStage6ToastInteractor.getStage6ToastSynchronous(6);
-                if (handler ==1) { return mStage1Handler; }
-                else if (handler==2) { return mStage2Handler; }
-                else if (handler==3) { return mStage3Handler; }
+                if (handler ==0) { return mStage1Handler; }
+                else if (handler==1) { return mStage2Handler; }
+                else if (handler==2) { return mStage3Handler; }
         }
 
         return null;

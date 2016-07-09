@@ -12,6 +12,8 @@ import org.coderswithoutborders.deglancer.model.TriState;
 import org.coderswithoutborders.deglancer.utils.TimeUtils;
 import org.coderswithoutborders.deglancer.utils.ToastUtils;
 
+import timber.log.Timber;
+
 /**
  * Created by Renier on 2016/04/27.
  */
@@ -40,7 +42,7 @@ public class Stage3Handler implements IStageHandler {
             long sinceLastLock = action.getDuration();
             avgSFTTime = (double) sinceLastLock;
 
-
+            Timber.d(String.format("We're in %d", action.getStage()));
             Stage stageToCompareTo = new Stage(action.getStage() - 1, action.getDay(), action.getHour());
             //get unlock count up to current hour in previous stage
             long unlockCountPreviousStage = mDatabaseInteractor.getUnlockCountForStageFromAverages(stageToCompareTo.getStage(), stageToCompareTo.getDay(), stageToCompareTo.getHour());
