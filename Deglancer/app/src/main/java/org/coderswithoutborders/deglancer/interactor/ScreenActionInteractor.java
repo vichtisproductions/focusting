@@ -144,7 +144,7 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
 
                 if (action.getStage() != stage.getStage()) {
                     Bundle fbAnalyticsBundle = new Bundle();
-                    fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ACHIEVEMENT_ID, "Stage " + Integer.toString(currStage));
+                    fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ACHIEVEMENT_ID, "stage_" + Integer.toString(currStage));
                     mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.UNLOCK_ACHIEVEMENT, fbAnalyticsBundle);
                 }
                 if (action.getDay() != stage.getDay()) {
