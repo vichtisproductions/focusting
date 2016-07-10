@@ -46,8 +46,8 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
     private static final String SP_KEY_INITIAL_OSVERSION = "osVersion";
     private static final String SP_KEY_INITIAL_FB_USERNAME = "FirebaseUsername";
     private static final String SP_KEY_INITIAL_FB_PASSWORD = "FirebasePassword";
-    private String FirebaseUsername ="";
-    private String FirebasePassword ="";
+    private String FirebaseUsername = "";
+    private String FirebasePassword = "";
 
     private Context mContext;
     private DatabaseReference mFirebaseClient;
@@ -120,22 +120,21 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                     // [END auth_state_listener]
 
                     // [START create_user_with_email]
-                        mAuth.createUserWithEmailAndPassword(FirebaseUsername, FirebasePassword)
-                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                        Timber.d("createUserWithEmail:onComplete:" + task.isSuccessful());
+                    mAuth.createUserWithEmailAndPassword(FirebaseUsername, FirebasePassword)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    Timber.d("createUserWithEmail:onComplete:" + task.isSuccessful());
 
 
-
-                                        // If sign in fails, display a message to the user. If sign in succeeds
-                                        // the auth state listener will be notified and logic to handle the
-                                        // signed in user can be handled in the listener.
-                                        if (!task.isSuccessful()) {
-                                            Timber.d("Authentication failed.");
-                                        }
+                                    // If sign in fails, display a message to the user. If sign in succeeds
+                                    // the auth state listener will be notified and logic to handle the
+                                    // signed in user can be handled in the listener.
+                                    if (!task.isSuccessful()) {
+                                        Timber.d("Authentication failed.");
                                     }
-                                });
+                                }
+                            });
                     // Make sure we sign out from the generic user.
 
                     // BEGIN New thread
@@ -160,11 +159,28 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                         @Override
                                         public void onComplete(@NonNull Task<AuthResult> task) {
-                                            Timber.d( "signInWithEmail:onComplete:" + task.isSuccessful());
+                                            Timber.d("signInWithEmail:onComplete:" + task.isSuccessful());
                                             // Get the current user
                                             FirebaseUser user = mAuth.getCurrentUser();
                                             Timber.d("Updating Instance ID to " + user.getUid());
                                             mUserInteractor.setInstanceIdSynchronous(user.getUid());
+
+                                            // Upload data here -- create new UserInfo object out of SharedPreferences
+                                            String instanceId = mUserInteractor.getInstanceIdSynchronous();
+                                            Timber.d("Using new InstanceID for the first time: " + instanceId);
+                                            Long initialStartTimefromSP = mPrefs.getLong(SP_KEY_INITIAL_START_TIME, 0);
+                                            String manufacturerfromSP = mPrefs.getString(SP_KEY_INITIAL_MANUFACTURER, "");
+                                            String modelfromSP = mPrefs.getString(SP_KEY_INITIAL_MODEL, "");
+                                            String osVersionfromSP = mPrefs.getString(SP_KEY_INITIAL_OSVERSION, "");
+                                            UserInfo ui = new UserInfo(instanceId, initialStartTimefromSP, manufacturerfromSP, modelfromSP, osVersionfromSP);
+                                            Timber.d("User info from SP: " + instanceId + " " + initialStartTimefromSP.toString() + ", " + manufacturerfromSP + ", " + modelfromSP + ", " + osVersionfromSP);
+
+                                            Timber.d("Uploading UserInfo to FireBase");
+                                            DatabaseReference ref = mFirebaseClient.child(instanceId).child("InitialInformation");
+                                            ref.setValue(ui);
+
+                                            // END Upload
+
                                             // If sign in fails, display a message to the user. If sign in succeeds
                                             // the auth state listener will be notified and logic to handle the
                                             // signed in user can be handled in the listener.
@@ -198,98 +214,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                     //TODO - handle error
                     String here = "";
                 });
-        Timber.d("End creating user.");
-
-
-        // Here be the part that tries to upload the content
-        // Assume that the content is always there in the mRxPrefs
-        // First read UPLOAD_SUCCEEDED, ...
-
-        if (mPrefs.getBoolean(SP_KEY_INITIAL_UPLOAD_SUCCEEDED, false) == false) {
-            // Otherwise upload it...
-            // Upload it here
-            // First you need to create new UserInfo object out of SharedPreferences
-            Timber.d("Not uploaded before, let's go and do it.");
-            String instanceId = mUserInteractor.getInstanceIdSynchronous();
-            Timber.d("Using new InstanceID for the first time: " + instanceId);
-            Long initialStartTimefromSP = mPrefs.getLong(SP_KEY_INITIAL_START_TIME, 0);
-            String manufacturerfromSP = mPrefs.getString(SP_KEY_INITIAL_MANUFACTURER, "");
-            String modelfromSP = mPrefs.getString(SP_KEY_INITIAL_MODEL, "");
-            String osVersionfromSP = mPrefs.getString(SP_KEY_INITIAL_OSVERSION, "");
-            UserInfo ui = new UserInfo(instanceId, initialStartTimefromSP, manufacturerfromSP, modelfromSP, osVersionfromSP);
-            Timber.d("User info from SP: " + initialStartTimefromSP.toString() + ", " + manufacturerfromSP + ", " + modelfromSP + ", " + osVersionfromSP);
-
-            Timber.d("Uploading UserInfo to FireBase");
-            DatabaseReference ref = mFirebaseClient.child(instanceId).child("InitialInformation");
-
-            // BEGIN New thread
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        Timber.d("Sleeping for some seconds.");
-                        // Let's give some time for the authentication.
-                        Thread.sleep(5000);
-                        Timber.d("Setting Userinfo now.");
-                        ref.setValue(ui);
-                        Timber.d("Userinfo now set.");
-                    } catch (Exception e) {
-
-                    }
-                    Timber.d("Annnd, he woke up from a long sleep.");
-                    // Read the values down and check if upload was successful and values are not null
-                    // [START CHECK DATA]
-
-                    final String userId = mUserInteractor.getInstanceIdSynchronous();
-                    Timber.d("Instance ID is " + userId);
-                    FirebaseDatabase.getInstance().getReference().child("users").child(userId).child("InitialInformation")
-                            .addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    // Get user data from Firebase
-                                    Timber.d("Getting user data from Firebase for comparison");
-                                    UserInfo uiFromFirebase = dataSnapshot.getValue(UserInfo.class);
-                                    String instanceIdFromFB = uiFromFirebase.getInstanceId();
-                                    Long initialStartTimeFromFB = uiFromFirebase.getInitialStartTime();
-                                    String manufacturer = uiFromFirebase.getManufacturer();
-                                    String model = uiFromFirebase.getModel();
-                                    String osVersion = uiFromFirebase.getOSVersion();
-                                    Timber.d("User info from Firebase: Ins:" + instanceIdFromFB + ", Start:" + initialStartTimeFromFB.toString() + ", Manu: " + manufacturer + ", Model: " + model + ", OS:" + osVersion);
-
-                                    if (instanceIdFromFB == null) {
-                                        // User is null, error out
-                                        Timber.e("User " + userId + " is unexpectedly null");
-                                    } else {
-                                        // This means is not null, compare to SP content
-                                        Timber.d("Start from FB:" + initialStartTimeFromFB.toString());
-                                        Timber.d("Start from SP:" + initialStartTimefromSP.toString());
-                                        if (initialStartTimeFromFB.longValue() == initialStartTimefromSP.longValue()) {
-                                            Timber.d("Initial start time matches between Shared Preferences and Firebase. All is well.");
-                                            mRxPrefs.getBoolean(SP_KEY_INITIAL_UPLOAD_SUCCEEDED).set(true);
-                                        } else {
-                                            // if not, set SUCCEEDED as false. Otherwise set as true.
-                                            Timber.d("Initial start time does NOT match between Shared Preferences and Firebase. All is belly up. Let's try again next time.");
-                                            mRxPrefs.getBoolean(SP_KEY_INITIAL_UPLOAD_SUCCEEDED).set(false);
-                                        }
-
-                                    }
-
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-                                    Timber.w(databaseError.toException(), "getUser:onCancelled");
-
-                                }
-                                // End of Add valueevent listener
-                            });
-                    // END CHECK DATA
-                }
-            }).start();
-            // END new Thread
-
-        }
-        // end of If (mPrefs = false)
+        Timber.d("End creating user and uploading initial data.");
 
     }
 
