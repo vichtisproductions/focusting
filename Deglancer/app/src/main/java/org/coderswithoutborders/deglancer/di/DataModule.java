@@ -1,6 +1,7 @@
 package org.coderswithoutborders.deglancer.di;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,14 +36,30 @@ public class DataModule {
     @Provides
     DatabaseReference provideFirebaseClient(Context context) {
 
-        String fbAuthUsername="";
-        String fbAuthPassword="";
         String serverName="";
-        String TAG="DatabaseReference";
 
         FirebaseAuth mAuth;
         FirebaseAuth.AuthStateListener mAuthListener;
         mAuth = FirebaseAuth.getInstance();
+
+        final String SP_KEY_INITIAL_FB_USERNAME = "FirebaseUsername";
+        final String SP_KEY_INITIAL_FB_PASSWORD = "FirebasePassword";
+        final String SP_NAME = "InitialStartupSP";
+        SharedPreferences mPrefs;
+        mPrefs = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
+
+        String fbAuthPasswordDefault, fbAuthUsernameDefault;
+        fbAuthPasswordDefault = context.getResources().getString(R.string.ReleasePassword);
+        fbAuthUsernameDefault = context.getResources().getString(R.string.ReleaseUsername);
+        serverName = context.getResources().getString(R.string.ReleaseServer);
+        if (BuildConfig.DEBUG) {
+            fbAuthPasswordDefault = context.getResources().getString(R.string.DebugPassword);
+            fbAuthUsernameDefault = context.getResources().getString(R.string.DebugUsername);
+            serverName = context.getResources().getString(R.string.DebugServer);
+        }
+
+        String fbAuthUsername = mPrefs.getString(SP_KEY_INITIAL_FB_USERNAME, fbAuthUsernameDefault);
+        String fbAuthPassword = mPrefs.getString(SP_KEY_INITIAL_FB_PASSWORD, fbAuthPasswordDefault);
 
         // [START auth_state_listener]
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -68,14 +85,6 @@ public class DataModule {
         // [START sign_in_with_email]
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        fbAuthPassword = context.getResources().getString(R.string.ReleasePassword);
-        fbAuthUsername = context.getResources().getString(R.string.ReleaseUsername);
-        serverName = context.getResources().getString(R.string.ReleaseServer);
-        if (BuildConfig.DEBUG) {
-            fbAuthPassword = context.getResources().getString(R.string.DebugPassword);
-            fbAuthUsername = context.getResources().getString(R.string.DebugUsername);
-            serverName = context.getResources().getString(R.string.DebugServer);
-        }
         String firebaseURL = serverName;
         DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl(firebaseURL);
 

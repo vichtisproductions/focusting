@@ -56,6 +56,12 @@ public class UserInteractor implements IUserInteractor {
     }
 
     @Override
+    public void setInstanceIdSynchronous(String instanceId) {
+        SharedPreferences prefs = mContext.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
+        prefs.edit().putString(SP_KEY_INSTANCE_ID, instanceId).apply();
+    }
+
+    @Override
     public void logLastUserInteraction() {
         Observable.create(subscriber -> {
             DatabaseReference ref = mFirebaseClient.child(getInstanceIdSynchronous()).child("LastUserInteraction");
