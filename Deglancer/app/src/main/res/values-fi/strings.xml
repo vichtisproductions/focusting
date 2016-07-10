@@ -132,7 +132,6 @@
     <string name="tvCreditsText">Ikonit teki http://www.flaticon.com/authors/madebyoliver sivustolta http://www.flaticon.com</string>
     <string name="labelTakeTheTestViewTitle">Itsearviointi</string>
     <string name="labelRISTitle">Tiedote tutkittaville</string>
-    <string name="notifHead">Deglancer - </string>
     <string name="notifStage">vaihe</string>
     <string name="notifDay">päivä</string>
     <string name="btnSnoozeText">Vaimenna ilmoitukset 2 tunniksi</string>
