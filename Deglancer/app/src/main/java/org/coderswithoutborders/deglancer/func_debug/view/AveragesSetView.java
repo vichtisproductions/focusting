@@ -120,7 +120,7 @@ public class AveragesSetView extends FrameLayout implements IAveragesSetView {
                 }
             });
             Timber.d("All set, let's show.");
-            dialog.show();
+            dialog.show(getContext());
         } else if (v.getId() == R.id.btnSFTPick) {
             TimePickerDialog dialog = new TimePickerDialog(mActivity);
             dialog.setTimePickerEventListener(new TimePickerDialog.TimePickerEventListener() {
@@ -134,7 +134,7 @@ public class AveragesSetView extends FrameLayout implements IAveragesSetView {
                     mPresenter.avgSFTPicked(millis);
                 }
             });
-            dialog.show();
+            dialog.show(getContext());
         }  else if (v.getId() == R.id.btnTotalSOTPick) {
             TimePickerDialog dialog = new TimePickerDialog(mActivity);
             dialog.setTimePickerEventListener(new TimePickerDialog.TimePickerEventListener() {
@@ -148,7 +148,7 @@ public class AveragesSetView extends FrameLayout implements IAveragesSetView {
                     mPresenter.totalSOTPicked(millis);
                 }
             });
-            dialog.show();
+            dialog.show(getContext());
         } else if (v.getId() == R.id.btnTotalSFTPick) {
             TimePickerDialog dialog = new TimePickerDialog(mActivity);
             dialog.setTimePickerEventListener(new TimePickerDialog.TimePickerEventListener() {
@@ -162,7 +162,7 @@ public class AveragesSetView extends FrameLayout implements IAveragesSetView {
                     mPresenter.totalSFTPicked(millis);
                 }
             });
-            dialog.show();
+            dialog.show(getContext());
         }
         else if (v.getId() == R.id.btnSetForCurrentStageDay) {
             try {

@@ -29,7 +29,7 @@ public class Stage1Handler implements IStageHandler {
                 long unlockCount = mDatabaseInteractor.getUnlockCountForStageDay(action.getStage(), action.getDay());
                 long totalSOTTime = mDatabaseInteractor.getTotalSOTForStageDay(action.getStage(), action.getDay());
 
-                ToastUtils.showToast(mContext, action.getDuration(), unlockCount, totalSOTTime);
+                // ToastUtils.showToast(mContext, action.getDuration(), unlockCount, totalSOTTime);
 
 //                StringBuilder sb = new StringBuilder();
 //                sb.append(lastSleepString);

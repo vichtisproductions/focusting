@@ -119,6 +119,7 @@ public class StageInteractor implements IStageInteractor {
     public IStageHandler getCurrentStageHandler() {
 
         Stage stage = getCurrentStageSynchronous();
+        Timber.d("Stage handler " + stage.getStage());
 
         switch (stage.getStage()) {
             case 1:
@@ -132,10 +133,18 @@ public class StageInteractor implements IStageInteractor {
             case 5:
                 return mStage5Handler;
             case 6:
+                Timber.d("Stage 6: Figuring out what toast setting to use.");
                 int handler = mStage6ToastInteractor.getStage6ToastSynchronous(6);
-                if (handler ==0) { return mStage1Handler; }
-                else if (handler==1) { return mStage2Handler; }
-                else if (handler==2) { return mStage3Handler; }
+                if (handler == 0) {
+                    Timber.d("Toast: No information.");
+                    return mStage1Handler;
+                } else if (handler== 1) {
+                    Timber.d("Toast: Only information.");
+                    return mStage2Handler;
+                } else if (handler== 2) {
+                    Timber.d("Toast: Information and thumbs up.");
+                    return mStage3Handler;
+                }
         }
 
         return null;

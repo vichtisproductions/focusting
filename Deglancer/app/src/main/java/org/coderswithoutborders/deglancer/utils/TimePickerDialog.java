@@ -36,8 +36,8 @@ public class TimePickerDialog {
         mListener = listener;
     }
 
-    public void show() {
-        LayoutInflater inflater = LayoutInflater.from(mActivity);
+    public void show(Context context) {
+        LayoutInflater inflater = LayoutInflater.from(context);
         View dialoglayout = inflater.inflate(R.layout.time_picker_dialog, null);
 
         npHour = (NumberPicker) dialoglayout.findViewById(R.id.npHour);
@@ -54,7 +54,7 @@ public class TimePickerDialog {
         npSecond.setMaxValue(59);
 
         new AlertDialog
-                .Builder(mActivity)
+                .Builder(context)
                 .setCancelable(true)
                 .setView(dialoglayout)
                 .setPositiveButton(R.string.time_picker_okay_button_text, (dialog, which) -> {

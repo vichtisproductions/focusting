@@ -326,6 +326,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
             remainingTime = stageLength - day + 1;
             dayString = Integer.toString(remainingTime);
             ((TextView) findViewById(R.id.tvStageRemainingTime)).setText(dayString + " " + remainingTimeText);
+            findViewById(R.id.tvStageRemainingTime).setVisibility(View.VISIBLE);
         } else {
             // Otherwise we are done, make it blank.
             findViewById(R.id.tvStageRemainingTime).setVisibility(View.GONE);
