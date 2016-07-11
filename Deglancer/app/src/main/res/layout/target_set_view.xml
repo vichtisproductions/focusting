@@ -18,11 +18,20 @@
         android:layout_marginBottom="8dp"
         android:text="@string/target_set_view_header" />
 
+    <Button
+        android:id="@+id/btnApply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/target_set_view_set_button_text"
+        android:layout_below="@+id/group"
+
+        android:layout_centerHorizontal="true" />
+
     <RadioGroup
         android:id="@+id/group"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
         android:layout_alignLeft="@+id/textView10"
@@ -34,30 +43,26 @@
             android:id="@+id/rdb5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:checked="true"
             android:clickable="true"
-            android:text="@string/target_set_view_5_percent" />
+            android:text="@string/target_set_view_5_percent"
+            android:padding="15dp" />
 
         <RadioButton
             android:id="@+id/rdb10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/target_set_view_10_percent" />
+            android:text="@string/target_set_view_10_percent"
+            android:padding="15dp" />
 
         <RadioButton
             android:id="@+id/rdb15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/target_set_view_15_percent" />
+            android:text="@string/target_set_view_15_percent"
+            android:padding="15dp" />
     </RadioGroup>
-
-    <Button
-        android:id="@+id/btnApply"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/target_set_view_set_button_text"
-        android:layout_below="@+id/group"
-        android:layout_centerHorizontal="true" />
 </RelativeLayout>

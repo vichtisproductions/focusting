@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,7 +23,7 @@ import java.util.UUID;
 public class ResearchInformationSheet extends AppCompatActivity {
 
     private FirebaseAnalytics mFirebaseAnalytics;
-
+    private Toolbar mToolbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,13 @@ public class ResearchInformationSheet extends AppCompatActivity {
 
         SharedPreferences prefs = this.getSharedPreferences("UserInteractorSP", Context.MODE_PRIVATE);
         String deviceIDText = prefs.getString("InstanceId", "");
+
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        setSupportActionBar(mToolbar);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
+        getSupportActionBar().setTitle("Research Information Sheet"); // TODO - Translate
 
         ((TextView) findViewById(R.id.tvDeviceIDText)).setText(deviceIDText);
 

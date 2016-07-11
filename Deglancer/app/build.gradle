@@ -77,6 +77,8 @@ dependencies {
     compile "io.reactivex:rxandroid:$RX_ANDROID_VERSION"
     compile "io.reactivex:rxjava:$RX_JAVA_VERSION"
 
+    compile 'info.hoang8f:android-segmented:1.0.6'
+
     compile "com.google.dagger:dagger:$DAGGER_VERSION"
     apt "com.google.dagger:dagger-compiler:$DAGGER_COMPILER_VERSION"
     provided "javax.annotation:jsr250-api:$ANNOTATION_VERSION"

@@ -7,6 +7,7 @@ import org.acra.*;
 import org.acra.annotation.*;
 
 import org.coderswithoutborders.deglancer.di.DIGraph;
+import org.coderswithoutborders.deglancer.utils.AwesomeRadioButton.utils.TypefaceProvider;
 
 import timber.log.Timber;
 
@@ -23,6 +24,9 @@ public class MainApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Awesome radio button
+        TypefaceProvider.registerDefaultIconSets();
 
         mGraph = DIGraph.Initializer.init(this);
 

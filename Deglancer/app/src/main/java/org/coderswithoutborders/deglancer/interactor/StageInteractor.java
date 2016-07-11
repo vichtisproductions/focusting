@@ -98,14 +98,16 @@ public class StageInteractor implements IStageInteractor {
             //Stage4
             stageNr = 4;
             day = days - 21 + 1;
-        } else if (days < 56) {
+        } else if (days < 35) {
+        // } else if (days < 56) {
             //Stage5
             stageNr = 5;
             day = days - 28 + 1;
         } else {
             //Stage6
             stageNr = 6;
-            day = days - 56 + 1;
+            // day = days - 56 + 1;
+            day = days - 35 + 1;
         }
 
         return new Stage(
@@ -155,18 +157,20 @@ public class StageInteractor implements IStageInteractor {
         Observable.create(subscriber -> {
             Stage currentStage = getCurrentStageSynchronous();
             Timber.d("Stage now set at " + Integer.toString(currentStage.getStage()));
-            if (currentStage.getStage() < 5) {
+            if (currentStage.getStage() < 6) {
                 int days = currentStage.getStage() * 7;
                 Timber.d("Going forward " + Integer.toString(days) + " days");
                 DateTime newStartTime = new DateTime().minusDays(days);
 
                 mInitialStartupInteractor.overrideInitialStartTime(newStartTime.getMillis());
+                /*
             } else if (currentStage.getStage() == 5) {
                     int days = 56;
                     Timber.d("Going forward " + Integer.toString(days) + " days");
                     DateTime newStartTime = new DateTime().minusDays(days);
 
                     mInitialStartupInteractor.overrideInitialStartTime(newStartTime.getMillis());
+                    */
                 } else {
                     //We can't go any further
                 }
@@ -188,6 +192,7 @@ public class StageInteractor implements IStageInteractor {
             Timber.d("Current stage at " + Integer.toString(currentStage.getStage()));
             int days = 0;
             // TODO - Check this too
+            /*
             if (currentStage.getStage() == 6) {
                 days = 28;
                 Timber.d("Going back " + Integer.toString(days) + " days");
@@ -201,8 +206,9 @@ public class StageInteractor implements IStageInteractor {
                 DateTime newStartTime = new DateTime().minusDays(days);
 
                 mInitialStartupInteractor.overrideInitialStartTime(newStartTime.getMillis());
-
-            } else if (currentStage.getStage() > 1) {
+            } else
+            */
+            if (currentStage.getStage() > 1) {
                 days = (currentStage.getStage() - 2) * 7;
                 Timber.d("Going back " + Integer.toString(days) + " days");
                 DateTime newStartTime = new DateTime().minusDays(days);

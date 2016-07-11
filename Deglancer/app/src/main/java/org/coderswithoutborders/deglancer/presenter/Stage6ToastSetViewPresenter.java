@@ -11,6 +11,7 @@ import org.coderswithoutborders.deglancer.view.IStage6ToastSetView;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.subscriptions.CompositeSubscription;
+import timber.log.Timber;
 
 /**
  * Created by Renier on 2016/05/14.
@@ -103,7 +104,10 @@ public class Stage6ToastSetViewPresenter implements IStage6ToastSetViewPresenter
         // First go get the current Stage from StageInteractor
         Stage currentStage = mStageInteractor.getCurrentStageSynchronous();
         // Then set the right toast for this stage
-        setStage(currentStage);
+        if (currentStage.getStage() == 6) {
+            Timber.d("It's stage 6, let's define the toast type now.");
+            setStage(currentStage);
+        }
         // That should be it.
     }
 

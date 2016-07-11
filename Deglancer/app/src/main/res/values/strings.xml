@@ -39,7 +39,7 @@
     <string name="IntroText">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n</string>
 
     <!-- Main screen - how many days is left to next stage E.g. 7 days left to the next stage - nr1 thru nr7 + nr19 -->
-    <string name="RemainingTimeText">days left to the next stage</string>
+    <string name="RemainingTimeText">days left to the next stage.</string>
 
     <!-- Main screen - texts by research stage - nr1 thru nr7 + nr19 -->
     <string-array name="IntroTexts">
@@ -82,7 +82,7 @@
     <string name="DurationTitle">Duration</string>
     <string name="DurationText">- The research lasts 8 weeks.\n- If the test subject does not uninstall the application, they have right to continue to use the application.\n- The data collection will continue as long as the application has been installed.</string>
     <string name="tvCreditsTitle">Credits and acknowledgements</string>
-    <string name="tvCreditsText">Icons made by http://www.flaticon.com/authors/madebyoliver from http://www.flaticon.com</string>
+    <string name="tvCreditsText">Icons made by http://www.flaticon.com/authors/madebyoliver from http://www.flaticon.com. Segmented control by Le Van Hoang (@hoang8f)</string>
 
     <!-- Pre-research questionnaire - nr 10 thru nr12 -->
     <string name="PreTestIntro">Below is a list of smartphone-related behaviors or responses people sometimes have following their smartphone using experiences. Please read each item carefully, and select the option that best describes how much the description fits you <b>during the past 3 months</b>.</string>
@@ -199,9 +199,9 @@
     <string name="time_picker_okay_button_text">OKAY</string>
     <string name="time_picker_cancel_button_text">CANCEL</string>
 
-    <string name="rdbStage6NoInformationText">No information at unlock</string>
-    <string name="rdbStage6InformationText">Information only</string>
-    <string name="rdbStage6InformationandThumbsUpText">Information and Thumbs up</string>
+    <string name="rdbStage6NoInformationText">OFF</string>
+    <string name="rdbStage6InformationText">Information</string>
+    <string name="rdbStage6InformationandThumbsUpText">Thumbs up</string>
     <string name="tvStage6ToastQuestionText">How would you like to be notified at unlock?</string>
     <string name="btnStage6ToastSetPreferenceText">Set preferred notification</string>
     <string name="toastStage6SetToastNotificationText">"Notifications set to "</string>

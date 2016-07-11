@@ -9,16 +9,15 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.R;
-import org.coderswithoutborders.deglancer.model.Stage6Toast;
 import org.coderswithoutborders.deglancer.presenter.IStage6ToastSetViewPresenter;
-import org.coderswithoutborders.deglancer.view.IStage6ToastSetView;
-import org.coderswithoutborders.deglancer.model.Stage;
+import org.coderswithoutborders.deglancer.utils.AwesomeRadioButton.SegmentedGroup;
 
 import javax.inject.Inject;
 
@@ -27,10 +26,12 @@ import timber.log.Timber;
 /**
  * Created by Renier on 2016/05/14.
  */
-public class Stage6ToastSetView extends FrameLayout implements IStage6ToastSetView {
+public class Stage6ToastSetView extends FrameLayout implements IStage6ToastSetView, RadioGroup.OnCheckedChangeListener {
 
     @Inject
     IStage6ToastSetViewPresenter mPresenter;
+
+    SegmentedGroup segmentedToastGroup;
 
     private RadioButton rdbNoToast;
     private RadioButton rdbInformation;
@@ -64,20 +65,20 @@ public class Stage6ToastSetView extends FrameLayout implements IStage6ToastSetVi
     }
 
     private void init() {
-        inflate(getContext(), R.layout.stage6_toast_set_view, this);
+        inflate(getContext(), R.layout.stage6_toast_new_view, this);
 
         if (!isInEditMode()) {
             MainApplication.from(getContext()).getGraph().inject(this);
 
-            findViewById(R.id.btnApplyStage6Toast).setOnClickListener(buttonClickListener);
+            segmentedToastGroup = (SegmentedGroup) findViewById(R.id.groupStage6ToastNew);
+            rdbNoToast = (RadioButton) findViewById(R.id.rdbNoToastNew);
+            rdbInformation = (RadioButton) findViewById(R.id.rdbInformationNew);
+            rdbThumbsUp = (RadioButton) findViewById(R.id.rdbThumbsUpNew);
 
-            rdbNoToast = (RadioButton) findViewById(R.id.rdbNoToast);
-            rdbInformation = (RadioButton) findViewById(R.id.rdbInformation);
-            rdbThumbsUp = (RadioButton) findViewById(R.id.rdbThumbsUp);
-
-            // We know we are in stage 6, so let's put the radio button to the right place
-            // Let mPresenter figure out the rest
             setToastRight();
+
+            segmentedToastGroup.setOnCheckedChangeListener(this);
+
         }
     }
 
@@ -89,7 +90,7 @@ public class Stage6ToastSetView extends FrameLayout implements IStage6ToastSetVi
         @Override
         public void onClick(View v) {
             int target = 0;
-            String ToastText ="";
+            String ToastText = "";
             if (rdbNoToast.isChecked()) {
                 target = 0;
                 ToastText = getContext().getString(R.string.rdbStage6NoInformationText);
@@ -101,7 +102,7 @@ public class Stage6ToastSetView extends FrameLayout implements IStage6ToastSetVi
                 ToastText = getContext().getString(R.string.rdbStage6InformationandThumbsUpText);
             }
 
-            Timber.d( "Setting target for " + Integer.toString(target));
+            Timber.d("Setting target for " + Integer.toString(target));
             mPresenter.setStage6ToastTapped(target);
             Toast toast = Toast.makeText(getContext(), getContext().getString(R.string.toastStage6SetToastNotificationText) + ToastText, 3);
             toast.setGravity(Gravity.BOTTOM, 0, 30);
@@ -117,7 +118,9 @@ public class Stage6ToastSetView extends FrameLayout implements IStage6ToastSetVi
     };
 
     @Override
-    public void setNoToastSelected() { rdbNoToast.setChecked(true);  }
+    public void setNoToastSelected() {
+        rdbNoToast.setChecked(true);
+    }
 
     @Override
     public void setInformationSelected() {
@@ -149,4 +152,43 @@ public class Stage6ToastSetView extends FrameLayout implements IStage6ToastSetVi
             mPresenter.clearView();
         }
     }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+        int target = 0;
+        String ToastText = "";
+
+        switch (checkedId) {
+            case R.id.rdbNoToastNew:
+                target = 0;
+                ToastText = getContext().getString(R.string.rdbStage6NoInformationText);
+                break;
+            case R.id.rdbInformationNew:
+                target = 1;
+                ToastText = getContext().getString(R.string.rdbStage6InformationText);
+                break;
+            case R.id.rdbThumbsUpNew:
+                target = 2;
+                ToastText = getContext().getString(R.string.rdbStage6InformationandThumbsUpText);
+                break;
+            default:
+                // Leave us empty-handed.
+        }
+
+        Timber.d("Setting target for " + Integer.toString(target));
+        mPresenter.setStage6ToastTapped(target);
+        // Toast toast = Toast.makeText(getContext(), getContext().getString(R.string.toastStage6SetToastNotificationText) + ToastText, 3);
+        // toast.setGravity(Gravity.BOTTOM, 0, 30);
+        // toast.show();
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+        Bundle fbAnalyticsBundle = new Bundle();
+        fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_ID, "stage6_toast_" + Integer.toString(target));
+        fbAnalyticsBundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Stage 6 Toast: " + ToastText);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, fbAnalyticsBundle);
+
+
+    }
+
 }

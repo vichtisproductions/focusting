@@ -80,30 +80,16 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
         findViewById(R.id.btnPreTest).setOnClickListener(v -> showPreTest());
 
-        /*
-
-        ImageButton sharingButton = new ImageButton(this);
-        sharingButton.setLayoutParams(new ViewGroup.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT));
-        sharingButton.setImageResource(R.drawable.ic_share);
-
-        sharingButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                shareIt();
-            }
-        });
-
-        */
 
         FloatingActionButton fabShare = (FloatingActionButton) findViewById(R.id.fabShare);
-        fabShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Click action
-                // Intent intent = new Intent(MainActivity.this, NewMessageActivity.class);
-                // startActivity(intent);
-                shareIt();
-            }
-        });
+        if (fabShare != null) {
+            fabShare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    shareIt();
+                }
+            });
+        }
 
         setStageDependentViewsVisibility();
 
@@ -162,10 +148,10 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         String targetSelected = "";
 
         // Set Pre-research questionnaire
-        if ( (stage == 4) || (mPresenter.isPreTestRun())) {
+        if ((stage == 4) || (mPresenter.isPreTestRun())) {
             findViewById(R.id.btnPreTest).setVisibility(View.GONE);
             findViewById(R.id.tvPreTestNotice).setVisibility(View.GONE);
-        }else {
+        } else {
             findViewById(R.id.btnPreTest).setVisibility(View.VISIBLE);
             findViewById(R.id.tvPreTestNotice).setVisibility(View.VISIBLE);
         }
@@ -200,6 +186,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         if (stage == 6) {
             Timber.d("Setting stage6 Toast setting visible");
             findViewById(R.id.stage6ToastSetView).setVisibility(View.VISIBLE);
+            mStage6ToastSetView.setToastRight();
         } else {
             findViewById(R.id.stage6ToastSetView).setVisibility(View.GONE);
 

@@ -7,4 +7,5 @@ public interface IStage6ToastSetView {
     void setNoToastSelected();
     void setInformationSelected();
     void setThumbsUpSelected();
+    void setToastRight();
 }
