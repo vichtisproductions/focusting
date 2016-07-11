@@ -8,5 +8,6 @@ import rx.Observable;
 public interface ITargetInteractor {
     Observable<Integer> getTargetForStage(int stage);
     int getTargetForStageSynchronous(int stage);
+    int getTargetInFactForStageSynchronous(int stage);
     void setTargetForStage(int stage, int target);
 }

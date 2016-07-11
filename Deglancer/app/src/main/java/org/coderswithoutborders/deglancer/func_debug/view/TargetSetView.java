@@ -22,6 +22,7 @@ import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.R;
 import org.coderswithoutborders.deglancer.func_debug.presenter.ITargetSetViewPresenter;
 import org.coderswithoutborders.deglancer.model.Stage;
+import org.coderswithoutborders.deglancer.utils.AwesomeRadioButton.SegmentedGroup;
 
 import javax.inject.Inject;
 
@@ -30,7 +31,7 @@ import timber.log.Timber;
 /**
  * Created by Renier on 2016/05/14.
  */
-public class TargetSetView extends FrameLayout implements ITargetSetView {
+public class TargetSetView extends FrameLayout implements ITargetSetView, RadioGroup.OnCheckedChangeListener {
 
     @Inject
     ITargetSetViewPresenter mPresenter;
@@ -38,6 +39,8 @@ public class TargetSetView extends FrameLayout implements ITargetSetView {
     private RadioButton rdb5;
     private RadioButton rdb10;
     private RadioButton rdb15;
+
+    SegmentedGroup segmentedTargetGroup;
 
     private FirebaseAnalytics mFirebaseAnalytics;
 
@@ -74,12 +77,20 @@ public class TargetSetView extends FrameLayout implements ITargetSetView {
         if (!isInEditMode()) {
             MainApplication.from(getContext()).getGraph().inject(this);
 
-            findViewById(R.id.btnApply).setOnClickListener(buttonClickListener);
-
+            segmentedTargetGroup = (SegmentedGroup) findViewById(R.id.group);
             rdb5 = (RadioButton) findViewById(R.id.rdb5);
             rdb10 = (RadioButton) findViewById(R.id.rdb10);
             rdb15 = (RadioButton) findViewById(R.id.rdb15);
+
+            segmentedTargetGroup.setOnCheckedChangeListener(this);
+
+            setTargetRight(); // TODO Do this
+
         }
+    }
+
+    private void setTargetRight() {
+        mPresenter.setRadioButtonRight(4);
     }
 
     public void setStage(Stage stage) {
@@ -147,5 +158,45 @@ public class TargetSetView extends FrameLayout implements ITargetSetView {
             mPresenter.onDetached();
             mPresenter.clearView();
         }
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+        int target = 0;
+        String ToastText = "";
+
+        switch (checkedId) {
+            case R.id.rdb5:
+                target = 5;
+                ToastText = getContext().getString(R.string.rdbStage6NoInformationText);
+                break;
+            case R.id.rdb10:
+                target = 10;
+                ToastText = getContext().getString(R.string.rdbStage6InformationText);
+                break;
+            case R.id.rdb15:
+                target = 15;
+                ToastText = getContext().getString(R.string.rdbStage6InformationandThumbsUpText);
+                break;
+            default:
+                // Leave us empty-handed.
+        }
+
+
+        Timber.d( "Setting target for " + Integer.toString(target));
+        mPresenter.setTargetTapped(target);
+        // Toast toast = Toast.makeText(getContext(), getContext().getString(R.string.tvGoalSetToastText) + target + " %", 3);
+        // toast.setGravity(Gravity.BOTTOM, 0, 30);
+        // toast.show();
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+        Bundle fbAnalyticsBundle = new Bundle();
+        fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_ID, "stage4");
+        fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Stage 4 target");
+        fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_CATEGORY, "target");
+        fbAnalyticsBundle.putLong(FirebaseAnalytics.Param.QUANTITY, (long) target);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.ADD_TO_WISHLIST, fbAnalyticsBundle);
+
     }
 }

@@ -19,7 +19,6 @@
         android:text="@string/target_set_view_header" />
 
 
-    <!-- New buttons -->
     <!-- New segmented control buttons -->
     <org.coderswithoutborders.deglancer.utils.AwesomeRadioButton.SegmentedGroup
         xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
@@ -29,7 +28,7 @@
         android:orientation="horizontal"
         segmentedgroup:sc_border_width="2dp"
         segmentedgroup:sc_corner_radius="10dp"
-        android:layout_below="@+id/textView10Stage6Toast"
+        android:layout_below="@+id/textView10"
         android:layout_centerHorizontal="true">
 
         <RadioButton
@@ -45,7 +44,7 @@
             android:id="@+id/rdb10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/target_set_view_5_percent"
+            android:text="@string/target_set_view_10_percent"
             style="@style/RadioButton"
             android:paddingLeft="15dp"
             android:paddingRight="15dp" />
@@ -54,68 +53,11 @@
             android:id="@+id/rdb15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/target_set_view_5_percent"
+            android:text="@string/target_set_view_15_percent"
             style="@style/RadioButton"
             android:paddingLeft="15dp"
             android:paddingRight="15dp" />
 
     </org.coderswithoutborders.deglancer.utils.AwesomeRadioButton.SegmentedGroup>
 
-
-    <!-- Old stuff -->
-
-    <Button
-        android:id="@+id/btnApply"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/RadioButton"
-        android:background="@drawable/rounded_button"
-        android:textColor="@color/radio_button_blue_text"
-        android:text="@string/target_set_view_set_button_text"
-        android:layout_below="@+id/group"
-
-        android:layout_centerHorizontal="true"
-        android:layout_margin="6dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp" />
-
-    <RadioGroup
-        android:id="@+id/group"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:gravity="center_horizontal"
-        android:layout_alignLeft="@+id/textView10"
-        android:layout_below="@+id/textView10"
-        android:layout_alignRight="@+id/textView10"
-        android:layout_alignEnd="@+id/textView10">
-
-        <RadioButton
-            android:id="@+id/rdb5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:checked="true"
-            android:clickable="true"
-            android:text="@string/target_set_view_5_percent"
-            android:padding="15dp" />
-
-        <RadioButton
-            android:id="@+id/rdb10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/target_set_view_10_percent"
-            android:padding="15dp" />
-
-        <RadioButton
-            android:id="@+id/rdb15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/target_set_view_15_percent"
-            android:padding="15dp" />
-    </RadioGroup>
-    
 </RelativeLayout>

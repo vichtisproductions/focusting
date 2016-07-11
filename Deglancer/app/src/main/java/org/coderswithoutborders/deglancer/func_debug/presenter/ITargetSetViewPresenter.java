@@ -13,4 +13,5 @@ public interface ITargetSetViewPresenter {
     void onDetached();
     void setStage(Stage stage);
     void setTargetTapped(int target);
+    void setRadioButtonRight(int i);
 }

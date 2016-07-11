@@ -64,26 +64,13 @@
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <Button
-                        android:id="@+id/btnSnooze"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/RadioButton"
-                        android:background="@drawable/rounded_button"
-                        android:textColor="@color/radio_button_blue_text"
-                        android:layout_below="@+id/tvStageRemainingTime"
-                        android:layout_centerHorizontal="true"
-                        android:padding="16dp"
-                        android:text="@string/btnSnoozeText"
-                        android:visibility="gone" />
-
-                    <Button
                         android:id="@+id/btnPreTest"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         style="@style/RadioButton"
                         android:background="@drawable/rounded_button"
                         android:textColor="@color/radio_button_blue_text"
-                        android:layout_below="@+id/btnSnooze"
+                        android:layout_below="@+id/tvStageRemainingTime"
                         android:layout_centerHorizontal="true"
                         android:padding="16dp"
                         android:layout_margin="8dp"
@@ -134,6 +121,19 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:visibility="gone" />
 
+                    <Button
+                        android:id="@+id/btnSnooze"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/RadioButton"
+                        android:background="@drawable/rounded_button"
+                        android:textColor="@color/radio_button_blue_text"
+                        android:layout_below="@+id/tvTargetSelected"
+                        android:layout_centerHorizontal="true"
+                        android:padding="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/btnSnoozeText"
+                        android:visibility="gone" />
 
                 </RelativeLayout>
 

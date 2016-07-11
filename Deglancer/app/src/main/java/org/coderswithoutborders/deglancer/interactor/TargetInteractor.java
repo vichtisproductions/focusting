@@ -8,6 +8,7 @@ import org.coderswithoutborders.deglancer.model.Target;
 import java.util.UUID;
 
 import rx.Observable;
+import timber.log.Timber;
 
 /**
  * Created by Renier on 2016/05/14.
@@ -32,7 +33,7 @@ public class TargetInteractor implements ITargetInteractor {
     public Observable<Integer> getTargetForStage(int stage) {
         return Observable.create(subscriber -> {
 
-            subscriber.onNext(getTargetForStageSynchronous(stage));
+            subscriber.onNext(getTargetInFactForStageSynchronous(stage));
 
             subscriber.onCompleted();
         });
@@ -40,11 +41,23 @@ public class TargetInteractor implements ITargetInteractor {
     }
 
     @Override
-    public int getTargetForStageSynchronous(int stage) {
+    public int getTargetInFactForStageSynchronous(int stage) {
         Target toReturn = mDatabaseInteractor.getTargetForStage(stage);
 
         if (toReturn != null) {
             return toReturn.getTarget();
+        } else {
+            return -1; // TODO - Handle this later.
+        }
+    }
+
+
+    @Override
+    public int getTargetForStageSynchronous(int stage) {
+        Target toReturn = mDatabaseInteractor.getTargetForStage(stage);
+
+        if (toReturn != null) {
+            return toReturn.getTarget(); // TODO - This messes up statistics. If it hasn't been set before, new radio buttons go to 5 but doesn't set it. Should in fact return NULL.
         } else {
             return DEFAULT_TARGET;
         }
@@ -53,10 +66,17 @@ public class TargetInteractor implements ITargetInteractor {
     @Override
     public void setTargetForStage(int stage, int target) {
         Target t = new Target(UUID.randomUUID().toString(), stage, target);
+        int oldTarget = getTargetInFactForStageSynchronous(4);
 
-        mDatabaseInteractor.commitTarget(t);
+        if (t.getTarget() != oldTarget) {
+            Timber.d("Toast type has changed, let's update.");
 
-        DatabaseReference ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("Targets");
-        ref.push().setValue(t);
+            mDatabaseInteractor.commitTarget(t);
+
+            DatabaseReference ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("Targets");
+            ref.push().setValue(t);
+        } else {
+            Timber.d("Toast type hasn't changed, maybe it's just an app invoking...");
+        }
     }
 }

@@ -3,12 +3,15 @@ package org.coderswithoutborders.deglancer.func_debug.presenter;
 import org.coderswithoutborders.deglancer.bus.RxBus;
 import org.coderswithoutborders.deglancer.bus.events.StageSelectEvent;
 import org.coderswithoutborders.deglancer.func_debug.view.ITargetSetView;
+import org.coderswithoutborders.deglancer.interactor.IStageInteractor;
 import org.coderswithoutborders.deglancer.interactor.ITargetInteractor;
 import org.coderswithoutborders.deglancer.model.Stage;
+import org.coderswithoutborders.deglancer.model.Target;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
+import timber.log.Timber;
 
 /**
  * Created by Renier on 2016/05/14.
@@ -19,12 +22,15 @@ public class TargetSetViewPresenter implements ITargetSetViewPresenter {
 
     private ITargetSetView mView;
     private ITargetInteractor mTargetInteractor;
+    private IStageInteractor mStageInteractor;
     private RxBus mBus;
 
     private Stage mCurrentStage;
+    private Target mCurrentTarget;
 
-    public TargetSetViewPresenter(ITargetInteractor targetInteractor, RxBus bus) {
+    public TargetSetViewPresenter(ITargetInteractor targetInteractor, RxBus bus, IStageInteractor stageInteractor) {
         this.mTargetInteractor = targetInteractor;
+        this.mStageInteractor = stageInteractor;
         this.mBus = bus;
     }
 
@@ -81,6 +87,8 @@ public class TargetSetViewPresenter implements ITargetSetViewPresenter {
                             case 15:
                                 mView.set15Selected();
                                 break;
+                            default:
+                                break;
                         }
                     }
 
@@ -94,4 +102,17 @@ public class TargetSetViewPresenter implements ITargetSetViewPresenter {
         // mTargetInteractor.setTargetForStage(mCurrentStage.getStage(), target);
         mTargetInteractor.setTargetForStage(4, target);
     }
+
+    @Override
+    public void setRadioButtonRight(int stage) {
+            int currentTarget = mTargetInteractor.getTargetForStageSynchronous(4);
+            Stage currentStage = mStageInteractor.getCurrentStageSynchronous();
+            // Then set the right toast for this stage
+            if (currentStage.getStage() == 4) {
+                Timber.d("It's stage 4, let's define the target now.");
+                setStage(currentStage);
+            }
+            // That should be it.
+    }
+
 }

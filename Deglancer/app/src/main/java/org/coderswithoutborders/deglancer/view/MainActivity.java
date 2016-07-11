@@ -159,15 +159,15 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         // Setting target set view for stage 4
         Timber.d("Setting preset visibility for stage " + Integer.toString(stage));
         if (stage == 4) {
-            if (target == -1) {
-                findViewById(R.id.targetSetView).setVisibility(View.VISIBLE);
-                findViewById(R.id.tvTargetSelected).setVisibility(View.GONE);
-            } else {
-                findViewById(R.id.targetSetView).setVisibility(View.GONE);
-                findViewById(R.id.tvTargetSelected).setVisibility(View.VISIBLE);
+            findViewById(R.id.targetSetView).setVisibility(View.VISIBLE);
+            if (target != -1) {
+                // findViewById(R.id.tvTargetSelected).setVisibility(View.GONE);
+            // } else {
+                // findViewById(R.id.targetSetView).setVisibility(View.GONE);
+                // findViewById(R.id.tvTargetSelected).setVisibility(View.VISIBLE);
                 targetText = getResources().getString(R.string.tvTargetSelectedText);
-                targetSelected = targetText + " " + Integer.toString(target) + " %";
-                ((TextView) findViewById(R.id.tvTargetSelected)).setText(targetSelected);
+                targetSelected = targetText; // + " " + Integer.toString(target) + " %";
+                ((TextView) findViewById(R.id.textView10)).setText(targetSelected);
             }
         } else {
             Timber.d("Hiding target setting");

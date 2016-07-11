@@ -106,8 +106,8 @@ public class PresenterModule {
     }
 
     @Provides
-    public ITargetSetViewPresenter providesTargetSetViewPresenter(ITargetInteractor targetInteractor, RxBus bus) {
-        return new TargetSetViewPresenter(targetInteractor, bus);
+    public ITargetSetViewPresenter providesTargetSetViewPresenter(ITargetInteractor targetInteractor, RxBus bus, IStageInteractor stageInteractor) {
+        return new TargetSetViewPresenter(targetInteractor, bus, stageInteractor);
     }
 
     @Provides
