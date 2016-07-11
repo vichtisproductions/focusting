@@ -72,6 +72,8 @@ public class DebugStage4Activity extends AppCompatActivity implements IDebugStag
         mTargetSetView.setStage(new Stage(4, 1, 1));
 
         // See if you can invoke a notification here -- Lapa 23.6.2016
+        /*
+
         notifyMgr=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 
         Intent resultIntent = new Intent(this, MainActivity.class);
@@ -92,6 +94,7 @@ public class DebugStage4Activity extends AppCompatActivity implements IDebugStag
                                 .setContentText("Select your goal for this week");
 
         notifyMgr.notify(NOTIFY_ME_ID, notifyObj.build());
+        */
 
     }
 

@@ -9,6 +9,7 @@ import org.coderswithoutborders.deglancer.model.Target;
 import java.util.UUID;
 
 import rx.Observable;
+import timber.log.Timber;
 
 /**
  * Created by Renier on 2016/05/14.
@@ -54,10 +55,17 @@ public class Stage6ToastInteractor implements IStage6ToastInteractor {
     @Override
     public void setStage6Toast(int stage, int toast) {
         Stage6Toast t = new Stage6Toast(UUID.randomUUID().toString(), stage, toast);
+        int oldToast = getStage6ToastSynchronous(6);
 
-        mDatabaseInteractor.commitToast(t);
+        if (t.getTarget() != oldToast) {
+            Timber.d("Toast type has changed, let's update.");
+            mDatabaseInteractor.commitToast(t);
 
-        DatabaseReference ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("Stage6Toast");
-        ref.push().setValue(t);
+            DatabaseReference ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("Stage6Toast");
+            ref.push().setValue(t);
+        } else {
+            Timber.d("Toast type hasn't changed, maybe it's just an app invoking...");
+        }
     }
+
 }

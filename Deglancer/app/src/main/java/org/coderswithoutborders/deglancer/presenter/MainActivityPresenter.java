@@ -178,15 +178,16 @@ public class MainActivityPresenter implements IMainActivityPresenter {
     @Override
     public void snoozeClicked(Context context) {
         ToastUtils.setSnooze(context);
-        Toast toast = Toast.makeText(context, "Notifications snoozed for 2 hours", 3);
+        Toast toast = Toast.makeText(context, context.getString(R.string.tvSnoozedText), 3);
         toast.setGravity(Gravity.BOTTOM, 0, 30);
         toast.show();
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
         Bundle fbAnalyticsBundle = new Bundle();
-        fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_ID, "snooze_notification");
-        fbAnalyticsBundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Snooze notification");
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, fbAnalyticsBundle);
+        fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "snooze_notification");
+        fbAnalyticsBundle.putString(FirebaseAnalytics.Param.VIRTUAL_CURRENCY_NAME, "Snooze notification");
+        fbAnalyticsBundle.putLong(FirebaseAnalytics.Param.VALUE, 2L);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SPEND_VIRTUAL_CURRENCY, fbAnalyticsBundle);
 
     }
 

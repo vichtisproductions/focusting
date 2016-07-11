@@ -44,12 +44,12 @@
     <!-- Main screen - texts by research stage - nr1 thru nr7 + nr19 -->
     <string-array name="IntroTexts">
         <item name="1">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks you will get feedback and are encouraged to reduce your usage.\n\nNow collecting data in the background.</item>
-        <item name="2">Deglancer helps you learn about your phone usage.\n\nThis week you will see information about your phone usage every time you unlock your phone.\nThe information tells you how long your phone was locked since the last usage, how many times you have unlocked it today, and how long the screen has been on today.</item>
-        <item name="3">Deglancer helps you learn about your phone usage.\n\nThis week you will receive thumbs up at every unlock if you have managed to reduce the usage of your phone from the last week.\nYou can get thumbs up for keeping your phone locked longer, using it fewer times per day, or reducing the total usage time per day.</item>
-        <item name="4">Deglancer helps you learn about your phone usage.\n\nThis week you will get thumb-up -sign if you meet the personal goal you have set to reduce your phone usage.\nYou can get thumbs up for keeping your phone locked longer, using it fewer times per day, or reducing the total usage time per day.</item>
-        <item name="5">Deglancer helps you learn about your phone usage.\n\nNow observing your usage in the background to learn if the reduction in your phone usage is permanent.</item>
+        <item name="2">Deglancer helps you learn about your phone usage.\n\nThis week you will see information about your phone usage every time you unlock your phone.\nThe information tells you how long your phone was locked since the last usage, how many times you have unlocked it today, and how long the screen has been on today.\n</item>
+        <item name="3">Deglancer helps you learn about your phone usage.\n\nThis week you will receive thumbs up at every unlock if you have managed to reduce the usage of your phone from the last week.\nYou can get thumbs up for keeping your phone locked longer, using it fewer times per day, or reducing the total usage time per day.\n</item>
+        <item name="4">Deglancer helps you learn about your phone usage.\n\nThis week you will get thumb-up -sign if you meet the personal goal you have set to reduce your phone usage.\nYou can get thumbs up for keeping your phone locked longer, using it fewer times per day, or reducing the total usage time per day.\n</item>
+        <item name="5">Deglancer helps you learn about your phone usage.\n\nNow observing your usage in the background to learn if the reduction in your phone usage is permanent.\n</item>
         <!-- Below a new one to translate -->
-        <item name="6">Deglancer helps you learn about your phone usage.\n\nThe research has completed. Thank you for participating.</item>
+        <item name="6">Deglancer helps you learn about your phone usage.\n\nThe research has completed. Thank you for participating.\n</item>
     </string-array>
 
     <!-- Main screen - Stage 2-4 - Button in Main screen to snooze unlock toast - nr3 thru nr7 -->
@@ -199,7 +199,7 @@
     <string name="time_picker_okay_button_text">OKAY</string>
     <string name="time_picker_cancel_button_text">CANCEL</string>
 
-    <string name="rdbStage6NoInformationText">OFF</string>
+    <string name="rdbStage6NoInformationText">Nothing</string>
     <string name="rdbStage6InformationText">Information</string>
     <string name="rdbStage6InformationandThumbsUpText">Thumbs up</string>
     <string name="tvStage6ToastQuestionText">How would you like to be notified at unlock?</string>
@@ -208,5 +208,8 @@
     <string name="textShareBody">I think you should reduce your phone usage. This app could help: http://bit.ly/29yLRX1.</string>
     <string name="textShareSubject">Get off your phone now! Deglancer can help.</string>
     <string name="textShareIntent">Tell your friend</string>
+
+    <string name="tvPreTextQuestionWord">Question</string>
+    <string name="tvSnoozedText">Shh. Going silent for 2 hours.</string>
 
 </resources>

@@ -47,11 +47,11 @@
 
 
     <string name="averages_set_view_stage_label">Keskim. vaiheessa %1$s</string>
-    <string name="averages_set_view_unlocks_label">Aseta avauksia</string>
-    <string name="averages_set_view_sot_label">Aseta päällä keskim.</string>
-    <string name="averages_set_view_sft_label">Aseta kiinni keskim.</string>
-    <string name="averages_set_view_total_sot_label">Aseta auki keskim.</string>
-    <string name="averages_set_view_total_sft_label">Aseta kiinni keskim.</string>
+    <string name="averages_set_view_unlocks_label">Avauksia</string>
+    <string name="averages_set_view_sot_label">Keskim. SOT</string>
+    <string name="averages_set_view_sft_label">Keskim. SFT</string>
+    <string name="averages_set_view_total_sot_label">Kokonais-SOT</string>
+    <string name="averages_set_view_total_sft_label">Kokonais-SFT</string>
     <string name="averages_set_view_stage_day_hour_button_text">Vaihe/Päivä/Tunti</string>
     <string name="averages_set_view_stage_day_button_text">Vaihe/Päivä</string>
     <string name="averages_set_view_stage_button_text">Vaihe</string>
@@ -108,11 +108,11 @@
 
     <string-array name="IntroTexts">
         <item name="1">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nSovellus antaa tulevina viikkoina palautetta, ja rohkaisee sinua harkitsemaan puhelimen käyttöä.\n\nTausta-aineistoa kerätään.</item>
-        <item name="2">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTällä viikolla saat tiedotteen puhelimesi käytöstä joka kerta kun avaat puhelimen.\nOpit siitä kuinka kauan puhelin oli kiinni edellisen käytön jälkeen, kuinka monta kertaa olet avannut puhelimen tänään ,ja kuinka kauan olet käyttänyt puhelinta yhteensä tänään.</item>
-        <item name="3">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTällä viikolla saat positiivisen palautteen jos olet onnistunut vähentämään puhelimesi käyttöä viime viikolta.\nSaat palautteen jos puhelimesi on viime viikkoon verrattuna pidempään kiinni kerralla, avaat sen harvemmin päivässä, ja vähennät puhelimen käytön kokonaisaikaa.</item>
-        <item name="4">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTällä viikolla saat positiivisen palautteen jos olet saavuttanut asettamasi tavoitteen puhelimen käytön vähentämiselle.\nSaat palautteen jos puhelimesi on viime viikkoon verrattuna pidempään kiinni kerralla, avaat sen harvemmin päivässä, ja vähennät puhelimen käytön kokonaisaikaa.</item>
-        <item name="5">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTausta-aineistoa kerätään jotta saadaan selville onko puhelimesi käytön vähentäminen pysyvää.</item>
-        <item name="6">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTutkimus on päättynyt. Kiitos osallistumisestasi.</item>
+        <item name="2">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTällä viikolla saat tiedotteen puhelimesi käytöstä joka kerta kun avaat puhelimen.\nNäet kuinka kauan puhelin oli kiinni edellisen käytön jälkeen, kuinka monta kertaa olet avannut puhelimen tänään, ja kuinka kauan olet käyttänyt puhelinta yhteensä tänään.\n</item>
+        <item name="3">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTällä viikolla saat positiivisen palautteen jos olet onnistunut vähentämään puhelimesi käyttöä viime viikolta.\n\nSaat palautteen, jos puhelimesi on viime viikkoon verrattuna pidempään kiinni kerralla, avaat sen harvemmin päivässä, tai vähennät puhelimen käytön kokonaisaikaa.\n</item>
+        <item name="4">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTällä viikolla saat positiivisen palautteen jos olet saavuttanut asettamasi tavoitteen puhelimen käytön vähentämiselle.\n\nSaat palautteen, jos puhelimesi on viime viikkoon verrattuna pidempään kiinni kerralla, avaat sen harvemmin päivässä, tai vähennät puhelimen käytön kokonaisaikaa.\n</item>
+        <item name="5">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTausta-aineistoa kerätään jotta saadaan selville onko puhelimesi käytön vähentäminen pysyvää.\n</item>
+        <item name="6">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nTutkimus on päättynyt. Kiitos osallistumisestasi.\n</item>
     </string-array>
 
     <string-array name="PreTestQuestions">
@@ -135,12 +135,13 @@
     <string name="notifStage">vaihe</string>
     <string name="notifDay">päivä</string>
     <string name="btnSnoozeText">Vaimenna ilmoitukset 2 tunniksi</string>
+    <string name="tvSnoozedText">Shh. Vaimennutaan 2 tunniksi.</string>
     <string name="PurposeText">Tämän tutkmuksen tarkoituksena on tunnistaa erilaisia päätöksenteon ilmiöitä ja testata niiden vaikutusta puhelimen käytön vähentämiseksi.\nTutkimus auttaa paremmin ymmärtämään tuuppausten käyttöä modernin teknologian yhteydessä, ja selvittää miten ihmiset vastaavat vapaaehtoisiin menetelmiin jotka ohjaavat heitä vastuullisempaan puhelimen käyttöön.</string>
     <string name="tvGoalSetToastText">Tavoite asetettu: -</string>
     <string name="tvSelectYourGoalNotificationText">Aseta tavoite tälle viikolle</string>
 
     <!-- Stage 6 -->
-    <string name="rdbStage6NoInformationText">Ei ilmoitusta</string>
+    <string name="rdbStage6NoInformationText">Ei mitään</string>
     <string name="rdbStage6InformationText">Vain tiedot</string>
     <string name="rdbStage6InformationandThumbsUpText">Tiedot ja peukku</string>
     <string name="tvStage6ToastQuestionText">Minkä ilmoituksen haluat näytön avauksessa?</string>
@@ -149,5 +150,6 @@
     <string name="textShareBody">Mielestäni voisit vähän vähentää puhelimen käyttöä. Tämä sovellus saattaisi auttaa: http://bit.ly/29yLRX1.</string>
     <string name="textShareSubject">Pistä se puhelin pois! Deglancer auttaa.</string>
     <string name="textShareIntent">Kerro kaverille</string>
+    <string name="tvPreTextQuestionWord">Kysymys</string>
 
 </resources>

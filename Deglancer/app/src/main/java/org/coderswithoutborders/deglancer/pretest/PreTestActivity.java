@@ -139,7 +139,7 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
 
     public void moveToQuestion(int questionNumber) {
         tvPreTestActualQuestion.setText(questions[questionNumber]);
-        tvPreTestQuestionTitle.setText("Question " + Integer.toString(questionNumber + 1) + "/10");
+        tvPreTestQuestionTitle.setText(getString(R.string.tvPreTextQuestionWord) + " " + Integer.toString(questionNumber + 1) + "/10");
     }
 
     public void showToast() {

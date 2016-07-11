@@ -1,5 +1,6 @@
 package org.coderswithoutborders.deglancer.stagehandlers;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -17,6 +18,8 @@ import org.coderswithoutborders.deglancer.utils.TimeUtils;
 import org.coderswithoutborders.deglancer.utils.ToastUtils;
 import org.coderswithoutborders.deglancer.stagehandlers.Keystore;
 import org.coderswithoutborders.deglancer.view.MainActivity;
+
+import timber.log.Timber;
 
 /**
  * Created by Renier on 2016/04/27.
@@ -192,16 +195,17 @@ public class Stage4Handler implements IStageHandler {
                                 resultIntent,
                                 PendingIntent.FLAG_UPDATE_CURRENT);
 
+                Timber.d("Notification text is " + mContext.getString(R.string.tvSelectYourGoalNotificationText));
 
-                NotificationCompat.Builder notifyObj =
-                        new NotificationCompat.Builder(mContext)
-                                .setSmallIcon(R.mipmap.ic_launcher)
-                                .setContentTitle("Deglancer")
-                                .setContentIntent(resultPendingIntent)
-                                .setAutoCancel(true)
-                                .setContentText(mContext.getString(R.string.tvSelectYourGoalNotificationText));
+                Notification notifyObj = new NotificationCompat.Builder(mContext)
+                        .setContentTitle("Deglancer")
+                        .setContentText(mContext.getString(R.string.tvSelectYourGoalNotificationText))
+                        .setSmallIcon(R.mipmap.sign)
+                        .setContentIntent(resultPendingIntent)
+                        .setAutoCancel(true)
+                        .build();
 
-                notifyMgr.notify(NOTIFY_ME_ID, notifyObj.build());
+                notifyMgr.notify(NOTIFY_ME_ID, notifyObj);
 
                 // Increase number of notifications by one + update last notification time
                 // Timber.d( "Updating time: " + Integer.toString(store.getInt("numOfNotifications")) + " - " + Long.toString(System.currentTimeMillis()));
@@ -209,15 +213,6 @@ public class Stage4Handler implements IStageHandler {
                 store.putLong("timeLastNotification", System.currentTimeMillis());
             }
         }
-        /*
-        else {
-            Timber.d( "No need to notify right now: " + Integer.toString(store.getInt("numOfNotifications")) + " - " + TimeUtils.getHowManyHoursAgo(store.getLong("timeLastNotification")));
-            if (store.getInt("numOfNotifications") == 5) {
-                Timber.d( "Reset for fun.");
-                store.putInt("numOfNotifications", 1);
-            }
-        }
-        */
     }
 
 }
