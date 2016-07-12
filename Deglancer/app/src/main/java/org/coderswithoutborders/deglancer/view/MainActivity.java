@@ -76,8 +76,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         mTargetSetView = (TargetSetView) findViewById(R.id.targetSetView);
         mStage6ToastSetView = (Stage6ToastSetView) findViewById(R.id.stage6ToastSetView);
 
-        // TODO - Debug button and RIS not visible in stage 6
-
         findViewById(R.id.btnPreTest).setOnClickListener(v -> showPreTest());
 
 
@@ -102,7 +100,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         //sharing implementation here
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        // TODO - Localization support here
         String shareBody = getString(R.string.textShareBody);
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getString(R.string.textShareSubject));
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);

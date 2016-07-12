@@ -83,7 +83,7 @@ public class SegmentedGroup extends RadioGroup {
                     getResources().getColor(android.R.color.white));
 
             mUnCheckedTintColor = typedArray.getColor(
-                    R.styleable.SegmentedGroup_sc_unchecked_tint_color, // TODO This doesn't resolve
+                    R.styleable.SegmentedGroup_sc_unchecked_tint_color,
                     getResources().getColor(R.color.radio_button_unselected_color));
         } finally {
             typedArray.recycle();

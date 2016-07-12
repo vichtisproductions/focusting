@@ -84,7 +84,7 @@ public class TargetSetView extends FrameLayout implements ITargetSetView, RadioG
 
             segmentedTargetGroup.setOnCheckedChangeListener(this);
 
-            setTargetRight(); // TODO Do this
+            setTargetRight();
 
         }
     }

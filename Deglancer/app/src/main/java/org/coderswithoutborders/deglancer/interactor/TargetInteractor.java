@@ -47,7 +47,7 @@ public class TargetInteractor implements ITargetInteractor {
         if (toReturn != null) {
             return toReturn.getTarget();
         } else {
-            return -1; // TODO - Handle this later.
+            return -1;
         }
     }
 
@@ -57,7 +57,7 @@ public class TargetInteractor implements ITargetInteractor {
         Target toReturn = mDatabaseInteractor.getTargetForStage(stage);
 
         if (toReturn != null) {
-            return toReturn.getTarget(); // TODO - This messes up statistics. If it hasn't been set before, new radio buttons go to 5 but doesn't set it. Should in fact return NULL.
+            return toReturn.getTarget();
         } else {
             return DEFAULT_TARGET;
         }

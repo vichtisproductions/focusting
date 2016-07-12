@@ -6,16 +6,22 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.api.model.StringList;
 
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.R;
 import org.coderswithoutborders.deglancer.interactor.IUserInteractor;
 
 import java.util.UUID;
+
+import timber.log.Timber;
 
 /**
  * Created by Lauri Palokangas on 22.6.2016.
@@ -39,9 +45,16 @@ public class ResearchInformationSheet extends AppCompatActivity {
         setSupportActionBar(mToolbar);
 
         getSupportActionBar().setDisplayShowHomeEnabled(false);
-        getSupportActionBar().setTitle("Research Information Sheet"); // TODO - Translate
+        getSupportActionBar().setTitle(getString(R.string.labelRISTitle));
 
         ((TextView) findViewById(R.id.tvDeviceIDText)).setText(deviceIDText);
+
+        TextView view = (TextView)findViewById(R.id.tvCreditsText);
+        String HtmlText = getString(R.string.tvCreditsText);
+        Spanned SpannedText = Html.fromHtml(HtmlText);
+        view.setText(SpannedText);
+        view.setClickable(true);
+        view.setMovementMethod(LinkMovementMethod.getInstance());
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Bundle fbAnalyticsBundle = new Bundle();

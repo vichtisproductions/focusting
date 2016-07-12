@@ -191,7 +191,6 @@ public class StageInteractor implements IStageInteractor {
             Stage currentStage = getCurrentStageSynchronous();
             Timber.d("Current stage at " + Integer.toString(currentStage.getStage()));
             int days = 0;
-            // TODO - Check this too
             /*
             if (currentStage.getStage() == 6) {
                 days = 28;

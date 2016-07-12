@@ -144,7 +144,6 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
                 Bundle fbAnalyticsBundle = new Bundle();
 
                 if (action.getStage() != stage.getStage()) {
-                    // TODO - Use different Event for different stages
                     switch (action.getStage()) {
                         case 1:
                             mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.GENERATE_LEAD, null);
@@ -162,7 +161,6 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
                             fbAnalyticsBundle.putString(FirebaseAnalytics.Param.LEVEL, Integer.toString(action.getStage()));
                             mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LEVEL_UP, fbAnalyticsBundle);
                         case 3:
-                            // TODO: - Stage 3: PRESENT_OFFER
                             fbAnalyticsBundle.clear();
                             fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_ID, "stage_" + Integer.toString(action.getStage()));
                             fbAnalyticsBundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Stage 3");

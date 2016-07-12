@@ -46,7 +46,7 @@ public class Stage6ToastInteractor implements IStage6ToastInteractor {
         Stage6Toast toReturn = mDatabaseInteractor.getToastForStage(stage);
 
         if (toReturn != null) {
-            return toReturn.getTarget(); // TODO - This messes up statistics. If it hasn't been set before
+            return toReturn.getTarget();
         } else {
             return DEFAULT_TOAST;
         }

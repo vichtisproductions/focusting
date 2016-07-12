@@ -51,6 +51,9 @@
         android:id="@+id/btnPreTestOne"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/RadioButton"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/radio_button_blue_text"
         android:layout_above="@+id/btnPreTestTwo"
         android:layout_gravity="bottom" />
 
@@ -59,6 +62,9 @@
         android:id="@+id/btnPreTestTwo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/RadioButton"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/radio_button_blue_text"
         android:layout_above="@+id/btnPreTestThree" />
 
     <Button
@@ -66,6 +72,9 @@
         android:id="@+id/btnPreTestThree"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/RadioButton"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/radio_button_blue_text"
         android:layout_above="@+id/btnPreTestFour"
         android:layout_gravity="bottom" />
 
@@ -73,6 +82,9 @@
         android:text="@string/radioPreTestFour"
         android:id="@+id/btnPreTestFour"
         android:layout_width="match_parent"
+        style="@style/RadioButton"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/radio_button_blue_text"
         android:layout_alignParentBottom="true"
         android:layout_height="wrap_content" />
 </RelativeLayout>

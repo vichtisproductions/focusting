@@ -82,7 +82,7 @@
     <string name="ResearchDataTitle">Tutkimusaineisto</string>
     <string name="DataText">- Tutkimusaineisto ei ole tunnisteellista.\n- Kaikki tieto on anonymisoitua.\n- Tutkimusaineistoa käytetään ainoastaan tieteellisiin tarkoituksiin.\n- Tutkimusaineistoa ei myydä.</string>
     <string name="DurationTitle">Kesto</string>
-    <string name="DurationText">- Tutkimus kestää 8 viikkoa.\n- Koehenkilöillä on oikeus jatkaa sovelluksen käyttöä tutkimuksen jälkeen.\n- Tiedonkeruu jatkuu niin kauan kuin sovellus on asennettuna.</string>
+    <string name="DurationText">- Tutkimus kestää 5 viikkoa.\n- Koehenkilöillä on oikeus jatkaa sovelluksen käyttöä tutkimuksen jälkeen.\n- Tiedonkeruu jatkuu niin kauan kuin sovellus on asennettuna.</string>
     <string name="ResearchInformationSheetTitle"><u>Tiedote tutkittaville</u></string>
     <string name="IntroText">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nSovellus antaa tulevina viikkoina palautetta, ja rohkaisee sinua harkitsemaan puhelimen käyttöä.\n</string>
     <string name="IntroTextPreTest">Deglancer auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nSovellus antaa tulevina viikkoina palautetta, ja rohkaisee sinua harkitsemaan puhelimen käyttöä.\n\nVastaa itsearviointiin nyt.</string>
@@ -129,7 +129,7 @@
     </string-array>
 
     <string name="tvCreditsTitle">Kiitokset</string>
-    <string name="tvCreditsText">Ikonit teki http://www.flaticon.com/authors/madebyoliver sivustolta http://www.flaticon.com</string>
+    <string name="tvCreditsText" formatted="false"><![CDATA[Ikonit teki <a href=\"http://www.flaticon.com/authors/madebyoliver\">madebyoliver</a> sivustolta <a href=\"http://www.flaticon.com\">Flaticon</a>. Segmented control-napit <a href=\"https://github.com/Kaopiz/android-segmented-control\">Le Van Hoang (@hoang8f)</a>. SPAI scale ryhmältä <a href=\"http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098312\">Yu-Hsuan Lin, Li-Ren Chang, Yang-Han Lee, Hsien-Wei Tseng, Terry B. J. Kuo ja Sue-Huei Chen.</a>]]></string>
     <string name="labelTakeTheTestViewTitle">Itsearviointi</string>
     <string name="labelRISTitle">Tiedote tutkittaville</string>
     <string name="notifStage">vaihe</string>

@@ -80,9 +80,9 @@
     <string name="ResearchDataTitle">Research data</string>
     <string name="DataText">- Research data is not personally identifiable.\n- All information is anonymized.\n- Research data is only used for scientific research purposes.\n- Research data is not sold to anyone.</string>
     <string name="DurationTitle">Duration</string>
-    <string name="DurationText">- The research lasts 8 weeks.\n- If the test subject does not uninstall the application, they have right to continue to use the application.\n- The data collection will continue as long as the application has been installed.</string>
+    <string name="DurationText">- The research lasts 5 weeks.\n- If the test subject does not uninstall the application, they have right to continue to use the application.\n- The data collection will continue as long as the application has been installed.</string>
     <string name="tvCreditsTitle">Credits and acknowledgements</string>
-    <string name="tvCreditsText">Icons made by http://www.flaticon.com/authors/madebyoliver from http://www.flaticon.com. Segmented control by Le Van Hoang (@hoang8f)</string>
+    <string name="tvCreditsText" formatted="false"><![CDATA[Icons made by <a href=\"http://www.flaticon.com/authors/madebyoliver\">madebyoliver</a> from <a href=\"http://www.flaticon.com\">Flaticon</a>. Segmented control by <a href=\"https://github.com/Kaopiz/android-segmented-control\">Le Van Hoang (@hoang8f)</a>. SPAI scale by <a href=\"http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098312\">Yu-Hsuan Lin, Li-Ren Chang, Yang-Han Lee, Hsien-Wei Tseng, Terry B. J. Kuo and Sue-Huei Chen.</a>]]></string>
 
     <!-- Pre-research questionnaire - nr 10 thru nr12 -->
     <string name="PreTestIntro">Below is a list of smartphone-related behaviors or responses people sometimes have following their smartphone using experiences. Please read each item carefully, and select the option that best describes how much the description fits you <b>during the past 3 months</b>.</string>
