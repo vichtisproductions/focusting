@@ -55,7 +55,12 @@
         android:background="@drawable/rounded_button"
         android:textColor="@color/radio_button_blue_text"
         android:layout_above="@+id/btnPreTestTwo"
-        android:layout_gravity="bottom" />
+        android:layout_gravity="bottom"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp" />
 
     <Button
         android:text="@string/radioPreTestTwo"
@@ -65,7 +70,12 @@
         style="@style/RadioButton"
         android:background="@drawable/rounded_button"
         android:textColor="@color/radio_button_blue_text"
-        android:layout_above="@+id/btnPreTestThree" />
+        android:layout_above="@+id/btnPreTestThree"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp" />
 
     <Button
         android:text="@string/radioPreTestThree"
@@ -76,7 +86,12 @@
         android:background="@drawable/rounded_button"
         android:textColor="@color/radio_button_blue_text"
         android:layout_above="@+id/btnPreTestFour"
-        android:layout_gravity="bottom" />
+        android:layout_gravity="bottom"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp" />
 
     <Button
         android:text="@string/radioPreTestFour"
@@ -86,5 +101,10 @@
         android:background="@drawable/rounded_button"
         android:textColor="@color/radio_button_blue_text"
         android:layout_alignParentBottom="true"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp" />
 </RelativeLayout>
