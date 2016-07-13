@@ -68,7 +68,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         style="@style/RadioButton"
-                        android:background="@drawable/rounded_button"
+                        android:background="@color/button_color"
                         android:textColor="@color/radio_button_blue_text"
                         android:layout_below="@+id/tvStageRemainingTime"
                         android:layout_centerHorizontal="true"
