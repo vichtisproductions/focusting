@@ -12,7 +12,7 @@
     <!-- App names and titles of individual screens - SCREENSHOTS nr1, nr10, nr13 -->
     <string name="app_name">Deglancer</string>
     <string name="ResearchInformationSheetTitle"><u>Research information sheet</u></string>
-    <string name="labelTakeTheTestViewTitle">Pre-research questionnaire</string>
+    <string name="labelTakeTheTestViewTitle">Research questionnaire</string>
     <string name="labelRISTitle">Research Information Sheet</string>
 
     <!-- Toast - at screen unlock - nr16, nr17, nr18 -->
@@ -32,8 +32,8 @@
     <string name="IntroTextPreTest">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n\nFill in the research survey.</string>
 
     <!-- Main screen - Button and text to take the pre-research questionnaire - nr2 -->
-    <string name="btnTakeThePreTest">Fill in the pre-research survey</string>
-    <string name="tvPReTestNoticeText">Pre-research survey includes 10 simple questions about your smartphone-related behaviors.</string>
+    <string name="btnTakeThePreTest">Fill in the research survey</string>
+    <string name="tvPReTestNoticeText">Research survey includes 10 simple questions about your smartphone-related behaviors.</string>
 
     <!-- Main screen text after the user has run pre-research questionnaire - nr1 -->
     <string name="IntroText">Deglancer helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n</string>
@@ -108,7 +108,7 @@
     <string name="PreTestSubmitAnswers">Save my answers</string>
     <string name="PreTestThanks">Thank your for your responses.</string>
     <string name="tvPreTestTitleText">Smartphone Addiction Inventory</string>
-    <string name="tvPreTestQuestionText">Pre-test question</string>
+    <string name="tvPreTestQuestionText">Question</string>
     <string name="tvPreTestQuestionNumberOf">of 10</string>
     <string name="tvPreTestActualQuestionText">Although using smartphone has brought negative effects on my interpersonal relationships, the amount of time spent on Internet remains unreduced.</string>
 
