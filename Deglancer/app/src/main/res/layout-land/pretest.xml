@@ -14,7 +14,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold"
         android:layout_gravity="top"
-        android:layout_alignParentStart="false" />
+        android:layout_alignParentStart="false"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tvPreTestNotice"
@@ -24,7 +25,7 @@
         android:layout_below="@+id/tvPreTestTitle"
         android:text="@string/PreTestIntro"
         android:gravity="center"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tvPreTestQuestion"
@@ -38,7 +39,8 @@
         android:layout_gravity="top"
         android:layout_marginTop="6dp"
         android:layout_alignRight="@+id/tvPreTestActualQuestion"
-        android:layout_alignEnd="@+id/tvPreTestActualQuestion" />
+        android:layout_alignEnd="@+id/tvPreTestActualQuestion"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvPreTestActualQuestion"
