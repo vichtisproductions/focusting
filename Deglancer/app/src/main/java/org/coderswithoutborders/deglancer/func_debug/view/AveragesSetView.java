@@ -104,9 +104,9 @@ public class AveragesSetView extends FrameLayout implements IAveragesSetView {
     }
 
     private OnClickListener buttonClickListener = v -> {
-        Timber.d("Button clicked to " + String.valueOf(v.getId()));
+        // Timber.d("Button clicked to " + String.valueOf(v.getId()));
         if (v.getId() == R.id.btnSOTPick) {
-            Timber.d("It was a btnSOTPick");
+            // Timber.d("It was a btnSOTPick");
             TimePickerDialog dialog = new TimePickerDialog(mActivity);
             dialog.setTimePickerEventListener(new TimePickerDialog.TimePickerEventListener() {
                 @Override
@@ -119,7 +119,7 @@ public class AveragesSetView extends FrameLayout implements IAveragesSetView {
                     mPresenter.avgSOTPicked(millis);
                 }
             });
-            Timber.d("All set, let's show.");
+            // Timber.d("All set, let's show.");
             dialog.show(getContext());
         } else if (v.getId() == R.id.btnSFTPick) {
             TimePickerDialog dialog = new TimePickerDialog(mActivity);

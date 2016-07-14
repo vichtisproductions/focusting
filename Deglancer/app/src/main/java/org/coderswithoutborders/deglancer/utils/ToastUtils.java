@@ -44,7 +44,7 @@ public class ToastUtils {
 
         // Create custom toast and display it
         if (System.currentTimeMillis() > getSnooze(mContext)) {
-            Timber.d("Toasting!");
+            // Timber.d("Toasting!");
             Toast toast = new Toast(mContext);
             toast.setGravity(Gravity.BOTTOM, 0, 30);
             toast.setDuration(Toast.LENGTH_LONG);
@@ -113,7 +113,7 @@ public class ToastUtils {
 
         // Create custom toast and display it
         if (System.currentTimeMillis() > getSnooze(mContext)) {
-            Timber.d("Toasting!");
+            // Timber.d("Toasting!");
             Toast toast = new Toast(mContext);
             toast.setGravity(Gravity.BOTTOM, 0, 30);
             toast.setDuration(Toast.LENGTH_LONG);
@@ -185,7 +185,7 @@ public class ToastUtils {
 
         // Create custom toast and display it
         if (System.currentTimeMillis() > getSnooze(mContext)) {
-            Timber.d("Toasting!");
+            // Timber.d("Toasting!");
             Toast toast = new Toast(mContext);
             toast.setGravity(Gravity.BOTTOM, 0, 30);
             toast.setDuration(Toast.LENGTH_LONG);
@@ -221,7 +221,7 @@ public class ToastUtils {
         // Create custom toast and display it
 
         if (System.currentTimeMillis() > getSnooze(mContext)) {
-            Timber.d("Toasting!");
+            // Timber.d("Toasting!");
             Toast toast = new Toast(mContext);
             toast.setGravity(Gravity.BOTTOM, 0, 30);
             toast.setDuration(Toast.LENGTH_LONG);
@@ -241,7 +241,7 @@ public class ToastUtils {
     }
 
     public static long getSnooze(Context mContext) {
-        Timber.d("Time now: " + System.currentTimeMillis() + ", snooze ends at " + Long.toString(Keystore.getInstance(mContext).getLong("snoozeEndsAt")));
+        // Timber.d("Time now: " + System.currentTimeMillis() + ", snooze ends at " + Long.toString(Keystore.getInstance(mContext).getLong("snoozeEndsAt")));
         return Keystore.getInstance(mContext).getLong("snoozeEndsAt");
     }
 }

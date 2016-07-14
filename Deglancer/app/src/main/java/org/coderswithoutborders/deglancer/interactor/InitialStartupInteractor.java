@@ -173,9 +173,9 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                                             String modelfromSP = mPrefs.getString(SP_KEY_INITIAL_MODEL, "");
                                             String osVersionfromSP = mPrefs.getString(SP_KEY_INITIAL_OSVERSION, "");
                                             UserInfo ui = new UserInfo(instanceId, initialStartTimefromSP, manufacturerfromSP, modelfromSP, osVersionfromSP);
-                                            Timber.d("User info from SP: " + instanceId + " " + initialStartTimefromSP.toString() + ", " + manufacturerfromSP + ", " + modelfromSP + ", " + osVersionfromSP);
+                                            // Timber.d("User info from SP: " + instanceId + " " + initialStartTimefromSP.toString() + ", " + manufacturerfromSP + ", " + modelfromSP + ", " + osVersionfromSP);
 
-                                            Timber.d("Uploading UserInfo to FireBase");
+                                            // Timber.d("Uploading UserInfo to FireBase");
                                             DatabaseReference ref = mFirebaseClient.child(instanceId).child("InitialInformation");
                                             ref.setValue(ui);
 
@@ -214,7 +214,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                     //TODO - handle error
                     String here = "";
                 });
-        Timber.d("End creating user and uploading initial data.");
+        // Timber.d("End creating user and uploading initial data.");
 
     }
 

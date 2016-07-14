@@ -109,7 +109,7 @@ public class TargetSetViewPresenter implements ITargetSetViewPresenter {
             Stage currentStage = mStageInteractor.getCurrentStageSynchronous();
             // Then set the right toast for this stage
             if (currentStage.getStage() == 4) {
-                Timber.d("It's stage 4, let's define the target now.");
+                // Timber.d("It's stage 4, let's define the target now.");
                 setStage(currentStage);
             }
             // That should be it.

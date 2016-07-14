@@ -145,7 +145,7 @@ public class StageInteractor implements IStageInteractor {
                     return mStage2Handler;
                 } else if (handler== 2) {
                     Timber.d("Toast: Information and thumbs up.");
-                    return mStage3Handler;
+                    return mStage6Handler;
                 }
         }
 
@@ -156,10 +156,10 @@ public class StageInteractor implements IStageInteractor {
     public void goToNextStage() {
         Observable.create(subscriber -> {
             Stage currentStage = getCurrentStageSynchronous();
-            Timber.d("Stage now set at " + Integer.toString(currentStage.getStage()));
+            // Timber.d("Stage now set at " + Integer.toString(currentStage.getStage()));
             if (currentStage.getStage() < 6) {
                 int days = currentStage.getStage() * 7;
-                Timber.d("Going forward " + Integer.toString(days) + " days");
+                // Timber.d("Going forward " + Integer.toString(days) + " days");
                 DateTime newStartTime = new DateTime().minusDays(days);
 
                 mInitialStartupInteractor.overrideInitialStartTime(newStartTime.getMillis());
@@ -189,7 +189,7 @@ public class StageInteractor implements IStageInteractor {
     public void goToPreviousStage() {
         Observable.create(subscriber -> {
             Stage currentStage = getCurrentStageSynchronous();
-            Timber.d("Current stage at " + Integer.toString(currentStage.getStage()));
+            // Timber.d("Current stage at " + Integer.toString(currentStage.getStage()));
             int days = 0;
             /*
             if (currentStage.getStage() == 6) {
@@ -209,7 +209,7 @@ public class StageInteractor implements IStageInteractor {
             */
             if (currentStage.getStage() > 1) {
                 days = (currentStage.getStage() - 2) * 7;
-                Timber.d("Going back " + Integer.toString(days) + " days");
+                // Timber.d("Going back " + Integer.toString(days) + " days");
                 DateTime newStartTime = new DateTime().minusDays(days);
 
                 mInitialStartupInteractor.overrideInitialStartTime(newStartTime.getMillis());

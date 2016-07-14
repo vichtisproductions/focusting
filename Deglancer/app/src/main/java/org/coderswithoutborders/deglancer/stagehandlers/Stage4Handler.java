@@ -195,7 +195,7 @@ public class Stage4Handler implements IStageHandler {
                                 resultIntent,
                                 PendingIntent.FLAG_UPDATE_CURRENT);
 
-                Timber.d("Notification text is " + mContext.getString(R.string.tvSelectYourGoalNotificationText));
+                // Timber.d("Notification text is " + mContext.getString(R.string.tvSelectYourGoalNotificationText));
 
                 Notification notifyObj = new NotificationCompat.Builder(mContext)
                         .setContentTitle("Deglancer")

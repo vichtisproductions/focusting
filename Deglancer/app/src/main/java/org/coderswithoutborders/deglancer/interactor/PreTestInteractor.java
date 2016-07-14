@@ -40,7 +40,7 @@ public class PreTestInteractor implements IPreTestInteractor {
 
         PreTestResults r = new PreTestResults(UUID.randomUUID().toString(), answerone, answertwo, answerthree, answerfour, answerfive, answersix, answerseven, answereight, answernine, answerten);
         int FirstAns = r.getAns1();
-        Timber.d( "First answer:" + Integer.toString(FirstAns));
+        // Timber.d( "First answer:" + Integer.toString(FirstAns));
         mDatabaseInteractor.commitPreTestResults(r);
         DatabaseReference ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("PreTestResults");
         ref.push().setValue(r);

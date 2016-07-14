@@ -98,7 +98,7 @@ public class DebugStage5Activity extends AppCompatActivity implements IDebugStag
 
     @Override
     public void moveToStage6View() {
-        Timber.d("Moving to Stage 6");
+        // Timber.d("Moving to Stage 6");
         Intent i = new Intent(this, DebugStage6Activity.class);
         startActivity(i);
     }

@@ -69,14 +69,14 @@ public class TargetInteractor implements ITargetInteractor {
         int oldTarget = getTargetInFactForStageSynchronous(4);
 
         if (t.getTarget() != oldTarget) {
-            Timber.d("Toast type has changed, let's update.");
+            // Timber.d("Toast type has changed, let's update.");
 
             mDatabaseInteractor.commitTarget(t);
 
             DatabaseReference ref = mFirebaseClient.child(mUserInteractor.getInstanceIdSynchronous()).child("Targets");
             ref.push().setValue(t);
         } else {
-            Timber.d("Toast type hasn't changed, maybe it's just an app invoking...");
+            // Timber.d("Toast type hasn't changed, maybe it's just an app invoking...");
         }
     }
 }

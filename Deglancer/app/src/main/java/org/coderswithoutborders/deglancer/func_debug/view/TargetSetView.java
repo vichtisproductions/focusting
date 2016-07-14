@@ -109,7 +109,7 @@ public class TargetSetView extends FrameLayout implements ITargetSetView, RadioG
                 target = 15;
             }
 
-            Timber.d( "Setting target for " + Integer.toString(target));
+            // Timber.d( "Setting target for " + Integer.toString(target));
             mPresenter.setTargetTapped(target);
             Toast toast = Toast.makeText(getContext(), getContext().getString(R.string.tvGoalSetToastText) + target + " %", 3);
             toast.setGravity(Gravity.BOTTOM, 0, 30);
@@ -184,7 +184,7 @@ public class TargetSetView extends FrameLayout implements ITargetSetView, RadioG
         }
 
 
-        Timber.d( "Setting target for " + Integer.toString(target));
+        // Timber.d( "Setting target for " + Integer.toString(target));
         mPresenter.setTargetTapped(target);
         // Toast toast = Toast.makeText(getContext(), getContext().getString(R.string.tvGoalSetToastText) + target + " %", 3);
         // toast.setGravity(Gravity.BOTTOM, 0, 30);

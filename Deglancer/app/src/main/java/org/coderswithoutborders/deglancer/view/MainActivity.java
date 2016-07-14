@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
-        Timber.d("Clicked on " + Integer.toString(item.getItemId()));
+        // Timber.d("Clicked on " + Integer.toString(item.getItemId()));
         switch (item.getItemId()) {
             case R.id.action_debug:
                 mPresenter.debugClicked();
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         }
 
         // Setting target set view for stage 4
-        Timber.d("Setting preset visibility for stage " + Integer.toString(stage));
+        // Timber.d("Setting preset visibility for stage " + Integer.toString(stage));
         if (stage == 4) {
             findViewById(R.id.targetSetView).setVisibility(View.VISIBLE);
             if (target != -1) {
@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
                 ((TextView) findViewById(R.id.textView10)).setText(targetSelected);
             }
         } else {
-            Timber.d("Hiding target setting");
+            // Timber.d("Hiding target setting");
             findViewById(R.id.targetSetView).setVisibility(View.GONE);
             findViewById(R.id.tvTargetSelected).setVisibility(View.GONE);
         }
@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         }
 
         if (stage == 6) {
-            Timber.d("Setting stage6 Toast setting visible");
+            // Timber.d("Setting stage6 Toast setting visible");
             findViewById(R.id.stage6ToastSetView).setVisibility(View.VISIBLE);
             mStage6ToastSetView.setToastRight();
         } else {

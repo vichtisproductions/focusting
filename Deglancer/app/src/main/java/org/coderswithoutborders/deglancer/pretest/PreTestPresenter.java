@@ -43,7 +43,7 @@ public class PreTestPresenter implements IPreTestPresenter {
 
     // @Override
     public void submitPreTestResults(int answerone, int answertwo, int answerthree, int answerfour, int answerfive, int answersix, int answerseven, int answereight, int answernine, int answerten) {
-        Timber.d( "Uploading results now - before uploadPreTestResults");
+        // Timber.d( "Uploading results now - before uploadPreTestResults");
         mPreTestInteractor.uploadPreTestResults(answerone, answertwo, answerthree, answerfour, answerfive, answersix, answerseven, answereight, answernine, answerten);
 
         //        .subscribeOn(AndroidSchedulers.mainThread())

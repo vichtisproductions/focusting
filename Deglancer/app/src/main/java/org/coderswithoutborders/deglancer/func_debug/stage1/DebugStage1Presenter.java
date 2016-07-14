@@ -68,7 +68,7 @@ public class DebugStage1Presenter implements IDebugStage1Presenter {
     }
 
     public void clearTestResults() {
-        Timber.d( "Clear Pre-tests and targets");
+        // Timber.d( "Clear Pre-tests and targets");
         mDatabaseInteractor.clearPreTestResults();
         mDatabaseInteractor.clearTarget();
     }

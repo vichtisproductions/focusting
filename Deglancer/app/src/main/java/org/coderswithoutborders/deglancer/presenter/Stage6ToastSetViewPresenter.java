@@ -105,7 +105,7 @@ public class Stage6ToastSetViewPresenter implements IStage6ToastSetViewPresenter
         Stage currentStage = mStageInteractor.getCurrentStageSynchronous();
         // Then set the right toast for this stage
         if (currentStage.getStage() == 6) {
-            Timber.d("It's stage 6, let's define the toast type now.");
+            // Timber.d("It's stage 6, let's define the toast type now.");
             setStage(currentStage);
         }
         // That should be it.

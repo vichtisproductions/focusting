@@ -102,7 +102,7 @@ public class Stage6ToastSetView extends FrameLayout implements IStage6ToastSetVi
                 ToastText = getContext().getString(R.string.rdbStage6InformationandThumbsUpText);
             }
 
-            Timber.d("Setting target for " + Integer.toString(target));
+            // Timber.d("Setting target for " + Integer.toString(target));
             mPresenter.setStage6ToastTapped(target);
             Toast toast = Toast.makeText(getContext(), getContext().getString(R.string.toastStage6SetToastNotificationText) + ToastText, 3);
             toast.setGravity(Gravity.BOTTOM, 0, 30);
@@ -176,7 +176,7 @@ public class Stage6ToastSetView extends FrameLayout implements IStage6ToastSetVi
                 // Leave us empty-handed.
         }
 
-        Timber.d("Setting target for " + Integer.toString(target));
+        // Timber.d("Setting target for " + Integer.toString(target));
         mPresenter.setStage6ToastTapped(target);
         // Toast toast = Toast.makeText(getContext(), getContext().getString(R.string.toastStage6SetToastNotificationText) + ToastText, 3);
         // toast.setGravity(Gravity.BOTTOM, 0, 30);
