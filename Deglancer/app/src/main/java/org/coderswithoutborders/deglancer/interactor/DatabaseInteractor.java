@@ -99,15 +99,17 @@ public class DatabaseInteractor implements IDatabaseInteractor {
     }
 
     @Override
+    // TODO - Verify with Stage handlers
     public long getUnlockCountForStageFromAverages(int stage, int day, int hour) {
-        Averages avg = mRealm.where(Averages.class)
+        long avg = mRealm.where(Averages.class)
                 .equalTo("mStage", stage)
                 .equalTo("mDay", day)
-                .equalTo("mHour", hour)
-                .findFirst();
+                .lessThanOrEqualTo("mHour", hour)
+                .sum("mUnlockCount")
+                .longValue();
 
-        if (avg != null) {
-            return avg.getUnlockCount();
+        if (Long.valueOf(avg) != null) {
+            return avg;
         } else {
             return 0l;
         }
@@ -147,15 +149,16 @@ public class DatabaseInteractor implements IDatabaseInteractor {
     }
 
     @Override
+    // TODO - Verify with Stage handlers
     public double getAverageSFTForStageFromAverages(int stage, int day, int hour) {
-        Averages avg = mRealm.where(Averages.class)
+        Double avg = mRealm.where(Averages.class)
                 .equalTo("mStage", stage)
                 .equalTo("mDay", day)
-                .equalTo("mHour", hour)
-                .findFirst();
+                .lessThanOrEqualTo("mHour", hour)
+                .average("mSFT");
 
-        if (avg != null) {
-            return avg.getSFT();
+        if (Double.valueOf(avg) != null) {
+            return avg;
         } else {
             return 0l;
         }
@@ -170,15 +173,17 @@ public class DatabaseInteractor implements IDatabaseInteractor {
     }
 
     @Override
+    // TODO - Verify with Stage handlers
     public long getTotalSOTForStageFromAverages(int stage, int day, int hour) {
-        Averages avg = mRealm.where(Averages.class)
+        long avg = mRealm.where(Averages.class)
                 .equalTo("mStage", stage)
                 .equalTo("mDay", day)
-                .equalTo("mHour", hour)
-                .findFirst();
+                .lessThanOrEqualTo("mHour", hour)
+                .sum("mTotalSOT")
+                .longValue();
 
-        if (avg != null) {
-            return avg.getTotalSOT();
+        if (Long.valueOf(avg) != null) {
+            return avg;
         } else {
             return 0l;
         }

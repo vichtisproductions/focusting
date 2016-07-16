@@ -48,12 +48,15 @@ public class Stage4Handler implements IStageHandler {
         if (action.getEventType().equals(Intent.ACTION_SCREEN_ON)) {
 
             //get unlock count up to current hour for this stage day
+            // TODO - test this too - changed
             long unlockCount = mDatabaseInteractor.getUnlockCountForStage(action.getStage(), action.getDay(), action.getHour());
 
             //get totalSOTTime up to current hour for this stage day
+            // TODO - test this too - changed
             long totalSOTTime = mDatabaseInteractor.getTotalSOTForStage(action.getStage(), action.getDay(), action.getHour());
 
             //get average sft time up to current hour for this stage day
+            // TODO - test this too - changed
             double avgSFTTime = mDatabaseInteractor.getAverageSFTForStage(action.getStage(), action.getDay(), action.getHour());
             // override avgSFTTimePreviousStage with last SFT
             long sinceLastLock = action.getDuration();
