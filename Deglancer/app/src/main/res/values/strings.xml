@@ -133,7 +133,8 @@
     <string name="target_set_view_5_percent" translatable="false">-5%</string>
     <string name="target_set_view_10_percent" translatable="false">-10%</string>
     <string name="target_set_view_15_percent" translatable="false">-15%</string>
-    <string name="ResearcherText" translatable="false">Lauri Palokangas,\nlauri.palokangas@student.laurea.fi,\n+358504864918</string>
+    <string name="ResearcherText" translatable="false">Lauri Palokangas\nlauri.palokangas@student.laurea.fi</string>
+
     <string name="tvPreTestQuestionNumber" translatable="false">1</string>
     <string name="notifHead" translatable="false">Deglancer - </string>
 
