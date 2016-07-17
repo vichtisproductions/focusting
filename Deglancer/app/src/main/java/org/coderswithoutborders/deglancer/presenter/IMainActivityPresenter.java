@@ -17,4 +17,5 @@ public interface IMainActivityPresenter {
     boolean isPreTestRun();
     int whatStage();
     int whatTarget();
+    void adjustStartTime(Context context);
 }

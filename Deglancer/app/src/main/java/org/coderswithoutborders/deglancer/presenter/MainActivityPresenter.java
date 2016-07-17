@@ -1,7 +1,9 @@
 package org.coderswithoutborders.deglancer.presenter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.format.Time;
 import android.view.Gravity;
 import android.widget.Toast;
 
@@ -20,10 +22,13 @@ import org.coderswithoutborders.deglancer.model.Stage;
 import org.coderswithoutborders.deglancer.model.Target;
 import org.coderswithoutborders.deglancer.utils.ToastUtils;
 import org.coderswithoutborders.deglancer.view.IMainActivityView;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
+import timber.log.Timber;
 
 
 /**
@@ -167,7 +172,8 @@ public class MainActivityPresenter implements IMainActivityPresenter {
 
                             case 6:
                                 mView.showStage6View(stage);
-                                break;                        }
+                                break;
+                        }
                     }
                 }, error -> {
                     //TODO - Handle error
@@ -190,6 +196,55 @@ public class MainActivityPresenter implements IMainActivityPresenter {
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SPEND_VIRTUAL_CURRENCY, fbAnalyticsBundle);
 
     }
+
+
+    // Adjust start time if app has been updated from pre-V16
+    public void adjustStartTime(Context context) {
+
+
+        final String SP_NAME = "InitialStartupSP";
+        final String SP_KEY_INITIAL_SETUP_DONE = "InitialSetupDone";
+        final String SP_KEY_INITIAL_START_TIME = "InitialStartTime";
+        final String SP_KEY_INITIAL_TIMEZONE = "InitialTimezone";
+        final String SP_KEY_INITIAL_START_TIME_ZERO_HOUR = "InitialStartTimeZeroHour";
+
+        SharedPreferences mPrefs;
+        mPrefs = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
+        Boolean initialSetupDone = mPrefs.getBoolean(SP_KEY_INITIAL_SETUP_DONE, false);
+        if (!initialSetupDone) {
+            Timber.d("Initial startup. Skipping.");
+            return;
+        } else {
+            Timber.d("Adjusting...");
+            Long initialZeroHour = mPrefs.getLong(SP_KEY_INITIAL_START_TIME_ZERO_HOUR, -1);
+            if (Long.valueOf(initialZeroHour) == Long.valueOf(-1)) {
+                Long initialStartTime = mPrefs.getLong(SP_KEY_INITIAL_START_TIME, 0);
+                String userTimezone = mPrefs.getString(SP_KEY_INITIAL_TIMEZONE, "-1");
+                if (userTimezone == "-1") {
+                    Timber.d("Gotta specify timezone first");
+                    userTimezone = Time.getCurrentTimezone();
+                }
+                Timber.d("Timezone: " + userTimezone);
+                Timber.d("Initial start time: " + Long.toString(initialStartTime));
+                DateTime startTimeBeginning = new DateTime(Long.valueOf(initialStartTime), DateTimeZone.UTC);
+                DateTime todayStart = startTimeBeginning.withTimeAtStartOfDay();
+                Timber.d("Beginning of the day: " + Long.toString(todayStart.getMillis()));
+                Timber.d("Now overriding");
+                initialStartTime = todayStart.getMillis();
+                SharedPreferences.Editor editor;
+                editor = mPrefs.edit();
+                editor.putLong(SP_KEY_INITIAL_START_TIME, initialStartTime);
+                editor.putLong(SP_KEY_INITIAL_START_TIME_ZERO_HOUR, initialStartTime);
+                editor.putString(SP_KEY_INITIAL_TIMEZONE, userTimezone);
+                editor.apply();
+                Timber.d("Initial start time now: " + Long.toString(initialStartTime));
+            } else {
+                Timber.d("Start time adjusted, no need.");
+            }
+
+        }
+    }
+
 
 }
 

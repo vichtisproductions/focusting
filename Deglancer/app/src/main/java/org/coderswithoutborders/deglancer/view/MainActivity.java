@@ -25,6 +25,8 @@ import android.view.View;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 
+import org.joda.time.DateTime;
+
 import org.coderswithoutborders.deglancer.BuildConfig;
 import org.coderswithoutborders.deglancer.MainApplication;
 import org.coderswithoutborders.deglancer.func_debug.stage1.DebugStage1Activity;
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         setContentView(R.layout.activity_main);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -91,6 +94,8 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
         findViewById(R.id.btnPreTest).setOnClickListener(v -> showPreTest());
 
+        // Fix start time if not fixed
+        mPresenter.adjustStartTime(getApplicationContext());
 
         FloatingActionButton fabShare = (FloatingActionButton) findViewById(R.id.fabShare);
         if (fabShare != null) {
@@ -427,6 +432,5 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         }
         return "";
     }
-
 
 }

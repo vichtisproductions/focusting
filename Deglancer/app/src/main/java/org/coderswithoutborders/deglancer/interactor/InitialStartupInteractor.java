@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.coderswithoutborders.deglancer.di.DataModule;
 import org.coderswithoutborders.deglancer.model.UserInfo;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 
 import timber.log.Timber;
 
@@ -42,6 +43,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
     private static final String SP_KEY_INITIAL_UPLOAD_SUCCEEDED = "InitialUploadSucceeded";
     private static final String SP_KEY_INITIAL_START_TIME = "InitialStartTime";
     private static final String SP_KEY_INITIAL_TIMEZONE = "InitialTimezone";
+    private static final String SP_KEY_INITIAL_START_TIME_ZERO_HOUR = "InitialStartTimeZeroHour";
     // Extend Shared preferences to store all initial information in case uploading fails
     private static final String SP_KEY_INITIAL_MANUFACTURER = "Manufacturer";
     private static final String SP_KEY_INITIAL_MODEL = "Model";
@@ -82,10 +84,21 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
 
                     // Get the data and store it away. You're done.
                     long initialStartTime = new DateTime().getMillis();
+                    String userTimezone = Time.getCurrentTimezone();
+                    // Determining the beginning of the day
+                    DateTimeZone timeZone = DateTimeZone.forID( userTimezone );
+                    DateTime now = DateTime.now( timeZone );
+                    Timber.d("Timezone is " + userTimezone);
+                    Timber.d("Initial start time: " + Long.toString(initialStartTime));
+                    DateTime todayStart = now.withTimeAtStartOfDay();
+                    Timber.d("Beginning of the day : " + Long.toString(todayStart.getMillis()));
+                    Timber.d("Now overriding");
+                    initialStartTime = todayStart.getMillis();
+                    Timber.d("Initial start time now: " + Long.toString(initialStartTime));
+
                     String manufacturer = Build.MANUFACTURER;
                     String model = Build.MODEL;
                     String osVersion = Build.VERSION.RELEASE;
-                    String userTimezone = Time.getCurrentTimezone();
 
                     mRxPrefs.getLong(SP_KEY_INITIAL_START_TIME).set(initialStartTime);
                     mRxPrefs.getString(SP_KEY_INITIAL_MANUFACTURER).set(manufacturer);
@@ -93,6 +106,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                     mRxPrefs.getString(SP_KEY_INITIAL_OSVERSION).set(osVersion);
                     mRxPrefs.getBoolean(SP_KEY_INITIAL_SETUP_DONE).set(true);
                     mRxPrefs.getString(SP_KEY_INITIAL_TIMEZONE).set(userTimezone);
+                    mRxPrefs.getLong(SP_KEY_INITIAL_START_TIME_ZERO_HOUR).set(initialStartTime);
 
                     FirebaseUsername = mUserInteractor.getInstanceIdSynchronous() + "@bogusresearchusers.com";
                     mRxPrefs.getString(SP_KEY_INITIAL_FB_USERNAME).set(FirebaseUsername);
