@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.text.format.Time;
 
 import com.f2prateek.rx.preferences.Preference;
 import com.f2prateek.rx.preferences.RxSharedPreferences;
@@ -40,6 +41,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
     private static final String SP_KEY_INITIAL_SETUP_DONE = "InitialSetupDone";
     private static final String SP_KEY_INITIAL_UPLOAD_SUCCEEDED = "InitialUploadSucceeded";
     private static final String SP_KEY_INITIAL_START_TIME = "InitialStartTime";
+    private static final String SP_KEY_INITIAL_TIMEZONE = "InitialTimezone";
     // Extend Shared preferences to store all initial information in case uploading fails
     private static final String SP_KEY_INITIAL_MANUFACTURER = "Manufacturer";
     private static final String SP_KEY_INITIAL_MODEL = "Model";
@@ -83,12 +85,14 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                     String manufacturer = Build.MANUFACTURER;
                     String model = Build.MODEL;
                     String osVersion = Build.VERSION.RELEASE;
+                    String userTimezone = Time.getCurrentTimezone();
 
                     mRxPrefs.getLong(SP_KEY_INITIAL_START_TIME).set(initialStartTime);
                     mRxPrefs.getString(SP_KEY_INITIAL_MANUFACTURER).set(manufacturer);
                     mRxPrefs.getString(SP_KEY_INITIAL_MODEL).set(model);
                     mRxPrefs.getString(SP_KEY_INITIAL_OSVERSION).set(osVersion);
                     mRxPrefs.getBoolean(SP_KEY_INITIAL_SETUP_DONE).set(true);
+                    mRxPrefs.getString(SP_KEY_INITIAL_TIMEZONE).set(userTimezone);
 
                     FirebaseUsername = mUserInteractor.getInstanceIdSynchronous() + "@bogusresearchusers.com";
                     mRxPrefs.getString(SP_KEY_INITIAL_FB_USERNAME).set(FirebaseUsername);
@@ -172,7 +176,8 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                                             String manufacturerfromSP = mPrefs.getString(SP_KEY_INITIAL_MANUFACTURER, "");
                                             String modelfromSP = mPrefs.getString(SP_KEY_INITIAL_MODEL, "");
                                             String osVersionfromSP = mPrefs.getString(SP_KEY_INITIAL_OSVERSION, "");
-                                            UserInfo ui = new UserInfo(instanceId, initialStartTimefromSP, manufacturerfromSP, modelfromSP, osVersionfromSP);
+                                            String userTimezonefromSP = mPrefs.getString(SP_KEY_INITIAL_TIMEZONE, "");
+                                            UserInfo ui = new UserInfo(instanceId, initialStartTimefromSP, manufacturerfromSP, modelfromSP, osVersionfromSP, userTimezonefromSP);
                                             // Timber.d("User info from SP: " + instanceId + " " + initialStartTimefromSP.toString() + ", " + manufacturerfromSP + ", " + modelfromSP + ", " + osVersionfromSP);
 
                                             // Timber.d("Uploading UserInfo to FireBase");

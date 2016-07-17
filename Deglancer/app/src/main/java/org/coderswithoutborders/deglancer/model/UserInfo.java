@@ -9,16 +9,18 @@ public class UserInfo {
     private String mManufacturer;
     private String mModel;
     private String mOSVersion;
+    private String mTimezone;
 
     public UserInfo() {
     }
 
-    public UserInfo(String mInstanceId, long mInitialStartTime, String mManufacturer, String mModel, String mOSVersion) {
+    public UserInfo(String mInstanceId, long mInitialStartTime, String mManufacturer, String mModel, String mOSVersion, String mTimezone) {
         this.mInstanceId = mInstanceId;
         this.mInitialStartTime = mInitialStartTime;
         this.mManufacturer = mManufacturer;
         this.mModel = mModel;
         this.mOSVersion = mOSVersion;
+        this.mTimezone = mTimezone;
     }
 
     public String getInstanceId() {
@@ -60,4 +62,9 @@ public class UserInfo {
     public void setOSVersion(String mOSVersion) {
         this.mOSVersion = mOSVersion;
     }
+
+    public String getTimezone() { return mTimezone; }
+
+    public void setTimezone(String mTimezone) { this.mTimezone = mTimezone; }
+
 }
