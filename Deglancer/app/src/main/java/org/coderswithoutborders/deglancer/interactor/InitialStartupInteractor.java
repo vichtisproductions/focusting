@@ -137,6 +137,8 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                     };
                     // [END auth_state_listener]
 
+                    mAuth.addAuthStateListener(mAuthListener);
+
                     // [START create_user_with_email]
                     mAuth.createUserWithEmailAndPassword(FirebaseUsername, FirebasePassword)
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
