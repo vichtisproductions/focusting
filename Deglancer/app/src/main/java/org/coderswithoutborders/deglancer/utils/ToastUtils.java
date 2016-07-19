@@ -26,8 +26,9 @@ public class ToastUtils {
                                  long unlockCount,
                                  long totalSOTTime) {
         String lastSleepString = TimeUtils.getTimeStringFromMillis(actionDuration, true, false, true, false);
-        String unlockString = String.valueOf(unlockCount);
-        String totalSOTTimeString = TimeUtils.getTimeStringFromMillis(totalSOTTime, true, true, true, true);
+        // String unlockString = String.valueOf(unlockCount);
+        String unlockString = String.format("%1$" + 8 + "s", String.valueOf(unlockCount));
+        String totalSOTTimeString = TimeUtils.getTimeStringFromMillis(totalSOTTime, true, true, true, false);
 
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.custom_toast, new LinearLayout(mContext), false)
@@ -67,8 +68,9 @@ public class ToastUtils {
                                  double sftDiffPercentage) {
 
         String lastSleepString = TimeUtils.getTimeStringFromMillis(actionDuration, true, false, true, false);
-        String unlockString = String.valueOf(unlockCount);
-        String totalSOTTimeString = TimeUtils.getTimeStringFromMillis(totalSOTTime, true, true, true, true);
+        // String unlockString = String.valueOf(unlockCount);
+        String unlockString = String.format("%1$" + 8 + "s", String.valueOf(unlockCount));
+        String totalSOTTimeString = TimeUtils.getTimeStringFromMillis(totalSOTTime, true, true, true, false);
 
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.custom_toast, new LinearLayout(mContext), false)
@@ -137,8 +139,8 @@ public class ToastUtils {
                                  double sftDiffPercentage,
                                  int targetPercentage) {
         String lastSleepString = TimeUtils.getTimeStringFromMillis(actionDuration, true, false, true, false);
-        String unlockString = String.valueOf(unlockCount);
-        String totalSOTTimeString = TimeUtils.getTimeStringFromMillis(totalSOTTime, true, true, true, true);
+        String unlockString = String.format("%1$" + 8 + "s", String.valueOf(unlockCount));
+        String totalSOTTimeString = TimeUtils.getTimeStringFromMillis(totalSOTTime, true, true, true, false);
 
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.custom_toast, new LinearLayout(mContext), false)
@@ -195,41 +197,6 @@ public class ToastUtils {
             Timber.d("No toast - it's snoozed.");
         }
 
-    }
-
-    public static void showToastStage2(Context mContext,
-                                       long actionDuration,
-                                       long unlockCount,
-                                       long totalSOTTime) {
-        String lastSleepString = TimeUtils.getTimeStringFromMillis(actionDuration, true, false, true, false);
-        String unlockString = String.valueOf(unlockCount);
-        String totalSOTTimeString = TimeUtils.getTimeStringFromMillis(totalSOTTime, true, true, true, true);
-
-        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = inflater.inflate(R.layout.custom_toast, new LinearLayout(mContext), false)
-                .findViewById(R.id.toast_layout_root);
-
-        TextView textLastSleep = (TextView) layout.findViewById(R.id.text_last_sleep_time);
-        textLastSleep.setText(lastSleepString);
-
-        TextView textUnlockCount = (TextView) layout.findViewById(R.id.text_unlock_count);
-        textUnlockCount.setText(unlockString);
-
-        TextView textTotalSOTTime = (TextView) layout.findViewById(R.id.text_screen_on_time);
-        textTotalSOTTime.setText(totalSOTTimeString);
-
-        // Create custom toast and display it
-
-        if (System.currentTimeMillis() > getSnooze(mContext)) {
-            // Timber.d("Toasting!");
-            Toast toast = new Toast(mContext);
-            toast.setGravity(Gravity.BOTTOM, 0, 30);
-            toast.setDuration(Toast.LENGTH_LONG);
-            toast.setView(layout);
-            toast.show();
-        } else {
-            Timber.d("No toast - it's snoozed.");
-        }
     }
 
     public static void setSnooze(Context mContext) {

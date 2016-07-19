@@ -212,5 +212,6 @@
 
     <string name="tvPreTextQuestionWord">Question</string>
     <string name="tvSnoozedText">Shh. Going silent for 2 hours.</string>
+    <string name="tv_device_identifier">Device identifier</string>
 
 </resources>

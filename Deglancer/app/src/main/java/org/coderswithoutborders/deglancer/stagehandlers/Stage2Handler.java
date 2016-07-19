@@ -45,9 +45,7 @@ public class Stage2Handler implements IStageHandler {
             sb.append(System.getProperty("line.separator"));
             sb.append(totalSOTTimeString);
 
-            // Toast.makeText(mContext, sb.toString(), Toast.LENGTH_LONG).show();
-            ToastUtils.showToastStage2(mContext,action.getDuration(), unlockCount, totalSOTTime);
-
+            ToastUtils.showToast(mContext,action.getDuration(), unlockCount, totalSOTTime);
 
         }
     }
