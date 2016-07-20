@@ -129,7 +129,7 @@
     </string-array>
 
     <string name="tvCreditsTitle">Kiitokset</string>
-    <string name="tvCreditsText" formatted="false"><![CDATA[Ikonit teki <a href=\"http://www.flaticon.com/authors/madebyoliver\">madebyoliver</a> sivustolta <a href=\"http://www.flaticon.com\">Flaticon</a>. Segmented control-napit <a href=\"https://github.com/Kaopiz/android-segmented-control\">Le Van Hoang (@hoang8f)</a>. SPAI scale ryhmältä <a href=\"http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098312\">Yu-Hsuan Lin, Li-Ren Chang, Yang-Han Lee, Hsien-Wei Tseng, Terry B. J. Kuo ja Sue-Huei Chen.</a>]]></string>
+    <string name="tvCreditsText" formatted="false"><![CDATA[Ikonit teki <a href=\"http://www.flaticon.com/authors/madebyoliver\">madebyoliver</a> sivustolta <a href=\"http://www.flaticon.com\">Flaticon</a>. Segmented control-napit <a href=\"https://github.com/Kaopiz/android-segmented-control\">Le Van Hoang (@hoang8f)</a>. SPAI-asteikko ryhmältä <a href=\"http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098312\">Yu-Hsuan Lin, Li-Ren Chang, Yang-Han Lee, Hsien-Wei Tseng, Terry B. J. Kuo ja Sue-Huei Chen.</a>]]></string>
     <string name="labelTakeTheTestViewTitle">Itsearviointi</string>
     <string name="labelRISTitle">Tiedote tutkittaville</string>
     <string name="notifStage">vaihe</string>
