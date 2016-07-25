@@ -213,5 +213,9 @@
     <string name="tvPreTextQuestionWord">Question</string>
     <string name="tvSnoozedText">Shh. Going silent for 2 hours.</string>
     <string name="tv_device_identifier">Device identifier</string>
+    <string name="text_huawei_dont_show_again">Do not show again</string>
+    <string name="title_huawei_message">Huawei Protected Apps</string>
+    <string name="button_huawei_message">Protected Apps</string>
+    <string name="text_huawei_message">Deglancer requires to be enabled in \'Protected Apps\' to function properly.</string>
 
 </resources>

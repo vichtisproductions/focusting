@@ -31,16 +31,16 @@ public class Stage3Handler implements IStageHandler {
         if (action.getEventType().equals(Intent.ACTION_SCREEN_ON)) {
 
             //get unlock count up to current hour for this stage day
-            long unlockCount = mDatabaseInteractor.getUnlockCountForStage(action.getStage(), action.getDay(), action.getHour());
+            long unlockCount = mDatabaseInteractor.getUnlockCountForStageDay(action.getStage(), action.getDay());
 
             //get totalSOTTime up to current hour for this stage day
-            long totalSOTTime = mDatabaseInteractor.getTotalSOTForStage(action.getStage(), action.getDay(), action.getHour());
+            long totalSOTTime = mDatabaseInteractor.getTotalSOTForStageDay(action.getStage(), action.getDay());
 
             //get average sft time up to current hour for this stage day
-            double avgSFTTime = mDatabaseInteractor.getAverageSFTForStage(action.getStage(), action.getDay(), action.getHour());
+            // double avgSFTTime = mDatabaseInteractor.getAverageSFTForStage(action.getStage(), action.getDay(), action.getHour());
             // override avgSFTTimePreviousStage with last SFT
             long sinceLastLock = action.getDuration();
-            avgSFTTime = (double) sinceLastLock;
+            double avgSFTTime = (double) sinceLastLock;
 
             Timber.d(String.format("We're in %d", action.getStage()));
             Stage stageToCompareTo = new Stage(action.getStage() - 1, action.getDay(), action.getHour());

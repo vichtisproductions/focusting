@@ -152,5 +152,10 @@
     <string name="textShareIntent">Kerro kaverille</string>
     <string name="tvPreTextQuestionWord">Kysymys</string>
     <string name="tv_device_identifier">Laitetunniste</string>
+    <string name="text_huawei_dont_show_again">Älä näytä uudestaan</string>
+    <string name="title_huawei_message">Suojatut sovellukset</string>
+    <string name="button_huawei_message">Suojatut sovellukset</string>
+    <string name="text_huawei_message">Deglancer täytyy sallia \'Suojatut sovellukset\'-asetuksissa toimiakseen oikein.</string>
+
 
 </resources>

@@ -368,7 +368,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
             intent.setClassName("com.huawei.systemmanager", "com.huawei.systemmanager.optimize.process.ProtectActivity");
             if (isCallable(intent)) {
                 final AppCompatCheckBox dontShowAgain = new AppCompatCheckBox(this);
-                dontShowAgain.setText("Do not show again");
+                dontShowAgain.setText(R.string.text_huawei_dont_show_again);
                 dontShowAgain.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -379,10 +379,10 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
                 new AlertDialog.Builder(this)
                         .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setTitle("Huawei Protected Apps")
-                        .setMessage(String.format("%s requires to be enabled in 'Protected Apps' to function properly.%n", getString(R.string.app_name)))
+                        .setTitle(getString(R.string.title_huawei_message))
+                        .setMessage(getString(R.string.text_huawei_message))
                         .setView(dontShowAgain)
-                        .setPositiveButton("Protected Apps", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(getString(R.string.button_huawei_message), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 huaweiProtectedApps();
                             }
