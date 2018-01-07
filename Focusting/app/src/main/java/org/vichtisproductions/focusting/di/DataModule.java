@@ -120,7 +120,11 @@ public class DataModule {
     @Singleton
     @Provides
     RealmConfiguration provideRealmConfiguration(Context context) {
-        return new RealmConfiguration.Builder(context)
+
+        // Add init, Lapa 7.1.2018
+        Realm.init(context);
+
+        return new RealmConfiguration.Builder()
                 .name("focusting.realm")
                 .schemaVersion(3)
                 .deleteRealmIfMigrationNeeded()

@@ -3,6 +3,7 @@ package org.vichtisproductions.focusting.model;
 import android.content.Context;
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 /**
  * Created by chris.teli on 3/28/2016.
@@ -10,7 +11,7 @@ import io.realm.Realm;
 public class DBHelper {
 
     private void create_realm_data_object(ScreenTime screen_time, Context context) {
-        Realm realm = Realm.getInstance(context);
+        Realm realm = Realm.getInstance(Realm.getDefaultConfiguration());
         // Create ScreenTime Object
         screen_time = new ScreenTime();
         ScreenTime db_screen_time = realm.createObject(ScreenTime.class);
