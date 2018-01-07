@@ -1,0 +1,62 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <org.vichtisproductions.focusting.func_debug.view.StageSelectView
+            android:id="@+id/stageSelectView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"  />
+
+        <org.vichtisproductions.focusting.func_debug.view.StatsView
+            android:id="@+id/statsView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:layout_alignEnd="@+id/stageSelectView"
+            android:layout_alignLeft="@+id/stageSelectView"
+            android:layout_alignRight="@+id/stageSelectView"
+            android:layout_alignStart="@+id/stageSelectView"
+            android:layout_below="@+id/stageSelectView"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp" />
+
+        <Button
+            android:id="@+id/btnAdvance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/statsView"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/debug_stage_2_move_to_stage_3_button_text"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/btnAdvance"
+            android:layout_alignLeft="@+id/btnAdvance"
+            android:layout_alignRight="@+id/btnAdvance"
+            android:layout_alignStart="@+id/btnAdvance"
+            android:layout_below="@+id/btnAdvance"
+            android:text="@string/debug_stage_2_move_back_to_stage_1_button_text"
+            android:layout_marginBottom="8dp"/>
+
+
+    </RelativeLayout>
+
+</ScrollView>
