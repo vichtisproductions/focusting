@@ -15,6 +15,7 @@ import timber.log.Timber;
  * Created by Renier on 2016/04/27.
  */
 public class Stage6Handler implements IStageHandler {
+    // TODO - Make this a handler for stage 3
     private Context mContext;
     private IDatabaseInteractor mDatabaseInteractor;
 
@@ -40,7 +41,6 @@ public class Stage6Handler implements IStageHandler {
             avgSFTTime = (double) sinceLastLock;
 
             // Timber.d(String.format("We're in stage %d", action.getStage()));
-            // TODO - Verify. Always compare to yesterday.
             Stage stageToCompareTo;
             Timber.d("It's " + Integer.toString(action.getDay()) + "th day");
             // Always compare to yesterday
@@ -50,7 +50,6 @@ public class Stage6Handler implements IStageHandler {
                 stageToCompareTo = new Stage(action.getStage(), action.getDay() - 1, action.getHour());
             }
 
-            // TODO - This should ideally calculate an average from the 7 day rolling average, not just from one day.
             //get unlock count up to current hour in previous stage
             long unlockCountPreviousStage = mDatabaseInteractor.getUnlockCountForStageFromAverages(stageToCompareTo.getStage(), stageToCompareTo.getDay(), stageToCompareTo.getHour());
 

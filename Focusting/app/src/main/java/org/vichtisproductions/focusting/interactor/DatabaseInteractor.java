@@ -99,7 +99,6 @@ public class DatabaseInteractor implements IDatabaseInteractor {
     }
 
     @Override
-    // TODO - Verify with Stage handlers
     public long getUnlockCountForStageFromAverages(int stage, int day, int hour) {
         long avg = mRealm.where(Averages.class)
                 .equalTo("mStage", stage)
@@ -149,7 +148,6 @@ public class DatabaseInteractor implements IDatabaseInteractor {
     }
 
     @Override
-    // TODO - Verify with Stage handlers
     public double getAverageSFTForStageFromAverages(int stage, int day, int hour) {
         Double avg = mRealm.where(Averages.class)
                 .equalTo("mStage", stage)
@@ -173,7 +171,6 @@ public class DatabaseInteractor implements IDatabaseInteractor {
     }
 
     @Override
-    // TODO - Verify with Stage handlers
     public long getTotalSOTForStageFromAverages(int stage, int day, int hour) {
         long avg = mRealm.where(Averages.class)
                 .equalTo("mStage", stage)

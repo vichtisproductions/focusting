@@ -94,7 +94,7 @@ public class MainActivityPresenter implements IMainActivityPresenter {
                         mView.setIntroText(stage.getStage(), stage.getDay());
                     }
                 }, error -> {
-                    //TODO - Handle error
+                    //Handle error
                     String here = "";
                 });
     }
@@ -176,7 +176,7 @@ public class MainActivityPresenter implements IMainActivityPresenter {
                         }
                     }
                 }, error -> {
-                    //TODO - Handle error
+                    //Handle error
                     String here = "";
                 });
     }

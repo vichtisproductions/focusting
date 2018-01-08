@@ -49,7 +49,7 @@ public class DebugStage1Presenter implements IDebugStage1Presenter {
                         mView.setTitleStage(result.getStage() + "-" + result.getDay() + "-" + result.getHour());
                     }
                 }, error -> {
-                   //TODO - Handle error
+                   //Handle error
                 });
     }
 

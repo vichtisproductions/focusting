@@ -93,7 +93,7 @@ public class TargetSetViewPresenter implements ITargetSetViewPresenter {
                     }
 
                 }, error -> {
-                    //TODO - handle error
+                    //handle error
                 });
     }
 

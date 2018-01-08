@@ -131,7 +131,7 @@ public class StatsViewPresenter implements IStatsViewPresenter {
                         );
                     }
                 }, error -> {
-                    //TODO - handle error
+                    // handle error
                 });
     }
 

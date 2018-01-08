@@ -12,6 +12,7 @@ import org.vichtisproductions.focusting.utils.ToastUtils;
  * Created by Renier on 2016/04/27.
  */
 public class Stage1Handler implements IStageHandler {
+    // TODO - Make this a handler for stage 1
     private Context mContext;
     private IDatabaseInteractor mDatabaseInteractor;
 

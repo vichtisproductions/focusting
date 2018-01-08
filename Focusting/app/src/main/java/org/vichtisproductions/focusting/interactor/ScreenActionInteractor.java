@@ -84,7 +84,7 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
 
                     mUserInteractor.logLastUserInteraction();
                 }, error -> {
-                    //TODO - Handle error
+                    //Handle error
                     String here = "";
                 });
 

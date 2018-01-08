@@ -18,6 +18,7 @@ import timber.log.Timber;
  * Created by Renier on 2016/04/27.
  */
 public class Stage3Handler implements IStageHandler {
+    //TODO - Make this handler a Group 2 handler for stage 2
     private Context mContext;
     private IDatabaseInteractor mDatabaseInteractor;
 
@@ -45,15 +46,15 @@ public class Stage3Handler implements IStageHandler {
             Timber.d(String.format("We're in %d", action.getStage()));
             Stage stageToCompareTo = new Stage(action.getStage() - 1, action.getDay(), action.getHour());
             //get unlock count up to current hour in previous stage
-            // TODO - Get the number of unlocks up to the current hour - done but test
+            // Get the number of unlocks up to the current hour
             long unlockCountPreviousStage = mDatabaseInteractor.getUnlockCountForStageFromAverages(stageToCompareTo.getStage(), stageToCompareTo.getDay(), stageToCompareTo.getHour());
 
             //get totalSOTTime up to current hour in previous stage
-            // TODO - Get the total SOT up to the current hour - done but test
+            // Get the total SOT up to the current hour
             long totalSOTTimePreviousStage = mDatabaseInteractor.getTotalSOTForStageFromAverages(stageToCompareTo.getStage(), stageToCompareTo.getDay(), stageToCompareTo.getHour());
 
             //get average sft time up to current hour in previous stage
-            // TODO - Get the average SFT up to current hour - done but test
+            // Get the average SFT up to current hour
             double avgSFTTimePreviousStage = mDatabaseInteractor.getAverageSFTForStageFromAverages(stageToCompareTo.getStage(), stageToCompareTo.getDay(), stageToCompareTo.getHour());
 
 

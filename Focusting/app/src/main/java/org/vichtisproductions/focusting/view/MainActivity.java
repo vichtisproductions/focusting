@@ -42,6 +42,10 @@ import org.vichtisproductions.focusting.presenter.IMainActivityPresenter;
 import org.vichtisproductions.focusting.R;
 import org.vichtisproductions.focusting.pretest.PreTestActivity;
 import org.vichtisproductions.focusting.services.TrackerService;
+import org.vichtisproductions.focusting.Calendarwrapper.Attendee;
+import org.vichtisproductions.focusting.Calendarwrapper.Calendar;
+import org.vichtisproductions.focusting.Calendarwrapper.Event;
+import org.vichtisproductions.focusting.Calendarwrapper.Reminder;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -319,7 +323,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         ((TextView) findViewById(R.id.tvIntro)).setText(str);
 
         // Then, if the stage is part of the research
-        if (stage < 6) {
+        if (stage < 3) {
             // Figure out how long is each stage
             int[] lengthOfStage = getResources().getIntArray(R.array.eachStageLength);
             stageLength = lengthOfStage[stage - 1];
@@ -356,7 +360,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
     }
 
 
-    // HUAWEI STUFF
+    // HUAWEI STUFF BELOW THIS
 
     private void ifHuaweiAlert() {
         final SharedPreferences settings = getSharedPreferences("ProtectedApps", MODE_PRIVATE);

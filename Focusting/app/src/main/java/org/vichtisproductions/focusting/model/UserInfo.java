@@ -10,17 +10,19 @@ public class UserInfo {
     private String mModel;
     private String mOSVersion;
     private String mTimezone;
+    private String mGroupNumber;
 
     public UserInfo() {
     }
 
-    public UserInfo(String mInstanceId, long mInitialStartTime, String mManufacturer, String mModel, String mOSVersion, String mTimezone) {
+    public UserInfo(String mInstanceId, long mInitialStartTime, String mManufacturer, String mModel, String mOSVersion, String mTimezone, String GroupNumber) {
         this.mInstanceId = mInstanceId;
         this.mInitialStartTime = mInitialStartTime;
         this.mManufacturer = mManufacturer;
         this.mModel = mModel;
         this.mOSVersion = mOSVersion;
         this.mTimezone = mTimezone;
+        this.mGroupNumber = mGroupNumber;
     }
 
     public String getInstanceId() {
@@ -66,5 +68,9 @@ public class UserInfo {
     public String getTimezone() { return mTimezone; }
 
     public void setTimezone(String mTimezone) { this.mTimezone = mTimezone; }
+
+    public String getGroupNumber() { return mGroupNumber; }
+
+    public void setGroupNumber(String mGroupNumber) { this.mGroupNumber= mGroupNumber; }
 
 }

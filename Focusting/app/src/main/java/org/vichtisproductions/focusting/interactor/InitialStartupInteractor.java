@@ -27,6 +27,7 @@ import org.joda.time.DateTimeZone;
 import timber.log.Timber;
 
 import java.util.Date;
+import java.util.Random;
 import java.util.UUID;
 
 import rx.Observable;
@@ -37,6 +38,14 @@ import static com.google.firebase.auth.FirebaseAuth.getInstance;
  * Created by Renier on 2016/04/12.
  */
 public class InitialStartupInteractor implements IInitialStartupInteractor {
+
+    // Randomize participants to one of the three groups here
+    int min = 1;
+    int max = 3;
+    Random r = new Random();
+    int intFocustingGroupNumber = r.nextInt(max - min + 1) + min;
+    String FocustingGroupNumber = String.valueOf(intFocustingGroupNumber);
+
     private static final String SP_NAME = "InitialStartupSP";
     private static final String SP_KEY_INSTANCE_ID = "InstanceId";
     private static final String SP_KEY_INITIAL_SETUP_DONE = "InitialSetupDone";
@@ -50,6 +59,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
     private static final String SP_KEY_INITIAL_OSVERSION = "osVersion";
     private static final String SP_KEY_INITIAL_FB_USERNAME = "FirebaseUsername";
     private static final String SP_KEY_INITIAL_FB_PASSWORD = "FirebasePassword";
+    private static final String SP_KEY_FOCUSTING_GROUP_NUMBER = "FocustingGroupNumber";
     private String FirebaseUsername = "";
     private String FirebasePassword = "";
 
@@ -107,6 +117,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                     mRxPrefs.getBoolean(SP_KEY_INITIAL_SETUP_DONE).set(true);
                     mRxPrefs.getString(SP_KEY_INITIAL_TIMEZONE).set(userTimezone);
                     mRxPrefs.getLong(SP_KEY_INITIAL_START_TIME_ZERO_HOUR).set(initialStartTime);
+                    mRxPrefs.getString(SP_KEY_FOCUSTING_GROUP_NUMBER).set(FocustingGroupNumber);
 
                     FirebaseUsername = mUserInteractor.getInstanceIdSynchronous() + "@bogusresearchusers.com";
                     mRxPrefs.getString(SP_KEY_INITIAL_FB_USERNAME).set(FirebaseUsername);
@@ -193,7 +204,8 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                                             String modelfromSP = mPrefs.getString(SP_KEY_INITIAL_MODEL, "");
                                             String osVersionfromSP = mPrefs.getString(SP_KEY_INITIAL_OSVERSION, "");
                                             String userTimezonefromSP = mPrefs.getString(SP_KEY_INITIAL_TIMEZONE, "");
-                                            UserInfo ui = new UserInfo(instanceId, initialStartTimefromSP, manufacturerfromSP, modelfromSP, osVersionfromSP, userTimezonefromSP);
+                                            String FocustingGroupNumberfromSP = mPrefs.getString(SP_KEY_FOCUSTING_GROUP_NUMBER, "");
+                                            UserInfo ui = new UserInfo(instanceId, initialStartTimefromSP, manufacturerfromSP, modelfromSP, osVersionfromSP, userTimezonefromSP, FocustingGroupNumberfromSP);
                                             // Timber.d("User info from SP: " + instanceId + " " + initialStartTimefromSP.toString() + ", " + manufacturerfromSP + ", " + modelfromSP + ", " + osVersionfromSP);
 
                                             // Timber.d("Uploading UserInfo to FireBase");
@@ -232,7 +244,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                     String here = "";
                 }, error -> {
                     //Already captured or some other error
-                    //TODO - handle error
+                    //Handle error
                     String here = "";
                 });
         // Timber.d("End creating user and uploading initial data.");

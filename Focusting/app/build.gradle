@@ -82,6 +82,10 @@ dependencies {
     compile 'com.google.code.gson:gson:2.4'
 
     testCompile "junit:junit:$JUNIT_VERSION"
+
+    // Here be Jitpack dependencies
+    // compile 'com.github.wearemakery:calendarwrapper:-SNAPSHOT' // HASN'T GOT ANY RELEASES
+
 }
 
 task switchToDebug(type: Copy) {

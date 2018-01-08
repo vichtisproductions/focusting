@@ -7,4 +7,24 @@
         <item>7</item>
         <item>7</item>
     </integer-array>
+    <integer-array name="FocustingGroupNames">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </integer-array>
+    <integer-array name="FocustingStagesGroup1">
+        <item>8</item>
+        <item>21</item>
+        <item>7</item>
+    </integer-array>
+    <integer-array name="FocustingStagesGroup2">
+        <item>8</item>
+        <item>21</item>
+        <item>7</item>
+    </integer-array>
+    <integer-array name="FocustingStagesGroup3">
+        <item>22</item>
+        <item>7</item>
+        <item>7</item>
+    </integer-array>
 </resources>

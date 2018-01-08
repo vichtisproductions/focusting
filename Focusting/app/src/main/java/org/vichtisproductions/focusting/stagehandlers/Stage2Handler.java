@@ -18,6 +18,9 @@ import io.realm.Realm;
 /**
  * Created by Renier on 2016/04/27.
  */
+
+//TODO - Make this handler a Group 1 handler for stage 2
+
 public class Stage2Handler implements IStageHandler {
     private Context mContext;
     private IDatabaseInteractor mDatabaseInteractor;
@@ -30,6 +33,15 @@ public class Stage2Handler implements IStageHandler {
     @Override
     public void handleScreenAction(ScreenAction action) {
         if (action.getEventType().equals(Intent.ACTION_SCREEN_ON)) {
+
+            // TODO - Check attendees for the current event
+            // THIS EXCLUDES RECURRING EVENTS
+            // mCursor = getContentResolver().query(CalendarContract.Events.CONTENT_URI, COLS,
+            //        CalendarContract.Events.DTSTART + " > " + (new Date()).getTime() +
+            //                " AND " + CalendarContract.Events.ALL_DAY + " = " + 0 +
+            //                " AND " + CalendarContract.Events.DTEND + " - " + CalendarContract.Events.DTSTART + " = " + (1000*60*60*12) ,
+            //        null, CalendarContract.Events.DTSTART);
+
             long unlockCount = mDatabaseInteractor.getUnlockCountForStageDay(action.getStage(), action.getDay());
             long totalSOTTime = mDatabaseInteractor.getTotalSOTForStageDay(action.getStage(), action.getDay());
 

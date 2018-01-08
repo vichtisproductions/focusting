@@ -82,6 +82,7 @@ public class StageInteractor implements IStageInteractor {
         int day;
         int hour = Hours.hoursBetween(initialStartTime, new DateTime()).getHours() - (days * 24) + 1;
 
+        // TODO - Rewrite the logic to figure out the length of the stage depending on the FocustingGroupNumber
         if (days < 7) {
             //Stage1
             stageNr = 1;

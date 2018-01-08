@@ -90,7 +90,7 @@ public class Stage6ToastSetViewPresenter implements IStage6ToastSetViewPresenter
                     }
 
                 }, error -> {
-                    //TODO - handle error
+                    //Handle error
                 });
     }
 

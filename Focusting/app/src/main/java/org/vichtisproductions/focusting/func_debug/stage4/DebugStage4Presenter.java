@@ -46,7 +46,7 @@ public class DebugStage4Presenter implements IDebugStage4Presenter {
                         mView.setTitleStage(result.getStage() + "-" + result.getDay() + "-" + result.getHour());
                     }
                 }, error -> {
-                    //TODO - Handle error
+                    //Handle error
                 });
     }
 
