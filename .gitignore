@@ -15,6 +15,7 @@ gen/
 # Gradle files
 .gradle/
 build/
+app/gradle
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -34,3 +35,10 @@ captures/
 
 # Pull script
 pull.bat
+
+_DelSyncFiles
+Focusting/app/gradle
+Focusting/app/gradlew
+Focusting/app/gradlew.bat
+
+.DS_Store

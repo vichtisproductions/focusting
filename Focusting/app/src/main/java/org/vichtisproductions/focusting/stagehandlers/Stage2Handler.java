@@ -35,15 +35,8 @@ public class Stage2Handler implements IStageHandler {
     public void handleScreenAction(ScreenAction action) {
         if (action.getEventType().equals(Intent.ACTION_SCREEN_ON)) {
 
-            // TODO - Check # of attendees for the current event
             // TODO - Show stimulus type 1
             if (CalendarUtils.getAttendeeCount() > 1) {
-                // THIS EXCLUDES RECURRING EVENTS
-                // mCursor = getContentResolver().query(CalendarContract.Events.CONTENT_URI, COLS,
-                //        CalendarContract.Events.DTSTART + " > " + (new Date()).getTime() +
-                //                " AND " + CalendarContract.Events.ALL_DAY + " = " + 0 +
-                //                " AND " + CalendarContract.Events.DTEND + " - " + CalendarContract.Events.DTSTART + " = " + (1000*60*60*12) ,
-                //        null, CalendarContract.Events.DTSTART);
 
                 long unlockCount = mDatabaseInteractor.getUnlockCountForStageDay(action.getStage(), action.getDay());
                 long totalSOTTime = mDatabaseInteractor.getTotalSOTForStageDay(action.getStage(), action.getDay());
