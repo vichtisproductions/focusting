@@ -21,6 +21,8 @@ import timber.log.Timber;
  * Created by chris.teli on 5/4/2016.
  */
 public class ToastUtils {
+
+    // TODO - Rewrite showToasts
     public static void showToast(Context mContext,
                                  long actionDuration,
                                  long unlockCount,

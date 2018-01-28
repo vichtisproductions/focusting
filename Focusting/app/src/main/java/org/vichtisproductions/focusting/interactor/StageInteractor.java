@@ -104,7 +104,7 @@ public class StageInteractor implements IStageInteractor {
         int Stage3len = lengthOfStage[2];
 
 
-        // TODO - Then figure out what stage the person should be on that day
+        // Figure out what stage the person should be on that day
         if (days < Stage1len) {
             //Stage1
             stageNr = 1;
