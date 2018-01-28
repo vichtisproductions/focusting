@@ -7,29 +7,40 @@ import android.provider.CalendarContract;
 
 import java.util.Random;
 
-/**
- * Created by lauripal on 28.01.2018.
- */
-
 public class CalendarUtils {
 
     public static int getAttendeeCount() {
         Random r = new Random();
         int min = 1;
         int max = 3;
-        int attendees = r.nextInt(max - min + 1) + min;
+
         // TODO - Here be the real calendar event handlers
         // TODO - Find out what event is going on right now
         // TODO - Get # of Attendees from the ongoing event(s)
-        // THIS EXCLUDES RECURRING EVENTS
-        Uri.Builder eventsUriBuilder = CalendarContract.Instances.CONTENT_URI
-                .buildUpon();
-        ContentUris.appendId(eventsUriBuilder, timeNow);
-        ContentUris.appendId(eventsUriBuilder, endOfToday);
-        Uri eventsUri = eventsUriBuilder.build();
-        Cursor cursor = null;
-        cursor = mContext.getContentResolver().query(eventsUri, columns, null, null, CalendarContract.Instances.DTSTART + " ASC");
+        /*
+        // Read all calendars
+        String[] projection =
+                new String[]{
+                        CalendarContract.Calendars._ID,
+                        CalendarContract.Calendars.NAME,
+                        CalendarContract.Calendars.ACCOUNT_NAME,
+                        CalendarContract.Calendars.ACCOUNT_TYPE};
+        Cursor calCursor =
+                getContentResolver().
+                        query(CalendarContract.Calendars.CONTENT_URI,
+                                projection,
+                                CalendarContract.Calendars.VISIBLE + " = 1",
+                                null,
+                                CalendarContract.Calendars._ID + " ASC");
+        if (calCursor.moveToFirst()) {
+            do {
+                long id = calCursor.getLong(0);
+                String displayName = calCursor.getString(1);
+                // ...
+            } while (calCursor.moveToNext());
+        }
+        */
 
-        return attendees;
+        return r.nextInt(max - min + 1) + min;
     }
 }
