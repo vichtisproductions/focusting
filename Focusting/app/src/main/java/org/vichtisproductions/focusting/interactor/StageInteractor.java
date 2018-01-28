@@ -1,7 +1,9 @@
 package org.vichtisproductions.focusting.interactor;
 
 import android.content.Context;
+import android.content.res.Resources;
 
+import org.vichtisproductions.focusting.R;
 import org.vichtisproductions.focusting.bus.RxBus;
 import org.vichtisproductions.focusting.bus.events.DebugStageEvent;
 import org.vichtisproductions.focusting.model.Stage;
@@ -78,42 +80,50 @@ public class StageInteractor implements IStageInteractor {
         DateTime initialStartTime = new DateTime(mInitialStartupInteractor.getInitialStartTime());
         int days = Days.daysBetween(initialStartTime, new DateTime()).getDays();
 
+
         int stageNr;
         int day;
         int hour = Hours.hoursBetween(initialStartTime, new DateTime()).getHours() - (days * 24) + 1;
 
-        // TODO - Rewrite the logic to figure out the length of the stage depending on the FocustingGroupNumber
-        // TODO - First, find out what group the user belongs
+        // First, find out what group the user belongs
+        int FocustingGroupNumber = new Integer(mInitialStartupInteractor.getGroupNumber());
+
+        // Then, how long are the stages for that group
+        // Figure out the length of the stage depending on the FocustingGroupNumber
+        int[] lengthOfStage = new int[3];
+        Resources resources = mContext.getResources();
+        if (FocustingGroupNumber == 1) {
+            lengthOfStage = resources.getIntArray(R.array.FocustingStagesGroup1);
+        } else if (FocustingGroupNumber == 2) {
+            lengthOfStage = resources.getIntArray(R.array.FocustingStagesGroup2);
+        } else if (FocustingGroupNumber == 3) {
+            lengthOfStage = resources.getIntArray(R.array.FocustingStagesGroup3);
+        }
+        int Stage1len = lengthOfStage[0];
+        int Stage2len = lengthOfStage[1];
+        int Stage3len = lengthOfStage[2];
+
+
         // TODO - Then figure out what stage the person should be on that day
-        // TODO - Finally, figure out what stage interactor should be used
-        if (days < 7) {
+        if (days < Stage1len) {
             //Stage1
             stageNr = 1;
             day = days + 1;
-        } else if (days < 14) {
+        } else if (days < Stage2len) {
             //Stage2
             stageNr = 2;
-            day = days - 7 + 1;
-        } else if (days < 21) {
+            day = days - Stage1len + 1;
+        } else if (days < Stage3len) {
             //Stage3
             stageNr = 3;
-            day = days - 14 + 1;
-        } else if (days < 28) {
+            day = days - Stage1len - Stage2len + 1;
+        } else {
             //Stage4
             stageNr = 4;
-            day = days - 21 + 1;
-        } else if (days < 35) {
-        // } else if (days < 56) {
-            //Stage5
-            stageNr = 5;
-            day = days - 28 + 1;
-        } else {
-            //Stage6
-            stageNr = 6;
-            // day = days - 56 + 1;
-            day = days - 35 + 1;
+            day = days - 36 + 1;
         }
 
+        // Now return stage number etc.
         return new Stage(
                 stageNr,
                 day,
@@ -127,30 +137,33 @@ public class StageInteractor implements IStageInteractor {
         Stage stage = getCurrentStageSynchronous();
         Timber.d("Stage handler " + stage.getStage());
 
+        // First, find out what group the user belongs
+        int FocustingGroupNumber = new Integer(mInitialStartupInteractor.getGroupNumber());
+
+        // Finally, figure out what stage interactor should be used
+        // Array name: FocustingStagesGroup1, 2 and 3
+
+
         switch (stage.getStage()) {
             case 1:
                 return mStage1Handler;
             case 2:
-                return mStage2Handler;
-            case 3:
-                return mStage3Handler;
-            case 4:
-                return mStage4Handler;
-            case 5:
-                return mStage5Handler;
-            case 6:
-                Timber.d("Stage 6: Figuring out what toast setting to use.");
-                int handler = mStage6ToastInteractor.getStage6ToastSynchronous(6);
-                if (handler == 0) {
+                Timber.d("Stage 2: Figuring out what stimulus to use.");
+                if (FocustingGroupNumber == 3) {
                     Timber.d("Toast: No information.");
                     return mStage1Handler;
-                } else if (handler== 1) {
-                    Timber.d("Toast: Only information.");
+                } else if (FocustingGroupNumber == 2) {
+                    Timber.d("Toast: Stage 2 handler.");
                     return mStage2Handler;
-                } else if (handler== 2) {
-                    Timber.d("Toast: Information and thumbs up.");
-                    return mStage6Handler;
+                } else if (FocustingGroupNumber == 1) {
+                    Timber.d("Toast: Stage 3 handler.");
+                    return mStage3Handler;
                 }
+            case 3:
+                return mStage1Handler;
+            case 4:
+                // TODO: Here be the post-research handler logic
+                return mStage1Handler;
         }
 
         return null;

@@ -6,5 +6,6 @@ package org.vichtisproductions.focusting.interactor;
 public interface IInitialStartupInteractor {
     void captureInitialDataIfNotCaptured();
     long getInitialStartTime();
+    int getGroupNumber();
     void overrideInitialStartTime(long newStartTime);
 }

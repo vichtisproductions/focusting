@@ -43,8 +43,8 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
     int min = 1;
     int max = 3;
     Random r = new Random();
-    int intFocustingGroupNumber = r.nextInt(max - min + 1) + min;
-    String FocustingGroupNumber = String.valueOf(intFocustingGroupNumber);
+    int FocustingGroupNumber = r.nextInt(max - min + 1) + min;
+    // String FocustingGroupNumber = String.valueOf(intFocustingGroupNumber);
 
     private static final String SP_NAME = "InitialStartupSP";
     private static final String SP_KEY_INSTANCE_ID = "InstanceId";
@@ -117,7 +117,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                     mRxPrefs.getBoolean(SP_KEY_INITIAL_SETUP_DONE).set(true);
                     mRxPrefs.getString(SP_KEY_INITIAL_TIMEZONE).set(userTimezone);
                     mRxPrefs.getLong(SP_KEY_INITIAL_START_TIME_ZERO_HOUR).set(initialStartTime);
-                    mRxPrefs.getString(SP_KEY_FOCUSTING_GROUP_NUMBER).set(FocustingGroupNumber);
+                    mRxPrefs.getInteger(SP_KEY_FOCUSTING_GROUP_NUMBER).set(FocustingGroupNumber);
 
                     FirebaseUsername = mUserInteractor.getInstanceIdSynchronous() + "@bogusresearchusers.com";
                     mRxPrefs.getString(SP_KEY_INITIAL_FB_USERNAME).set(FirebaseUsername);
@@ -204,7 +204,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                                             String modelfromSP = mPrefs.getString(SP_KEY_INITIAL_MODEL, "");
                                             String osVersionfromSP = mPrefs.getString(SP_KEY_INITIAL_OSVERSION, "");
                                             String userTimezonefromSP = mPrefs.getString(SP_KEY_INITIAL_TIMEZONE, "");
-                                            String FocustingGroupNumberfromSP = mPrefs.getString(SP_KEY_FOCUSTING_GROUP_NUMBER, "");
+                                            int FocustingGroupNumberfromSP = mPrefs.getInt(SP_KEY_FOCUSTING_GROUP_NUMBER, 0);
                                             UserInfo ui = new UserInfo(instanceId, initialStartTimefromSP, manufacturerfromSP, modelfromSP, osVersionfromSP, userTimezonefromSP, FocustingGroupNumberfromSP);
                                             // Timber.d("User info from SP: " + instanceId + " " + initialStartTimefromSP.toString() + ", " + manufacturerfromSP + ", " + modelfromSP + ", " + osVersionfromSP);
 
@@ -254,6 +254,11 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
     @Override
     public long getInitialStartTime() {
         return mPrefs.getLong(SP_KEY_INITIAL_START_TIME, new DateTime().getMillis());
+    }
+
+    @Override
+    public int getGroupNumber() {
+        return mPrefs.getInt(SP_KEY_FOCUSTING_GROUP_NUMBER, 0);
     }
 
     @Override
