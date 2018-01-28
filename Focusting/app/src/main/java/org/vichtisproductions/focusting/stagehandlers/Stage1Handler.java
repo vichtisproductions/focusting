@@ -13,6 +13,7 @@ import org.vichtisproductions.focusting.utils.ToastUtils;
  */
 public class Stage1Handler implements IStageHandler {
     // TODO - Make this a handler for stage 1
+    // TODO - Just record the data, don't show a stimulus
     private Context mContext;
     private IDatabaseInteractor mDatabaseInteractor;
 

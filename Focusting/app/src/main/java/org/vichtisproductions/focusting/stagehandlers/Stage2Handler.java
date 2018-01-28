@@ -34,7 +34,8 @@ public class Stage2Handler implements IStageHandler {
     public void handleScreenAction(ScreenAction action) {
         if (action.getEventType().equals(Intent.ACTION_SCREEN_ON)) {
 
-            // TODO - Check attendees for the current event
+            // TODO - Check # of attendees for the current event
+            // TODO - Show stimulus type 1
             // THIS EXCLUDES RECURRING EVENTS
             // mCursor = getContentResolver().query(CalendarContract.Events.CONTENT_URI, COLS,
             //        CalendarContract.Events.DTSTART + " > " + (new Date()).getTime() +

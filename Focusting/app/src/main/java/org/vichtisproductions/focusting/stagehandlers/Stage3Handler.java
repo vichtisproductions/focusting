@@ -19,6 +19,8 @@ import timber.log.Timber;
  */
 public class Stage3Handler implements IStageHandler {
     //TODO - Make this handler a Group 2 handler for stage 2
+    // TODO - Check # of attendees for the current event
+    // TODO - Show stimulus type 1
     private Context mContext;
     private IDatabaseInteractor mDatabaseInteractor;
 
