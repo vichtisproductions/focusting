@@ -20,6 +20,7 @@ import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.Duration;
 import org.joda.time.Hours;
+import org.vichtisproductions.focusting.utils.CalendarUtils;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -139,11 +140,17 @@ public class StageInteractor implements IStageInteractor {
 
         // First, find out what group the user belongs
         int FocustingGroupNumber = new Integer(mInitialStartupInteractor.getGroupNumber());
+        Timber.d("Focusting group: " + String.valueOf(FocustingGroupNumber));
+        // TODO - Figure out number of attendees - here calling CalendarUtils
+        Timber.d("Now checking number of attendees");
+        int attendeeCount = CalendarUtils.getAttendeeCount(mContext);
+        Timber.d("It was: ");
+        // Timber.d(String.valueOf(attendeeCount));
 
         // Finally, figure out what stage interactor should be used
         // Array name: FocustingStagesGroup1, 2 and 3
 
-
+        // TODO - Review and confirm that handler picker works fine
         switch (stage.getStage()) {
             case 1:
                 return mStage1Handler;

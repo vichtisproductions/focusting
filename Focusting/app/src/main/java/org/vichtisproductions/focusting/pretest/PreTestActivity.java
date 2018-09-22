@@ -28,6 +28,8 @@ import timber.log.Timber;
  */
 public class PreTestActivity extends AppCompatActivity implements IPreTestView {
 
+    // TODO - DECIDE: DO YOU WANT A PRE-TEST - Probably keeping SPAI-SF would be nice - just to expand the sample available from the research
+
     @Inject
     IPreTestPresenter mPreTestPresenter;
 
@@ -106,15 +108,15 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
         if (questionId < numOfQuestions) {
             moveToQuestion(questionId);
         } else {
-            int ans = 0;
+            int ans;
             for (ans = 0; ans < answers.length; ans++) {
                 String message = "Question was " + Integer.toString(ans+1) + " - answer was: " + Integer.toString(answers[ans]);
                 Timber.d( message);
             }
             // Timber.d( "Uploading results now - before mPreTestPresenter.submitPreTestResults");
-            if (mPreTestPresenter == null) {
+            // if (mPreTestPresenter == null) {
                 // Timber.d( "Warning: mPreTestPresenter is null");
-            }
+            // }
             mPreTestPresenter.submitPreTestResults(answers[0], answers[1], answers[2], answers[3], answers[4], answers[5], answers[6], answers[7], answers[8], answers[9]);
             showToast();
 
@@ -143,7 +145,7 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
     }
 
     public void showToast() {
-        Toast toast = Toast.makeText(this, R.string.strPreTestThankYou, 3);
+        Toast toast = Toast.makeText(this, R.string.strPreTestThankYou, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
 
@@ -189,9 +191,9 @@ public class PreTestActivity extends AppCompatActivity implements IPreTestView {
 
             });
         }
-        else {
+        // else {
             // Timber.d( "No button btnTakePreTest defined.");
-        }
+        // }
 
     }
 }

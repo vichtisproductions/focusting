@@ -22,7 +22,30 @@ import timber.log.Timber;
  */
 public class ToastUtils {
 
-    // TODO - Rewrite showToasts
+    // TODO - Review and Rewrite showToasts
+    public static void showToast(Context mContext,
+                                 long attendeeCount) {
+
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.custom_toast, new LinearLayout(mContext), false)
+                .findViewById(R.id.toast_layout_root);
+
+        TextView textLastSleep = (TextView) layout.findViewById(R.id.text_last_sleep_time);
+        textLastSleep.setText(String.valueOf(attendeeCount));
+
+        // Create custom toast and display it
+        if (System.currentTimeMillis() > getSnooze(mContext)) {
+            // Timber.d("Toasting!");
+            Toast toast = new Toast(mContext);
+            toast.setGravity(Gravity.BOTTOM, 0, 30);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
+            toast.show();
+        } else {
+            Timber.d("No toast - it's snoozed.");
+        }
+    }
+
     public static void showToast(Context mContext,
                                  long actionDuration,
                                  long unlockCount,

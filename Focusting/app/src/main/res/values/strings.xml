@@ -19,6 +19,7 @@
     <string name="toast_last_sleep_label">     Last sleep\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0</string>
     <string name="toast_unlocks_today_label">  Unlocks today\u00A0\u00A0\u00A0\u00A0\u00A0</string>
     <string name="toast_screen_on_today_label">Screen on today</string>
+    <string name="text_attendee_toast_title">Attendees</string>
 
     <!-- Service notification - in lock screen and notification area - nr8, nr9 -->
     <string name="tracker_service_foreground_ticker_text">Focusting is running</string>

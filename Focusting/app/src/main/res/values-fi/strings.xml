@@ -3,6 +3,7 @@
     <string name="toast_last_sleep_label">Näyttö kiinni\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0</string>
     <string name="toast_unlocks_today_label">Avauksia tänään\u00A0\u00A0\u00A0\u00A0\u00A0</string>
     <string name="toast_screen_on_today_label">Näyttö auki tänään\u00A0\u00A0</string>
+    <string name="text_attendee_toast_title">Osallistujia</string>
     <string name="tracker_service_foreground_ticker_text">Focusting on päällä</string>
     <string name="tracker_service_foreground_content_text">Focusting on päällä</string>
 

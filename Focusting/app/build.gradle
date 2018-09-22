@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 26
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "org.vichtisproductions.focusting"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0.0"
     }
@@ -42,7 +42,7 @@ android {
 dependencies {
 
     final JUNIT_VERSION = '4.12'
-    final SUPPORT_LIBRARY_VERSION = '23.3.0'
+    final SUPPORT_LIBRARY_VERSION = '26.0.0'
     final RX_ANDROID_VERSION = '1.1.0'
     final RX_JAVA_VERSION = '1.1.0'
     final DAGGER_VERSION = '2.0'
@@ -53,35 +53,35 @@ dependencies {
     final JODA_TIME_VERSION = '2.9.3'
     final ACRA_VERSION = '4.6.2'
 
-    compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
-    compile "com.android.support:percent:$SUPPORT_LIBRARY_VERSION"
-    compile "com.android.support:support-v4:$SUPPORT_LIBRARY_VERSION"
-    compile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
+    implementation "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
+    implementation "com.android.support:percent:$SUPPORT_LIBRARY_VERSION"
+    implementation "com.android.support:support-v4:$SUPPORT_LIBRARY_VERSION"
+    implementation "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
 
-    compile "com.google.firebase:firebase-database:9.0.2"
+    implementation "com.google.firebase:firebase-database:9.0.2"
 
-    compile 'com.google.firebase:firebase-auth:9.0.2'
-    compile 'com.google.firebase:firebase-core:9.0.2'
+    implementation 'com.google.firebase:firebase-auth:9.0.2'
+    implementation 'com.google.firebase:firebase-core:9.0.2'
 
-    compile "com.f2prateek.rx.preferences:rx-preferences:$RX_PREFERENCES_VERSION"
+    implementation "com.f2prateek.rx.preferences:rx-preferences:$RX_PREFERENCES_VERSION"
 
-    compile "io.reactivex:rxandroid:$RX_ANDROID_VERSION"
-    compile "io.reactivex:rxjava:$RX_JAVA_VERSION"
+    implementation "io.reactivex:rxandroid:$RX_ANDROID_VERSION"
+    implementation "io.reactivex:rxjava:$RX_JAVA_VERSION"
 
-    compile 'info.hoang8f:android-segmented:1.0.6'
+    implementation 'info.hoang8f:android-segmented:1.0.6'
 
-    compile "com.google.dagger:dagger:$DAGGER_VERSION"
+    implementation "com.google.dagger:dagger:$DAGGER_VERSION"
     annotationProcessor 'com.google.dagger:dagger-compiler:2.0'
-    provided "javax.annotation:jsr250-api:$ANNOTATION_VERSION"
+    compileOnly "javax.annotation:jsr250-api:$ANNOTATION_VERSION"
 
-    compile "joda-time:joda-time:$JODA_TIME_VERSION"
-    compile "ch.acra:acra:$ACRA_VERSION"
+    implementation "joda-time:joda-time:$JODA_TIME_VERSION"
+    implementation "ch.acra:acra:$ACRA_VERSION"
 
-    compile 'com.jakewharton.timber:timber:4.1.2'
+    implementation 'com.jakewharton.timber:timber:4.1.2'
 
-    compile 'com.google.code.gson:gson:2.4'
+    implementation 'com.google.code.gson:gson:2.8.0'
 
-    testCompile "junit:junit:$JUNIT_VERSION"
+    testImplementation "junit:junit:$JUNIT_VERSION"
 
     // Here be Jitpack dependencies
     // compile 'com.github.wearemakery:calendarwrapper:-SNAPSHOT' // HASN'T GOT ANY RELEASES
@@ -102,9 +102,9 @@ task switchToRelease(type: Copy) {
     into "."
 }
 
-afterEvaluate {
-    processDebugGoogleServices.dependsOn switchToDebug
-    processReleaseGoogleServices.dependsOn switchToRelease
-}
+// afterEvaluate {
+//     processDebugGoogleServices.dependsOn switchToDebug
+//    processReleaseGoogleServices.dependsOn switchToRelease
+//}
 
 apply plugin: 'com.google.gms.google-services'

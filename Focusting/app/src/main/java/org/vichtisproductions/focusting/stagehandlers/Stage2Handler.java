@@ -15,6 +15,7 @@ import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
 import io.realm.Realm;
+import timber.log.Timber;
 
 /**
  * Created by Renier on 2016/04/27.
@@ -36,25 +37,27 @@ public class Stage2Handler implements IStageHandler {
         if (action.getEventType().equals(Intent.ACTION_SCREEN_ON)) {
 
             // TODO - Show stimulus type 1
-            if (CalendarUtils.getAttendeeCount() > 1) {
+            Timber.d("Screen on - handleScreenAction - now checking # of attendees");
+                int attendeeCount = CalendarUtils.getAttendeeCount(mContext);
 
                 long unlockCount = mDatabaseInteractor.getUnlockCountForStageDay(action.getStage(), action.getDay());
                 long totalSOTTime = mDatabaseInteractor.getTotalSOTForStageDay(action.getStage(), action.getDay());
 
-                String lastSleepString = mContext.getString(R.string.toast_last_sleep_label) + " " + TimeUtils.getTimeStringFromMillis(action.getDuration(), true, false, true, false);
-                String unlockString = mContext.getString(R.string.toast_unlocks_today_label) + " " + unlockCount;
-                String totalSOTTimeString = mContext.getString(R.string.toast_screen_on_today_label) + " " + TimeUtils.getTimeStringFromMillis(totalSOTTime, true, true, true, true);
-
+                // String lastSleepString = mContext.getString(R.string.toast_last_sleep_label) + " " + TimeUtils.getTimeStringFromMillis(action.getDuration(), true, false, true, false);
+                // String unlockString = mContext.getString(R.string.toast_unlocks_today_label) + " " + unlockCount;
+                // String totalSOTTimeString = mContext.getString(R.string.toast_screen_on_today_label) + " " + TimeUtils.getTimeStringFromMillis(totalSOTTime, true, true, true, true);
+                String attendeeString = "Currently:";
+                String attendeeCountString = String.valueOf(attendeeCount);
+                String attendeeTitleString =" attendees";
 
                 StringBuilder sb = new StringBuilder();
-                sb.append(lastSleepString);
+                sb.append(attendeeString);
                 sb.append(System.getProperty("line.separator"));
-                sb.append(unlockString);
+                sb.append(attendeeCountString);
                 sb.append(System.getProperty("line.separator"));
-                sb.append(totalSOTTimeString);
+                sb.append(attendeeTitleString);
 
-                ToastUtils.showToast(mContext, action.getDuration(), unlockCount, totalSOTTime);
-            }
+                // ToastUtils.showToast(mContext, attendeeCount);
         }
     }
 }

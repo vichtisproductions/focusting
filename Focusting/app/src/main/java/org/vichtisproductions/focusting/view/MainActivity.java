@@ -1,5 +1,6 @@
 package org.vichtisproductions.focusting.view;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +9,7 @@ import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
@@ -75,11 +77,14 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
     private Toolbar mToolbar;
 
+    // TODO - FIX Prompting permissions
+    // ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_CALENDAR},1);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        // TODO - Review what the application view should be and rewrite it
         setContentView(R.layout.activity_main);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -120,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
     }
 
     private void shareIt() {
+        // TODO - Is there a need for app sharing functionality?
         //sharing implementation here
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
@@ -161,11 +167,11 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
     }
 
     private void setStageDependentViewsVisibility() {
-
+        // TODO - THIS NEEDS THOROUGH TESTING
         int stage = mPresenter.whatStage();
         int target = mPresenter.whatTarget();
-        String targetText = "";
-        String targetSelected = "";
+        String targetText;
+        String targetSelected;
 
         // Set Pre-research questionnaire
         if ((stage == 4) || (mPresenter.isPreTestRun())) {
@@ -315,7 +321,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
         String dayString;
         String remainingTimeText;
-        int stageLength = 0;
+        int stageLength;
 
         // Set Intro text for the stage
         String[] introTexts = getResources().getStringArray((R.array.IntroTexts));

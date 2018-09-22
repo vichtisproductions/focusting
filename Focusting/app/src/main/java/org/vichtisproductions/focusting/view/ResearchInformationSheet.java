@@ -34,6 +34,8 @@ public class ResearchInformationSheet extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
+        // TODO - Rewrite Research Information Sheet to match with the new research
+        // MOST LIKELY ALL CHANGES CAN BE DONE TO THE RESOURCE FILES
         super.onCreate(savedInstanceState);
         setContentView(R.layout.research_information_sheet);
 
