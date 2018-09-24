@@ -39,6 +39,8 @@ import static com.google.firebase.auth.FirebaseAuth.getInstance;
  */
 public class InitialStartupInteractor implements IInitialStartupInteractor {
 
+    // TODO - WHAT IF User says NO to calendar permissions? Do you have to run InitialStartup again to reset InitialStartTime
+    // If user says NO to Calendar permissions, do not run this. If the user issues calendar permissions afterwards, then run this
     // Randomize participants to one of the three groups here
     int min = 1;
     int max = 3;

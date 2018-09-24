@@ -86,11 +86,13 @@ public class StageInteractor implements IStageInteractor {
         int day;
         int hour = Hours.hoursBetween(initialStartTime, new DateTime()).getHours() - (days * 24) + 1;
 
+        // TODO - REVIEW IF THIS IS JUST FINE
         // First, find out what group the user belongs
         int FocustingGroupNumber = new Integer(mInitialStartupInteractor.getGroupNumber());
 
         // Then, how long are the stages for that group
         // Figure out the length of the stage depending on the FocustingGroupNumber
+        // TODO - SIMPLIFY THIS BECAUSE STAGES ARE OF EQUAL LENGTH
         int[] lengthOfStage = new int[3];
         Resources resources = mContext.getResources();
         if (FocustingGroupNumber == 1) {
@@ -100,12 +102,13 @@ public class StageInteractor implements IStageInteractor {
         } else if (FocustingGroupNumber == 3) {
             lengthOfStage = resources.getIntArray(R.array.FocustingStagesGroup3);
         }
-        int Stage1len = lengthOfStage[0];
-        int Stage2len = lengthOfStage[1];
-        int Stage3len = lengthOfStage[2];
+        int Stage1len = lengthOfStage[0]; // TODO - 8
+        int Stage2len = lengthOfStage[1]; // TODO - 14
+        int Stage3len = lengthOfStage[2]; // TODO - 7
 
 
         // Figure out what stage the person should be on that day
+        // TODO - SIMPLIFY & REVIEW
         if (days < Stage1len) {
             //Stage1
             stageNr = 1;

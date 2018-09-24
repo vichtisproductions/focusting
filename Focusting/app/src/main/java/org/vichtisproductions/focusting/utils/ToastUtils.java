@@ -23,6 +23,8 @@ import timber.log.Timber;
 public class ToastUtils {
 
     // TODO - Review and Rewrite showToasts
+    // TODO - TOASTS ARE WHAT DEAL WITH USER INTERVENTION
+    // TODO - REVIEW this logic - if attendee count is less than 3
     public static void showToast(Context mContext,
                                  long attendeeCount) {
 

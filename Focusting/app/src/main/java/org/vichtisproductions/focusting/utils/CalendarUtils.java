@@ -17,7 +17,7 @@ import timber.log.Timber;
 public class CalendarUtils {
 
     public static int getAttendeeCount(Context mContext) {
-        // TODO - Here be the real calendar event handlers
+        // TODO - Here be the real calendar event handlers - FIX THIS
         // Find out what event is going on right now
         // Get # of Attendees from the ongoing event(s)
         // long timeNow= System.currentTimeMillis();
@@ -68,6 +68,7 @@ public class CalendarUtils {
         Calendar timeNow = Calendar.getInstance();
         Timber.d("Time now is: " + timeNow.getTimeInMillis());
 
+        // TODO - DO YOU WANT TO STORE CALENDAR EVENT INSTANCE ID TO FIREBARE
         String[] projection = new String[]{
                 CalendarContract.Instances._ID,
                 CalendarContract.Instances.BEGIN,
