@@ -6,33 +6,23 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.text.format.Time;
 
-import com.f2prateek.rx.preferences.Preference;
 import com.f2prateek.rx.preferences.RxSharedPreferences;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import org.vichtisproductions.focusting.di.DataModule;
-import org.vichtisproductions.focusting.model.UserInfo;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
+import org.vichtisproductions.focusting.model.UserInfo;
 
-import timber.log.Timber;
-
-import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
 
 import rx.Observable;
-
-import static com.google.firebase.auth.FirebaseAuth.getInstance;
+import timber.log.Timber;
 
 /**
  * Created by Renier on 2016/04/12.
@@ -42,11 +32,8 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
     // TODO - WHAT IF User says NO to calendar permissions? Do you have to run InitialStartup again to reset InitialStartTime
     // If user says NO to Calendar permissions, do not run this. If the user issues calendar permissions afterwards, then run this
     // Randomize participants to one of the three groups here
-    int min = 1;
-    int max = 3;
-    Random r = new Random();
-    int FocustingGroupNumber = r.nextInt(max - min + 1) + min;
-    // String FocustingGroupNumber = String.valueOf(intFocustingGroupNumber);
+    private final int FIRST_GROUP_NUMBER = 1;
+    private final int LAST_GROUP_NUMBER = 3;
 
     private static final String SP_NAME = "InitialStartupSP";
     private static final String SP_KEY_INSTANCE_ID = "InstanceId";
@@ -94,6 +81,9 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                 })
                 .flatMap(instanceId -> {
 
+                    // Randomize group number
+                    final int focustingGroupNumber = randomizeGroup(FIRST_GROUP_NUMBER, LAST_GROUP_NUMBER);
+
                     // Get the data and store it away. You're done.
                     long initialStartTime = new DateTime().getMillis();
                     String userTimezone = Time.getCurrentTimezone();
@@ -119,7 +109,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                     mRxPrefs.getBoolean(SP_KEY_INITIAL_SETUP_DONE).set(true);
                     mRxPrefs.getString(SP_KEY_INITIAL_TIMEZONE).set(userTimezone);
                     mRxPrefs.getLong(SP_KEY_INITIAL_START_TIME_ZERO_HOUR).set(initialStartTime);
-                    mRxPrefs.getInteger(SP_KEY_FOCUSTING_GROUP_NUMBER).set(FocustingGroupNumber);
+                    mRxPrefs.getInteger(SP_KEY_FOCUSTING_GROUP_NUMBER).set(focustingGroupNumber);
 
                     FirebaseUsername = mUserInteractor.getInstanceIdSynchronous() + "@bogusresearchusers.com";
                     mRxPrefs.getString(SP_KEY_INITIAL_FB_USERNAME).set(FirebaseUsername);
@@ -251,6 +241,21 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                 });
         // Timber.d("End creating user and uploading initial data.");
 
+    }
+
+    /**
+     * Return random integer between min and max
+     *
+     * @param min Lowest random integer to return
+     * @param max Highest random integer to return
+     * @return Random integer between min (inclusive) and max (inclusive).
+     */
+    private int randomizeGroup(final int min, final int max) {
+        if (min > max) {
+            throw new IllegalArgumentException("Min value cannot be bigger than max");
+        }
+        final Random random = new Random();
+        return random.nextInt(max - min + 1) + min;
     }
 
     @Override
