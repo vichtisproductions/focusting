@@ -10,27 +10,23 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.ImageButton;
-import android.widget.TextView;
-// For RIS button
-import android.widget.Button;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.TextView;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 
-import org.joda.time.DateTime;
-
 import org.vichtisproductions.focusting.BuildConfig;
 import org.vichtisproductions.focusting.MainApplication;
+import org.vichtisproductions.focusting.R;
 import org.vichtisproductions.focusting.func_debug.stage1.DebugStage1Activity;
 import org.vichtisproductions.focusting.func_debug.stage2.DebugStage2Activity;
 import org.vichtisproductions.focusting.func_debug.stage3.DebugStage3Activity;
@@ -38,16 +34,10 @@ import org.vichtisproductions.focusting.func_debug.stage4.DebugStage4Activity;
 import org.vichtisproductions.focusting.func_debug.stage5.DebugStage5Activity;
 import org.vichtisproductions.focusting.func_debug.stage6.DebugStage6Activity;
 import org.vichtisproductions.focusting.func_debug.view.TargetSetView;
-import org.vichtisproductions.focusting.view.Stage6ToastSetView;
 import org.vichtisproductions.focusting.model.Stage;
 import org.vichtisproductions.focusting.presenter.IMainActivityPresenter;
-import org.vichtisproductions.focusting.R;
 import org.vichtisproductions.focusting.pretest.PreTestActivity;
 import org.vichtisproductions.focusting.services.TrackerService;
-import org.vichtisproductions.focusting.Calendarwrapper.Attendee;
-import org.vichtisproductions.focusting.Calendarwrapper.Calendar;
-import org.vichtisproductions.focusting.Calendarwrapper.Event;
-import org.vichtisproductions.focusting.Calendarwrapper.Reminder;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -61,12 +51,15 @@ import timber.log.Timber;
 /**
  * Created by chris.teli on 3/20/2016.
  */
-public class MainActivity extends AppCompatActivity implements IMainActivityView {
+public class MainActivity extends AppCompatActivity implements IMainActivityView,
+        PermissionRationaleDialog.Callback {
 
     @Inject
     IMainActivityPresenter mPresenter;
 
     private static final String TAG = "Focusting.Main";
+    private static final int PERMISSION_REQUEST_READ_CALENDAR = 100;
+    private static final String PERMISSION_RATIONALE_DIALOG_TAG = "permission_rationale";
 
     private TargetSetView mTargetSetView;
     private Stage6ToastSetView mStage6ToastSetView;
@@ -121,7 +114,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.APP_OPEN, null);
-
     }
 
     private void shareIt() {
@@ -225,7 +217,9 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         super.onResume();
 
         mPresenter.setView(this);
-        mPresenter.init();
+        if (checkForCalendarPermission()) {
+            mPresenter.init();
+        }
         setStageDependentViewsVisibility();
 
     }
@@ -247,6 +241,51 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         super.onPause();
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_READ_CALENDAR: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Init presenter after permission is given
+                    mPresenter.init();
+                    Timber.d("Permissions given");
+                } else {
+                    Timber.d("No permissions given");
+                }
+                return;
+            }
+        }
+    }
+
+    private boolean checkForCalendarPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CALENDAR)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.READ_CALENDAR)) {
+                // Show rationale dialog
+                new PermissionRationaleDialog().show(getSupportFragmentManager(), PERMISSION_RATIONALE_DIALOG_TAG);
+            } else {
+                requestPermissions();
+            }
+            return false;
+        }
+
+        return true;
+    }
+
+    private void requestPermissions() {
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.READ_CALENDAR},
+                PERMISSION_REQUEST_READ_CALENDAR);
+    }
+
+    @Override
+    public void onDialogButtonClick(int which) {
+        // Rationale dialog closed, ask for permission again
+        requestPermissions();
+    }
 
     @Override
     public void showStage1View(Stage stage) {

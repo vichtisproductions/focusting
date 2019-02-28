@@ -219,4 +219,6 @@
     <string name="button_huawei_message">Protected Apps</string>
     <string name="text_huawei_message">Focusting requires to be enabled in \'Protected Apps\' to function properly.</string>
 
+    <string name="permission_rationale_message">Permission to read calendar is needed. Write rationale here</string>
+    <string name="permission_rationale_action">OK</string>
 </resources>
