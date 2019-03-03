@@ -38,6 +38,7 @@ import org.vichtisproductions.focusting.model.Stage;
 import org.vichtisproductions.focusting.presenter.IMainActivityPresenter;
 import org.vichtisproductions.focusting.pretest.PreTestActivity;
 import org.vichtisproductions.focusting.services.TrackerService;
+import org.vichtisproductions.focusting.utils.CalendarUtils;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -221,7 +222,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
             mPresenter.init();
         }
         setStageDependentViewsVisibility();
-
     }
 
     @Override

@@ -7,113 +7,84 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.CalendarContract;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Random;
-
-import timber.log.Timber;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class CalendarUtils {
 
-    public static int getAttendeeCount(Context mContext) {
-        // TODO - Here be the real calendar event handlers - FIX THIS
-        // Find out what event is going on right now
-        // Get # of Attendees from the ongoing event(s)
-        // long timeNow= System.currentTimeMillis();
-        // Timber.d("Time now: " + String.valueOf(timeNow));
-        int attendeesMax=0;
-        /*
+    private static Set<Long> getCurrentlyRunningEventIds(final Context context) {
+        String currentTime = String.valueOf(System.currentTimeMillis());
+
         String[] projection = new String[]{
-                CalendarContract.Instances.EVENT_ID,
-                CalendarContract.Instances.BEGIN,
-                CalendarContract.Instances.END};
-
-        String selection = "(( " +
-                CalendarContract.Instances.BEGIN + " <= ? ) AND ( " +
-                CalendarContract.Instances.END + " >= ?))";
-        String[] selectionArgs = new String[] { timeNow, timeNow };
-        String selection = "((" + CalendarContract.Instances.BEGIN + " >= ?) AND (" + CalendarContract.Instances.END + " <= ? ) AND (" + CalendarContract.Instances.AVAILABILITY + " == ?))";
-        Uri.Builder builder = CalendarContract.Instances.CONTENT_URI.buildUpon();
-        ContentUris.appendId(builder, timeNow);
-        ContentUris.appendId(builder, timeNow);
-        Uri instancesUri = builder.build();
-        Cursor cursor = null;
-        ContentResolver cr = mContext.getContentResolver();
-        Timber.d("Got here - at least.");
-        cursor = cr.query(instancesUri, projection, null, null, CalendarContract.Instances.DTSTART + " ASC");
-        Timber.d("Query done.");
-        cursor.moveToFirst();
-        Timber.d("Moved to first.");
-        Timber.d("Event #: " + String.valueOf(cursor.getCount()));
-        if (cursor.getCount() > 0) {
-            Timber.d("Checking attendees...");
-            while (cursor.moveToNext()) {
-                int eventID = cursor.getInt(0);
-                Timber.d("Event id: " + String.valueOf(eventID));
-                String[] attendeeProjection= new String[]{
-                        CalendarContract.Attendees.EVENT_ID,
-                        CalendarContract.Attendees.ATTENDEE_EMAIL,
-                        CalendarContract.Attendees.ATTENDEE_TYPE,
-                        CalendarContract.Attendees.ATTENDEE_STATUS};
-                String attendeeSelection = CalendarContract.Attendees.ATTENDEE_STATUS + " != " + 3 + ")";
-                final String query = "(" + CalendarContract.Attendees.EVENT_ID + " = " + eventID + ")";
-                final Cursor attendeecursor = mContext.getContentResolver().query(CalendarContract.Attendees.CONTENT_URI, attendeeProjection, attendeeSelection, null, null);
-                Timber.d("CalendarUtils - Attendees: " + String.valueOf(attendeecursor.getCount()));
-                if (attendeecursor.getCount() > 0) { attendeesMax = attendeecursor.getCount(); }
-            }
-
-            */
-        Timber.d("Now inside Calendarutils.getAttendeeCount");
-        Calendar timeNow = Calendar.getInstance();
-        Timber.d("Time now is: " + timeNow.getTimeInMillis());
-
-        // TODO - DO YOU WANT TO STORE CALENDAR EVENT INSTANCE ID TO FIREBARE
-        String[] projection = new String[]{
-                CalendarContract.Instances._ID,
-                CalendarContract.Instances.BEGIN,
-                CalendarContract.Instances.END,
                 CalendarContract.Instances.EVENT_ID};
-        String query = "(" + CalendarContract.Instances.BEGIN + " <= " + timeNow.getTimeInMillis() + " ) AND ( " + CalendarContract.Instances.END + " >= " + timeNow.getTimeInMillis() + ")";
-        Timber.d(query);
-        ContentResolver cr = mContext.getContentResolver();
-        Cursor cursor = cr.query(CalendarContract.Instances.CONTENT_URI, projection, query, null, null);
-        Timber.d("Content resolver specified");
-        // TODO - Here should be a calendar security permission checker
-        /* cursor = cr.query(
-                CalendarContract.Events.CONTENT_URI,
-                projection,
-                query,
-                null,
-                null); */
-        Timber.d("Cursor specified");
-        Timber.d("Cursor count is: " + String.valueOf(cursor.getCount()));
-        if (cursor!=null&&cursor.getCount()>0&&cursor.moveToFirst()) {
+
+        String selection = "( " +
+                CalendarContract.Instances.BEGIN + " <= ? ) AND ( " +
+                CalendarContract.Instances.END + " >= ?)";
+        String[] selectionArgs = new String[]{currentTime, currentTime};
+
+        // Construct the query with the desired date range.
+        Uri.Builder builder = CalendarContract.Instances.CONTENT_URI.buildUpon();
+        ContentUris.appendId(builder, 0);
+        ContentUris.appendId(builder, Long.MAX_VALUE);
+
+        ContentResolver resolver = context.getContentResolver();
+        final Cursor cursor = resolver.query(builder.build(), projection, selection, selectionArgs, null);
+
+        Set<Long> ids = new HashSet<>();
+
+        if (cursor != null) {
             while (cursor.moveToNext()) {
-                Timber.d("...Inside cursor loop...");
-                final String eventID = cursor.getString(0);
-                final String[] attendeeProjection = new String[]{
-                        CalendarContract.Attendees._ID,
-                        CalendarContract.Attendees.EVENT_ID,
-                        CalendarContract.Attendees.ATTENDEE_NAME,
-                        CalendarContract.Attendees.ATTENDEE_EMAIL,
-                        CalendarContract.Attendees.ATTENDEE_TYPE,
-                        CalendarContract.Attendees.ATTENDEE_RELATIONSHIP,
-                        CalendarContract.Attendees.ATTENDEE_STATUS
-                };
-                final String query2 = "(" + CalendarContract.Attendees.EVENT_ID + " = " + eventID + ")";
-                final Cursor attendeecursor = mContext.getContentResolver().query(CalendarContract.Attendees.CONTENT_URI, attendeeProjection, query2, null, null);
-                if (attendeecursor.getCount() > 0) { attendeesMax = attendeecursor.getCount(); }
+                long id = cursor.getLong(cursor.getColumnIndex(CalendarContract.Instances.EVENT_ID));
+                ids.add(id);
             }
-        } else {
-            return 0;
+            cursor.close();
         }
 
-        Random r = new Random();
-        int min = 1;
-        int max = 3;
+        return ids;
+    }
 
-        Timber.d("Got to the bottom, returning "+attendeesMax);
+    private static Map<Long, Integer> getAttendeesForEvents(Set<Long> eventIds, final Context context) {
+        final ContentResolver resolver = context.getContentResolver();
+
+        String[] projection = new String[]{
+                CalendarContract.Attendees.EVENT_ID};
+
+        Map<Long, Integer> mapping = new HashMap<>();
+
+        for (Long eventId : eventIds) {
+            Cursor cursor = CalendarContract.Attendees.query(resolver, eventId, projection);
+            if (cursor != null) {
+
+                int attendeeCount = cursor.getCount();
+                // When there's no attendee list, then the host is the only one participating
+                if (attendeeCount == 0) {
+                    attendeeCount = 1;
+                }
+                mapping.put(eventId, attendeeCount);
+
+                cursor.close();
+            }
+        }
+
+        return mapping;
+    }
+
+    public static int getAttendeeCount(Context mContext) {
+        int attendeesMax = 0;
+
+        Set<Long> eventIds = getCurrentlyRunningEventIds(mContext);
+        Map<Long, Integer> eventAttendeeMap = getAttendeesForEvents(eventIds, mContext);
+
+        // Find the current event that has the most attendees
+        for (int attendees : eventAttendeeMap.values()) {
+            if (attendees > attendeesMax) {
+                attendeesMax = attendees;
+            }
+        }
+
         return attendeesMax;
     }
 }

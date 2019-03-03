@@ -147,8 +147,7 @@ public class StageInteractor implements IStageInteractor {
         // TODO - Figure out number of attendees - here calling CalendarUtils
         Timber.d("Now checking number of attendees");
         int attendeeCount = CalendarUtils.getAttendeeCount(mContext);
-        Timber.d("It was: ");
-        // Timber.d(String.valueOf(attendeeCount));
+        Timber.d("It was: %d", attendeeCount);
 
         // Finally, figure out what stage interactor should be used
         // Array name: FocustingStagesGroup1, 2 and 3
