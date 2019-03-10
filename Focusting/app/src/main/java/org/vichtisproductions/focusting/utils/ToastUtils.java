@@ -278,6 +278,7 @@ public class ToastUtils {
             }
 
             Toast toast = new Toast(context);
+            toast.setGravity(Gravity.BOTTOM | Gravity.FILL_HORIZONTAL, 0, 0);
             toast.setDuration(Toast.LENGTH_LONG);
             toast.setView(layout);
             toast.show();
