@@ -1,8 +1,8 @@
 package org.vichtisproductions.focusting.utils;
 
 import android.content.Context;
-import android.media.Image;
-import android.provider.Settings;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.StringRes;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -237,5 +237,52 @@ public class ToastUtils {
     public static long getSnooze(Context mContext) {
         // Timber.d("Time now: " + System.currentTimeMillis() + ", snooze ends at " + Long.toString(Keystore.getInstance(mContext).getLong("snoozeEndsAt")));
         return Keystore.getInstance(mContext).getLong("snoozeEndsAt");
+    }
+
+    /**
+     * Show toast with text.
+     *
+     * @param context        Context
+     * @param username       Username to show in toast
+     * @param stringResource Text resource to show in toast.
+     */
+    public static void showToast(Context context, String username,
+                                 @StringRes int stringResource) {
+        showToast(context, username, stringResource, -1);
+    }
+
+    /**
+     * Show toast with text and image.
+     *
+     * @param context        Context
+     * @param username       Username to show in toast
+     * @param stringResource Text resource to show in toast.
+     * @param imageResource  Image resource to show in toast. Use -1 if no image should be shown.
+     */
+    public static void showToast(Context context, String username,
+                                 @StringRes int stringResource,
+                                 @DrawableRes int imageResource) {
+        final LayoutInflater inflater
+                = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        if (inflater != null) {
+            View layout = inflater.inflate(R.layout.toast_layout, null, false);
+
+            final TextView nameView = layout.findViewById(R.id.toast_name);
+            final TextView contentView = layout.findViewById(R.id.toast_content);
+            final ImageView imageView = layout.findViewById(R.id.toast_image);
+
+            nameView.setText(context.getString(R.string.toast1_name_placeholder, username));
+            contentView.setText(stringResource);
+            if (imageResource != -1) {
+                imageView.setImageResource(imageResource);
+            }
+
+            Toast toast = new Toast(context);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
+            toast.show();
+        } else {
+            Timber.w("Inflater is null, cannot create custom toast");
+        }
     }
 }

@@ -6,7 +6,6 @@ import android.content.Intent;
 import org.vichtisproductions.focusting.BuildConfig;
 import org.vichtisproductions.focusting.interactor.IDatabaseInteractor;
 import org.vichtisproductions.focusting.model.ScreenAction;
-import org.vichtisproductions.focusting.utils.ToastUtils;
 
 /**
  * Created by Renier on 2016/04/27.

@@ -221,4 +221,10 @@
 
     <string name="permission_rationale_message">Permission to read calendar is needed. Write rationale here</string>
     <string name="permission_rationale_action">OK</string>
+
+    <string name="toast1_name_placeholder" translatable="false">%1s,</string>
+    <string name="toast1_content">Tutkimusten mukaan puhelimen käyttö heikentää kykyäsi keskittyä ja tehdä päätöksiä.\n\nOnko puhelimen avaaminen tarpeellista?</string>
+    <string name="toast2_content">Onko puhelimen avaaminen tarpeellista?\n\nLäsnäolollasi on muille merkitystä.</string>
+    <string name="toast3_content">Tutkimusten mukaan puhelimen käyttö vähentää kykyäsi keskittyä.\n\nOnko puhelimen avaaminen tarpeellista?</string>
+    <string name="toast4_content">Tutkimusten mukaan puhelimen käyttö vähentää kykyäsi keskittyä.\n\nSe myös häiritsee muita osallistujia.\n\nOnko puhelimen avaaminen tarpeellista?</string>
 </resources>
