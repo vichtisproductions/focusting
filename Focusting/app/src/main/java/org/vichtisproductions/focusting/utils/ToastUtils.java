@@ -271,7 +271,12 @@ public class ToastUtils {
             final TextView contentView = layout.findViewById(R.id.toast_content);
             final ImageView imageView = layout.findViewById(R.id.toast_image);
 
-            nameView.setText(context.getString(R.string.toast1_name_placeholder, username));
+            String name = username;
+            if (name == null || name.equals("")) {
+                name = context.getString(R.string.toast_user_name_unknown);
+            }
+
+            nameView.setText(context.getString(R.string.toast_name_placeholder, name));
             contentView.setText(stringResource);
             if (imageResource != -1) {
                 imageView.setImageResource(imageResource);
