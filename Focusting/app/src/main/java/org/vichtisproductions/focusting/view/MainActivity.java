@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +39,7 @@ import org.vichtisproductions.focusting.model.Stage;
 import org.vichtisproductions.focusting.presenter.IMainActivityPresenter;
 import org.vichtisproductions.focusting.pretest.PreTestActivity;
 import org.vichtisproductions.focusting.services.TrackerService;
+import org.vichtisproductions.focusting.utils.DataUtils;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -57,9 +59,13 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
     @Inject
     IMainActivityPresenter mPresenter;
 
+    @Inject
+    DataUtils dataUtils;
+
     private static final String TAG = "Focusting.Main";
     private static final int PERMISSION_REQUEST_READ_CALENDAR = 100;
-    private static final String PERMISSION_RATIONALE_DIALOG_TAG = "permission_rationale";
+    private static final String PERMISSION_RATIONALE_DIALOG_TAG = "permission_rationale_dialog";
+    private static final String USERNAME_DIALOG_TAG = "username_dialog";
 
     private TargetSetView mTargetSetView;
     private Stage6ToastSetView mStage6ToastSetView;
@@ -180,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
             findViewById(R.id.targetSetView).setVisibility(View.VISIBLE);
             if (target != -1) {
                 // findViewById(R.id.tvTargetSelected).setVisibility(View.GONE);
-            // } else {
+                // } else {
                 // findViewById(R.id.targetSetView).setVisibility(View.GONE);
                 // findViewById(R.id.tvTargetSelected).setVisibility(View.VISIBLE);
                 targetText = getResources().getString(R.string.tvTargetSelectedText);
@@ -221,6 +227,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
             mPresenter.init();
         }
         setStageDependentViewsVisibility();
+        checkForUsersName();
     }
 
     @Override
@@ -481,4 +488,14 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         return "";
     }
 
+    private void checkForUsersName() {
+        String username = dataUtils.getUsername();
+        if (username == null) {
+            // Username not set
+            FragmentManager fm = getSupportFragmentManager();
+            if (fm.findFragmentByTag(USERNAME_DIALOG_TAG) == null) {
+                new UsernameDialog().show(fm, USERNAME_DIALOG_TAG);
+            }
+        }
+    }
 }

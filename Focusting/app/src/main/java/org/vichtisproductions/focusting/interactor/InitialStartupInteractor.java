@@ -58,7 +58,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
     private IDatabaseInteractor mDatabaseInteractor;
 
     SharedPreferences mPrefs;
-    private RxSharedPreferences mRxPrefs;
+    private final RxSharedPreferences mRxPrefs;
 
     public InitialStartupInteractor(Context context, DatabaseReference firebaseClient, IUserInteractor userInteractor) {
         mContext = context;

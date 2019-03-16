@@ -18,6 +18,7 @@ import org.vichtisproductions.focusting.func_debug.view.AveragesSetView;
 import org.vichtisproductions.focusting.view.MainActivity;
 import org.vichtisproductions.focusting.func_debug.view.StatsView;
 import org.vichtisproductions.focusting.view.Stage6ToastSetView;
+import org.vichtisproductions.focusting.view.UsernameDialog;
 
 import javax.inject.Singleton;
 
@@ -45,6 +46,7 @@ public interface DIGraph {
     void inject(Stage6ToastSetView view);
     void inject(PreTestActivity view);
     void inject(Stage6ToastInteractor interactor);
+    void inject(UsernameDialog dialog);
 
     final class Initializer {
         public static DIGraph init(MainApplication application) {

@@ -164,4 +164,8 @@
     <string name="toast_user_name_unknown">Hyvä osallistuja</string>
     <string name="toast1_content">Tutkimusten mukaan puhelimen käyttö heikentää kykyäsi keskittyä ja tehdä päätöksiä.\n\nOnko puhelimen avaaminen tarpeellista?</string>
     <string name="toast2_content">Onko puhelimen avaaminen tarpeellista?\n\nLäsnäolollasi on muille merkitystä.</string>
+
+    <string name="username_dialog_text">Mikä on nimesi?</string>
+    <string name="username_dialog_hint">Nimi</string>
+    <string name="username_dialog_action">Tallenna</string>
 </resources>
