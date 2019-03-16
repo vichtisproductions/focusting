@@ -23,6 +23,8 @@ import org.vichtisproductions.focusting.interactor.TargetInteractor;
 import org.vichtisproductions.focusting.interactor.UserInteractor;
 import org.vichtisproductions.focusting.stagehandlers.IStageHandler;
 import org.vichtisproductions.focusting.stagehandlers.Stage1Handler;
+import org.vichtisproductions.focusting.stagehandlers.Stage2Group2Handler;
+import org.vichtisproductions.focusting.stagehandlers.Stage2Group3Handler;
 import org.vichtisproductions.focusting.stagehandlers.Stage2Handler;
 import org.vichtisproductions.focusting.stagehandlers.Stage3Handler;
 import org.vichtisproductions.focusting.stagehandlers.Stage4Handler;
@@ -48,8 +50,8 @@ public class InteractorModule {
 
     @Singleton
     @Provides
-    IStageInteractor provideStageInteractor(Context context, RxBus bus, IInitialStartupInteractor initialStartupInteractor, Stage1Handler stage1Handler, Stage2Handler stage2Handler, Stage3Handler stage3Handler, Stage4Handler stage4Handler, Stage5Handler stage5Handler, Stage6Handler stage6Handler, IStage6ToastInteractor stage6ToastInteractor) {
-        return new StageInteractor(context, bus, initialStartupInteractor, stage1Handler, stage2Handler, stage3Handler, stage4Handler, stage5Handler, stage6Handler, stage6ToastInteractor);
+    IStageInteractor provideStageInteractor(Context context, RxBus bus, IInitialStartupInteractor initialStartupInteractor, Stage1Handler stage1Handler, Stage2Group2Handler stage2Group2Handler, Stage2Group3Handler stage2Group3Handler, Stage2Handler stage2Handler, Stage3Handler stage3Handler, Stage4Handler stage4Handler, Stage5Handler stage5Handler, Stage6Handler stage6Handler, IStage6ToastInteractor stage6ToastInteractor) {
+        return new StageInteractor(context, bus, initialStartupInteractor, stage1Handler, stage2Group2Handler, stage2Group3Handler, stage2Handler, stage3Handler, stage4Handler, stage5Handler, stage6Handler, stage6ToastInteractor);
     }
 
     @Singleton

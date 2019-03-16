@@ -7,11 +7,12 @@ import org.vichtisproductions.focusting.BuildConfig;
 import org.vichtisproductions.focusting.interactor.IDatabaseInteractor;
 import org.vichtisproductions.focusting.model.ScreenAction;
 
+import timber.log.Timber;
+
 /**
  * Created by Renier on 2016/04/27.
  */
 public class Stage1Handler implements IStageHandler {
-    // TODO - Make this a handler for stage 1
     // Just record the data, don't show a stimulus
     private Context mContext;
     private IDatabaseInteractor mDatabaseInteractor;
@@ -25,22 +26,10 @@ public class Stage1Handler implements IStageHandler {
     public void handleScreenAction(ScreenAction action) {
         //Only display for dev purposes
         if (BuildConfig.DEBUG) {
-            if (action.getEventType().equals(Intent.ACTION_SCREEN_ON)
-                    || action.getEventType().equals(Intent.ACTION_USER_PRESENT)) {
-                long unlockCount = mDatabaseInteractor.getUnlockCountForStageDay(action.getStage(), action.getDay());
-                long totalSOTTime = mDatabaseInteractor.getTotalSOTForStageDay(action.getStage(), action.getDay());
-
-                // ToastUtils.showToast(mContext, action.getDuration(), unlockCount, totalSOTTime);
-
-//                StringBuilder sb = new StringBuilder();
-//                sb.append(lastSleepString);
-//                sb.append(System.getProperty("line.separator"));
-//                sb.append(unlockString);
-//                sb.append(System.getProperty("line.separator"));
-//                sb.append(totalSOTTimeString);
-//
-//                Toast.makeText(mContext, sb.toString(), Toast.LENGTH_LONG).show();
-
+            if (action.getEventType().equals(Intent.ACTION_SCREEN_ON)) {
+                Timber.d("Stage 1 - Screen on");
+            } else if (action.getEventType().equals(Intent.ACTION_USER_PRESENT)) {
+                Timber.d("Stage 1 - User is present");
             }
         }
     }

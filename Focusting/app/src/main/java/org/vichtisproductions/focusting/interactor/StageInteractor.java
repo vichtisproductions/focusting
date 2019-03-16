@@ -3,31 +3,27 @@ package org.vichtisproductions.focusting.interactor;
 import android.content.Context;
 import android.content.res.Resources;
 
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.Hours;
 import org.vichtisproductions.focusting.R;
 import org.vichtisproductions.focusting.bus.RxBus;
 import org.vichtisproductions.focusting.bus.events.DebugStageEvent;
 import org.vichtisproductions.focusting.model.Stage;
 import org.vichtisproductions.focusting.stagehandlers.IStageHandler;
 import org.vichtisproductions.focusting.stagehandlers.Stage1Handler;
+import org.vichtisproductions.focusting.stagehandlers.Stage2Group2Handler;
+import org.vichtisproductions.focusting.stagehandlers.Stage2Group3Handler;
 import org.vichtisproductions.focusting.stagehandlers.Stage2Handler;
 import org.vichtisproductions.focusting.stagehandlers.Stage3Handler;
 import org.vichtisproductions.focusting.stagehandlers.Stage4Handler;
 import org.vichtisproductions.focusting.stagehandlers.Stage5Handler;
 import org.vichtisproductions.focusting.stagehandlers.Stage6Handler;
-import org.vichtisproductions.focusting.interactor.IStage6ToastInteractor;
-import org.vichtisproductions.focusting.interactor.Stage6ToastInteractor;
-import org.joda.time.DateTime;
-import org.joda.time.Days;
-import org.joda.time.Duration;
-import org.joda.time.Hours;
 import org.vichtisproductions.focusting.utils.CalendarUtils;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import javax.inject.Inject;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
 /**
@@ -38,6 +34,8 @@ public class StageInteractor implements IStageInteractor {
     private RxBus mBus;
     private IInitialStartupInteractor mInitialStartupInteractor;
     private Stage1Handler mStage1Handler;
+    private final Stage2Group2Handler stage2Group2Handler;
+    private final Stage2Group3Handler stage2Group3Handler;
     private Stage2Handler mStage2Handler;
     private Stage3Handler mStage3Handler;
     private Stage4Handler mStage4Handler;
@@ -50,6 +48,8 @@ public class StageInteractor implements IStageInteractor {
             RxBus bus,
             IInitialStartupInteractor initialStartupInteractor,
             Stage1Handler stage1Handler,
+            Stage2Group2Handler stage2Group2Handler,
+            Stage2Group3Handler stage2Group3Handler,
             Stage2Handler stage2Handler,
             Stage3Handler stage3Handler,
             Stage4Handler stage4Handler,
@@ -60,6 +60,8 @@ public class StageInteractor implements IStageInteractor {
         mBus = bus;
         mInitialStartupInteractor = initialStartupInteractor;
         mStage1Handler = stage1Handler;
+        this.stage2Group2Handler = stage2Group2Handler;
+        this.stage2Group3Handler = stage2Group3Handler;
         mStage2Handler = stage2Handler;
         mStage3Handler = stage3Handler;
         mStage4Handler = stage4Handler;
@@ -113,18 +115,18 @@ public class StageInteractor implements IStageInteractor {
             //Stage1
             stageNr = 1;
             day = days + 1;
-        } else if (days < Stage2len) {
+        } else if (days < (Stage1len + Stage2len)) {
             //Stage2
             stageNr = 2;
             day = days - Stage1len + 1;
-        } else if (days < Stage3len) {
+        } else if (days < (Stage1len + Stage2len + Stage3len)) {
             //Stage3
             stageNr = 3;
             day = days - Stage1len - Stage2len + 1;
         } else {
             //Stage4
             stageNr = 4;
-            day = days - 36 + 1;
+            day = days - Stage1len - Stage2len - Stage3len + 1;
         }
 
         // Now return stage number etc.
@@ -158,15 +160,14 @@ public class StageInteractor implements IStageInteractor {
                 return mStage1Handler;
             case 2:
                 Timber.d("Stage 2: Figuring out what stimulus to use.");
-                if (FocustingGroupNumber == 3) {
-                    Timber.d("Toast: No information.");
-                    return mStage1Handler;
-                } else if (FocustingGroupNumber == 2) {
-                    Timber.d("Toast: Stage 2 handler.");
-                    return mStage2Handler;
-                } else if (FocustingGroupNumber == 1) {
-                    Timber.d("Toast: Stage 3 handler.");
-                    return mStage3Handler;
+                switch (FocustingGroupNumber) {
+                    case 1:
+                        // No messages for group 1
+                        return mStage1Handler;
+                    case 2:
+                        return stage2Group2Handler;
+                    case 3:
+                        return stage2Group3Handler;
                 }
             case 3:
                 return mStage1Handler;

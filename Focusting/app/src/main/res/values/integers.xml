@@ -14,17 +14,17 @@
     </integer-array>
     <integer-array name="FocustingStagesGroup1">
         <item>8</item>
-        <item>29</item>
-        <item>35</item>
+        <item>14</item>
+        <item>7</item>
     </integer-array>
     <integer-array name="FocustingStagesGroup2">
         <item>8</item>
-        <item>29</item>
-        <item>35</item>
+        <item>14</item>
+        <item>7</item>
     </integer-array>
     <integer-array name="FocustingStagesGroup3">
-        <item>22</item>
-        <item>29</item>
-        <item>35</item>
+        <item>8</item>
+        <item>14</item>
+        <item>7</item>
     </integer-array>
 </resources>
