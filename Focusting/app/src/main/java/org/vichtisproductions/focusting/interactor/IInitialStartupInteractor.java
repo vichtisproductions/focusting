@@ -8,4 +8,5 @@ public interface IInitialStartupInteractor {
     long getInitialStartTime();
     int getGroupNumber();
     void overrideInitialStartTime(long newStartTime);
+    boolean overrideGroupNumber(int groupNumber);
 }

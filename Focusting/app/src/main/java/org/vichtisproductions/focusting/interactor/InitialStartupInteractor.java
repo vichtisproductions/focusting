@@ -272,4 +272,12 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
     public void overrideInitialStartTime(long newStartTime) {
         mPrefs.edit().putLong(SP_KEY_INITIAL_START_TIME, newStartTime).commit();
     }
+
+    @Override
+    public boolean overrideGroupNumber(int groupNumber) {
+        if (groupNumber >= FIRST_GROUP_NUMBER && groupNumber <= LAST_GROUP_NUMBER) {
+            return mPrefs.edit().putInt(SP_KEY_FOCUSTING_GROUP_NUMBER, groupNumber).commit();
+        }
+        return false;
+    }
 }

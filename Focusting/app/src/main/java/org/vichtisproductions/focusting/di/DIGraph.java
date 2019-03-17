@@ -1,6 +1,7 @@
 package org.vichtisproductions.focusting.di;
 
 import org.vichtisproductions.focusting.MainApplication;
+import org.vichtisproductions.focusting.func_debug.EditSetupActivity;
 import org.vichtisproductions.focusting.func_debug.stage1.DebugStage1Activity;
 import org.vichtisproductions.focusting.func_debug.stage2.DebugStage2Activity;
 import org.vichtisproductions.focusting.func_debug.stage3.DebugStage3Activity;
@@ -47,6 +48,7 @@ public interface DIGraph {
     void inject(PreTestActivity view);
     void inject(Stage6ToastInteractor interactor);
     void inject(UsernameDialog dialog);
+    void inject(EditSetupActivity activity);
 
     final class Initializer {
         public static DIGraph init(MainApplication application) {

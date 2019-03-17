@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="debug_set_start_date" translatable="false">Set initial start date</string>
+    <string name="debug_set_group" translatable="false">Set Focusting group</string>
+
+    <string-array name="focusting_groups">
+        <item>Group 1</item>
+        <item>Group 2</item>
+        <item>Group 3</item>
+    </string-array>
+</resources>

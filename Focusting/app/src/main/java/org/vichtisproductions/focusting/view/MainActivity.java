@@ -28,6 +28,7 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import org.vichtisproductions.focusting.BuildConfig;
 import org.vichtisproductions.focusting.MainApplication;
 import org.vichtisproductions.focusting.R;
+import org.vichtisproductions.focusting.func_debug.EditSetupActivity;
 import org.vichtisproductions.focusting.func_debug.stage1.DebugStage1Activity;
 import org.vichtisproductions.focusting.func_debug.stage2.DebugStage2Activity;
 import org.vichtisproductions.focusting.func_debug.stage3.DebugStage3Activity;
@@ -133,6 +134,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         startActivity(Intent.createChooser(sharingIntent, getString(R.string.textShareIntent)));
     }
 
+    //region Menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -159,10 +161,14 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
             case R.id.action_RIS:
                 showRIS();
                 return true;
+            case R.id.action_edit_setup:
+                startActivity(new Intent(this, EditSetupActivity.class));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+    //endregion
 
     private void setStageDependentViewsVisibility() {
         // TODO - THIS NEEDS THOROUGH TESTING
