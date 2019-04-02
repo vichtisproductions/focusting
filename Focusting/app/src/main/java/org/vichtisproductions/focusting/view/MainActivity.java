@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         MainApplication.from(this).getGraph().inject(this);
 
         Intent i = new Intent(getApplicationContext(), TrackerService.class);
-        getApplicationContext().startService(i);
+        ContextCompat.startForegroundService(getApplicationContext(), i);
 
         mTargetSetView = (TargetSetView) findViewById(R.id.targetSetView);
         mStage6ToastSetView = (Stage6ToastSetView) findViewById(R.id.stage6ToastSetView);

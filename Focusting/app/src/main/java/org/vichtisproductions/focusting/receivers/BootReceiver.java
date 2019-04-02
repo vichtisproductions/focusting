@@ -3,6 +3,7 @@ package org.vichtisproductions.focusting.receivers;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 
 import org.vichtisproductions.focusting.services.TrackerService;
 
@@ -14,6 +15,6 @@ public class BootReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Intent i = new Intent(context, TrackerService.class);
-        context.startService(i);
+        ContextCompat.startForegroundService(context, i);
     }
 }
