@@ -11,9 +11,11 @@ import org.vichtisproductions.focusting.utils.DataUtils;
 import org.vichtisproductions.focusting.utils.ToastUtils;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import timber.log.Timber;
 
+@Singleton
 public class Stage2Group3Handler implements IStageHandler {
     private final Context mContext;
     private final DataUtils dataUtils;

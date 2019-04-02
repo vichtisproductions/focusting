@@ -17,8 +17,8 @@ import timber.log.Timber;
 
 @Singleton
 public class Stage2Group2Handler implements IStageHandler {
-    private Context mContext;
-    private DataUtils dataUtils;
+    private final Context mContext;
+    private final DataUtils dataUtils;
 
     @Inject
     public Stage2Group2Handler(Context context, DataUtils dataUtils) {
