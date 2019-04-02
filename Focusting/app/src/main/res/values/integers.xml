@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer-array name="eachStageLength">
-        <item>7</item>
-        <item>7</item>
+        <item>8</item>
+        <item>14</item>
         <item>7</item>
         <item>7</item>
         <item>7</item>
