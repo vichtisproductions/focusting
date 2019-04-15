@@ -267,6 +267,9 @@ public class ToastUtils {
         if (inflater != null) {
             View layout = inflater.inflate(R.layout.toast_layout, null, false);
 
+            // Add click listener to parent view to prevent Toast dismiss with click on some devices
+            layout.setOnClickListener(v -> { /* Do nothing */ });
+
             final TextView nameView = layout.findViewById(R.id.toast_name);
             final TextView contentView = layout.findViewById(R.id.toast_content);
             final ImageView imageView = layout.findViewById(R.id.toast_image);
