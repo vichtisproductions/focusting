@@ -76,14 +76,14 @@
     <string name="DataCollectionTitle">Tiedon keruu- ja tutkimusmenetelmä</string>
     <string name="DataBullet1">- Tutkimussovelluksen asentaminen</string>
     <string name="DataBullet2">- Itsearviointiin vastaaminen</string>
-    <string name="DataBullet3">- Päivittäinen puhelimen käyttö</string>
-    <string name="DataBullet4">- Valintojen tekeminen sovelluksessa pyydettäessä</string>
+    <string name="DataBullet3">- Puhelimen käyttö arkisissa tilanteissa</string>
+    <string name="DataBullet4">- Valintojen tekeminen sovelluksessa tutkimuksen 2. vaiheessa</string>
     <string name="RightsTitle">Koehenkilön oikeudet</string>
-    <string name="RightsText">- Tutkimus on vapaaehtoinen.\n- Koehenkilö voi lopettaa tutkimukseen osallistumisen poistamalla sovelluksen puhelimesta.\n- Koehenkilö voi pyytää lisätietoja tutkimuksesta.</string>
+    <string name="RightsText">- Tutkimus on vapaahetoinen\n- Koehenkilö voi lopettaa tutkimukseen osallistumisen poistamalla sovelluksen puhelimesta\n- Koehenkilö voi pyytää lisätietoja tutkimuksesta</string>
     <string name="ResearchDataTitle">Tutkimusaineisto</string>
-    <string name="DataText">- Tutkimusaineisto ei ole tunnisteellista.\n- Kaikki tieto on anonymisoitua.\n- Tutkimusaineistoa käytetään ainoastaan tieteellisiin tarkoituksiin.\n- Tutkimusaineistoa ei myydä.</string>
+    <string name="DataText">- Tutkimusaineisto ei ole tunnisteellista\n- Kaikki tieto on anonymisoitua\n- Tutkimuksen aikana ei kerätä henkilötietoja\n- Tutkimusaineisto käytetään ainoastaan tieteellisiin tarkoituksiin\n- Tutkimusaineistoa ei myydä\n- tutkimusaineisto poistetaan yhden vuoden kuluttua tutkimuksen päättymisestä</string>
     <string name="DurationTitle">Kesto</string>
-    <string name="DurationText">- Tutkimus kestää 5 viikkoa.\n- Koehenkilöillä on oikeus jatkaa sovelluksen käyttöä tutkimuksen jälkeen.\n- Tiedonkeruu jatkuu niin kauan kuin sovellus on asennettuna.</string>
+    <string name="DurationText">- Tutkimus kestää 29 päivää\n- Tiedonkertuu kestää niin pitkään kuin sovellus on asennettuna</string>
     <string name="ResearchInformationSheetTitle"><u>Tiedote tutkittaville</u></string>
     <string name="IntroText">Focusting auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nSovellus antaa tulevina viikkoina palautetta, ja rohkaisee sinua harkitsemaan puhelimen käyttöä.\n</string>
     <string name="IntroTextPreTest">Focusting auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nSovellus antaa tulevina viikkoina palautetta, ja rohkaisee sinua harkitsemaan puhelimen käyttöä.\n\nVastaa itsearviointiin nyt.</string>
@@ -130,14 +130,14 @@
     </string-array>
 
     <string name="tvCreditsTitle">Kiitokset</string>
-    <string name="tvCreditsText" formatted="false"><![CDATA[Ikonit teki <a href=\"http://www.flaticon.com/authors/madebyoliver\">madebyoliver</a> sivustolta <a href=\"http://www.flaticon.com\">Flaticon</a>. Segmented control-napit <a href=\"https://github.com/Kaopiz/android-segmented-control\">Le Van Hoang (@hoang8f)</a>. SPAI-asteikko ryhmältä <a href=\"http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098312\">Yu-Hsuan Lin, Li-Ren Chang, Yang-Han Lee, Hsien-Wei Tseng, Terry B. J. Kuo ja Sue-Huei Chen.</a>]]></string>
+    <string name="tvCreditsText" formatted="false">Taneli Korri (@bitodi.fi)\nLauri Palokangas\nSPAI-asteikko ryhmältä Yu-Hsuan Lin, Li-Ren Chang, Yang-Han Lee, Hsien-Wei Tseng, Terryb. J. Kuo ja Sue-Huei Chen</string>
     <string name="labelTakeTheTestViewTitle">Itsearviointi</string>
     <string name="labelRISTitle">Tiedote tutkittaville</string>
     <string name="notifStage">vaihe</string>
     <string name="notifDay">päivä</string>
     <string name="btnSnoozeText">Vaimenna ilmoitukset 2 tunniksi</string>
     <string name="tvSnoozedText">Shh. Vaimennutaan 2 tunniksi.</string>
-    <string name="PurposeText">Tämän tutkmuksen tarkoituksena on tunnistaa erilaisia päätöksenteon ilmiöitä ja testata niiden vaikutusta puhelimen käytön vähentämiseksi.\nTutkimus auttaa paremmin ymmärtämään tuuppausten käyttöä modernin teknologian yhteydessä, ja selvittää miten ihmiset vastaavat vapaaehtoisiin menetelmiin jotka ohjaavat heitä vastuullisempaan puhelimen käyttöön.</string>
+    <string name="PurposeText">Tämän tutkimuksen tarkoituksena on tunnistaa erilaisia päätöksenteon ilmiöitä ja testata niiden vaikutusta puhelimen käytön vähentämiseksi arjen tilanteissa. Tutkimus auttaa paremmin ymmärtämään tuuppausten käyttöä modernin teknologian yhteydessä, ja selvittää miten yksilöt vastaavat vapaaehtoisiin menetelmiin, jotka ohjaavat heitä vastuullisempaan puhelimen käyttöön. Tutkimuksen tarkoituksena on lisäksi arvoida voidaanko vapaaehtoisilla tuuppauksilla saavuttaa pitkän aikavälin muutoksia käyttäytymisessä.</string>
     <string name="tvGoalSetToastText">Tavoite asetettu: -</string>
     <string name="tvSelectYourGoalNotificationText">Aseta tavoite tälle viikolle</string>
 
