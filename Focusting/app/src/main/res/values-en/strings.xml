@@ -1,0 +1,223 @@
+<resources>
+
+
+    <!-- FOR TRANSLATOR: All the lines that look like this, i.e. between the bang-dash-dash quotation does not have to be translated. -->
+    <!-- FOR TRANSLATOR: These comments intend to help you understand where in the app these texts are used. Please also refer to screenshots. -->
+    <!-- FOR TRANSLATOR: You will see \n character in between the long sequences of texts. That breaks text to new lines. Do not worry about them. -->
+    <!-- FOR TRANSLATOR: Please do not change the name="name" - part of the line, but only the actual text -->
+    <!-- FOR TRANSLATOR: Example: -->
+    <!-- FOR TRANSLATOR: Original line: <string name="dogNameText">Dog</string> -->
+    <!-- FOR TRANSLATOR: Translated line: <string name="dogNameText">Koira</string> -->
+
+    <!-- App names and titles of individual screens - SCREENSHOTS nr1, nr10, nr13 -->
+    <string name="app_name">Focusting</string>
+    <string name="ResearchInformationSheetTitle"><u>Research information sheet</u></string>
+    <string name="labelTakeTheTestViewTitle">Research questionnaire</string>
+    <string name="labelRISTitle">Research Information Sheet</string>
+
+    <!-- Toast - at screen unlock - nr16, nr17, nr18 -->
+    <string name="toast_last_sleep_label">     Last sleep\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0</string>
+    <string name="toast_unlocks_today_label">  Unlocks today\u00A0\u00A0\u00A0\u00A0\u00A0</string>
+    <string name="toast_screen_on_today_label">Screen on today</string>
+    <string name="text_attendee_toast_title">Attendees</string>
+
+    <!-- Service notification - in lock screen and notification area - nr8, nr9 -->
+    <string name="tracker_service_foreground_ticker_text">Focusting is running</string>
+    <string name="tracker_service_foreground_content_text">Focusting is running</string>
+
+    <!-- Placeholders when notification can show current stage and day -->
+    <string name="notifStage">stage</string>
+    <string name="notifDay">day</string>
+
+    <!-- Main screen - Stage 1 - text before a user has run pre-research questionnaire - nr2 -->
+    <string name="IntroTextPreTest">Focusting helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n\nFill in the research survey.</string>
+
+    <!-- Main screen - Button and text to take the pre-research questionnaire - nr2 -->
+    <string name="btnTakeThePreTest">Fill in the research survey</string>
+    <string name="tvPReTestNoticeText">Research survey includes 10 simple questions about your smartphone-related behaviors.</string>
+
+    <!-- Main screen text after the user has run pre-research questionnaire - nr1 -->
+    <string name="IntroText">Focusting helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n</string>
+
+    <!-- Main screen - how many days is left to next stage E.g. 7 days left to the next stage - nr1 thru nr7 + nr19 -->
+    <string name="RemainingTimeText">days left to the next stage.</string>
+
+    <!-- Main screen - texts by research stage - nr1 thru nr7 + nr19 -->
+    <string-array name="IntroTexts">
+        <item name="1">Focusting helps you learn about your phone usage.\n\nIn the coming weeks you will get feedback and are encouraged to reduce your usage.\n\nNow collecting data in the background.</item>
+        <item name="2">Focusting helps you learn about your phone usage.\n\nThis week you will see information about your phone usage every time you unlock your phone.\nThe information tells you how long your phone was locked since the last usage, how many times you have unlocked it today, and how long the screen has been on today.\n</item>
+        <item name="3">Focusting helps you learn about your phone usage.\n\nThis week you will receive thumbs up at every unlock if you have managed to reduce the usage of your phone from the last week.\nYou can get thumbs up for keeping your phone locked longer, using it fewer times per day, or reducing the total usage time per day.\n</item>
+        <item name="4">Focusting helps you learn about your phone usage.\n\nThis week you will get thumb-up -sign if you meet the personal goal you have set to reduce your phone usage.\nYou can get thumbs up for keeping your phone locked longer, using it fewer times per day, or reducing the total usage time per day.\n</item>
+        <item name="5">Focusting helps you learn about your phone usage.\n\nNow observing your usage in the background to learn if the reduction in your phone usage is permanent.\n</item>
+        <!-- Below a new one to translate -->
+        <item name="6">Focusting helps you learn about your phone usage.\n\nThe research has completed. Thank you for participating.\n</item>
+    </string-array>
+
+    <!-- Main screen - Stage 2-4 - Button in Main screen to snooze unlock toast - nr3 thru nr7 -->
+    <string name="btnSnoozeText">Snooze notifications for 2 hours</string>
+
+    <!-- Main screen - Stage 4 - select your goal -dialog in main screen - nr6, nr7 -->
+    <string name="target_set_view_header">How much would you like to reduce your phone usage?</string>
+    <string name="target_set_view_set_button_text">Confirm my goal</string>
+    <string name="tvTargetSelectedText">You have chosen to reduce your phone usage by </string>
+    <string name="tvGoalSetToastText">Goal set at: -</string>
+
+    <!-- Main screen - Stage 4 - select your goal notification - nr20 -->
+    <string name="tvSelectYourGoalNotificationText">Select your goal for this week</string>
+
+    <!-- Research information sheet - text in the table - nr13, nr14 -->
+    <string name="researcherTitle">Researcher</string>
+    <string name="ResearchOrganizationTitle">Research organization</string>
+    <string name="OrganizationText">Laurea-ammattikorkeakoulu.\nResearch is not funded.</string>
+    <string name="PurposeTitle">Purpose</string>
+    <string name="PurposeText">The objective of this research is to identify different behavioral insights and test their effect to decrease phone usage.\nThe research helps better understand the role of nudges for the use of modern technology, and find out how users respond to voluntary measures to guide themselves to more responsive phone usage.</string>
+    <string name="DataCollectionTitle">Data collection and research method</string>
+    <string name="DataBullet4">- Making the selections in the application when requested</string>
+    <string name="DataBullet3">- Daily phone usage</string>
+    <string name="DataBullet2">- Respond to the self-assessment</string>
+    <string name="DataBullet1">- Install research application</string>
+    <string name="RightsTitle">Rights of the test subject</string>
+    <string name="RightsText">- Research is voluntary.\n- Test subject has right to stop participating the research at any time by uninstalling the application.\n- Test subject has right to inquire more information regarding the research.</string>
+    <string name="ResearchDataTitle">Research data</string>
+    <string name="DataText">- Research data is not personally identifiable.\n- All information is anonymized.\n- Research data is only used for scientific research purposes.\n- Research data is not sold to anyone.</string>
+    <string name="DurationTitle">Duration</string>
+    <string name="DurationText">- The research lasts 5 weeks.\n- If the test subject does not uninstall the application, they have right to continue to use the application.\n- The data collection will continue as long as the application has been installed.</string>
+    <string name="tvCreditsTitle">Credits and acknowledgements</string>
+    <string name="tvCreditsText" formatted="false"><![CDATA[Icons made by <a href=\"http://www.flaticon.com/authors/madebyoliver\">madebyoliver</a> from <a href=\"http://www.flaticon.com\">Flaticon</a>. Segmented control by <a href=\"https://github.com/Kaopiz/android-segmented-control\">Le Van Hoang (@hoang8f)</a>. SPAI scale by <a href=\"http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098312\">Yu-Hsuan Lin, Li-Ren Chang, Yang-Han Lee, Hsien-Wei Tseng, Terry B. J. Kuo and Sue-Huei Chen.</a>]]></string>
+
+    <!-- Pre-research questionnaire - nr 10 thru nr12 -->
+    <string name="PreTestIntro">Below is a list of smartphone-related behaviors or responses people sometimes have following their smartphone using experiences. Please read each item carefully, and select the option that best describes how much the description fits you <b>during the past 3 months</b>.</string>
+
+    <!-- The actual pre-research questions - nr10 thru nr12  -->
+    <!-- NOTE TO TRANSLATOR: As this is a psychological test, the translations of these questions should stay as close to the English way of saying as possible, even if there was an easier way to say it in the target language. -->
+    <!-- NOTE TO TRANSLATOR: For example: "remains unreduced" has a special meaning that the value does not go down. It can stay the same or go up. -->
+
+    <string-array name="PreTestQuestions">
+        <item name="1">Although using smartphone has brought negative effects on my interpersonal relationships, the amount of time spent on Internet remains unreduced.</item>
+        <item name="2">I use smartphone for a longer period of time and spend more money than I had intended.</item>
+        <item name="3">I try to spend less time on smartphone, but the efforts were in vain.</item>
+        <item name="4">I feel aches and soreness in the back or eye discomforts due to excessive smartphone use.</item>
+        <item name="5">I make it a habit to use smartphone and the sleep quality and total sleep time decreased.</item>
+        <item name="6">To use smartphone has exercised certain negative effects on my schoolwork or job performance.</item>
+        <item name="7">I feel restless and irritable when the smartphone is unavailable.</item>
+        <item name="8">I feel uneasy once I stop smartphone for a certain period of time.</item>
+        <item name="9">I find that I have been hooking on smartphone longer and longer.</item>
+        <item name="10">I have increased substantial amount of time using smartphone per week in recent 3 months.</item>
+    </string-array>
+
+    <!-- Remaining pre-research texts - nr10 thru nr12 -->
+    <string name="PreTestSubmitAnswers">Save my answers</string>
+    <string name="PreTestThanks">Thank your for your responses.</string>
+    <string name="tvPreTestTitleText">Smartphone Addiction Inventory</string>
+    <string name="tvPreTestQuestionText">Question</string>
+    <string name="tvPreTestQuestionNumberOf">of 10</string>
+    <string name="tvPreTestActualQuestionText">Although using smartphone has brought negative effects on my interpersonal relationships, the amount of time spent on Internet remains unreduced.</string>
+
+    <!-- Response options in the pre-research questionnaire - nr10 thru nr12 -->
+    <string name="radioPreTestOne">1: Very much unfit</string>
+    <string name="radioPreTestTwo">2: Somewhat unfit</string>
+    <string name="radioPreTestThree">3: Somewhat fit</string>
+    <string name="radioPreTestFour">4: Very much fit</string>
+
+    <!-- Button names in pre-research - just in case for now -->
+    <string name="btnPreTestPrevious">Previous question</string>
+    <string name="btnPreTestNext">Next question</string>
+    <string name="btnSubmitResponseText">Submit responses</string>
+
+    <!-- Toast to thank user for responding to the pre-research questionnaire - nr12 -->
+    <string name="strPreTestThankYou">Thank you for the responses</string>
+
+    <!-- TRANSLATOR: Thanks a lot for your help - you do not need to progress below this line. -->
+    <!-- Non-translatable texts - NO NEED TO TRANSLATE ANYTHING BELOW THIS LINE-->
+
+    <!-- Debug screens - NO NEED TO TRANSLATE ANYTHING BELOW THIS LINE-->
+
+    <string name="stage_select_view_header">Stage Select</string>
+    <string name="stage_select_view_set_as_current_stage">Set As Current Stage/Day/Hour</string>
+    <string name="stats_view_header">Stats</string>
+    <string name="stats_view_day_header">Day</string>
+    <string name="stats_view_hour_header">Hour</string>
+    <string name="stats_view_total_unlocks">Total Unlocks</string>
+    <string name="stats_view_total_sot">Total SOT</string>
+    <string name="stats_view_total_sft">Total SFT</string>
+    <string name="stats_view_average_sot">Avg SOT</string>
+    <string name="stats_view_average_sft">Avg SFT</string>
+    <string name="stats_view_clear_stage_values">Clear Stage</string>
+    <string name="stats_view_clear_day_values">Clear Day</string>
+    <string name="stats_view_clear_hour_values">Clear Hour</string>
+
+    <string name="debug_stage_stage_header">Stage</string>
+    <string name="debug_stage_day_header">Day</string>
+    <string name="debug_stage_hour_header">Hour</string>
+
+    <string name="debug_stage_1_move_to_stage_2_button_text">MOVE TO STAGE 2</string>
+
+    <string name="debug_stage_2_move_to_stage_3_button_text">MOVE TO STAGE 3</string>
+    <string name="debug_stage_2_move_back_to_stage_1_button_text">BACK TO STAGE 1</string>
+
+    <string name="debug_stage_3_move_to_stage_4_button_text">MOVE TO STAGE 4</string>
+    <string name="debug_stage_3_move_back_to_stage_2_button_text">BACK TO STAGE 2</string>
+
+    <string name="debug_stage_4_move_to_stage_5_button_text">MOVE TO STAGE 5</string>
+    <string name="debug_stage_4_move_back_to_stage_3_button_text">BACK TO STAGE 3</string>
+
+    <string name="debug_stage_5_move_back_to_stage_4_button_text">BACK TO STAGE 4</string>
+
+
+    <string name="averages_set_view_stage_label">Averages for Stage %1$s</string>
+    <string name="averages_set_view_unlocks_label">Unlocks</string>
+    <string name="averages_set_view_sot_label">Avg SOT</string>
+    <string name="averages_set_view_sft_label">Avg SFT</string>
+    <string name="averages_set_view_total_sot_label">Total SOT</string>
+    <string name="averages_set_view_total_sft_label">Total SFT</string>
+    <string name="averages_set_view_stage_day_hour_button_text">STAGE/DAY/HOUR</string>
+    <string name="averages_set_view_stage_day_button_text">STAGE/DAY</string>
+    <string name="averages_set_view_stage_button_text">STAGE</string>
+    <string name="averages_set_view_set_for_label">Set For</string>
+
+    <string name="activity_debug_stage_1_activity_title">Stage 1 Debug</string>
+    <string name="activity_debug_stage_2_activity_title">Stage 2 Debug</string>
+    <string name="activity_debug_stage_3_activity_title">Stage 3 Debug</string>
+    <string name="activity_debug_stage_4_activity_title">Stage 4 Debug</string>
+    <string name="activity_debug_stage_5_activity_title">Stage 5 Debug</string>
+
+    <!-- Stage 6 -->
+    <string name="activity_debug_stage_6_activity_title">Stage 6 Debug</string>
+    <string name="debug_stage_5_move_to_stage_6_button_text">MOVE TO STAGE 6</string>
+    <string name="debug_stage_6_move_back_to_stage_5_button_text">BACK TO STAGE 5</string>
+
+
+    <string name="activity_debug_stage_activity_title_from_code">Stage %1$s Debug</string>
+
+    <string name="time_picker_okay_button_text">OKAY</string>
+    <string name="time_picker_cancel_button_text">CANCEL</string>
+
+    <string name="rdbStage6NoInformationText">Nothing</string>
+    <string name="rdbStage6InformationText">Information</string>
+    <string name="rdbStage6InformationandThumbsUpText">Thumbs up</string>
+    <string name="tvStage6ToastQuestionText">How would you like to be notified at unlock?</string>
+    <string name="btnStage6ToastSetPreferenceText">Set preferred notification</string>
+    <string name="toastStage6SetToastNotificationText">"Notifications set to "</string>
+    <string name="textShareBody">I think you should reduce your phone usage. This app could help: http://bit.ly/29Zn5zV.</string>
+    <string name="textShareSubject">Get off your phone now! Focusting can help.</string>
+    <string name="textShareIntent">Tell your friend</string>
+
+    <string name="tvPreTextQuestionWord">Question</string>
+    <string name="tvSnoozedText">Shh. Going silent for 2 hours.</string>
+    <string name="tv_device_identifier">Device identifier</string>
+    <string name="text_huawei_dont_show_again">Do not show again</string>
+    <string name="title_huawei_message">Huawei Protected Apps</string>
+    <string name="button_huawei_message">Protected Apps</string>
+    <string name="text_huawei_message">Focusting requires to be enabled in \'Protected Apps\' to function properly.</string>
+
+    <string name="permission_rationale_message">Permission to read calendar is needed. Write rationale here</string>
+    <string name="permission_rationale_action">OK</string>
+
+    <string name="toast_user_name_unknown">Hyvä osallistuja</string>
+    <string name="toast1_content">Tutkimusten mukaan puhelimen käyttö heikentää kykyäsi keskittyä ja tehdä päätöksiä.\n\nOnko puhelimen avaaminen tarpeellista?</string>
+    <string name="toast2_content">Onko puhelimen avaaminen tarpeellista?\n\nLäsnäolollasi on muille merkitystä.</string>
+
+    <string name="username_dialog_text">What is your name?</string>
+    <string name="username_dialog_hint">Name</string>
+    <string name="username_dialog_action">Save</string>
+</resources>
