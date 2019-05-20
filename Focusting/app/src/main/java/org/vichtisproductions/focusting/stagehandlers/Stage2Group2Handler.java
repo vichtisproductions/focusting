@@ -30,7 +30,7 @@ public class Stage2Group2Handler implements IStageHandler {
     public void handleScreenAction(ScreenAction action) {
         if (action.getEventType().equals(Intent.ACTION_USER_PRESENT)) {
             final int hourOfDay = DateTime.now().hourOfDay().get();
-            final int attendees = CalendarUtils.getAttendeeCount(mContext);
+            final int attendees = action.getNumOfAttendees();
             if (hourOfDay >= 7 && hourOfDay <= 17 && attendees >= 3) {
                 Timber.d("Showing toast for group 2");
                 ToastUtils.showToast(mContext, dataUtils.getUsername(), R.string.toast1_content);

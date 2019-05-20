@@ -13,6 +13,7 @@ import org.vichtisproductions.focusting.model.Averages;
 import org.vichtisproductions.focusting.model.ScreenAction;
 import org.vichtisproductions.focusting.model.Stage;
 import org.joda.time.DateTime;
+import org.vichtisproductions.focusting.utils.CalendarUtils;
 
 import java.util.UUID;
 
@@ -70,7 +71,8 @@ public class ScreenActionInteractor implements IScreenActionInteractor {
                             stage.getStage(),
                             stage.getDay(),
                             stage.getHour(),
-                            duration
+                            duration,
+                            CalendarUtils.getAttendeeCount(mContext)
                             );
 
                     mDatabaseInteractor.commitScreenAction(screenAction);

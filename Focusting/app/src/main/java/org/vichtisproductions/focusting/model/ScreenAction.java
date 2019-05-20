@@ -6,7 +6,7 @@ import io.realm.annotations.PrimaryKey;
 /**
  * Created by Renier on 2016/04/12.
  */
-public class ScreenAction extends RealmObject{
+public class ScreenAction extends RealmObject {
 
     @PrimaryKey
     private String mId;
@@ -16,12 +16,13 @@ public class ScreenAction extends RealmObject{
     private int mDay;
     private int mHour;
     private long mDuration;
+    private int mNumOfAttendees;
 
     public ScreenAction() {
 
     }
 
-    public ScreenAction(String mId, String mEventType, long mEventDateTime, int mStage, int mDay, int mHour, long mDuration) {
+    public ScreenAction(String mId, String mEventType, long mEventDateTime, int mStage, int mDay, int mHour, long mDuration, int mNumOfAttendees) {
         this.mId = mId;
         this.mEventType = mEventType;
         this.mEventDateTime = mEventDateTime;
@@ -29,6 +30,7 @@ public class ScreenAction extends RealmObject{
         this.mDay = mDay;
         this.mHour = mHour;
         this.mDuration = mDuration;
+        this.mNumOfAttendees = mNumOfAttendees;
     }
 
     public String getId() {
@@ -85,6 +87,14 @@ public class ScreenAction extends RealmObject{
 
     public void setDuration(long mDuration) {
         this.mDuration = mDuration;
+    }
+
+    public int getNumOfAttendees() {
+        return mNumOfAttendees;
+    }
+
+    public void setNumOfAttendees(int mNumOfAttendees) {
+        this.mNumOfAttendees = mNumOfAttendees;
     }
 }
 

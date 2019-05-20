@@ -34,7 +34,7 @@ public class Stage3Handler implements IStageHandler {
         if (action.getEventType().equals(Intent.ACTION_SCREEN_ON)) {
 
             Timber.d("Screen on - handleScreenAction - now checking # of attendees");
-            int attendeeCount = CalendarUtils.getAttendeeCount(mContext);
+            int attendeeCount = action.getNumOfAttendees();
 
             //get unlock count up to current hour for this stage day
             long unlockCount = mDatabaseInteractor.getUnlockCountForStageDay(action.getStage(), action.getDay());

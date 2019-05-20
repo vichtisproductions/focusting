@@ -38,7 +38,7 @@ public class Stage2Handler implements IStageHandler {
 
             // TODO - Show stimulus type 1
             Timber.d("Screen on - handleScreenAction - now checking # of attendees");
-                int attendeeCount = CalendarUtils.getAttendeeCount(mContext);
+                int attendeeCount = action.getNumOfAttendees();
 
                 long unlockCount = mDatabaseInteractor.getUnlockCountForStageDay(action.getStage(), action.getDay());
                 long totalSOTTime = mDatabaseInteractor.getTotalSOTForStageDay(action.getStage(), action.getDay());
