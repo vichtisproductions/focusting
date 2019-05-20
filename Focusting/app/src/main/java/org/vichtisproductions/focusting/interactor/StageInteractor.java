@@ -106,8 +106,6 @@ public class StageInteractor implements IStageInteractor {
         }
         int Stage1len = lengthOfStage[0]; // TODO - 8
         int Stage2len = lengthOfStage[1]; // TODO - 14
-        int Stage3len = lengthOfStage[2]; // TODO - 7
-
 
         // Figure out what stage the person should be on that day
         // TODO - SIMPLIFY & REVIEW
@@ -119,14 +117,10 @@ public class StageInteractor implements IStageInteractor {
             //Stage2
             stageNr = 2;
             day = days - Stage1len + 1;
-        } else if (days < (Stage1len + Stage2len + Stage3len)) {
+        } else {
             //Stage3
             stageNr = 3;
             day = days - Stage1len - Stage2len + 1;
-        } else {
-            //Stage4
-            stageNr = 4;
-            day = days - Stage1len - Stage2len - Stage3len + 1;
         }
 
         // Now return stage number etc.
