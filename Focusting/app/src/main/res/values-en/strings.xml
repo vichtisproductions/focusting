@@ -198,7 +198,7 @@
     <string name="tvStage6ToastQuestionText">How would you like to be notified at unlock?</string>
     <string name="btnStage6ToastSetPreferenceText">Set preferred notification</string>
     <string name="toastStage6SetToastNotificationText">"Notifications set to "</string>
-    <string name="textShareBody">I think you should reduce your phone usage. This app could help: http://bit.ly/29Zn5zV.</string>
+    <string name="textShareBody">I think you should reduce your phone usage. This app could help: https://bit.ly/2MZMJcJ.</string>
     <string name="textShareSubject">Get off your phone now! Focusting can help.</string>
     <string name="textShareIntent">Tell your friend</string>
 

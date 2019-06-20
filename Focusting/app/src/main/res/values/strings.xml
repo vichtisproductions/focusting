@@ -148,7 +148,7 @@
     <string name="tvStage6ToastQuestionText">Minkä ilmoituksen haluat näytön avauksessa?</string>
     <string name="btnStage6ToastSetPreferenceText">Aseta ilmoitus</string>
     <string name="toastStage6SetToastNotificationText">"Ilmoitus asetettu: "</string>
-    <string name="textShareBody">Osallistu tutkimukseen, joka kestää 29 päivää. Tämä sovellus antaa sinulle samalla vinkkejä puhelimen käytöstäsi arkisissa tilanteissa: http://bit.ly/29Zn5zV.</string>
+    <string name="textShareBody">Osallistu tutkimukseen, joka kestää 29 päivää. Tämä sovellus antaa sinulle samalla vinkkejä puhelimen käytöstäsi arkisissa tilanteissa: https://bit.ly/2MZMJcJ.</string>
     <string name="textShareSubject">Pistä se puhelin pois! Focusting auttaa.</string>
     <string name="textShareIntent">Kerro kaverille</string>
     <string name="tvPreTextQuestionWord">Kysymys</string>
