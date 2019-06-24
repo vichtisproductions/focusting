@@ -15,9 +15,6 @@ import timber.log.Timber;
  * Created by Renier on 2016/03/29.
  */
 
-@ReportsCrashes(
-        formUri = "https://collector.tracepot.com/15c51f2e"
-)
 public class MainApplication extends Application {
     private DIGraph mGraph;
 
