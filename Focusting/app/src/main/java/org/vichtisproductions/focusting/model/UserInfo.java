@@ -15,7 +15,7 @@ public class UserInfo {
     public UserInfo() {
     }
 
-    public UserInfo(String mInstanceId, long mInitialStartTime, String mManufacturer, String mModel, String mOSVersion, String mTimezone, int GroupNumber) {
+    public UserInfo(String mInstanceId, long mInitialStartTime, String mManufacturer, String mModel, String mOSVersion, String mTimezone, int mGroupNumber) {
         this.mInstanceId = mInstanceId;
         this.mInitialStartTime = mInitialStartTime;
         this.mManufacturer = mManufacturer;
