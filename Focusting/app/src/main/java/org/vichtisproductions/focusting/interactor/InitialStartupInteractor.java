@@ -76,6 +76,8 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                     if (!isCaptured) {
                         return mUserInteractor.getInstanceId();
                     } else {
+                        // Setup already done, update data to Firebase and return error
+                        uploadUserDataToFirebase();
                         return Observable.error(new Throwable("Already captured"));
                     }
                 })
@@ -189,21 +191,7 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                                             mUserInteractor.setInstanceIdSynchronous(user.getUid());
 
                                             // Upload data here -- create new UserInfo object out of SharedPreferences
-                                            String instanceId = mUserInteractor.getInstanceIdSynchronous();
-                                            Timber.d("Using new InstanceID for the first time: " + instanceId);
-                                            Long initialStartTimefromSP = mPrefs.getLong(SP_KEY_INITIAL_START_TIME, 0);
-                                            String manufacturerfromSP = mPrefs.getString(SP_KEY_INITIAL_MANUFACTURER, "");
-                                            String modelfromSP = mPrefs.getString(SP_KEY_INITIAL_MODEL, "");
-                                            String osVersionfromSP = mPrefs.getString(SP_KEY_INITIAL_OSVERSION, "");
-                                            String userTimezonefromSP = mPrefs.getString(SP_KEY_INITIAL_TIMEZONE, "");
-                                            int FocustingGroupNumberfromSP = mPrefs.getInt(SP_KEY_FOCUSTING_GROUP_NUMBER, 0);
-                                            UserInfo ui = new UserInfo(instanceId, initialStartTimefromSP, manufacturerfromSP, modelfromSP, osVersionfromSP, userTimezonefromSP, FocustingGroupNumberfromSP);
-                                            // Timber.d("User info from SP: " + instanceId + " " + initialStartTimefromSP.toString() + ", " + manufacturerfromSP + ", " + modelfromSP + ", " + osVersionfromSP);
-
-                                            // Timber.d("Uploading UserInfo to FireBase");
-                                            DatabaseReference ref = mFirebaseClient.child(instanceId).child("InitialInformation");
-                                            ref.setValue(ui);
-
+                                            uploadUserDataToFirebase();
                                             // END Upload
 
                                             // If sign in fails, display a message to the user. If sign in succeeds
@@ -241,6 +229,22 @@ public class InitialStartupInteractor implements IInitialStartupInteractor {
                 });
         // Timber.d("End creating user and uploading initial data.");
 
+    }
+
+    private void uploadUserDataToFirebase() {
+        // Upload data here -- create new UserInfo object out of SharedPreferences
+        String instanceId = mUserInteractor.getInstanceIdSynchronous();
+        Long initialStartTimefromSP = mPrefs.getLong(SP_KEY_INITIAL_START_TIME, 0);
+        String manufacturerfromSP = mPrefs.getString(SP_KEY_INITIAL_MANUFACTURER, "");
+        String modelfromSP = mPrefs.getString(SP_KEY_INITIAL_MODEL, "");
+        String osVersionfromSP = mPrefs.getString(SP_KEY_INITIAL_OSVERSION, "");
+        String userTimezonefromSP = mPrefs.getString(SP_KEY_INITIAL_TIMEZONE, "");
+        int FocustingGroupNumberfromSP = mPrefs.getInt(SP_KEY_FOCUSTING_GROUP_NUMBER, 0);
+        UserInfo ui = new UserInfo(instanceId, initialStartTimefromSP, manufacturerfromSP, modelfromSP, osVersionfromSP, userTimezonefromSP, FocustingGroupNumberfromSP);
+
+        Timber.d("Uploading UserInfo (%s) to FireBase", instanceId);
+        DatabaseReference ref = mFirebaseClient.child(instanceId).child("InitialInformation");
+        ref.setValue(ui);
     }
 
     /**
