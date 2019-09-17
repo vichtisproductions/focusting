@@ -369,8 +369,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
 
     public void setIntroText(int stage, int day) {
         String str;
-
-        String dayString;
         String remainingTimeText;
         int stageLength;
 
@@ -379,21 +377,28 @@ public class MainActivity extends AppCompatActivity implements IMainActivityView
         str = introTexts[stage - 1];
         ((TextView) findViewById(R.id.tvIntro)).setText(str);
 
+        // Figure out how long is each stage
+        int[] lengthOfStage = getResources().getIntArray(R.array.eachStageLength);
+        stageLength = 0;
+        if (stage <= lengthOfStage.length) {
+            stageLength = lengthOfStage[stage - 1];
+        }
+        final int remainingTime = stageLength - day + 1;
+        final TextView stageRemainingTextView = findViewById(R.id.tvStageRemainingTime);
+
         // Then, if the stage is part of the research
         if (stage < 3) {
-            // Figure out how long is each stage
-            int[] lengthOfStage = getResources().getIntArray(R.array.eachStageLength);
-            stageLength = lengthOfStage[stage - 1];
-
-            remainingTimeText = getResources().getString(R.string.RemainingTimeText);
-            int remainingTime;
-            remainingTime = stageLength - day + 1;
-            dayString = Integer.toString(remainingTime);
-            ((TextView) findViewById(R.id.tvStageRemainingTime)).setText(dayString + " " + remainingTimeText);
+            remainingTimeText = getString(R.string.RemainingTimeText, remainingTime);
+            stageRemainingTextView.setText(remainingTimeText);
             findViewById(R.id.tvStageRemainingTime).setVisibility(View.VISIBLE);
         } else {
-            // Otherwise we are done, make it blank.
-            findViewById(R.id.tvStageRemainingTime).setVisibility(View.GONE);
+            if (remainingTime > 0) {
+                remainingTimeText = getString(R.string.lastStageRemaining, remainingTime);
+            } else {
+                remainingTimeText = getString(R.string.researchHasEnded);
+            }
+            stageRemainingTextView.setText(remainingTimeText);
+            findViewById(R.id.tvStageRemainingTime).setVisibility(View.VISIBLE);
         }
 
     }

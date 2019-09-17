@@ -40,7 +40,7 @@
     <string name="IntroText">Focusting helps you learn about your phone usage.\n\nIn the coming weeks the app will provide feedback and will encourage you to think about your phone usage.\n</string>
 
     <!-- Main screen - how many days is left to next stage E.g. 7 days left to the next stage - nr1 thru nr7 + nr19 -->
-    <string name="RemainingTimeText">days left to the next stage.</string>
+    <string name="RemainingTimeText">%1$d days left to the next stage.</string>
 
     <!-- Main screen - texts by research stage - nr1 thru nr7 + nr19 -->
     <string-array name="IntroTexts">

@@ -87,7 +87,9 @@
     <string name="ResearchInformationSheetTitle"><u>Tiedote tutkittaville</u></string>
     <string name="IntroText">Focusting auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nSovellus antaa tulevina viikkoina palautetta, ja rohkaisee sinua harkitsemaan puhelimen käyttöä.\n</string>
     <string name="IntroTextPreTest">Focusting auttaa sinua oppimaan enemmän puhelimen käytöstäsi.\n\nSovellus antaa tulevina viikkoina palautetta, ja rohkaisee sinua harkitsemaan puhelimen käyttöä.\n\nVastaa itsearviointiin nyt.</string>
-    <string name="RemainingTimeText">päivää seuraavaan vaiheeseen.</string>
+    <string name="RemainingTimeText">%1$d päivää seuraavaan vaiheeseen.</string>
+    <string name="lastStageRemaining">Viimeistä vaihetta jäljellä %1$d päivää.</string>
+    <string name="researchHasEnded">Tutkimus on päättynyt</string>
     <string name="btnTakeThePreTest">Vastaa itsearviointiin</string>
     <string name="tvPReTestNoticeText">Itsearvioinnissa on 10 helppoa kysymystä älypuhelimen käyttöön liittyvästä käyttäytymisestä.</string>
     <string name="PreTestIntro">Alla on luettelo älypuhelimeen liittyviä käyttäytymismalleja tai vasteita jotka joskus johtuvat puhelimen käytöstä. Lue jokainen väite, ja valitse alta vaihtohto joka parhaiten kuvaa sitä miten kuvaus sopii sinuun <b>viimeisen 3 kuukauden aikana</b>.</string>
